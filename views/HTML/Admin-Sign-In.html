@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>
+        Admin Login
+    </title>
+    <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png" />
+</head>
+
+<body>
+        <img src="photos/thebluelogo.png" alt="logz" class="logo" style="width:5.4%;">
+
+    <div class="Alogin">
+        
+        <div class="Alogger">
+            <h2>Sign in to your account</h2>
+            <div class="words">or choose your user</div>
+            <a href="User-Sign-In.html"><span class="use"><i href="#"><img src='photos/user.png' alt="using"/></i></span></a>
+            <span class="adds" style="top: 28%;"><i href="#"><img src='photos/settings.png' alt="sets"/></i></span>
+            <a href="Vendor-Sign-In.html"><span class="vend"><i href="#"><img src='photos/shopping-bag.png' alt="sells"/></i></span></a>
+
+            <div class="line"></div>
+        </div>
+        <form action="dashboard.html" method="get" class="form" onsubmit="return ASValidation(this)">
+            <div class="codey" style="top: 47%;">
+                <label for="codey"> code </label>
+                <input id="admincode" type="text" placeholder="admin code"> <br>
+                <span id="Aerror"></span>
+            </div>
+            <div class="users" style="top: 55%;">
+                <label for="username"> username </label>
+                <input id="username" type="text" placeholder="username"> <br>
+                <span id="Uerror"></span>
+            </div>
+            <div class="passes" style="top: 63%;">
+                <label for="password"> password </label>
+                <input id="password" type="password" placeholder="password"> <br>
+                <span id="Perror"></span>
+            </div>
+            <span href="#" id="fyp" style="top: 73%;">forgot your password?</span>
+            <button class="ASbutton" type="submit" id="submit">Sign in</button>
+        </form>
+    </div>
+    <script src="JS/Functions.js"></script>
+</body>
+
+</html>
