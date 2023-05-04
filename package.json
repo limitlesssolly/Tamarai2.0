@@ -12,6 +12,7 @@
     "bcrypt": "^5.1.0",
     "express.js": "^1.0.0",
     "firebase-admin": "^11.7.0",
+    "mongoose": "^7.1.0",
     "nodemon": "^2.0.22"
   }
 }
