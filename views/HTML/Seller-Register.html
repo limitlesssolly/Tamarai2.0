@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="..\..\public\CSS\MainStyleSheet.css">
+        <title>
+            Vendor Register
+        </title>
+        <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png" />
+    </head>
+
+    <body>
+        <div class ="VSbk">
+                <img src="images/thewhiteicon.png" alt="logz" class="logo">
+            <h3 class = "welcomes">Welcome Back!</h3>
+            <div class = "wordings"> Missed us? Hop right in,<br>Sign in now! </div>
+            <a href="Vendor-Sign-In.html"><button class = "VSbutton" style="top: 65%; left: 35%;">Sign In</button></a>
+        </div>
+            <div class ="VRegsiter">
+                <div class = "VReggie">
+                    <h2>Sign up to your account</h2>
+                    <div class = "words">or choose your user</div>
+                    <a href="User-Register.html"><span class="use" style=" left: 39.5%;"><i href="#" ><img src='photos/user.png' alt="using"/></i></span></a>
+                        <span class="vend" style="top: 28%; left: 49.5%;"><i href="#"><img src='images/shopping-bag.png' alt="sells"/></i></span>
+
+                        <div class="line"></div>
+                </div>
+                <form action="javascript:void(0)" method="get" onsubmit="return Validation(this)">
+                    <div class = "users" style="left: 15%;">
+                        <label for="username"> username </label>
+                        <input id = "username" type="text" placeholder="username"> <br>
+                        <span id = "Uerror"></span>
+                    </div>
+                    <div class="passes" style="left: 15%;">
+                        <label for="password"> password </label>
+                        <input id = "password" type="password" placeholder="password"> <br>
+                        <span id = "Perror"></span>
+                    </div>
+                    <div class = "email" style="left: 55%;">
+                        <label for="email"> email </label>
+                        <input id = "email" type="email" placeholder="example@mail.com"> <br>
+                        <span id = "Eerror"></span>
+                    </div>
+                    <div class = "deb" style="left: 55%;">
+                        <label for="deb"> date </label>
+                        <input id = "date-of-birth" type="date" placeholder="date"> <br>
+                    </div>
+                    <div class="successfully" id="Success">Registration Successful!
+                    </div>
+                        <button  class = "VRbutton" type="submit" style="top: 75%;">Sign up</button>
+                </form>
+            </div>
+        <script src="JS/Functions.js"></script>
+    </body>
+</html>
