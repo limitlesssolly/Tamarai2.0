@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/MainStyleSheet.css">
+    <title>
+        Seller Login
+    </title>
+    <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png" />
+</head>
+
+<body>
+    <div class="Vlogin">
+            <img src="photos/thebluelogo.png" alt="logz" class="logo">
+        <div class="Vlogger">
+            <h2>Sign in to your account</h2>
+            <div class="words">or choose your user</div>
+            <a href="User-Sign-In.html"><span class="use"><i href="#"><img src='photos/user.png' alt="using"/></i></span></a>
+            <a href="Admin-Sign-In.html"><span class="adds"><i href="#" ><img src='photos/settings.png' alt="sets"/></i></span></a>
+            <span class="vend" style="top: 28%;"><i href="#"><img src='photos/shopping-bag.png' alt="sells"/></i></span>
+
+            <div class="line"></div>
+        </div>
+        <form action="manage-products.html" method="get" class="form" onsubmit="return USValidation(this)">
+            <div class="users">
+                <label for="username"> username </label>
+                <input id="username" type="text" placeholder="username"> <br>
+                <span id="Uerror"></span>
+            </div>
+            <div class="passes">
+                <label for="password"> password </label>
+                <input id="password" type="password" placeholder="password"> <br>
+                <span id="Perror"></span>
+            </div>
+            <span href="#" id="fyp">forgot your password?</span>
+            <button class="VSbutton" type="submit" id="submit">Sign in</button>
+        </form>
+    </div>
+    <div class="VRegbk">
+        <h3 class="welcomes">Welcome Aboard!</h3>
+        <div class="wordings"> You new here? Experience all <br> the fun, Join us now!</div>
+        <a href="Vendor-Register.html"><button class = "VRbutton">Sign Up</button></a>
+    </div>
+    <script src="JS/Functions.js"></script>
+</body>
+
+</html>
+
+</html>
