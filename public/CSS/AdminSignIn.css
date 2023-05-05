@@ -219,3 +219,7 @@ input:autofill
     border-radius: 2px;
     text-align: center;
 }
+.responsive {
+    width: 100%;
+    height: auto;
+  }
