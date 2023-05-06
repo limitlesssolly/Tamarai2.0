@@ -6,3 +6,4 @@ seller.get('/',(req,res)=>{
 seller.listen(4000,()=>{
  console.log("listining to port no 4000");
 });
+ 
