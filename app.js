@@ -1,4 +1,12 @@
-//const file = require('./filename)
-//module.export= what is gonna b returned to the file that requires it (could b an object full of properties)
-//const {people} = require('./people) bakhod el object 3latool bas lazm yb2o same name
-//readfile(relativepath, text to write, call back function ()=>{}) zai readfile bas de zyada feha el haytktb fl file
+import express from 'express';
+const app = express();
+import expressLayouts from 'express-ejs-layouts';
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname,'public')));
+app.use('/', router);
