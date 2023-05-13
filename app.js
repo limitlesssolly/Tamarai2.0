@@ -1,6 +1,15 @@
+import HttpError from "http-errors";
 import express from 'express';
-const app = express();
+import path from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import { fileURLToPath } from "url";
 import expressLayouts from 'express-ejs-layouts';
+
+const app = express();
+
+export const __filename = fileURLToPath(import.meta.url);
+export const __dirname = path.dirname(__filename);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
