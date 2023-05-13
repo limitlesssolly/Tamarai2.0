@@ -1,25 +1,27 @@
 {
-  "name": "tamarai2.0",
-  "version": "1.0.0",
-  "description": "Tamarai is a web application for software course.",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "devStart": "nodemon app.js"
-  },
-  "author": "Tamarai",
-  "type": "module",
-  "license": "ISC",
-  "dependencies": {
-    "cookie-parser": "^1.4.6",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "express-ejs-layouts": "^2.5.1",
-    "express-session": "^1.17.3",
-    "morgan": "^1.10.0"
-  },
-  "keywords": [],
-  "devDependencies": {
-    "nodemon": "^2.0.22"
-  }
+    "name": "tamarai2.0",
+    "version": "1.0.0",
+    "description": "Tamarai is a web application for software course.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./bin/www",
+        "devStart": "nodemon ./bin/www"
+    },
+    "author": "Tamarai",
+    "type": "module",
+    "license": "ISC",
+    "dependencies": {
+        "cookie-parser": "^1.4.6",
+        "dotenv": "^16.0.3",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "express-ejs-layouts": "^2.5.1",
+        "express-session": "^1.17.3",
+        "http-errors": "^2.0.0",
+        "morgan": "^1.10.0"
+    },
+    "keywords": [],
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    }
 }
