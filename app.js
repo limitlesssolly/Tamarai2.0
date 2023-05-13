@@ -34,3 +34,19 @@
 
 
 // export default app;
+
+
+//import express from 'express';
+//path = require('path');
+const express = require('express');
+const app = express();
+
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'index'));
+});
+
+//app.listen(8080);
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
