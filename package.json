@@ -7,11 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tamarai",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
 }
