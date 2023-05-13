@@ -51,4 +51,19 @@ app.use(function(err, req, res, next) {
 
 app.set('port', process.env.PORT || 3001);
 
+
+
+//import express from 'express';
+//path = require('path');
+
+
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'index'));
+});
+
+//app.listen(8080);
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
 export default app;
