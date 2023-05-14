@@ -6,10 +6,10 @@ import logger from "morgan";
 import { fileURLToPath } from "url";
 
 import router from "./routes/index.js";
+import { error } from "console";
 
 //Read the current directory name
-export const __filename = fileURLToPath(
-    import.meta.url);
+export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
 
@@ -29,14 +29,24 @@ app.use(express.json());
 // query-string library does not support creating a nested object from your query string.
 
 app.use(express.urlencoded({ extended: true }));
+
 //setup cookie parser middleware
 app.use(cookieParser());
+
 //setup static folder for serving static files in Express
 app.use(express.static(path.join(__dirname, 'public')));
 console.log("ENV: ", app.get('env'));
 
+import mongo from 'mongoose';
+const mongoose = mongo;
+// mongoose.connect('process.env.DATABASE_URL', {useNewUrlParser: true});
+// const db = mongoose.connection;
+// db.on('error', error=> console.error(error));
+// db.once('open', ()=> console.log('Connected to the goose'));
+
 //setup routes
 app.use('/', router);
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -49,21 +59,12 @@ app.use(function(err, req, res, next) {
     res.render('error.ejs');
 });
 
-app.set('port', process.env.PORT || 7777);
-
-
-
-//import express from 'express';
-//path = require('path');
-
-
-
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
 
-// app.listen(3000);
-// server.listen(port, hostname, () => {
+app.set('port', process.env.PORT || 7777);
+// app.listen(port, hostname, () => {
 //     console.log(`Server running at http://${hostname}:${port}/`);
 // });
 export default app;
