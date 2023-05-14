@@ -36,30 +36,30 @@ const server = createServer(app);
 server.listen(PORT);
 server.on('error', onError);
 server.on('listening', onListening);
-console.log(`Server running at http://${HOST}:${PORT}/`); 
+console.log(`Server running at http://${HOST}:${PORT}/`);
 
 /**
  * Event listener for HTTP server "error" event.
  */
 
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
 
-  var bind = 'Port ' + PORT;
+    var bind = 'Port ' + PORT;
 
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-    default:
-      throw error;
-  }
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+        default:
+            throw error;
+    }
 }
 
 /**
@@ -67,7 +67,7 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = 'Port ' + addr.port;
+    var addr = server.address();
+    var bind = 'Port ' + addr.port;
     console.log('Listening on ' + bind);
 }
