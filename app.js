@@ -46,10 +46,10 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('pages/error');
+    res.render('error.ejs');
 });
 
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.PORT || 7777);
 
 
 
@@ -62,8 +62,8 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
 
-//app.listen(8080);
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+// app.listen(3000);
+// server.listen(port, hostname, () => {
+//     console.log(`Server running at http://${hostname}:${port}/`);
+// });
 export default app;

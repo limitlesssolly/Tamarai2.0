@@ -1,9 +1,9 @@
 import { Router } from 'express';
-var router = Router();
+const router = Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('pages/index', { title: 'Express' });
+    // res.send('she works!');
+    res.render('index.ejs');
 });
 
 export default router;
