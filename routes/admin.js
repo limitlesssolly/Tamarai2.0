@@ -5,8 +5,12 @@ router.get('/', function (req, res, next){
     res.render('Admin/admin-sign-in');
 })
 
-router.get('/dashbaord', function (req, res, next){
+router.get('/admin-dashboard.ejs', function (req, res, next){
     res.render('Admin/admin-dashboard');
 })
 
+router.post('/admin-dashboard.ejs', function(req, res, next)
+{
+    
+})
 export default router;
