@@ -1,12 +1,21 @@
-import HttpError from "http-errors";
+// if(process.env.ENV !== 'production')
+// {
+//     import envy from 'dotenv';
+//     envy.parse();
+// }
+
+
 import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
+import expressLayouts from "express-ejs-layouts";
+import mongoose from "mongoose";
 
-import router from "./routes/index.js";
-import { error } from "console";
+import mainRouter from "./routes/index.js";
+import adminRouter from "./routes/admin.js";
+
 
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
@@ -22,13 +31,10 @@ app.set("view engine", "ejs");
 app.use(logger("dev"));
 app.use(express.json());
 
-//When extended property is set to true, the URL-encoded data will be parsed with the qs library.
-//qs library allows you to create a nested object from your query string.
-
-// When extended property is set to false, the URL-encoded data will instead be parsed with the query-string library.
-// query-string library does not support creating a nested object from your query string.
-
 app.use(express.urlencoded({ extended: true }));
+
+app.set('layout', 'layouts/layout');
+app.use(expressLayouts);
 
 //setup cookie parser middleware
 app.use(cookieParser());
@@ -37,16 +43,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 console.log("ENV: ", app.get('env'));
 
-import mongo from 'mongoose';
-const mongoose = mongo;
-// mongoose.connect('process.env.DATABASE_URL', {useNewUrlParser: true});
+
+// mongoose.connect("process.env.DATABASE_URL");
 // const db = mongoose.connection;
 // db.on('error', error=> console.error(error));
-// db.once('open', ()=> console.log('Connected to the goose'));
+// db.once('open', ()=> console.log('connected to the goose'));
 
 //setup routes
-app.use('/', router);
-
+app.use('/', mainRouter);
+app.use('/admin', adminRouter);
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -64,7 +69,5 @@ app.get('/', function(req, res) {
 });
 
 app.set('port', process.env.PORT || 7777);
-// app.listen(port, hostname, () => {
-//     console.log(`Server running at http://${hostname}:${port}/`);
-// });
+
 export default app;
