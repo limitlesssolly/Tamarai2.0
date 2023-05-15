@@ -1,3 +1,15 @@
+# pallette
+--straw: #d6bd91;
+--blue-dianne: #1c4c56;
+--cement: #8e7e64;     
+--gulf-stream: #89bbbb;
+--smalt-blue: #518f99;
+--calypso: #2a7589;
+--bali-hai: #83a7b6;
+--bunker: #0d1516;   da lel text kollo
+--black-marlin: #3a2f18; 
+--pumpkin-skin: #b4640c;
+
 node_modules/.package-lock.json
 package-lock.json
 package.json

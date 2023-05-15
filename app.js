@@ -1,10 +1,3 @@
-// if(process.env.ENV !== 'production')
-// {
-//     import envy from 'dotenv';
-//     envy.parse();
-// }
-
-
 import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
@@ -15,6 +8,7 @@ import mongoose from "mongoose";
 
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
+
 
 
 //Read the current directory name
@@ -48,6 +42,8 @@ console.log("ENV: ", app.get('env'));
 // const db = mongoose.connection;
 // db.on('error', error=> console.error(error));
 // db.once('open', ()=> console.log('connected to the goose'));
+
+app.use('/public', express.static(process.cwd() + '/public'));
 
 //setup routes
 app.use('/', mainRouter);
