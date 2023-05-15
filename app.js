@@ -1,14 +1,14 @@
 import express from "express";
+let app = express();
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
 import expressLayouts from "express-ejs-layouts";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
-
 
 
 //Read the current directory name
@@ -16,7 +16,7 @@ export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
 
-let app = express();
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -43,7 +43,7 @@ console.log("ENV: ", app.get('env'));
 // db.on('error', error=> console.error(error));
 // db.once('open', ()=> console.log('connected to the goose'));
 
-app.use('/public', express.static(process.cwd() + '/public'));
+// app.use('/public', express.static(process.cwd() + '/public'));
 
 //setup routes
 app.use('/', mainRouter);
