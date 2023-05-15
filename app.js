@@ -5,11 +5,11 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
 import expressLayouts from "express-ejs-layouts";
-// import mongoose from "mongoose";
+import MongoClient from 'mongodb';
 
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
-
+import adminNavRouter from "./routes/adminNav.js"
 
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
@@ -38,16 +38,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 console.log("ENV: ", app.get('env'));
 
 
-// mongoose.connect("process.env.DATABASE_URL");
-// const db = mongoose.connection;
-// db.on('error', error=> console.error(error));
-// db.once('open', ()=> console.log('connected to the goose'));
-
-// app.use('/public', express.static(process.cwd() + '/public'));
-
 //setup routes
 app.use('/', mainRouter);
-app.use('/admin', adminRouter);
+app.use('/', adminRouter);
+app.use('/', adminNavRouter);
 
 // error handler
 app.use(function(err, req, res, next) {
