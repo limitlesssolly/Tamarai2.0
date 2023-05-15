@@ -1,0 +1,188 @@
+* 
+{
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    color: #0d1516;
+}
+.Alogin 
+{
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    column-gap: 10%;
+    row-gap: 10px;
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    height: 100%;
+    width: 60%;
+    background-color: #ffffff;
+}
+h2 
+{
+    grid-column: 2;
+    grid-row: 0;
+    justify-self: center;
+    font-size: 3.5vw;
+    text-align: center;
+    color: #0d1516;
+}
+.words 
+{
+    grid-column: 2;
+    grid-row: 1;
+    color: #0d1516;
+    text-align: center;
+}
+.use 
+{
+    grid-column: 1;
+    grid-row: 2;
+    /* grid-row-start: 3;
+    grid-row-end: 4; */
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+.use:hover 
+{
+    cursor: pointer;
+}
+.adds 
+{
+    grid-column: 2;
+    grid-row: 2;
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+.adds:hover 
+{
+    cursor: pointer;
+}
+.vend 
+{
+    
+    grid-column: 3;
+    grid-row: 2;
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+.vend:hover 
+{
+    cursor: pointer;
+}
+.line 
+{
+    grid-column: 2;
+    grid-row: 3;
+    width: 50%;
+    border: 1px solid #d6bd91;
+    margin: 3px;
+}
+label
+{
+    color: #0d1516;
+}
+::placeholder 
+{
+    color: #b4640c;
+    opacity: 1;
+}
+
+.users 
+{
+    grid-column: 2;
+    grid-row: 4;
+    /* margin: 15px 0; */
+}
+#username 
+{
+    padding: 5px 35px 5px 3px;
+    border-radius: 2px;
+    width: 250px;
+    color: #b4640c;
+    display: inline-block;
+    border: solid;
+    border-width: 1px;
+    border-color: #d6bd91;
+    align-content: space-between;
+}
+.passes 
+{
+    grid-column: 2;
+    grid-row: 5;
+    /* margin: 15px 0; */
+}
+#password 
+{
+    padding: 5px 35px 5px 3px;
+    border-radius: 2px;
+    width: 250px;
+    display: inline-block;
+    border: solid;
+    color: #b4640c;
+    border-width: 1px;
+    border-color: #d6bd91;
+    align-content: space-between;
+}
+.ASbutton 
+{
+    margin: 3px;
+    padding: 4px 30px;
+    background-color: #518f99;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 8;
+    grid-row-end: 9;
+    justify-self: center;
+    font-size: 26px;
+}
+.ASbutton:hover 
+{
+    background-color: #1c4c56;
+    cursor: pointer;
+}
+#fyp 
+{
+    grid-column: 2;
+    grid-row: 6;
+    color: #0d1516;
+    text-decoration: none;
+}
+#fyp:hover 
+{
+    text-decoration: underline;
+    cursor: pointer;
+}
+input:autofill
+{
+    color: #b4640c;
+    background-color: #d6bd91;
+}
+#Uerror
+{
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    display: none;
+}
+#Perror 
+{
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    display: none;
+}
+.responsive 
+{
+    width: 100%;
+    height: auto;
+}
