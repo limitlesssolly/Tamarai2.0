@@ -5,7 +5,6 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
 import expressLayouts from "express-ejs-layouts";
-import MongoClient from 'mongodb';
 
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
@@ -14,8 +13,6 @@ import adminNavRouter from "./routes/adminNav.js"
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
-
-
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
