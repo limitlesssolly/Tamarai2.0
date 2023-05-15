@@ -7,6 +7,10 @@
     <title>Admin Sign In</title>
 </head>
 <body>
-    edeloooo
+    <form action="/views/Admin/admin-dashboard.ejs" method="post">
+        <%- include('_form_fields') %>
+        <a href="/views/index.ejs">back</a>
+        <button type="submit">Sign In</button> 
+    </form>
 </body>
 </html>

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-const admin = require("../models/admin-data");
+// const admin = require("../models/admin-data");
 
 router.get('/', function (req, res, next){
     res.render('./Admin/admin-sign-in');
