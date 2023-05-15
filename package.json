@@ -25,5 +25,8 @@
   "keywords": [],
   "devDependencies": {
     "nodemon": "^2.0.22"
+  },
+  "bin": {
+    "tamarai2.0": "bin/www.js"
   }
 }
