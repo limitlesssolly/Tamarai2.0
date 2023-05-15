@@ -10,7 +10,6 @@ import MongoClient from 'mongodb';
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
 import adminNavRouter from "./routes/adminNav.js"
-
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
