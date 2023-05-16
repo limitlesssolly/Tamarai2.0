@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tamarai Home page</title>
+        <link rel="stylesheet" href="CSS/userHome.css">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css">
+
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script>
+        $(function() {
+            $("#header").load("");
+            $("#chatbox").load("chattin.html");
+        });
+    </script>
+        <!-- adding an favicon -->
+        <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png" />
+    </head>
+
+    <body>
+        <!-- Navigation bar -->
+        <nav class="navbar"></nav>
+        <script src="JS/nav.js"></script>
+        <!-- Photo of collections containning logo  -->
+        <!-- Header  -->
+        <header class="section">
+            <div class="content">
+                <img src="photos/thebluelogo.png" class="logo" alt="Tamarai's Logo">
+                <p class="sub-heading">Best collection of all time.</p>
+            </div>
+        </header>
+        <!-- Products  -->
+        <section class="product">
+            <h2 class="product-category">Best Selling</h2>
+            <!-- Arrows -->
+            <button class="pre-btn"><img src="photos/right-arrow.png" alt="left-arrow"></button>
+            <button class="nxt-btn"><img src="photos/right-arrow.png" alt="right-arrow"></button>
+            <div class="product-container">
+                <!-- Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="detail.summerDress.html">
+                            <img src="photos/card1.webp" class="product-thumb" alt="Dress">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Summer dress.</p>
+                        <span class="price">150L.E.</span>
+                        <span class="actual-price">300L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="detail.card2.html"> 
+                            <img src="photos/card2.webp" class="product-thumb" alt="Dress">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Floral dress.</p>
+                        <span class="price">175L.E.</span>
+                        <span class="actual-price">350L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="summerdress2.html"> 
+                            <img src="photos/card3.jpg" class="product-thumb" alt="Dress">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Summer dress.</p>
+                        <span class="price">100L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="#">
+                            <img src="photos/card4.jpg" class="product-thumb" alt="Earrings">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Earrings.</p>
+                        <span class="price">60L.E.</span>
+                        <span class="actual-price">120L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="#"> 
+                            <img src="photos/Sandal.webp" class="product-thumb" alt="Women Flat sandals">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Women Flat sandals.</p>
+                        <span class="price">400L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="#"> 
+                            <img src="photos/Men Shirt.webp" class="product-thumb" alt="Men Shirt">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Men</h2>
+                        <p class="product-short-des">Men button up shirt.</p>
+                        <span class="price">175L.E.</span>
+                        <span class="actual-price">350L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 7 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="#"> 
+                            <img src="photos/Cardigan.webp" class="product-thumb" alt="Cardigan">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Cardigan.</p>
+                        <span class="price">250L.E.</span>
+                        <span class="actual-price">500L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">33% off</span>
+                        <a href="#"> 
+                            <img src="photos/baby set.jpg" class="product-thumb" alt="Baby boy set">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Baby boy set.</p>
+                        <span class="price">400L.E.</span>
+                        <span class="actual-price">600L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 9 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="#"> 
+                            <img src="photos/cami Dress.webp" class="product-thumb" alt="Cami Dress">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Cami Dress.</p>
+                        <span class="price">350L.E.</span>
+                        <span class="actual-price">700L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 10 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href=".html"> 
+                            <img src="photos/SpiderMan.jpg" class="product-thumb" alt="Spider man boy set">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Spider man boy set.</p>
+                        <span class="price">400L.E.</span>
+                        <span class="actual-price">800L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 11 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="#"> 
+                            <img src="photos/Women asymmetric sweater.webp" class="product-thumb" alt="Women asymmetric sweater">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Women asymmetric sweater.</p>
+                        <span class="price">100L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+                <!-- Card 12 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">50% off</span>
+                        <a href="#"> 
+                            <img src="photos/Baby girl short dress.jpg" class="product-thumb" alt="Baby girl short dress">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Baby girl short dress.</p>
+                        <span class="price">125L.E.</span>
+                        <span class="actual-price">250L.E.</span>
+                    </div>
+                </div>
+                <!-- To make a new card copy the next code -->
+                <!-- 
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="discount-tag">number% off</span>
+                        <a href="#"> 
+                            <img src="" class="product-thumb" alt="">
+                        </a>
+                        <button class="card-btn">Add to wishlist</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Product short description</p>
+                        <span class="price">Price after discount L.E.</span>
+                        <span class="actual-price">actual price L.E.</span>
+                    </div>
+                </div> 
+                -->
+            </div>
+        </section>
+        <!-- Collections -->
+        <h1>Shop by Category</h1>
+        <section class="collection-container">
+            <a href="#" class="collection">
+                <img src="photos/women's-collection.jpg" alt="Women collection">
+                <p class="collection-title">Women <br> apparels</p>
+            </a>
+            <a href="#" class="collection">
+                <img src="photos/men's-collection.jpg" alt="Men's collection">
+                <p class="collection-title">Men <br> apparels</p>
+            </a>
+            <a href="#" class="collection">
+                <img src="photos/Kid's collection.jpg" alt="Kid's collection">
+                <p class="collection-title">Kids <br> apparels</p>
+            </a>
+            <a href="#" class="collection">
+                <img src="photos/shoes.jpg" alt="Shoe's collection">
+                <p class="collection-title">Shoes</p>
+            </a>
+            <a href="#" class="collection">
+                <img src="photos/Bags.jpg" alt="Bags">
+                <p style="font-size: 40px;" class="collection-title">Bags <br>Collection</p>
+            </a>
+            <a href="#" class="collection">
+                <img src="photos/accessories.jpeg" alt="Accessories">
+                <p style="font-size: 40px;" class="collection-title">Accessories</p>
+            </a>
+            <!-- To add a new collection take this code copy -->
+            <!-- 
+            <a href="#" class="collection">
+                <img src="photos/accessories.jpeg" alt="Accessories">
+                <p class="collection-title">Accessories</p>
+            </a>
+            -->
+        </section>
+        <!-- Last footer inshallah -->
+        <footer></footer> 
+        <script src="JS/footer.js"></script>
+        <!-- putting scripts here to work -->
+        <!-- Making card's button arrow scroll left and right in java script -->
+        <script src="JS/home.js"></script>
+
+        <div class="chatbox">
+            <div id="chatbox"></div>
+        </div>
+    </body>
+
+
+
+</html>
+
