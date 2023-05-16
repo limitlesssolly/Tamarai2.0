@@ -33,7 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));// to join th static folder "public" which contains the "js(routes)" files so that it can run 
 console.log("ENV: ", app.get('env'));
 
-
+app.use(express.static(path.join(__dirname, 'HTML')));
 //setup routes
 app.use('/', mainRouter);
 app.use('/', adminRouter);
