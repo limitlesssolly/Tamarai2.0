@@ -1,5 +1,5 @@
 import express from 'express';
-import Seller from '../models/sellerData.js';
+
 
 const router = express.Router();
 
