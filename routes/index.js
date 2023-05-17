@@ -16,5 +16,4 @@ router.get('/user-sign-in.ejs', function (req, res, next){
 router.get('/user-register.ejs', function (req, res, next){
     res.render('User/user-register');
 })
-
 export default router;

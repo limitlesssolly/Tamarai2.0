@@ -1,6 +1,6 @@
 import mongoose, { connection } from 'mongoose';
 
-const adminSchema = new mongoose.Schema({
+const Admin = new mongoose.Schema({
     username:{
         type:String,
         required:true,
@@ -11,6 +11,6 @@ const adminSchema = new mongoose.Schema({
     },
 })
 
-const collection = new mongoose.model("adminCollection", adminSchema)
+const data = new mongoose.model("adminData", Admin)
 
-export default collection;
+export default data;

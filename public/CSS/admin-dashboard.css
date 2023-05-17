@@ -1,0 +1,65 @@
+* 
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+nav
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background: #89bbbb;
+    left: 0;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.logo
+{
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+
+}
+.logo img
+{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+.ico
+{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+}
+.nav-item
+{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+a
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000000;
+}
+a:hover
+{
+    background: #ffff;
+}
+nav:hover
+{
+    width: 200px;
+    transition: all 0.5s ease;
+}

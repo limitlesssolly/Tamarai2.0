@@ -16,8 +16,8 @@ import adminNavRouter from "./routes/adminNav.js"
 
 //setup routes
 app.use('/', mainRouter);
-app.use('/', adminRouter);
-app.use('/', adminNavRouter);
+app.use('/admin', adminRouter);
+app.use('/partials', adminNavRouter);
 
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
