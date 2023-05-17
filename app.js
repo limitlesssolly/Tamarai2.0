@@ -6,23 +6,25 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
 // import session from 'express-session';
+import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import expressLayouts from "express-ejs-layouts";
 
 //importing the routes
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
-import adminNavRouter from "./routes/adminNav.js"
+// import adminNavRouter from "./routes/adminNav.js"
 
 //setup routes
 app.use('/', mainRouter);
-app.use('/admin', adminRouter);
-app.use('/partials', adminNavRouter);
+app.use('/', adminRouter);
+// app.use('/partials', adminNavRouter);
 
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));// to join th static folder "views" which contains the ejs files so that it can run 
@@ -32,6 +34,7 @@ app.use(logger("dev"));
 app.use(fileUpload());
 // app.use(session({ secret: 'Your_Secret_Key' }))
 app.use(express.json());
+app.use(bodyParser.urlencoded({limit:'10mb', extended:false}));
 
 app.use(express.urlencoded({ extended: true }));
 

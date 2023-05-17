@@ -20,17 +20,9 @@
 
             <div class="line"></div>
         </div>
-        <form action="" method="post" class="form"">
-            <div class="users">
-                <label for="username"> username </label>
-                <input id="username" name="username" type="text" placeholder="username"> <br>
-                <span id="Uerror"></span>
-            </div>
-            <div class="passes">
-                <label for="password"> password </label>
-                <input id="password" name="password" type="password" placeholder="password"> <br>
-                <span id="Perror"></span>
-            </div>
+        <form action="/admin-dashboard" method="post">
+            <%- include('form-fields') %>
+            <%- include('errorMessage') %>
             <span href="#" id="fyp">forgot your password?</span>
             <button class="ASbutton" type="submit" id="submit">Sign in</button>
         </form>

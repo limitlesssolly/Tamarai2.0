@@ -1,4 +1,4 @@
-import mongoose, { connection } from 'mongoose';
+import mongoose from 'mongoose';
 
 const Admin = new mongoose.Schema({
     username:{
@@ -9,8 +9,7 @@ const Admin = new mongoose.Schema({
         type:String,
         required:true,
     },
-})
+}, { timestamps: true })
 
-const data = new mongoose.model("adminData", Admin)
-
-export default data;
+const admin = new mongoose.model("adminData", Admin)
+export default admin;
