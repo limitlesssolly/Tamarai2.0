@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import  Admin  from '../models/adminData';
+import  Admin  from '../models/adminData.js';
 
 router.get('/', function (req, res, next){
     res.render('admin-sign-in', {sol : new Admin()});
