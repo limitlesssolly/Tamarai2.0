@@ -13,8 +13,8 @@ router.get('/admin-dashboard', function (req, res, next){
 router.post('/admin-dashboard', async function(req, res, next)
 {
     const admin = new Admin({
-        username: req.body.username,
-        password: req.body.password,
+        username: req.body.un,
+        password: req.body.pw,
     })
     try
     {
