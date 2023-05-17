@@ -2,7 +2,7 @@ import { Router } from 'express';
 const router = Router();
 
 router.get('/', function (req, res, next){
-    res.render('admin-sign-in.ejs');
+    res.render('admin-sign-in');
 })
 
 router.get('/admin-dashboard', function (req, res, next){

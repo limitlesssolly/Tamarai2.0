@@ -6,7 +6,7 @@ router.get('/admin-sign-in', function (req, res, next){
 })
 
 router.get('/admin-dashboard', function (req, res, next){
-    res.send('ayo');
+    res.render('admin-dashboard');
 })
 
 export default router;
