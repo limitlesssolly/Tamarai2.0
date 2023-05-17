@@ -22,7 +22,7 @@ import SellerRouter from "./routes/seller.js";
 //setup routes
 app.use('/', mainRouter);
 app.use('/', adminRouter);
-app.use('/',SellerRouter); // routes
+app.use('/seller-sign-in',SellerRouter); // routes
 // app.use('/partials', adminNavRouter);
 
 //Read the current directory name
