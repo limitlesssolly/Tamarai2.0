@@ -1,14 +1,24 @@
 import express from "express";
 let app = express();
+
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
+// import session from 'express-session';
+import fileUpload from 'express-fileupload';
 import expressLayouts from "express-ejs-layouts";
 
+//importing the routes
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
 import adminNavRouter from "./routes/adminNav.js"
+
+//setup routes
+app.use('/', mainRouter);
+app.use('/', adminRouter);
+app.use('/', adminNavRouter);
+
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -19,34 +29,30 @@ app.set("views", path.join(__dirname, "views"));// to join th static folder "vie
 app.set("view engine", "ejs");
 
 app.use(logger("dev"));
+app.use(fileUpload());
+// app.use(session({ secret: 'Your_Secret_Key' }))
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
-
-//setup cookie parser middleware
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-//setup static folder for serving static files in Express
-app.use(express.static(path.join(__dirname, 'public')));// to join th static folder "public" which contains the "js(routes)" files so that it can run 
 console.log("ENV: ", app.get('env'));
 
+//connecting to the database
 import mongoose from "mongoose";
-mongoose.connect("mongodb+srv://shahd2100756:RkBLQ6Z3fdyv70qj@cluster0.huaxthr.mongodb.net/")
+mongoose.connect("mongodb+srv://shahd2100756:RkBLQ6Z3fdyv70qJ@cluster0.huaxthr.mongodb.net/adminData?retryWrites=true&w=majority")
 .then(result=>
     {
-        app.listen(3000)
+        console.log("connected to the goose");
     })
 .catch(err =>
     {
         console.log(err);
     })
-//setup routes
-app.use('/', mainRouter);
-app.use('/', adminRouter);
-app.use('/', adminNavRouter);
 
 // error handler
 app.use(function(err, req, res, next) {
