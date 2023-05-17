@@ -33,7 +33,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 console.log("ENV: ", app.get('env'));
 
-
+import mongoose from "mongoose";
+mongoose.connect("mongodb+srv://shahd2100756:RkBLQ6Z3fdyv70qj@cluster0.huaxthr.mongodb.net/")
+.then(result=>
+    {
+        app.listen(3000)
+    })
+.catch(err =>
+    {
+        console.log(err);
+    })
 //setup routes
 app.use('/', mainRouter);
 app.use('/', adminRouter);
