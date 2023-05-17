@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/shopping cart.css">
+    <script src="JS/shopping cart.js"></script>
+    <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png" />
+    <title>shopping cart</title>
+
+</head>
+
+<body>
+
+    <div class="Cart-Container">
+        <div class="Header">
+            <h3 class="Heading , tooltip"><span class="tooltiptext">shopping cart</span>Shopping Cart</h3>
+            <button class="Action" onclick="remove_all()">Remove all</button>
+            <!-- <h5 class="Action">Remove all</h5> -->
+        </div>
+        <div class="Cart-Items">
+            <div class="image-box">
+                <img src="photos/face.jpg" alt="face" style="height: 120px;" />
+            </div>
+            <div class="about">
+                <h1 class="title">portrait design</h1>
+                <h3 class="subtitle">artist:mohy elshrkawy</h3>
+                <img src="photos/street.jpg" alt="street" style="height: 30px;"/>
+            </div>
+            <div class="counter"></div>
+            <div class="prices"></div>
+            <div class="counter">
+                <button class="btn" onclick="counting()">+</button>
+                <!-- <div class="btn">+</div> -->
+                <div class="count">1</div>
+                <button class="btn" onclick="decreasing()">-</button>
+                <!-- <div class="btn">-</div> -->
+            </div>
+            <div class="prices">
+                <div class="amount">175 </div>
+                <div class="save"><u>Save for later</u></div>
+                <button class="remove" onclick="remove_element()"><u>Remove</u></button>
+            </div>
+        </div>
+
+
+
+        <div class="Cart-Items2">
+            <div class="image-box">
+                <img src="photos/gifts.jpg" alt="gifts" style="height: 120px;" />
+            </div>
+            <div class="about">
+                <h1 class="title">Gift Box</h1>
+                <h3 class="subtitle">artist:sh3ban 3bd elrhem</h3>
+                <img src="photos/gift shop.jpg" alt="giftshop" style="height: 30px;"/>
+            </div>
+            <div class="counter"></div>
+            <div class="prices"></div>
+            <div class="counter">
+                <button class="btn" onclick="counting2()">+</button>
+
+                <div class="count2">1</div>
+                <button class="btn" onclick="decreasing2()">-</button>
+
+            </div>
+            <div class="prices">
+                <div class="amount2">100 </div>
+                <div class="save"><u>Save for later</u></div>
+                <button class="remove2" onclick="remove_element2()"><u>Remove</u></button>
+            </div>
+        </div>
+
+        <hr>
+        <div class="checkout">
+            <div class="total">
+                <div>
+                    <div class="Subtotal">Sub-Total</div>
+                    <div class="items"> 2
+
+                    </div>
+                    <div class="wriiten_items">items</div>
+                </div>
+                <div class="total-amount">550</div>
+            </div>
+            <button class="button">Checkout</button>
+            <!-- <button onclick="myFunction()">Toggle dark mode</button> -->
+        </div>
+    </div>
+</body>
+
+</html>

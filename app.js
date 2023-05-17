@@ -15,7 +15,7 @@ export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views"));// to join th static folder "views" which contains the ejs files so that it can run 
 app.set("view engine", "ejs");
 
 app.use(logger("dev"));
@@ -30,7 +30,7 @@ app.use(expressLayouts);
 app.use(cookieParser());
 
 //setup static folder for serving static files in Express
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));// to join th static folder "public" which contains the "js(routes)" files so that it can run 
 console.log("ENV: ", app.get('env'));
 
 import mongoose from "mongoose";

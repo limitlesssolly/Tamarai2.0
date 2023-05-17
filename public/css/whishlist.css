@@ -1,0 +1,132 @@
+*
+{
+    font-family: 'poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #89bbbb, #fff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     
+   }
+   .list-Container{
+    width: 70%;
+    height: 85%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 25px 40px #89bbbb;
+    box-shadow: 0px 25px 40px #1C4C56;
+     
+   }
+   .Header{
+    margin: auto;
+    width: 90%;
+    height: 15%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+   .Heading{
+    font-size: 20px;
+    font-weight: 500;
+    color: #0d1516;
+   }
+   .Action{
+    font-size: 14px;
+   font-weight: 600;
+   color: #900;
+   cursor: pointer;
+   border-bottom: 1px solid#900;
+   }
+    /* //#1C4C56 */
+    /* #f0db87 */
+   .the_list_items{
+    margin: auto;
+    width: 90%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+   .the_first_list_items{
+    margin: auto;
+    width: 90%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    .the_first_image_box{
+        width: 15%;
+        text-align: center;
+    }
+    .about_the_item {
+        height: 100%;
+       }
+    .title{
+        padding-top: 5px;
+        line-height: 10px;
+        font-size: 32px;
+        font-weight: 500;
+        color: #202020;
+    }
+    .subtitle{
+        line-height: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #909090;
+       }
+       .prices{
+        height: 100%;
+        text-align: right;
+       }
+       .amount{
+        padding-top: 20px;
+        font-size: 25px;
+        font-weight: 750;
+        color: #202020;
+       }
+       .add{
+        text-decoration: none;
+        padding-top: 5px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #1C4C56;
+        cursor: pointer;
+       }
+       .remove{
+        text-decoration: none;
+        padding-top: 5px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #900;
+        cursor: pointer;
+       }
+       .counter{
+        width: 15%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        text-align: right;
+       }
+       .btn{
+        text-decoration: none;
+        width: 90px;
+        height: 90px;
+        padding-top: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 750;
+        color:  #1C4C56;
+        cursor: pointer;
+       }
+       
