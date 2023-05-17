@@ -15,14 +15,14 @@ import expressLayouts from "express-ejs-layouts";
 //importing the routes
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
-import SellerRouter from "./routes/seller.js";
+import sellerRouter from './routes/seller.js';
 
 // import adminNavRouter from "./routes/adminNav.js"
 
 //setup routes
 app.use('/', mainRouter);
 app.use('/', adminRouter);
-app.use('/seller-sign-in',SellerRouter); // routes
+app.use('/seller', sellerRouter); // routes
 // app.use('/partials', adminNavRouter);
 
 //Read the current directory name
