@@ -9,6 +9,8 @@ import expressLayouts from "express-ejs-layouts";
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
 import adminNavRouter from "./routes/adminNav.js"
+ 
+import { render } from "ejs";
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -16,7 +18,7 @@ console.log(`Project Root dir : ${__dirname}`);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));// to join th static folder "views" which contains the ejs files so that it can run 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs");// first thin we do when using ejs 
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -34,12 +36,12 @@ app.use(express.static(path.join(__dirname, 'public')));// to join th static fol
 console.log("ENV: ", app.get('env'));
 
 app.use(express.static(path.join(__dirname, 'HTML')));
-//setup routes
+ //setup routes
 app.use('/', mainRouter);
 app.use('/', adminRouter);
 app.use('/', adminNavRouter);
 
-// error handler
+ // error handler
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
@@ -53,6 +55,13 @@ app.use(function(err, req, res, next) {
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
+ 
+// app.get('/', function(req, res) {
+//     res.render( 'user-whislist.ejs'); 
+
+
+ 
+
 
 app.set('port', process.env.PORT || 7777);
 
