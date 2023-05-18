@@ -13,21 +13,29 @@ router.get('/admin-dashboard', function (req, res, next){
 router.post('/admin-dashboard', async function(req, res, next)
 {
     const admin = new Admin({
-        username: req.body.un,
-        password: req.body.pw,
+        username: req.body.name,
+        password: req.body.pass,
     })
-    try
+    admin.save()
+    .then((result)=>
     {
-        const newAdmin = await admin.save();
-        // res.redirect(`admin/$newAdmin.username`)
-        res.redirect('admin-dashboard');
-    }
-    catch
-    {
-        res.render('admin-sign-in',{
-            admin: admin,
-            errorMessage :'error signing up'
-        })
-    }
+        res.render('admin-dashboard')
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+    // try
+    // {
+    //     const newAdmin = await admin.save();
+    //     // res.redirect(`admin/$newAdmin.username`)
+    //     res.redirect('admin-dashboard');
+    // }
+    // catch
+    // {
+    //     res.render('admin-sign-in',{
+    //         admin: admin,
+    //         errorMessage :'error signing up'
+    //     })
+    // }
 })
 export default router;
