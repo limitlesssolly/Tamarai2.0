@@ -4,7 +4,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('seller-sign-in', { seller: new Seller() });
+  res.render('seller-sign-in.ejs', { seller: new Seller() });
 });
 
 router.post('/', async (req, res) => {

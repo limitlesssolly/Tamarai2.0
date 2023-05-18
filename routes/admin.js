@@ -3,14 +3,14 @@ const router = Router();
 import  Admin  from '../models/adminData.js';
 
 router.get('/', function (req, res, next){
-    res.render('admin-sign-in', {sol : new Admin()});
+    res.render('admin-sign-in');
 })
 
-router.get('/admin-dashboard', function (req, res, next){
+router.get('/admin', function (req, res, next){
     res.render('admin-dashboard');
 })
 
-router.post('/admin-dashboard', async function(req, res, next)
+router.post('/', async function(req, res, next)
 {
     const admin = new Admin({
         username: req.body.name,

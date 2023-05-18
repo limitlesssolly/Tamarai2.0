@@ -19,11 +19,7 @@ import sellerRouter from './routes/seller.js';
 
 // import adminNavRouter from "./routes/adminNav.js"
 
-//setup routes
-app.use('/', mainRouter);
-app.use('/', adminRouter);
-app.use('/seller', sellerRouter); // routes
-// app.use('/partials', adminNavRouter);
+
 
 //Read the current directory name
 export const __filename = fileURLToPath(
@@ -56,16 +52,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 console.log("ENV: ", app.get('env'));
 
-//connecting to the database
-import mongoose from "mongoose";
-mongoose.connect("mongodb+srv://shahd2100756:RkBLQ6Z3fdyv70qJ@cluster0.huaxthr.mongodb.net/adminData?retryWrites=true&w=majority")
-    .then(result => {
-        console.log("connected to the goose");
-    })
-    .catch(err => {
-        console.log(err);
-    })
-
+//setup routes
+app.use('/', mainRouter);
+app.use('/admin', adminRouter);
+app.use('/seller', sellerRouter); // routes
+// app.use('/partials', adminNavRouter);
 // error handler
 app.use(function (err, req, res, next) {
     // set locals, only providing error in development
