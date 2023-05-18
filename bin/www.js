@@ -25,7 +25,7 @@ const server = createServer(app);
 async function startServer() {
   try {
     await mongoose.connect(MURI);
-    console.log("Connected to MongoDB");
+    console.log("Connected to the goose");
     server.listen(PORT);
     server.on("error", onError);
     server.on("listening", onListening);

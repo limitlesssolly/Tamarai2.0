@@ -12,7 +12,8 @@ import fileUpload from 'express-fileupload';
 //importing the routes
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
-import sellerRouter from './routes/seller.js';
+import sellerRouter from "./routes/seller.js";
+import userRouter from "./routes/user.js"
 
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
@@ -43,8 +44,9 @@ console.log("ENV: ", app.get('env'));
 
 //setup routes
 app.use('/', mainRouter);
-app.use('/admin/', adminRouter);
-app.use('/seller/', sellerRouter);
+app.use('/admin', adminRouter);
+app.use('/seller', sellerRouter);
+app.use('/user', userRouter);
 
  // error handler
 app.use(function (err, req, res, next) {
