@@ -21,23 +21,11 @@ router.post('/', async function(req, res, next)
     admin.save()
     .then((result)=>
     {
+        console.log('adminSaved')
         res.render('admin/admin-dashboard.ejs')
     })
     .catch(err=>{
         console.log(err);
     })
-    // try
-    // {
-    //     const newAdmin = await admin.save();
-    //     // res.redirect(`admin/$newAdmin.username`)
-    //     res.redirect('admin-dashboard');
-    // }
-    // catch
-    // {
-    //     res.render('admin-sign-in',{
-    //         admin: admin,
-    //         errorMessage :'error signing up'
-    //     })
-    // }
 })
 export default router;
