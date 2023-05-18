@@ -4,7 +4,7 @@ const router = Router();
 
 /* GET /admin page. */
 router.get('/', function (req, res, next){
-    res.render('');
+    res.render('admin-sign-in');
 })
 
 /* GET /admin/dashboard page. */

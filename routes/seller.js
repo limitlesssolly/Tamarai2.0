@@ -1,8 +1,9 @@
 import {Router} from 'express';
 const router = Router();
 
+/* GET /seller page. */
 router.get('/', (req, res) => {
-  res.render('seller-sign-in.ejs', { seller: new Seller() });
+  res.render('seller-sign-in', { seller: new Seller() });
 });
 
 router.post('/', async (req, res) => {
