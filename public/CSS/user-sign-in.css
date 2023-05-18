@@ -1,0 +1,377 @@
+* {
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    color: #0d1516;
+    
+}
+.User
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    /* align-content: stretch; */
+    overflow: scroll;  
+}
+label
+{
+    color: #0d1516;
+}
+h2 {
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    color: #0d1516;
+}
+h3 
+{
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    color: #ffffff;
+}
+/* .logo
+{
+    
+    width: 7%;
+    height: 8%;
+    top: 0%;
+    position: absolute;
+    left: 0%;
+    
+} */
+.line {
+    width: 50%;
+    height: 0;
+    border: 1px solid #d6bd91;
+    margin: 3px;
+    display: inline-block;
+    position: absolute;
+    top: 43%;
+    left: 25%;
+}
+.Ulogin 
+{
+    flex-grow: 3;
+    /* align-items: center; */
+    position: absolute;
+    background-color: #ffffff;
+}
+
+.URegbk {
+    flex-grow: 1;
+    align-items: center;
+    position: absolute;
+    background-color: #1c4c56;
+}
+.USbutton {
+    margin: 3px;
+    outline: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    padding: 4px 30px;
+    background-color: #518f99;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left: 39%;
+    font-size: 26px;
+}
+
+.USbutton:hover {
+    background-color: #1c4c56;
+    cursor: pointer;
+
+}
+.URbutton {
+    margin: 3px;
+    outline: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    padding: 4px 30px;
+    display: inline-block;
+    background-color: #518f99;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    font-size: 26px;
+}
+
+.URbutton:hover {
+    background-color: #1c4c56;
+    cursor: pointer;
+}
+.words {
+    color: #0d1516;
+    position: absolute;
+    top: 23%;
+    left: 40%;
+    font-size: 125%;
+}
+
+label {
+    font-size: 100%;
+    color: #0d1516;
+}
+
+.use {
+    box-sizing: border-box;
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    padding: 20px;
+    clear: left;
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+
+.use:hover {
+    cursor: pointer;
+    top: 28%;
+}
+
+.adds {
+    box-sizing: border-box;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    padding: 20px;
+    clear: none;
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+
+.adds:hover {
+    cursor: pointer;
+    top: 28%;
+}
+
+.vend {
+    box-sizing: border-box;
+    position: absolute;
+    top: 30%;
+    left: 55%;
+    padding: 20px;
+    clear: right;
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+
+.vend:hover {
+    cursor: pointer;
+    top: 28%;
+}
+
+.wordings {
+    font-size: 150%;
+    text-align: center;
+    position: absolute;
+    top: 44%;
+    left: 28%;
+    color: #ffffff;
+}
+::placeholder {
+    color: #b4640c;
+    opacity: 1;
+}
+.users {
+    position: absolute;
+    top: 48%;
+    left: 33.5%;
+    margin: 15px 0;
+}
+
+#username {
+    font-size: 100%;
+    padding: 5px 35px 5px 3px;
+    border-radius: 2px;
+    width: 250px;
+    color: #b4640c;
+    display: inline-block;
+    border: solid;
+    border-width: 1px;
+    border-color: #d6bd91;
+}
+
+.passes {
+    position: absolute;
+    top: 58%;
+    left: 33.5%;
+    margin: 15px 0;
+}
+
+#password {
+    font-size: 100%;
+    padding: 5px 35px 5px 3px;
+    border-radius: 2px;
+    width: 250px;
+    display: inline-block;
+    border: solid;
+    color: #b4640c;
+    border-width: 1px;
+    border-color: #d6bd91;
+}
+
+#fyp {
+    position: absolute;
+    top: 70%;
+    left: 37%;
+    color: #0d1516;
+    font-size: 110%;
+    text-decoration: none;
+
+}
+
+#fyp:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+input:autofill
+{
+    color: #b4640c;
+    background-color: #d6bd91;
+}
+#Uerror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    display: none;
+}
+
+#Perror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    display: none;
+}
+/* phones */
+ @media only screen and (max-width: 600px) {
+    .Ulogin{
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+    }
+    .URegbk{
+        top: 100%;
+        right: 0%;
+        width:100% ;
+        height: 100%;
+    }
+    h2 {
+        font-size: 255%;
+        left: 15%;
+    }
+    h3{
+        font-size: 225%;
+        left: 28%;
+    }
+} 
+/* tablets */
+@media only screen and (min-width: 600px) {
+    .Ulogin{
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+    }
+    .URegbk{
+        top: 100%;
+        right: 0%;
+        width:100% ;
+        height: 100%;
+    }
+    h2{
+        font-size: 255%;
+        left: 15%;
+    }
+    h3{
+        font-size: 225%;
+        left: 28%;
+    }
+}
+
+/* bigger tablets */
+@media only screen and (min-width: 768px) {
+    .Ulogin{
+        top: 0%;
+        left: 0%;
+        /* width: 100%;
+        height: 100%; */
+    }
+    .URegbk{
+        top: 100%;
+        right: 0%;
+        /* width:100% ;
+        height: 100%; */
+    }
+    h2{
+        font-size: 285%;
+        left: 19%;
+    }
+    h3{
+        font-size: 285%;
+        left: 28%;
+    }
+}
+
+/* laptops */
+@media only screen and (min-width: 992px) {
+    .Ulogin{
+        top: 0%;
+        width: 60%;
+        float: left;
+    }
+    .URegbk{
+        top: 0%;
+        float: right;
+        width:40% ;
+    }
+    h2
+    {
+        font-size: 260%;
+        left: 19%;
+    }
+    h3{
+        font-size: 260%;
+        left: 10%;
+    }
+}
+
+/* desktops */
+@media only screen and (min-width: 1200px) {
+    .Ulogin{
+        top: 0%;
+        width: 60%;
+        float: left;
+    }
+    .URegbk{
+        top: 0%;
+        float: right;
+        width:40% ;
+    }
+    h2
+    {
+        font-size: 295%;
+        left: 25%;
+    }
+    h3{
+        font-size: 295%;
+        left: 23%;
+    }
+}

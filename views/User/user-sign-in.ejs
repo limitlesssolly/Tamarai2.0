@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/user-sign-in.css" />
+    <link rel="shortcut icon" type="image/jpg" href="images/thebluelogo.png" />
     <title>Sign In</title>
 </head>
 <body>
-    <h1>test test 123</h1>
+    <div class="User">
+        <div class="Ulogin">
+            <img src="images/thebluelogo.png" alt="logz" class="logo">
+        <div class="Ulogger">
+            <h2>Sign in to your account</h2>
+            <div class="words">or choose your user</div>
+            <span class="use" style="top: 28%;"><i href="#" ><img src='images/user.png' alt="using"/></i></span>
+            <a href="admin-sign-in"><span class="adds"><i href="#"><img src='images/settings.png' alt="sets" /></i></span></a>
+            <a href="seller-sign-in"><span class="vend"><i href="#"><img src='images/shopping-bag.png' alt="sells" /></i></span></a>
+
+            <div class="line"></div>
+        </div>
+        <form action="User-Homepage.html" method="get" class="form" onsubmit="return USValidation(this)">
+            <div class="users">
+                <label for="username"> username </label>
+                <input id="username" type="text" placeholder="username" > <br>
+                <span id="Uerror">error</span>
+            </div>
+            <div class="passes">
+                <label for="password"> password </label>
+                <input id="password" type="password" placeholder="password"> <br>
+                <span id="Perror">error</span>
+            </div>
+            <span href="#" id="fyp">forgot your password?</span>
+            
+            <button class="USbutton" type="submit" id="submit">Sign in</button>
+        </form>
+    </div>
+    <div class="URegbk">
+        <h3 class="welcomes">Welcome Aboard!</h3>
+        <div class="wordings"> You new here? Experience all <br> the fun, Join us now! </div>
+        <a href="user-register.ejs"><button class = "URbutton">Sign Up</button></a>
+    </div>
+    </div>
+    
 </body>
 </html>

@@ -18,7 +18,7 @@ body {
     max-width: 1170px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px 30px;
+    grid-gap: 50px 50px;
 }
 
 .row .left {
@@ -28,7 +28,7 @@ body {
 .row .left img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 
 .row .right {
@@ -41,9 +41,9 @@ body {
 }
 
 .row .right .content p {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 26px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 @media (max-width: 991px) {
@@ -70,11 +70,15 @@ body {
 .content .four0four-title {
     color: #1C4C56;
     font-size: 50px;
+    padding-bottom: 20px;
     font-weight: bold;
 }
-
+.home
+{
+    padding-top: 25px;
+}
 a {
-    color: #fff7d6;
+    color: #fff;
     /* border-radius: 50%; */
     /* padding-top: 25px; */
     margin: 90px;

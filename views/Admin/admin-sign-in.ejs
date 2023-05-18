@@ -5,30 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/admin-sign-in.css" />
+    <link rel="shortcut icon"  href="images/thebluelogo.png" />
     <title>Admin Sign In</title>
 </head>
 <body>
+    
     <div class="Alogin">
         <div class="Alogger">
             <h2>Sign in to your account</h2>
             <div class="words">or choose your user</div>
-            <a href=""><span class="use"><i href="#"><img src='images/user.png' alt="using"/></i></span></a>
+            <a href="user-sign-in.ejs"><span class="use"><i href="#"><img src='images/user.png' alt="using"/></i></span></a>
             <span class="adds" style="top: 28%;"><i href="#"><img src='images/settings.png' alt="sets"/></i></span>
-            <a href=""><span class="vend"><i href="#"><img src='images/shopping-bag.png' alt="sells"/></i></span></a>
+            <a href="seller-sign-in.ejs"><span class="vend"><i href="#"><img src='images/shopping-bag.png' alt="sells"/></i></span></a>
 
             <div class="line"></div>
         </div>
-        <form action="/admin-dashboard.ejs" method="post" class="form"">
-            <div class="users">
-                <label for="username"> username </label>
-                <input id="username" name="username" type="text" placeholder="username"> <br>
-                <span id="Uerror"></span>
-            </div>
-            <div class="passes">
-                <label for="password"> password </label>
-                <input id="password" name="password" type="password" placeholder="password"> <br>
-                <span id="Perror"></span>
-            </div>
+        <form action="/admin-dashboard" method="post">
+            <label for="username"> username </label>
+            <input id="username" name="name" type="text" placeholder="username"><br>
+
+            <label for="password"> password </label>
+            <input id="password" name="pass" type="password" placeholder="password"><br>
+
             <span href="#" id="fyp">forgot your password?</span>
             <button class="ASbutton" type="submit" id="submit">Sign in</button>
         </form>

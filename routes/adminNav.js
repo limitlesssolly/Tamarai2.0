@@ -1,12 +1,12 @@
 import { Router } from 'express';
 const router = Router();
 
-router.get('/admin-sign-in.ejs', function (req, res, next){
-    res.render('Admin/admin-sign-in');
+router.get('/admin-sign-in', function (req, res, next){
+    res.render('admin-sign-in');
 })
 
-router.get('/admin-dashboard.ejs', function (req, res, next){
-    res.render('Admin/admin-dashboard');
+router.get('/admin-dashboard', function (req, res, next){
+    res.render('admin-dashboard');
 })
 
 export default router;

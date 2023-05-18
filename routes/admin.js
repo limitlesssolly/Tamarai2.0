@@ -1,24 +1,41 @@
 import { Router } from 'express';
 const router = Router();
-import  collection  from 'mongoose';
-// const connection = collection;
+import  Admin  from '../models/adminData.js';
 
 router.get('/', function (req, res, next){
-    res.render('Admin/admin-sign-in');
+    res.render('admin-sign-in', {sol : new Admin()});
 })
 
-router.get('/admin-dashboard.ejs', function (req, res, next){
-    res.render('Admin/admin-dashboard');
+router.get('/admin-dashboard', function (req, res, next){
+    res.render('admin-dashboard');
 })
 
-router.post('/admin-dashboard.ejs', async function(req, res, next)
+router.post('/admin-dashboard', async function(req, res, next)
 {
-    const data = {
-        username: req.body.username,
-        password: req.body.password,
-    }
-
-    await collection.insertMany([data])
-
+    const admin = new Admin({
+        username: req.body.name,
+        password: req.body.pass,
+    })
+    admin.save()
+    .then((result)=>
+    {
+        res.render('admin-dashboard')
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+    // try
+    // {
+    //     const newAdmin = await admin.save();
+    //     // res.redirect(`admin/$newAdmin.username`)
+    //     res.redirect('admin-dashboard');
+    // }
+    // catch
+    // {
+    //     res.render('admin-sign-in',{
+    //         admin: admin,
+    //         errorMessage :'error signing up'
+    //     })
+    // }
 })
 export default router;
