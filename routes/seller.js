@@ -1,7 +1,5 @@
-import express from 'express';
-
-
-const router = express.Router();
+import {Router} from 'express';
+const router = Router();
 
 router.get('/', (req, res) => {
   res.render('seller-sign-in', { seller: new Seller() });
