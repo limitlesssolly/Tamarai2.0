@@ -32,8 +32,7 @@ router.get('/dashboard', (req, res) => {
     res.render('seller-dashboard');
 });
 
-router.get('/seller/seller-info.ejs', (req, res) => {
-    res.render('seller-info');
-});
+
+
 
 export default router;

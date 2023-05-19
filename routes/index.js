@@ -7,27 +7,34 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET /admin page. */
-router.get('/admin', function (req, res, next){
+router.get('/admin', function(req, res, next) {
     res.render('admin/admin-sign-in');
 })
 
 /* GET /user page. */
-router.get('/user', function (req, res, next){
+router.get('/user', function(req, res, next) {
     res.render('user/user-sign-in');
 })
 
 /* GET /user/register page. */
-router.get('/user/register', function (req, res, next){
+router.get('/user/register', function(req, res, next) {
     res.render('user/user-register');
 })
 
+/* GET /seller/seller-info page. */
+
+router.get('/seller/info', function(req, res, next) {
+    //res.render('seller/seller-info');
+    res.send('Hello from /seller/seller-info!');
+})
+
 /* GET /seller page. */
-router.get('/seller/', function (req, res, next){
+router.get('/seller/', function(req, res, next) {
     res.render('seller/seller-sign-in');
 })
 
 /* GET /seller/register page. */
-router.get('/seller/register', function (req, res, next){
+router.get('/seller/register', function(req, res, next) {
     res.render('seller/seller-register');
 })
 
