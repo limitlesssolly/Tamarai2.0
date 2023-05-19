@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 
+
 /* GET /seller page. */
 router.get('/', (req, res) => {
     res.render('seller-sign-in', { seller: new Seller() });
@@ -37,6 +38,10 @@ router.get('/dashboard', (req, res) => {
 router.get('/seller/info', function(req, res, next) {
     res.render('seller/seller-info');
 })
+app.get('/', (req, res) => {
+    const imageUrl = 'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png';
+    res.render('index', { imageUrl });
+});
 
 
 

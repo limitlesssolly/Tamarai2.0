@@ -150,3 +150,75 @@ section#productslist {
     grid-column: 1/end;
     background-color: #ffffff;
 }
+
+.store-info {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 40px;
+    background-color: #fff;
+}
+
+.store-info h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.store-info label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.store-info input[type="text"],
+.store-info select,
+.store-info textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.store-info button[type="submit"] {
+    background-color: #89bbbb;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.store-info button[type="submit"]:hover {
+    background-color: #1C4C56;
+}
+
+.store-info input[type="text"],
+.store-info select,
+.store-info textarea {
+    width: 30%;
+}
+
+.btn-edit {
+    background-color: #1C4C56;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #89bbbb;
+}
