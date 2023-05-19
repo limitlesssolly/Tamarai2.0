@@ -21,12 +21,6 @@ router.get('/user/register', function(req, res, next) {
     res.render('user/user-register');
 })
 
-/* GET /seller/seller-info page. */
-
-router.get('/seller/info', function(req, res, next) {
-    //res.render('seller/seller-info');
-    res.send('Hello from /seller/seller-info!');
-})
 
 /* GET /seller page. */
 router.get('/seller/', function(req, res, next) {

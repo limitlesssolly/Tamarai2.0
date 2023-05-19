@@ -32,6 +32,11 @@ router.get('/dashboard', (req, res) => {
     res.render('seller-dashboard');
 });
 
+/* GET /seller/seller-info page. */
+
+router.get('/seller/info', function(req, res, next) {
+    res.render('seller/seller-info');
+})
 
 
 
