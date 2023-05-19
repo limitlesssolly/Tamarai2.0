@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import  Admin  from '../models/adminData.js';
+import admin from '../models/adminData.js';
 
 /* GET /admin page. */
 router.get('/', function (req, res, next){
@@ -10,19 +10,31 @@ router.get('/', function (req, res, next){
 /* POST /admin page. */
 router.post('/', async function(req, res, next)
 {
-    try
+    var un = req.body.name;
+    var pw = req.body.pass;
+    const admins = await admin.findOne({ username: un });
+    console.log(admins)
+
+    if (admins === null)
     {
-        var query = { namer: req.body.name, passes: req.body.pass };
-        if(Admin.find(query))
+        console.log("fe mashakel")
+        res.render('error.ejs')
+    }
+    else
+    {
+        if (admin.findOne({ password: pw }))
         {
             console.log("login successful!")
-            res.render('admin/admin-dashboard.ejs', {name : req.body.name})
+            res.render('admin/admin-dashboard.ejs')
+        }
+        else
+        {
+            console.log("fe mashakel")
+            res.render('error.ejs')
         }
     }
-    catch
-    {
-        res.send("Wrong deets")
-    }
+    
+
 })
 
 // const hashPass = await bcrypt.hash(req.body.pass, 10)  di 3shan nsave el pass hashed fl sign up
