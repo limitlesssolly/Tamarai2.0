@@ -1,6 +1,5 @@
 import { Router } from 'express';
-// import bcrypt from 'bcrypt'
-const router = Router();
+// const router = Router();
 import  Admin  from '../models/adminData.js';
 
 /* GET /admin page. */
