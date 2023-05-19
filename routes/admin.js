@@ -7,11 +7,6 @@ router.get('/', function (req, res, next){
     res.render('admin-sign-in');
 })
 
-/* GET /admin/dashboard page. */
-router.get('/dashboard', function (req, res, next){
-    res.render('admin/admin-dashboard.ejs');
-})
-
 /* POST /admin page. */
 router.post('/', async function(req, res, next)
 {

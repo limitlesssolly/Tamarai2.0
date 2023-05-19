@@ -12,6 +12,7 @@ import fileUpload from 'express-fileupload';
 //importing the routes
 import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
+import adminDashboardRouter from "./routes/adminDashboard.js";
 import sellerRouter from "./routes/seller.js";
 import userRouter from "./routes/user.js"
 
@@ -39,6 +40,7 @@ console.log("ENV: ", app.get('env'));
 //setup routes
 app.use('/', mainRouter);
 app.use('/admin', adminRouter);
+app.use('/admin/dashboard', adminDashboardRouter);
 app.use('/seller', sellerRouter);
 app.use('/user', userRouter);
 

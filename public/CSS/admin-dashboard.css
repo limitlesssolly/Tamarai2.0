@@ -8,10 +8,34 @@
     text-decoration: none;
     margin: 0;
     padding: 0;
-    /* color: #1C4C56; */
     -o-transition: all ease 0.3s;
     -webkit-transition: all ease 0.3s;
     -moz-transition: all ease 0.3s;
     -ms-transition: all ease 0.3s;
     transition: all ease 0.3s;
 }
+nav
+{
+    display: flex;
+    background-color: #d6bd91;
+}
+a
+{
+    background-color: #d6bd91;
+    float: right;
+    font-weight: lighter;
+    margin: 10px 20px;
+    padding-left: 30px;
+    font-size: 1.3vw;
+}
+a:hover
+{
+    color: #ffffff;
+    cursor: pointer;
+}
+h1
+{
+    /* font-weight: lighter; */
+    font-size: 2vw;
+    background-color: #d6bd91;
+} 
