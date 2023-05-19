@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import bcrypt from 'bcrypt'
 const router = Router();
 import  Admin  from '../models/adminData.js';
 
@@ -12,20 +13,26 @@ router.get('/dashboard', function (req, res, next){
     res.render('admin/admin-dashboard.ejs');
 })
 
+/**/
 router.post('/', async function(req, res, next)
 {
-    const admin = new Admin({
-        username: req.body.name,
-        password: req.body.pass,
-    })
-    admin.save()
-    .then((result)=>
+    try
     {
-        console.log('adminSaved')
-        res.render('admin/admin-dashboard.ejs')
-    })
-    .catch(err=>{
-        console.log(err);
-    })
+        var query = { namer: req.body.name, passes: req.body.pass };
+        if(Admin.find(query))
+        {
+            console.log("login successful!")
+            res.render('admin/admin-dashboard.ejs')
+        }
+    }
+    catch
+    {
+        res.send("Wrong deets")
+    }
+    
+    
 })
+
+// const hashPass = await bcrypt.hash(req.body.pass, 10)  di 3shan nsave el pass hashed fl sign up
+
 export default router;

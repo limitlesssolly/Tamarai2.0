@@ -6,6 +6,11 @@ router.get('/', (req, res) => {
   res.render('seller-sign-in', { seller: new Seller() });
 });
 
+/* GET /seller/register page. */
+router.get('/register', (req, res) => {
+  res.render('seller-register');
+});
+
 router.post('/', async (req, res) => {
   const seller = new Seller({
     username: req.body.username,

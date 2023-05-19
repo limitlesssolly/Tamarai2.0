@@ -28,14 +28,8 @@ app.use(logger("dev"));
 app.use(fileUpload());
 // app.use(session({ secret: 'Your_Secret_Key' }))
 app.use(express.json());
-app.use(bodyParser.urlencoded({
-    limit: '10mb',
-    extended: false
-}));
-
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.urlencoded({limit: '10mb',extended: false}));
+app.use(express.urlencoded({extended: false}));
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
