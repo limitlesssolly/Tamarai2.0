@@ -1,5 +1,5 @@
 import { Router } from 'express';
-// const router = Router();
+const router = Router();
 import  Admin  from '../models/adminData.js';
 
 /* GET /admin page. */
@@ -12,7 +12,7 @@ router.get('/dashboard', function (req, res, next){
     res.render('admin/admin-dashboard.ejs');
 })
 
-/**/
+/* POST /admin page. */
 router.post('/', async function(req, res, next)
 {
     try
@@ -28,8 +28,6 @@ router.post('/', async function(req, res, next)
     {
         res.send("Wrong deets")
     }
-    
-    
 })
 
 // const hashPass = await bcrypt.hash(req.body.pass, 10)  di 3shan nsave el pass hashed fl sign up
