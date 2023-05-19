@@ -30,7 +30,7 @@ router.post('/', async(req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-    res.render('seller-dashboard');
+    res.render('seller/seller-dashboard');
 });
 
 /* GET /seller/seller-info page. */

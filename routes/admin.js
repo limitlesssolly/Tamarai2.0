@@ -17,17 +17,17 @@ router.post('/', async function(req, res, next)
 
     if (admins === null)
     {
-        document.getElementById('Uerror').innerHTML = 'Enter a valid username';
-        document.getElementById('Uerror').style.display = 'block';
-        // console.log("fe mashakel")
-        // res.render('error.ejs')
+        // document.getElementById('Uerror').innerHTML = 'Enter a valid username';
+        // document.getElementById('Uerror').style.display = 'block';
+        console.log("fe mashakel")
+        res.render('error.ejs')
     }
     else
     {
         if (admin.findOne({ password: pw }))
         {
             console.log("login successful!")
-            res.render('admin/admin-dashboard.ejs')
+            res.render('admin/admin-dashboard.ejs', {name : req.body.name})
         }
         else
         {

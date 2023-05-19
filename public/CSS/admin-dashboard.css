@@ -1,5 +1,9 @@
 body
 {
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     margin: 0;
 }
 
@@ -19,11 +23,12 @@ nav li
 
 nav li a 
 {
-  display: block;
-  color: #0d1516;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    font-size: 1.3vw;
+    display: block;
+    color: #0d1516;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 nav li a:hover:not(.active) 
@@ -40,11 +45,14 @@ nav li a.active
 
 nav li.welcomes 
 {
-    
+    font-size: 1.5vw;
+    text-align: center;
+    padding: 10px 16px;
     float: left;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) 
+{
     nav li.right, 
     nav li {float: none;}
-  }
+}
