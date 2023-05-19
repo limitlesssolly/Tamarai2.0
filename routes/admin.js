@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import bcrypt from 'bcrypt'
+// import bcrypt from 'bcrypt'
 const router = Router();
 import  Admin  from '../models/adminData.js';
 
@@ -22,7 +22,7 @@ router.post('/', async function(req, res, next)
         if(Admin.find(query))
         {
             console.log("login successful!")
-            res.render('admin/admin-dashboard.ejs')
+            res.render('admin/admin-dashboard.ejs', {name : req.body.name})
         }
     }
     catch
