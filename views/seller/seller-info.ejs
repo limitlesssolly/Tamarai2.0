@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/sellersc.css">
+    <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png" />
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function() {
+            $("#header").load("storenavii.html");
+            $("#chatbox").load("chattin.html");
+        });
+    </script>
+    <title>Store Information</title>
+    <style>
+        .store-info {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 40px;
+            background-color: #fff;
+        }
+        
+        .store-info h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .store-info label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .store-info input[type="text"],
+        .store-info select,
+        .store-info textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .store-info button[type="submit"] {
+            background-color: #89bbbb;
+            color: #fff;
+            border: none;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .store-info button[type="submit"]:hover {
+            background-color: #1C4C56;
+        }
+        
+        .store-info input[type="text"],
+        .store-info select,
+        .store-info textarea {
+            width: 30%;
+        }
+        
+        .btn-edit {
+            background-color: #1C4C56;
+            color: #fff;
+            border: none;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-edit:hover {
+            background-color: #89bbbb;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get the form fields
+            const nameField = document.getElementById('store-name');
+            const descriptionField = document.getElementById('store-description');
+            const logoField = document.getElementById('store-logo');
+            const bannerField = document.getElementById('store-banner');
+            const categoryField = document.getElementById('store-category');
+
+            // Get the preview elements
+            const previewName = document.getElementById('preview-name');
+            const previewDescription = document.getElementById('preview-description');
+            const previewLogo = document.getElementById('preview-logo');
+            const previewBanner = document.getElementById('preview-banner');
+            const previewCategory = document.getElementById('preview-category');
+
+            // Update the preview elements when the form changes
+            nameField.addEventListener('input', () => {
+                previewName.textContent = nameField.value;
+            });
+
+            descriptionField.addEventListener('input', () => {
+                previewDescription.textContent = descriptionField.value;
+            });
+
+            logoField.addEventListener('change', () => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    previewLogo.src = reader.result;
+                };
+                reader.readAsDataURL(logoField.files[0]);
+            });
+
+            bannerField.addEventListener('change', () => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    previewBanner.src = reader.result;
+                };
+                reader.readAsDataURL(bannerField.files[0]);
+            });
+
+            categoryField.addEventListener('change', () => {
+                previewCategory.textContent = categoryField.options[categoryField.selectedIndex].text;
+            });
+
+            // Handle the "Edit" button click event
+            const editButton = document.getElementById('edit-button');
+            editButton.addEventListener('click', () => {
+                window.location.href = 'edit-store-info.html';
+            });
+
+            // Handle the form submission
+            const saveChangesButton = document.getElementById('save-changes-button');
+            const storeNameInput = document.getElementById('store-name');
+            const storeDescriptionTextarea = document.getElementById('store-description');
+            const storeLogoInput = document.getElementById('store-logo');
+            const storeBannerInput = document.getElementById('store-banner');
+            const storeCategorySelect = document.getElementById('store-category');
+            const previewStoreName = document.getElementById('preview-name');
+            const previewStoreDescription = document.getElementById('preview-description');
+            const previewStoreLogo = document.getElementById('preview-logo');
+            const previewStoreBanner = document.getElementById('preview-banner');
+            const previewStoreCategory = document.getElementById('preview-category');
+
+            saveChangesButton.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent the default form submission behavior
+
+                // Update the preview elements with the new values
+                previewStoreName.textContent = storeNameInput.value;
+                previewStoreDescription.textContent = storeDescriptionTextarea.value;
+
+                if (storeLogoInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        previewStoreLogo.src = reader.result;
+                    };
+                    reader.readAsDataURL(storeLogoInput.files[0]);
+                }
+
+                if (storeBannerInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        previewStoreBanner.src = reader.result;
+                    };
+                    reader.readAsDataURL(storeBannerInput.files[0]);
+                }
+
+                previewStoreCategory.textContent = storeCategorySelect.options[storeCategorySelect.selectedIndex].text;
+
+                // TODO: Save the changes to the server using AJAX or fetch API
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div id="header"></div>
+        <div id="body">
+
+            <div class="store-info">
+                <h2>Store Information</h2>
+                <form>
+                    <label for="store-name">Name:</label>
+                    <p type="text" id="store-name" name="store-name" value="Little B. Store"></p>
+                    </p><br>
+
+                    <label for="store-description">Description:</label>
+                    <textarea id="store-description" name="store-description">This is a sample store description.</textarea><br>
+
+                    <label for="store-logo">Logo:</label>
+                    <input type="file" id="store-logo" name="store-logo"><br>
+
+                    <label for="store-banner">Banner:</label>
+                    <input type="file" id="store-banner" name="store-banner"><br>
+
+                    <label for="store-category">Category:</label>
+                    <select id="store-category" name="store-category">
+              <option value="books">Books</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+            </select><br>
+
+                    <button class="btn-edit" id="edit-button">Edit</button> </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="chatbox ">
+        <div id="chatbox "></div>
+    </div>
+    <script>
+        const editButton = document.getElementById('edit-button');
+        editButton.addEventListener('click', () => {
+            const storeName = encodeURIComponent(document.getElementById('store-name').value);
+            const storeDescription = encodeURIComponent(document.getElementById('store-description').value);
+            window.location.href = `edit-store-info.html?name=${storeName}&description=${storeDescription}`;
+        });
+
+        // Check if there are query parameters in the URL (i.e., if we are returning from page 2)
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('name') && urlParams.has('description')) {
+            const storeNameInput = document.getElementById('store-name');
+            const storeDescriptionTextarea = document.getElementById('store-description');
+
+            storeNameInput.value = decodeURIComponent(urlParams.get('name'));
+            storeDescriptionTextarea.value = decodeURIComponent(urlParams.get('description'));
+        }
+    </script>
+</body>
+
+</html>
