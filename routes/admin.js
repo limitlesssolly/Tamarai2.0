@@ -17,8 +17,10 @@ router.post('/', async function(req, res, next)
 
     if (admins === null)
     {
-        console.log("fe mashakel")
-        res.render('error.ejs')
+        document.getElementById('Uerror').innerHTML = 'Enter a valid username';
+        document.getElementById('Uerror').style.display = 'block';
+        // console.log("fe mashakel")
+        // res.render('error.ejs')
     }
     else
     {
@@ -33,8 +35,6 @@ router.post('/', async function(req, res, next)
             res.render('error.ejs')
         }
     }
-    
-
 })
 
 // const hashPass = await bcrypt.hash(req.body.pass, 10)  di 3shan nsave el pass hashed fl sign up
