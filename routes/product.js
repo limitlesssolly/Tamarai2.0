@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 
-// Get product page
+// Get products page
 router.get('/', function (req, res, next){
     res.render('user/product');
 })
