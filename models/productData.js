@@ -26,6 +26,10 @@ const productSchema = new Schema ({
         type: String,
         required: true,
     },
+    category: {
+        type: String,
+        required: false,
+    },
     color: {
         type: Array,
         required: true,
