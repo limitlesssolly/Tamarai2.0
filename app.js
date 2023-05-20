@@ -22,6 +22,8 @@ export const __filename = fileURLToPath(
 export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
 
+// let staticPath = path.join(__dirname, "public");
+
 // view engine setup
 app.set("views", path.join(__dirname, "views")); // to join th static folder "views" which contains the ejs files so that it can run 
 app.set("view engine", "ejs"); // first thin we do when using ejs 
@@ -62,8 +64,10 @@ app.get('/', function(req, res) {
 
 // 404 route
 app.get('/error', (req, res) => {
-    res.sendFile(path.join(staticPath, 'error'));
+    // res.sendFile(path.join(staticPath, 'error'));
+    res.sendFile(path.join(path.join(__dirname, "public"), 'error'));
 });
+
 
 app.use((req, res) => {
     res.redirect('/error');
