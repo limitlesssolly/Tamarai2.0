@@ -85,7 +85,8 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
-  });
+});
+
 app.set('port', process.env.PORT || 7777);
 
 export default app;
