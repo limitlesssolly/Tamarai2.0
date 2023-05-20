@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Listings</title>
+    <link rel="stylesheet" href="CSS/userHome.css">
+
+    <link rel="stylesheet" href="CSS/nadine-temp-ss.css">
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="CSS/add.css">
+    <link rel="stylesheet" href="CSS/productcard.css">
+    <link rel="stylesheet" href="CSS/manage.css">
+    <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png">
+    <style>
+        li {
+            grid-row-start: auto;
+        }
+        
+        .product-card {
+            flex: 0 0 auto;
+            width: 250px;
+            height: 450px;
+        }
+        
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+        
+        .itemslist {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 20px;
+            overflow-y: scroll;
+        }
+        
+        .product-card {
+            padding: 10px;
+            margin: 0;
+        }
+        /*.column:nth-of-type(4) {
+        width: 100px;
+        /* Replace 300 with your desired width */
+    </style>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
+    </script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function() {
+            $("#header").load("storenavii.html");
+            $("#chatbox").load("chattin.html");
+        });
+    </script>
+</head>
+<style>
+    li {
+        grid-row-start: auto;
+    }
+    
+    .product-card {
+        flex: 0 0 auto;
+        width: 250px;
+        height: 450px;
+    }
+    
+    .product-image {
+        position: relative;
+        width: 100%;
+        height: 350px;
+        overflow: hidden;
+    }
+    
+    .itemslist {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 20px;
+        overflow-y: scroll;
+    }
+    
+    .product-card {
+        padding: 10px;
+        margin: 0;
+    }
+    /*.column:nth-of-type(4) {
+        width: 100px;
+        /* Replace 300 with your desired width */
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
+</script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    $(function() {
+        $("#header").load("storenavii.html");
+        $("#chatbox").load("chattin.html");
+    });
+</script>
+
+<body>
+    <div class="grid-container">
+
+        <div class="header">
+            <div id="header"></div>
+        </div>
+        <div class="body">
+
+            <div class="prlist">
+                <div class="headoflist">
+                    <div class="buttons">
+                        <button type="button" role="button" class="buttonadd btn js-add-btn" onclick="window.location.href = '';">Delete
+                            Item</button>
+                        <button type="button" role="button" class="buttonadd" onclick="window.location.href = 'add_product.html';">Add New Item</button>
+                    </div>
+
+                </div>
+
+                <div class="product-card" id="product-card">
+                    <div class="product-image">
+                        <img src="photos/card1.webp" class="product-thumb" alt="Dress">
+                        <button class="card-btn">Edit</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Summer dress.</p>
+                        <span class="price">100L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+                <div class="product-card" id="product-card">
+                    <div class="product-image">
+                        <img src="photos/card2.webp" class="product-thumb" alt="Dress">
+                        <button class="card-btn">Edit</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Summer dress.</p>
+                        <span class="price">100L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+                <div class="product-card" id="product-card">
+                    <div class="product-image">
+                        <img src="photos/card3.jpg" class="product-thumb" alt="Dress">
+                        <button class="card-btn">Edit</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Summer dress.</p>
+                        <span class="price">100L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+                <div class="product-card" id="product-card">
+                    <div class="product-image">
+                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
+                        <button class="card-btn">Edit</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Summer dress.</p>
+                        <span class="price">100L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+                <div class="product-card" id="product-card">
+                    <div class="product-image">
+                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
+                        <button class="card-btn">Edit</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Summer dress.</p>
+                        <span class="price">100L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+                <div class="product-card" id="product-card">
+                    <div class="product-image">
+                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
+                        <button class="card-btn">Edit</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Summer dress.</p>
+                        <span class="price">100L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+                <div class="product-card" id="product-card">
+                    <div class="product-image">
+                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
+                        <button class="card-btn">Edit</button>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">Brand</h2>
+                        <p class="product-short-des">Summer dress.</p>
+                        <span class="price">100L.E.</span>
+                        <span class="actual-price">200L.E.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chatbox" id="chatbox">
+    </div>
+</body>
+
+</html>

@@ -38,6 +38,9 @@ router.get('/dashboard', (req, res) => {
 router.get('/seller/info', function(req, res, next) {
     res.render('seller/seller-info');
 })
+router.get('/seller/products', function(req, res, next) {
+    res.render('seller/seller-products');
+})
 router.get('/', (req, res) => {
     const imageUrl = 'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png';
     res.render('index', { imageUrl });
