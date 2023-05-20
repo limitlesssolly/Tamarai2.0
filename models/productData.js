@@ -6,6 +6,14 @@ const productSchema = new Schema ({
         type: Number,
         required: true,
     },
+    brand: {
+        type: String,
+        required: false,
+    },
+    seller: {
+        type: String,
+        required: true,
+    },
     price: {
         type: Number,
         required: true,
@@ -16,6 +24,10 @@ const productSchema = new Schema ({
     },
     description: {
         type: String,
+        required: true,
+    },
+    color: {
+        type: Array,
         required: true,
     },
 }, { timestamps: true });
