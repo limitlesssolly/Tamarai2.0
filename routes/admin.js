@@ -18,7 +18,7 @@ router.post('/', async function(req, res, next)
     //    });
 
     const admins = await admin.find({});
-    console.log(admins)
+    // console.log(admins)
     var i;
     for (i = 0; i< admins.length; i++)
     {
@@ -31,13 +31,13 @@ router.post('/', async function(req, res, next)
             }
             else
             {
-                console.log("fe mashakel")
+                // console.log("fe mashakel")
                 res.render('error.ejs')
             }
         }
         else
         {
-            console.log("fe mashakel")
+            // console.log("fe mashakel")
             res.render('error.ejs')
         }
     }
