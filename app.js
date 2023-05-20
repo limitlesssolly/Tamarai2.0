@@ -60,6 +60,15 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
 
+// 404 route
+app.get('/404', (req, res) => {
+    res.sendFile(path.join(staticPath, 'error'));
+});
+
+app.use((req, res) => {
+    res.redirect('/error');
+});
+
 app.set('port', process.env.PORT || 7777);
 
 export default app;
