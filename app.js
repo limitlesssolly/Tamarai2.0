@@ -61,7 +61,7 @@ app.get('/', function(req, res) {
 });
 
 // 404 route
-app.get('/404', (req, res) => {
+app.get('/error', (req, res) => {
     res.sendFile(path.join(staticPath, 'error'));
 });
 
