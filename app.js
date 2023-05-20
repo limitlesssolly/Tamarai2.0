@@ -22,6 +22,8 @@ export const __filename = fileURLToPath(
 export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
 
+// let staticPath = path.join(__dirname, "public");
+
 // view engine setup
 app.set("views", path.join(__dirname, "views")); // to join th static folder "views" which contains the ejs files so that it can run 
 app.set("view engine", "ejs"); // first thin we do when using ejs 
@@ -45,19 +47,33 @@ app.use('/admin/dashboard', adminDashboardRouter);
 app.use('/seller', sellerRouter);
 app.use('/user', userRouter);
 
-// error handler
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'index'));
+});
+
+// 404 route
+app.get('/error', (req, res) => {
+    // res.sendFile(path.join(staticPath, 'error'));
+    res.sendFile(path.join(path.join(__dirname, "public"), 'error'));
+});
+
+// app.use((req, res) => {
+//     res.redirect('views/error');
+// });
+
+app.use((req, res) => {
+    res.status(404).render('error');
+});
+
+// Error handling
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+    
     // render the error page
     res.status(err.status || 500);
-    res.render('error.ejs');
-});
-
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index'));
+    res.render('error');
 });
 
 app.set('port', process.env.PORT || 7777);
