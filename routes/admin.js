@@ -13,10 +13,6 @@ router.post('/', async function(req, res, next)
     var un = req.body.name;
     var pw = req.body.pass;
 
-    // admin.find({}, function(err, admin){
-    //     res.render('AdminDatabase', { admin : admin});
-    //    });
-
     const admins = await admin.find({});
     // console.log(admins)
     var i;
@@ -31,39 +27,51 @@ router.post('/', async function(req, res, next)
             }
             else
             {
+                continue;
                 // console.log("fe mashakel")
-                res.render('error.ejs')
+                // res.render('error.ejs')
             }
         }
         else
         {
+            continue;
             // console.log("fe mashakel")
-            res.render('error.ejs')
+            // res.render('error.ejs')
         }
     }
-    // const admins = await admin.findOne({ username: un });
-    // console.log(admins)
+    
+})
 
-    // if (admins === null)
+/*  da code el signups
+router.post('/', async function(req, res, next)
+{
+    const admin = new Admin({
+        username: req.body.name,
+        password: req.body.pass,
+    })
+    admin.save()
+    .then((result)=>
+    {
+        res.render('admin/admin-dashboard.ejs')
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+    // try
     // {
-    //     // document.getElementById('Uerror').innerHTML = 'Enter a valid username';
-    //     // document.getElementById('Uerror').style.display = 'block';
-    //     console.log("fe mashakel")
-    //     res.render('error.ejs')
+    //     const newAdmin = await admin.save();
+    //     // res.redirect(`admin/$newAdmin.username`)
+    //     res.redirect('admin-dashboard');
     // }
-    // else
+    // catch
     // {
-    //     if (admin.findOne({ password: pw }))
-    //     {
-    //         console.log("login successful!")
-    //         res.render('admin/admin-dashboard.ejs', {name : req.body.name})
-    //     }
-    //     else
-    //     {
-            
-    //     }
+    //     res.render('admin-sign-in',{
+    //         admin: admin,
+    //         errorMessage :'error signing up'
+    //     })
     // }
 })
+*/
 
 // const hashPass = await bcrypt.hash(req.body.pass, 10)  di 3shan nsave el pass hashed fl sign up
 

@@ -7,6 +7,14 @@ body
     margin: 0;
 }
 
+/* .dash
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 50px 50px;
+} */
+
 nav 
 {
     list-style-type: none;
