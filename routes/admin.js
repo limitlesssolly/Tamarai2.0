@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 import admin from '../models/adminData.js';
+// import {validateSignup,signupController,} from "controllers\admin-controllers.js";
 
 /* GET /admin page. */
 router.get('/', function (req, res, next){
@@ -23,7 +24,7 @@ router.post('/', async function(req, res, next)
             if (admins[i].password === pw)
             {
                 console.log("login successful!")
-                res.render('admin/admin-dashboard.ejs', {name : req.body.name})
+                res.redirect('/admin/dashboard')
             }
             else
             {

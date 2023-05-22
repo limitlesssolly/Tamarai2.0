@@ -3,7 +3,7 @@ const router = Router();
 
 /* GET /admin/dashboard page. */
 router.get('/', function (req, res, next){
-    res.render('admin/admin-dashboard.ejs');
+    res.send('admin-dashboard.ejs');
 })
 
 export default router;
