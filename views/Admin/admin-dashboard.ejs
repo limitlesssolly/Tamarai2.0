@@ -6,29 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/admin-dashboard.css">
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
 
 </head>
 
 <body>
-        <nav>
-            <li class="welcomes"> <img src="/images/menu-burger.png"> Welcome</li>
-            <li><a href="/"> Tamarai</a></li>
-            <li><a class="active" href="/admin/dashboard"> Dashboard</a></li>
-            <li><a href="/user/homepage"> User Homepage</a></li>
-            <li><a href="/seller/dashboard"> Seller Dashboard</a></li>
-            
-        </nav>
-        <div class="navtoo">
-            <li><img src="/images/home.png">Home</li>
-            <li><img src="/images/chart-histogram.png">Stats</li>
-            <li><img src="/images/dollar.png">Finances</li>
-            <li><img src="/images/envelope.png">Messages</li>
-            <li><img src="/images/shopping-bag.png">Sellings</li>
-            <li><img src="/images/user-add.png">Usings</li>
-            <li><img src="/images/settings.png">Settings</li>
-        </div>
+        <%- include('../partials/adminNav.ejs') %>
         <%- include('../partials/footer.ejs') %>
 </body>
 

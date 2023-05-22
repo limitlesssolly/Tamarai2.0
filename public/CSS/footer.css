@@ -29,6 +29,7 @@ footer {
 }
 
 .category {
+    margin-top: 10%;
     width: 200px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);

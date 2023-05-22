@@ -73,22 +73,60 @@ nav li.welcomes
     list-style-type: none;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: min-content;
     overflow: hidden;
     background-color: #d6bd91;
-    height: 100%;
-    width: 6%;
 }
 
 .navtoo li 
 {
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+
+.sideNav
+{
+    background-color: #d6bd91;
+    border: none;
+    padding: 0px 16px;
+    cursor: pointer;
+    font-size: x-large;
+}
+/* .navtoo li img
+{
+    height: 25px;
+    width: 25px;
     cursor: pointer;
     display: block;
-    padding: 20px 33px;
+    padding: 2px 18px;
     float: left;
+} */
+
+.navtoo li a 
+{
+    font-size: 1.3vw;
+    display: block;
+    color: #0d1516;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navtoo li a:hover:not(.active) 
+{
+    color:white;
+    background-color: #1c4c56;
+    cursor: pointer;
+}
+.navtoo li a.active 
+{
+    color:white;
+    background-color: #1c4c56;
 }
 
 @media screen and (max-width: 600px) 
 {
-    nav li.right, 
     nav li {float: none;}
 }

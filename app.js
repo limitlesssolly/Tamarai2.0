@@ -17,12 +17,10 @@ import sellerRouter from "./routes/seller.js";
 import userRouter from "./routes/user.js"
 
 //Read the current directory name
-export const __filename = fileURLToPath(
-    import.meta.url);
+export const __filename = fileURLToPath(import.meta.url);
 export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
 
-// let staticPath = path.join(__dirname, "public");
 app.use(express.static('public'));
 
 // view engine setup
@@ -48,7 +46,7 @@ app.use('/admin/dashboard', adminDashboardRouter);
 app.use('/seller', sellerRouter);
 app.use('/user', userRouter);
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
 
@@ -71,7 +69,7 @@ app.use((req, res) => {
 });
 
 // Error handling
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
