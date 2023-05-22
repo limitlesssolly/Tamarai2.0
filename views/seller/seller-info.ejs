@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/sellersc">
+    <link rel="stylesheet" type="text/css" href="/css/sellersc.css">
+    <!--this is nadine-temp-ss-->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -16,96 +17,96 @@
 
     <script>
         /* document.addEventListener('DOMContentLoaded', () => {
-                                                                                                    // Get the form fields
-                                                                                                    const nameField = document.getElementById('store-name');
-                                                                                                    const descriptionField = document.getElementById('store-description');
-                                                                                                    const logoField = document.getElementById('store-logo');
-                                                                                                    const bannerField = document.getElementById('store-banner');
-                                                                                                    const categoryField = document.getElementById('store-category');
+                                                                                                                            // Get the form fields
+                                                                                                                            const nameField = document.getElementById('store-name');
+                                                                                                                            const descriptionField = document.getElementById('store-description');
+                                                                                                                            const logoField = document.getElementById('store-logo');
+                                                                                                                            const bannerField = document.getElementById('store-banner');
+                                                                                                                            const categoryField = document.getElementById('store-category');
 
-                                                                                                    // Get the preview elements
-                                                                                                    const previewName = document.getElementById('preview-name');
-                                                                                                    const previewDescription = document.getElementById('preview-description');
-                                                                                                    const previewLogo = document.getElementById('preview-logo');
-                                                                                                    const previewBanner = document.getElementById('preview-banner');
-                                                                                                    const previewCategory = document.getElementById('preview-category');
+                                                                                                                            // Get the preview elements
+                                                                                                                            const previewName = document.getElementById('preview-name');
+                                                                                                                            const previewDescription = document.getElementById('preview-description');
+                                                                                                                            const previewLogo = document.getElementById('preview-logo');
+                                                                                                                            const previewBanner = document.getElementById('preview-banner');
+                                                                                                                            const previewCategory = document.getElementById('preview-category');
 
-                                                                                                    // Update the preview elements when the form changes
-                                                                                                    nameField.addEventListener('input', () => {
-                                                                                                        previewName.textContent = nameField.value;
-                                                                                                    });
+                                                                                                                            // Update the preview elements when the form changes
+                                                                                                                            nameField.addEventListener('input', () => {
+                                                                                                                                previewName.textContent = nameField.value;
+                                                                                                                            });
 
-                                                                                                    descriptionField.addEventListener('input', () => {
-                                                                                                        previewDescription.textContent = descriptionField.value;
-                                                                                                    });
+                                                                                                                            descriptionField.addEventListener('input', () => {
+                                                                                                                                previewDescription.textContent = descriptionField.value;
+                                                                                                                            });
 
-                                                                                                    logoField.addEventListener('change', () => {
-                                                                                                        const reader = new FileReader();
-                                                                                                        reader.onload = () => {
-                                                                                                            previewLogo.src = reader.result;
-                                                                                                        };
-                                                                                                        reader.readAsDataURL(logoField.files[0]);
-                                                                                                    });
+                                                                                                                            logoField.addEventListener('change', () => {
+                                                                                                                                const reader = new FileReader();
+                                                                                                                                reader.onload = () => {
+                                                                                                                                    previewLogo.src = reader.result;
+                                                                                                                                };
+                                                                                                                                reader.readAsDataURL(logoField.files[0]);
+                                                                                                                            });
 
-                                                                                                    bannerField.addEventListener('change', () => {
-                                                                                                        const reader = new FileReader();
-                                                                                                        reader.onload = () => {
-                                                                                                            previewBanner.src = reader.result;
-                                                                                                        };
-                                                                                                        reader.readAsDataURL(bannerField.files[0]);
-                                                                                                    });
+                                                                                                                            bannerField.addEventListener('change', () => {
+                                                                                                                                const reader = new FileReader();
+                                                                                                                                reader.onload = () => {
+                                                                                                                                    previewBanner.src = reader.result;
+                                                                                                                                };
+                                                                                                                                reader.readAsDataURL(bannerField.files[0]);
+                                                                                                                            });
 
-                                                                                                    categoryField.addEventListener('change', () => {
-                                                                                                        previewCategory.textContent = categoryField.options[categoryField.selectedIndex].text;
-                                                                                                    });
+                                                                                                                            categoryField.addEventListener('change', () => {
+                                                                                                                                previewCategory.textContent = categoryField.options[categoryField.selectedIndex].text;
+                                                                                                                            });
 
-                                                                                                    // Handle the "Edit" button click event
-                                                                                                    const editButton = document.getElementById('edit-button');
-                                                                                                    editButton.addEventListener('click', () => {
-                                                                                                        window.location.href = 'edit-store-info.html';
-                                                                                                    });
+                                                                                                                            // Handle the "Edit" button click event
+                                                                                                                            const editButton = document.getElementById('edit-button');
+                                                                                                                            editButton.addEventListener('click', () => {
+                                                                                                                                window.location.href = 'edit-store-info.html';
+                                                                                                                            });
 
-                                                                                                    // Handle the form submission
-                                                                                                    const saveChangesButton = document.getElementById('save-changes-button');
-                                                                                                    const storeNameInput = document.getElementById('store-name');
-                                                                                                    const storeDescriptionTextarea = document.getElementById('store-description');
-                                                                                                    const storeLogoInput = document.getElementById('store-logo');
-                                                                                                    const storeBannerInput = document.getElementById('store-banner');
-                                                                                                    const storeCategorySelect = document.getElementById('store-category');
-                                                                                                    const previewStoreName = document.getElementById('preview-name');
-                                                                                                    const previewStoreDescription = document.getElementById('preview-description');
-                                                                                                    const previewStoreLogo = document.getElementById('preview-logo');
-                                                                                                    const previewStoreBanner = document.getElementById('preview-banner');
-                                                                                                    const previewStoreCategory = document.getElementById('preview-category');
+                                                                                                                            // Handle the form submission
+                                                                                                                            const saveChangesButton = document.getElementById('save-changes-button');
+                                                                                                                            const storeNameInput = document.getElementById('store-name');
+                                                                                                                            const storeDescriptionTextarea = document.getElementById('store-description');
+                                                                                                                            const storeLogoInput = document.getElementById('store-logo');
+                                                                                                                            const storeBannerInput = document.getElementById('store-banner');
+                                                                                                                            const storeCategorySelect = document.getElementById('store-category');
+                                                                                                                            const previewStoreName = document.getElementById('preview-name');
+                                                                                                                            const previewStoreDescription = document.getElementById('preview-description');
+                                                                                                                            const previewStoreLogo = document.getElementById('preview-logo');
+                                                                                                                            const previewStoreBanner = document.getElementById('preview-banner');
+                                                                                                                            const previewStoreCategory = document.getElementById('preview-category');
 
-                                                                                                    saveChangesButton.addEventListener('click', (event) => {
-                                                                                                        event.preventDefault(); // Prevent the default form submission behavior
+                                                                                                                            saveChangesButton.addEventListener('click', (event) => {
+                                                                                                                                event.preventDefault(); // Prevent the default form submission behavior
 
-                                                                                                        // Update the preview elements with the new values
-                                                                                                        previewStoreName.textContent = storeNameInput.value;
-                                                                                                        previewStoreDescription.textContent = storeDescriptionTextarea.value;
+                                                                                                                                // Update the preview elements with the new values
+                                                                                                                                previewStoreName.textContent = storeNameInput.value;
+                                                                                                                                previewStoreDescription.textContent = storeDescriptionTextarea.value;
 
-                                                                                                        if (storeLogoInput.files[0]) {
-                                                                                                            const reader = new FileReader();
-                                                                                                            reader.onload = () => {
-                                                                                                                previewStoreLogo.src = reader.result;
-                                                                                                            };
-                                                                                                            reader.readAsDataURL(storeLogoInput.files[0]);
-                                                                                                        }
+                                                                                                                                if (storeLogoInput.files[0]) {
+                                                                                                                                    const reader = new FileReader();
+                                                                                                                                    reader.onload = () => {
+                                                                                                                                        previewStoreLogo.src = reader.result;
+                                                                                                                                    };
+                                                                                                                                    reader.readAsDataURL(storeLogoInput.files[0]);
+                                                                                                                                }
 
-                                                                                                        if (storeBannerInput.files[0]) {
-                                                                                                            const reader = new FileReader();
-                                                                                                            reader.onload = () => {
-                                                                                                                previewStoreBanner.src = reader.result;
-                                                                                                            };
-                                                                                                            reader.readAsDataURL(storeBannerInput.files[0]);
-                                                                                                        }
+                                                                                                                                if (storeBannerInput.files[0]) {
+                                                                                                                                    const reader = new FileReader();
+                                                                                                                                    reader.onload = () => {
+                                                                                                                                        previewStoreBanner.src = reader.result;
+                                                                                                                                    };
+                                                                                                                                    reader.readAsDataURL(storeBannerInput.files[0]);
+                                                                                                                                }
 
-                                                                                                        previewStoreCategory.textContent = storeCategorySelect.options[storeCategorySelect.selectedIndex].text;
+                                                                                                                                previewStoreCategory.textContent = storeCategorySelect.options[storeCategorySelect.selectedIndex].text;
 
-                                                                                                        // TODO: Save the changes to the server using AJAX or fetch API
-                                                                                                    });
-                                                                                                });*/
+                                                                                                                                // TODO: Save the changes to the server using AJAX or fetch API
+                                                                                                                            });
+                                                                                                                        });*/
     </script>
 </head>
 
@@ -153,21 +154,21 @@
 
     <script>
         /*const editButton = document.getElementById('edit-button');
-                                                                                editButton.addEventListener('click', () => {
-                                                                                    const storeName = encodeURIComponent(document.getElementById('store-name').value);
-                                                                                    const storeDescription = encodeURIComponent(document.getElementById('store-description').value);
-                                                                                    window.location.href = `edit-store-info.html?name=${storeName}&description=${storeDescription}`;
-                                                                                });
+                                                                                                        editButton.addEventListener('click', () => {
+                                                                                                            const storeName = encodeURIComponent(document.getElementById('store-name').value);
+                                                                                                            const storeDescription = encodeURIComponent(document.getElementById('store-description').value);
+                                                                                                            window.location.href = `edit-store-info.html?name=${storeName}&description=${storeDescription}`;
+                                                                                                        });
 
-                                                                                // Check if there are query parameters in the URL (i.e., if we are returning from page 2)
-                                                                                const urlParams = new URLSearchParams(window.location.search);
-                                                                                if (urlParams.has('name') && urlParams.has('description')) {
-                                                                                    const storeNameInput = document.getElementById('store-name');
-                                                                                    const storeDescriptionTextarea = document.getElementById('store-description');
+                                                                                                        // Check if there are query parameters in the URL (i.e., if we are returning from page 2)
+                                                                                                        const urlParams = new URLSearchParams(window.location.search);
+                                                                                                        if (urlParams.has('name') && urlParams.has('description')) {
+                                                                                                            const storeNameInput = document.getElementById('store-name');
+                                                                                                            const storeDescriptionTextarea = document.getElementById('store-description');
 
-                                                                                    storeNameInput.value = decodeURIComponent(urlParams.get('name'));
-                                                                                    storeDescriptionTextarea.value = decodeURIComponent(urlParams.get('description'));
-                                                                                }*/
+                                                                                                            storeNameInput.value = decodeURIComponent(urlParams.get('name'));
+                                                                                                            storeDescriptionTextarea.value = decodeURIComponent(urlParams.get('description'));
+                                                                                                        }*/
     </script>
 </body>
 
