@@ -1,212 +1,173 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Listings</title>
-    <link rel="stylesheet" href="CSS/userHome.css">
-
-    <link rel="stylesheet" href="CSS/nadine-temp-ss.css">
+    <link rel="stylesheet" type="text/css" href="/css/sellersc.css">
+    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="CSS/add.css">
-    <link rel="stylesheet" href="CSS/productcard.css">
-    <link rel="stylesheet" href="CSS/manage.css">
-    <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png">
-    <style>
-        li {
-            grid-row-start: auto;
-        }
-        
-        .product-card {
-            flex: 0 0 auto;
-            width: 250px;
-            height: 450px;
-        }
-        
-        .product-image {
-            position: relative;
-            width: 100%;
-            height: 350px;
-            overflow: hidden;
-        }
-        
-        .itemslist {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            column-gap: 20px;
-            overflow-y: scroll;
-        }
-        
-        .product-card {
-            padding: 10px;
-            margin: 0;
-        }
-        /*.column:nth-of-type(4) {
-        width: 100px;
-        /* Replace 300 with your desired width */
-    </style>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
-    </script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>Store Information</title>
+    <style>
+
+    </style>
+
     <script>
-        $(function() {
-            $("#header").load("storenavii.html");
-            $("#chatbox").load("chattin.html");
-        });
+        /* document.addEventListener('DOMContentLoaded', () => {
+                                                                    // Get the form fields
+                                                                    const nameField = document.getElementById('store-name');
+                                                                    const descriptionField = document.getElementById('store-description');
+                                                                    const logoField = document.getElementById('store-logo');
+                                                                    const bannerField = document.getElementById('store-banner');
+                                                                    const categoryField = document.getElementById('store-category');
+
+                                                                    // Get the preview elements
+                                                                    const previewName = document.getElementById('preview-name');
+                                                                    const previewDescription = document.getElementById('preview-description');
+                                                                    const previewLogo = document.getElementById('preview-logo');
+                                                                    const previewBanner = document.getElementById('preview-banner');
+                                                                    const previewCategory = document.getElementById('preview-category');
+
+                                                                    // Update the preview elements when the form changes
+                                                                    nameField.addEventListener('input', () => {
+                                                                        previewName.textContent = nameField.value;
+                                                                    });
+
+                                                                    descriptionField.addEventListener('input', () => {
+                                                                        previewDescription.textContent = descriptionField.value;
+                                                                    });
+
+                                                                    logoField.addEventListener('change', () => {
+                                                                        const reader = new FileReader();
+                                                                        reader.onload = () => {
+                                                                            previewLogo.src = reader.result;
+                                                                        };
+                                                                        reader.readAsDataURL(logoField.files[0]);
+                                                                    });
+
+                                                                    bannerField.addEventListener('change', () => {
+                                                                        const reader = new FileReader();
+                                                                        reader.onload = () => {
+                                                                            previewBanner.src = reader.result;
+                                                                        };
+                                                                        reader.readAsDataURL(bannerField.files[0]);
+                                                                    });
+
+                                                                    categoryField.addEventListener('change', () => {
+                                                                        previewCategory.textContent = categoryField.options[categoryField.selectedIndex].text;
+                                                                    });
+
+                                                                    // Handle the "Edit" button click event
+                                                                    const editButton = document.getElementById('edit-button');
+                                                                    editButton.addEventListener('click', () => {
+                                                                        window.location.href = 'edit-store-info.html';
+                                                                    });
+
+                                                                    // Handle the form submission
+                                                                    const saveChangesButton = document.getElementById('save-changes-button');
+                                                                    const storeNameInput = document.getElementById('store-name');
+                                                                    const storeDescriptionTextarea = document.getElementById('store-description');
+                                                                    const storeLogoInput = document.getElementById('store-logo');
+                                                                    const storeBannerInput = document.getElementById('store-banner');
+                                                                    const storeCategorySelect = document.getElementById('store-category');
+                                                                    const previewStoreName = document.getElementById('preview-name');
+                                                                    const previewStoreDescription = document.getElementById('preview-description');
+                                                                    const previewStoreLogo = document.getElementById('preview-logo');
+                                                                    const previewStoreBanner = document.getElementById('preview-banner');
+                                                                    const previewStoreCategory = document.getElementById('preview-category');
+
+                                                                    saveChangesButton.addEventListener('click', (event) => {
+                                                                        event.preventDefault(); // Prevent the default form submission behavior
+
+                                                                        // Update the preview elements with the new values
+                                                                        previewStoreName.textContent = storeNameInput.value;
+                                                                        previewStoreDescription.textContent = storeDescriptionTextarea.value;
+
+                                                                        if (storeLogoInput.files[0]) {
+                                                                            const reader = new FileReader();
+                                                                            reader.onload = () => {
+                                                                                previewStoreLogo.src = reader.result;
+                                                                            };
+                                                                            reader.readAsDataURL(storeLogoInput.files[0]);
+                                                                        }
+
+                                                                        if (storeBannerInput.files[0]) {
+                                                                            const reader = new FileReader();
+                                                                            reader.onload = () => {
+                                                                                previewStoreBanner.src = reader.result;
+                                                                            };
+                                                                            reader.readAsDataURL(storeBannerInput.files[0]);
+                                                                        }
+
+                                                                        previewStoreCategory.textContent = storeCategorySelect.options[storeCategorySelect.selectedIndex].text;
+
+                                                                        // TODO: Save the changes to the server using AJAX or fetch API
+                                                                    });
+                                                                });*/
     </script>
 </head>
-<style>
-    li {
-        grid-row-start: auto;
-    }
-    
-    .product-card {
-        flex: 0 0 auto;
-        width: 250px;
-        height: 450px;
-    }
-    
-    .product-image {
-        position: relative;
-        width: 100%;
-        height: 350px;
-        overflow: hidden;
-    }
-    
-    .itemslist {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        column-gap: 20px;
-        overflow-y: scroll;
-    }
-    
-    .product-card {
-        padding: 10px;
-        margin: 0;
-    }
-    /*.column:nth-of-type(4) {
-        width: 100px;
-        /* Replace 300 with your desired width */
-</style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
-</script>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script>
-    $(function() {
-        $("#header").load("storenavii.html");
-        $("#chatbox").load("chattin.html");
-    });
-</script>
 
 <body>
     <div class="grid-container">
-
-        <div class="header">
-            <div id="header"></div>
+        <div id="header">
+            <%- include('../partials/sellernav.ejs') %>
         </div>
-        <div class="body">
+        <div id="body">
 
-            <div class="prlist">
-                <div class="headoflist">
-                    <div class="buttons">
-                        <button type="button" role="button" class="buttonadd btn js-add-btn" onclick="window.location.href = '';">Delete
-                            Item</button>
-                        <button type="button" role="button" class="buttonadd" onclick="window.location.href = 'add_product.html';">Add New Item</button>
-                    </div>
+            <div class="store-info">
+                <h2>Store Information</h2>
+                <form>
+                    <label for="store-name">NAMESAMPLE</label>
+                    <p type="text" id="store-name" name="store-name" value="Little B. Store"></p>
+                    </p><br>
 
-                </div>
+                    <label for="store-description">Description:</label>
+                    <p id="store-description" name="store-description">This is a sample store description.</p><br>
 
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card1.webp" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card2.webp" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card3.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
+                    <label for="store-logo">Logo:</label>
+                    <input type="file" id="store-logo" name="store-logo">
+                    <br>
+
+                    <label for="store-banner">Banner:</label>
+                    <input type="file" id="store-banner" name="store-banner"><br>
+
+                    <label for="store-category">Category:</label>
+                    <select id="store-category" name="store-category">
+              <option value="books">Books</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+            </select><br>
+
+                    <button class="btn-edit" id="edit-button">Edit</button> </form>
             </div>
         </div>
     </div>
-    <div class="chatbox" id="chatbox">
+
+    <div class="chatbox ">
+        <div>
+            <%- include('../partials/chat.ejs') %>
+        </div>
     </div>
+    <script>
+        /*const editButton = document.getElementById('edit-button');
+                                                editButton.addEventListener('click', () => {
+                                                    const storeName = encodeURIComponent(document.getElementById('store-name').value);
+                                                    const storeDescription = encodeURIComponent(document.getElementById('store-description').value);
+                                                    window.location.href = `edit-store-info.html?name=${storeName}&description=${storeDescription}`;
+                                                });
+
+                                                // Check if there are query parameters in the URL (i.e., if we are returning from page 2)
+                                                const urlParams = new URLSearchParams(window.location.search);
+                                                if (urlParams.has('name') && urlParams.has('description')) {
+                                                    const storeNameInput = document.getElementById('store-name');
+                                                    const storeDescriptionTextarea = document.getElementById('store-description');
+
+                                                    storeNameInput.value = decodeURIComponent(urlParams.get('name'));
+                                                    storeDescriptionTextarea.value = decodeURIComponent(urlParams.get('description'));
+                                                }*/
+    </script>
 </body>
 
 </html>

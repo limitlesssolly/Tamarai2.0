@@ -23,6 +23,7 @@ export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
 
 // let staticPath = path.join(__dirname, "public");
+app.use(express.static('public'));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views")); // to join th static folder "views" which contains the ejs files so that it can run 
@@ -74,7 +75,7 @@ app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-    
+
     // render the error page
     res.status(err.status || 500);
     res.render('error');
