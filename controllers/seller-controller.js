@@ -1,6 +1,6 @@
 
 //function to handle seller authentication:
-const seller = require('../models/sellerData')
+const seller = require('../models/sellerData');
 
 exports.getSignIn = (req, res) => {
   res.render('seller-sign-in');
@@ -10,13 +10,13 @@ exports.postSignIn = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    const seller = await seller.findOne({ email });
 
-    if (!user) {
-      return res.status(400).json({ message: 'User not found' });
+    if (!seller) {
+      return res.status(400).json({ message: 'Seller not found' });
     }
 
-    if (user.password !== password) {
+    if (seller.password !== password) {
       return res.status(400).json({ message: 'Invalid password' });
     }
 

@@ -1,11 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const {
-    authenticateUser
-} = require('../controllers/seller-controller');
-router.get('/seller/seller-sign-in', authController.getSignIn);
-router.post('//seller/seller-sign-in', authController.postSignIn);
+import { Router } from 'express';
+const router = Router();
 
-module.exports = router;
+import { getSignIn, postSignIn } from "../controllers/seller-controller.js";
+
+/* GET /admin page. */
+router.get('/', function (req, res, next){
+    res.render('seller-sign-in');
+})
+
+/* POST /admin page. */
+router.post('/', postSignIn);
 
 export default router;
