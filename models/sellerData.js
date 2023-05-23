@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const SellerSchema = new Schema({
+const SellerSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -14,5 +13,5 @@ const SellerSchema = new Schema({
     timestamps: true,
 });
 
-const seller= mongoose.model("SellerData",SellerSchema);
+const seller = mongoose.model("SellerData", SellerSchema);
 export default seller;
