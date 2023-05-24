@@ -15,7 +15,7 @@ import adminRouter from "./routes/admin.js";
 import adminDashboardRouter from "./routes/adminDashboard.js";
 import sellerRouter from "./routes/seller.js";
 import userRouter from "./routes/user.js";
-import productRouter from ".routes/product.js";
+import productRouter from "./routes/product.js";
 
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
