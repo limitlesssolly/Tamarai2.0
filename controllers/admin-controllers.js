@@ -60,7 +60,7 @@ const signins = async (req, res, next) => {
 
 const signups = async (req, res, next) => {
 
-  const hashPass = await bcrypt.hash(req.body.pass, 10)
+  const hashPass = await bcrypt.hash(req.body.password, 10)
 
   const newadmin = new admin({
     username: req.body.name,
