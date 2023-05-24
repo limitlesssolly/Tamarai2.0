@@ -1,14 +1,13 @@
 import { Router } from 'express';
 const router = Router();
+import {signins} from "../controllers/seller-controller.js";
 
-import { getSignIn, postSignIn } from "../controllers/seller-controller.js";
-
-/* GET /admin page. */
+/* GET /seller page. */
 router.get('/', function (req, res, next){
     res.render('seller-sign-in');
 })
 
-/* POST /admin page. */
-router.post('/', postSignIn);
+/* POST /seller page. */
+router.post('/', signins);
 
 export default router;
