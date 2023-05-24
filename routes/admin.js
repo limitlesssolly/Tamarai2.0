@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import {signins} from "../controllers/admin-controllers.js";
+import {signups,signins} from "../controllers/admin-controllers.js";
 
 /* GET /admin page. */
 router.get('/', function (req, res, next){

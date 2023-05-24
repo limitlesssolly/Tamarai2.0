@@ -29,8 +29,8 @@ const signups = async (req, res, next) => {
   // const hashPass = await bcrypt.hash(req.body.pass, 10)
 
   const newseller = new seller({
-    username: req.body.username,
-    password: req.body.password,
+    username: req.body.name,
+    password: req.body.pass,
 })
 newseller.save()
 .then((result)=>
@@ -43,4 +43,4 @@ newseller.save()
 })
 };
 
-export { signins ,signups};
+export {signins ,signups};
