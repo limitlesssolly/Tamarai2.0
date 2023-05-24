@@ -1,27 +1,47 @@
 
-//function to handle seller authentication:
-const seller = require('../models/sellerData');
+import seller from '../models/sellerData.js';
+const signins = async (req, res, next) => {
+  var un = req.body.name;
+  var pw = req.body.pass;
 
-exports.getSignIn = (req, res) => {
-  res.render('seller-sign-in');
-};
-
-exports.postSignIn = async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const seller = await seller.findOne({ email });
-
-    if (!seller) {
-      return res.status(400).json({ message: 'Seller not found' });
+  const sellers = await seller.find({});
+  // console.log(sellers)
+  var i;
+  for (i = 0; i < sellers.length; i++) {
+    if (sellers[i].username === un) {
+      if (sellers[i].password === pw) {
+        console.log("login successful!")
+        res.redirect('/seller')
+      }
+      else {
+        continue;
+      }
     }
-
-    if (seller.password !== password) {
-      return res.status(400).json({ message: 'Invalid password' });
+    else {
+      continue;
     }
-
-    res.status(200).json({ message: 'Sign in successful' });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error' });
   }
+  console.log("fe mashakel")
+  res.render('error.ejs')
 };
+
+const signups = async (req, res, next) => {
+
+  // const hashPass = await bcrypt.hash(req.body.pass, 10)
+
+  const newseller = new seller({
+    username: req.body.username,
+    password: req.body.password,
+})
+newseller.save()
+.then((result)=>
+{
+  console.log('registration successful!')
+    // res.render('admin/admin-dashboard.ejs')
+})
+.catch(err=>{
+    console.log(err);
+})
+};
+
+export { signins ,signups};
