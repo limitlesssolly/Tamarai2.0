@@ -5,13 +5,12 @@ const signins = async (req, res, next) => {
   var pw = req.body.pass;
 
   const sellers = await seller.find({});
-  // console.log(sellers)
   var i;
   for (i = 0; i < sellers.length; i++) {
     if (sellers[i].username === un) {
       if (sellers[i].password === pw) {
         console.log("login successful!")
-        res.redirect('/seller')
+        res.redirect('/seller/dashboard')
       }
       else {
         continue;

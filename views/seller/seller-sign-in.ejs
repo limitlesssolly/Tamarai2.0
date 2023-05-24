@@ -25,20 +25,19 @@
 
             <div class="line"></div>
         </div>
-        <form action="/seller" method="post" class="form" onsubmit="return USValidation(this)">
+        <form action="/seller/dashboard" method="get" class="form">
             <div class="users">
                 <label for="username"> username </label>
-                <input id="username" type="text" placeholder="username"> <br>
+                <input id="username" type="text" placeholder="username" name="name"> <br>
                 <span id="Uerror"></span>
             </div>
             <div class="passes">
                 <label for="password"> password </label>
-                <input id="password" type="password" placeholder="password"> <br>
+                <input id="password" type="password" placeholder="password" name="pass"> <br>
                 <span id="Perror"></span>
             </div>
             <span href="#" id="fyp">forgot your password?</span>
-            <!-- <button class="VSbutton" type="submit" id="submit">Sign in</button>-->
-            <a href="/seller/info"><button class="VSbutton" type="submit" id="submit">Sign in</button></a>
+            <button class="VSbutton" type="submit" id="submit">Sign in</button>
         </form>
     </div>
     <div class="VRegbk">
