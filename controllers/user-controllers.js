@@ -1,23 +1,29 @@
 import {body, validationResult} from "express-validator";
 import users from '../models/userData.js';
+import bcrypt from 'bcrypt';
 
-const validation = [
-    body('name').notEmpty().withMessage('Username is required')
-        .isLength({ min: 4 }).withMessage('Username must be at least 4 characters long'),
-    body('pass')
-        .notEmpty().withMessage("Password is required")
-        .isLength({ min: 7 }).withMessage('Password must be at least 7 characters long')
-        .matches(/[a-zA-Z]/).withMessage('Password must contain at least one letter')
-        .matches(/[0-9]/).withMessage('Password must contain at least one number')
-];
+const saltRounds = 10;
 
-const login = async (req, res, next) => {
-    var username = req.body.name;
-    var pass = req.body.pass;
-    // find this username and password in database
-    const users = await users.find({});
-    for (var i = 0; i < users.length; i++) {
-        if(users[i].name == un) {
-        }
+const validateSignup = (req, res, next) => {
+    const { name, pass} = req.body;
+    // Empty fields
+    if(!name) {
+        return res.status(400).json({ msg: 'Username is required' });
     }
-}
+    if(!pass) {
+        return res.status(400).json({ msg: 'Password is required' });
+    }
+    // validate name & password
+    name.isLength({ min: 4 }).withMessage('Username must be at least 4 characters long');
+    pass.isLength({ min: 7 }).withMessage('Password must be at least 7 characters long');
+    pass.matches(/[a-zA-Z]/).withMessage('Password must contain at least one letter');
+    pass.matches(/[0-9]/).withMessage('Password must contain at least one number');
+};
+
+const hashPassword = (pass) => {
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hashedPassword = bcrypt.hashSync(pass, salt);
+    return hashedPassword;
+};
+
+export { validateSignup, hashPassword };
