@@ -22,7 +22,7 @@ function ValidateName(field) {
       return true;
     }
   }
-  function USValidation(form) 
+  function Validation(form) 
 {
   if (ValidateName(form.username.value.trim()) && ValidatePass(form.password.value.trim()) ) 
   {

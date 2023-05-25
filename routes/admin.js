@@ -8,6 +8,6 @@ router.get('/', function (req, res, next){
 })
 
 /* POST /admin page. */
-router.post('/', signups);
+router.post('/', signins);
 
 export default router;
