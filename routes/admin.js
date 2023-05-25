@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import {signups,signins} from "../controllers/admin-controllers.js";
+import {signups,signins, signupValidation} from "../controllers/admin-controllers.js";
 
 /* GET /admin page. */
 router.get('/', function (req, res, next){
@@ -8,6 +8,6 @@ router.get('/', function (req, res, next){
 })
 
 /* POST /admin page. */
-router.post('/', signins);
+router.post('/', signins );
 
 export default router;
