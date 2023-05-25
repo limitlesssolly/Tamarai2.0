@@ -59,8 +59,13 @@ const signups = async (req, res, next) => {
       console.log('registration successful!');
       return res.redirect('/admin/dashboard');
     } catch (err) {
-      console.log(err);
-      return res.status(500).render('error.ejs');
+      // console.log(err);
+      // return res.status(500).render('error.ejs');
+      if (errors && errors.length > 0) {
+          for (let i = 0; i < errors.length; i++) { 
+            errors[i].msg
+           }
+      } 
     }
   }
 
