@@ -11,3 +11,13 @@ const validation = [
         .matches(/[0-9]/).withMessage('Password must contain at least one number')
 ];
 
+const login = async (req, res, next) => {
+    var username = req.body.name;
+    var pass = req.body.pass;
+    // find this username and password in database
+    const users = await users.find({});
+    for (var i = 0; i < users.length; i++) {
+        if(users[i].name == un) {
+        }
+    }
+}
