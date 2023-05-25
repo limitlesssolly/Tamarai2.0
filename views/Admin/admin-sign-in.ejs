@@ -21,6 +21,13 @@
 
             <div class="line"></div>
         </div>
+        <% if (errors && errors.length > 0) { %>
+            <div class="Uerror">
+              <% for (let i = 0; i < errors.length; i++) { %>
+                <p><%= errors[i].msg %></p>
+              <% } %>
+            </div>
+          <% } %>
         <form action="/admin" method="post" onclick="return Validation(this)">
             <div class="users" style="top: 49%;">
                 <label for="username"> username </label>
@@ -36,5 +43,6 @@
             <button class="ASbutton" type="submit" id="submit">Sign in</button>
         </form>
     </div>
+    <script src="/public/js/Validations.js"></script>
 </body>
 </html>
