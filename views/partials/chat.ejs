@@ -13,12 +13,15 @@
     <form class="form-container">
         <h1>Chat</h1>
 
+        <label for="msg"><b>Message</b></label>
+        <textarea placeholder="Type message.." name="msg" required></textarea>
         <!--<label for="msg"><b>Message</b></label>-->
         <div class="msgndsend">
             <textarea placeholder="Type message.." name="msg" required class="wrmsg"></textarea>
 
             <button type="submit" class="btn"><i class="fa-regular fa-paper-plane"></i></button></div>
 
+        <button type="submit" class="btn">Send</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
     </form>
 </div>

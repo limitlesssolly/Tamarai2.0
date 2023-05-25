@@ -112,9 +112,11 @@ body {
 .form-container textarea {
     width: 100%;
     padding: 15px;
+    margin: 5px 0 22px 0;
     border: none;
     background: #f1f1f1;
     resize: none;
+    min-height: 200px;
     min-height: 10px;
 }
 
@@ -130,12 +132,16 @@ body {
 /* Set a style for the submit/send button */
 
 .form-container .btn {
+    background-color: #518f99;
+    color: white;
+    padding: 16px 20px;
     background-color: #f1f1f1;
     color: #518f99;
     padding: 15px;
     border: none;
     cursor: pointer;
     width: 100%;
+    margin-bottom: 10px;
     opacity: 0.8;
     opacity: 1;
 }
@@ -153,6 +159,7 @@ body {
 
 .form-container .btn:hover,
 .open-button:hover {
+    opacity: 1;
     opacity: 3;
 }
 
