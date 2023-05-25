@@ -1,6 +1,6 @@
 import { body, validationResult } from "express-validator";
 import admin from '../models/adminData.js';
-import bcrypt from 'bcrypt'
+// import bcrypt from 'bcrypt'
 
 // const validateSignup = [
 //   body("username").notEmpty().withMessage("Username is required"),
@@ -36,13 +36,10 @@ const signins = async (req, res, next) => {
 
   const admins = await admin.find({});
   // console.log(admins)
-  console.log('shghal')
   var i;
   for (i = 0; i < admins.length; i++) {
     if (admins[i].username === un) {
-      console.log('shghal')
-      if (admins[i].password.compareSync(pw)) {
-        
+      if (admins[i].password === pw) {
         console.log("login successful!")
         res.redirect('/admin/dashboard')
       }
