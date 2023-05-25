@@ -14,7 +14,8 @@ import mainRouter from "./routes/index.js";
 import adminRouter from "./routes/admin.js";
 import adminDashboardRouter from "./routes/adminDashboard.js";
 import sellerRouter from "./routes/seller.js";
-import userRouter from "./routes/user.js"
+import userRouter from "./routes/user.js";
+import productRouter from "./routes/product.js";
 
 //Read the current directory name
 export const __filename = fileURLToPath(import.meta.url);
@@ -45,14 +46,15 @@ app.use('/admin', adminRouter);
 app.use('/admin/dashboard', adminDashboardRouter);
 app.use('/seller', sellerRouter);
 app.use('/user', userRouter);
+app.use('/products', productRouter);
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
 
-app.get('/products', (req, res) => {
-    res.render('User/products');
-});
+// app.get('/products', (req, res) => {
+//     res.render('User/products');
+// });
 
 // 404 route
 app.get('/error', (req, res) => {
