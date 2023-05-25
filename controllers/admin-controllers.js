@@ -4,12 +4,11 @@ import bcrypt from 'bcrypt';
 
 // Validation middleware for signups
 const signupValidation = [
-  body('name')
-    .notEmpty().withMessage('Username is required')
+  body('name').notEmpty().withMessage('Username is required')
     .isLength({ min: 4 }).withMessage('Username must be at least 4 characters long'),
   body('pass')
     .notEmpty().withMessage('Password is required')
-    .isLength({ min: 8 }).withMessage('Password must be at least 8 characters long')
+    .isLength({ min: 7 }).withMessage('Password must be at least 7 characters long')
     .matches(/[a-zA-Z]/).withMessage('Password must contain at least one letter')
     .matches(/[0-9]/).withMessage('Password must contain at least one number')
 ];
@@ -31,7 +30,7 @@ const signins = async (req, res, next) => {
           continue;
         }
       }
-else {
+      else {
         continue;
       }
     }
@@ -44,19 +43,27 @@ else {
 };
 
 const signups = async (req, res, next) => {
-  try {
-    const hashPass = await bcrypt.hash(req.body.pass, 10);
-    const newadmin = new admin({
-      username: req.body.name,
-      password: hashPass,
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.render("admin-sign-in", {
+      errors: errors.array(),
     });
-    await newadmin.save();
-    console.log('registration successful!');
-    return res.redirect('/admin/dashboard');
-  } catch (err) {
-    console.log(err);
-    return res.status(500).render('error.ejs');
+  } else {
+    try {
+      const hashPass = await bcrypt.hash(req.body.pass, 10);
+      const newadmin = new admin({
+        username: req.body.name,
+        password: hashPass,
+      });
+      await newadmin.save();
+      console.log('registration successful!');
+      return res.redirect('/admin/dashboard');
+    } catch (err) {
+      console.log(err);
+      return res.status(500).render('error.ejs');
+    }
   }
+
 };
 
-export { signins, signups };
+export { signins, signups, signupValidation };
