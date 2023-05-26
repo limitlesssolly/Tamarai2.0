@@ -87,4 +87,4 @@ const signups = async (req, res, next) => {
 
 };
 
-export { signins, signups, signupValidation};
+export { signins, signups, signupValidation ,checkUN};
