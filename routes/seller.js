@@ -1,18 +1,27 @@
 import { Router } from 'express';
 const router = Router();
-import {signups,signins} from "../controllers/seller-controller.js";
+import {signups,signins, signupValidation} from "../controllers/user-controllers.js";
 
 /* GET /seller page. */
-router.get('/', function (req, res, next){
-    res.render('seller-sign-in');
+router.get('/', function(req, res, next) {
+    res.render('seller/seller-sign-in');
+});
+
+// seller homepage
+router.get('/home', function(req, res, next) {
+    res.render('seller/seller-products');
 })
 
-/* GET /seller/dashboard page. */
-router.get('/dashboard', function (req, res, next){
-    res.render('seller/seller-dashboard');
-})
+/* GET /user/register page. */
+router.get('/register', function(req, res, next) {
+    res.render('seller/seller-register');
+});
 
-/* POST /seller page. */
-router.post('/', signups);
+// /* GET /user/homepage page. */
+// router.get('/homepage', function(req, res, next) {
+//     res.render('user/user-homepage');
+// });
+
+router.post('/', signins);
 
 export default router;
