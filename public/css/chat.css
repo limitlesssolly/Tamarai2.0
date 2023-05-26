@@ -165,3 +165,87 @@ body {
     grid-template-columns: 10fr 1fr;
     margin: 5px 0 10px 0;
 }
+
+
+/* Full-width textarea */
+
+.wrmsg {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid grey;
+}
+
+
+/* .msgndsend {
+    display: flex;
+} */
+
+
+/* When the textarea gets focus, do something */
+
+.wrmsg:focus {
+    outline: none;
+    border-bottom: 2px solid black;
+}
+
+
+/* Set a style for the submit/send button */
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+/* Add a red background color to the cancel button */
+
+.cancel {
+    background-color: red;
+}
+
+
+/* Add some hover effects to buttons */
+
+.btn:hover,
+.open-button:hover,
+.cancel:hover {
+    opacity: 1;
+}
+
+
+/* Add a new CSS class for the message bubbles */
+
+.msgbubble {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 5px 0;
+    max-width: 80%;
+    word-wrap: break-word;
+    /* Add this line to align the chat bubble to the right */
+    align-self: flex-end !important;
+}
+
+
+/* Style for outgoing messages */
+
+.msgbubble.outgoing {
+    background-color: #DCF8C6;
+    align-self: flex-end;
+}
+
+
+/* Style for incoming messages */
+
+.msgbubble.incoming {
+    background-color: #F0F0F0;
+    align-self: flex-start;
+}
