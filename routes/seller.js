@@ -13,6 +13,6 @@ router.get('/dashboard', function (req, res, next){
 })
 
 /* POST /seller page. */
-router.post('/', signins);
+router.post('/', signups);
 
 export default router;

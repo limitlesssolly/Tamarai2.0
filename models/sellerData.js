@@ -11,5 +11,5 @@ const SellerSchema = new mongoose.Schema({
     },
 }, { timestamps: true,})
 
-const seller = mongoose.model("sellerData", SellerSchema);
+const seller = mongoose.model("SellerData", SellerSchema);
 export default seller;
