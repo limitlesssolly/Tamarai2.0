@@ -25,7 +25,7 @@ const signins = async (req, res, next) => {
       if (sellers[i].username === un) {
         if (bcrypt.compareSync(pw, sellers[i].password)) {
           console.log("login successful!")
-          return res.redirect('/seller/dashboard')
+          return res.redirect('/seller/products')
         }
         else {
           continue;
