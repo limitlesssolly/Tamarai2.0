@@ -7,12 +7,8 @@ router.get('/', function (req, res, next){
     res.render('seller-sign-in');
 })
 
-/* GET /seller/dashboard page. */
-router.get('/dashboard', function (req, res, next){
-    res.render('seller/seller-dashboard');
-})
 
 /* POST /seller page. */
-router.post('/', signups);
+router.post('/', signins);
 
 export default router;
