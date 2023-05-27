@@ -5,7 +5,7 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
-// import session from 'express-session';
+import session from 'express-session';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 
@@ -30,7 +30,7 @@ app.set("view engine", "ejs"); // first thin we do when using ejs
 
 app.use(logger("dev"));
 app.use(fileUpload());
-// app.use(session({ secret: 'Your_Secret_Key' }))
+app.use(session({ secret: 'Your_Secret_Key' }))
 app.use(express.json());
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 app.use(express.urlencoded({ extended: false }));
