@@ -3,8 +3,13 @@ const router = Router();
 import {signups,signins, signupValidation} from "../controllers/seller-controller.js";
 
 /* GET /seller page. */
+router.get('/', function(req, res, next) {
+    res.render('seller-products');
+});
+
+/* GET /seller/products page. */
 router.get('/products', function(req, res, next) {
-    res.send("yes");
+    res.render('seller-products');
 });
 
 
