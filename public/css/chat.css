@@ -188,19 +188,19 @@ body {
 
 .wrmsg:focus {
     outline: none;
-    border-bottom: 2px solid black;
 }
 
 
 /* Set a style for the submit/send button */
 
 .btnsubmit {
-    background-color: #4CAF50;
+    background-color: #f1f1f1;
     color: white;
     padding: 10px 18px;
     border: none;
     cursor: pointer;
-    margin-left: 10px;
+    margin: 8px;
+    margin-left: 0;
 }
 
 
@@ -248,4 +248,19 @@ body {
 .msgbubble.incoming {
     background-color: #F0F0F0;
     align-self: flex-start;
+}
+
+.chat-popup h1 {
+    text-align: center;
+    color: #89bbbb;
+    font-family: Arial;
+}
+
+p {
+    font-size: 25px;
+    /*  -webkit-text-stroke: 0.5px #ffffff;*/
+}
+
+h1 {
+    font-size: 50px;
 }
