@@ -7,16 +7,21 @@ const router = Router();
 //
 
 
-// Get products page
-router.get('/', (req, res) => {
-    // res.send("hello");   // الوحيدة اللي شغاله
-    // res.render('user/product');
-    // Retrieve products data from MongoDB
-    // Db.collection('products').find().toArray((err, products) => {
-    //     if (err) throw err;
-    //     // send product data to EJS template
-    //     res.render('products', { products });
-    // });
-});
+// // Get products page
+// router.get('/', (req, res) => {
+//     // res.send("hello");   // الوحيدة اللي شغاله
+//     // res.render('user/product');
+//     // Retrieve products data from MongoDB
+//     // Db.collection('products').find().toArray((err, products) => {
+//     //     if (err) throw err;
+//     //     // send product data to EJS template
+//     //     res.render('products', { products });
+//     // });
+// });
+
+/* GET /seller/product page. */
+router.get('/', function (req, res, next){
+    res.render('seller/seller-product');
+})
 
 export default router;

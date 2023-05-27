@@ -41,6 +41,21 @@ const signins = async (req, res, next) => {
     return res.status(500).render('error.ejs');
   }
 };
+// const checkUN = (req, res) => {
+//   var query = { UserName: req.body.UserName };
+//   Employees.find(query)
+//       .then(result => {
+//           if (result.length > 0) {
+//               res.send('taken');
+//           }
+//           else {
+//               res.send('available');
+//           }
+//       })
+//       .catch(err => {
+//           console.log(err);
+//       });
+// };
 
 const signups = async (req, res, next) => {
   const errors = validationResult(req);
@@ -71,4 +86,4 @@ const signups = async (req, res, next) => {
 
 };
 
-export { signins, signups, signupValidation };
+export { signins, signups, signupValidation};

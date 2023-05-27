@@ -9,9 +9,7 @@ const SellerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-}, {
-    timestamps: true,
-});
+}, { timestamps: true,})
 
 const seller = mongoose.model("SellerData", SellerSchema);
 export default seller;
