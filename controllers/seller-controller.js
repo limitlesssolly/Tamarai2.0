@@ -1,7 +1,6 @@
 
 import { body, validationResult } from "express-validator";
 import seller from '../models/sellerData.js';
-import rege from '../models/sellerRegister.js';
 import bcrypt from 'bcrypt';
 
 // Validation middleware for signups
@@ -59,24 +58,30 @@ const signins = async (req, res, next) => {
 //       });
 // };
 
-exports.signup = (req, res) => {
-  const { email, username, password, confirmPassword } = req.body;
-
-  const seller = new Seller({
-    email,
-    username,
-    password,
-    confirmPassword
-  });
-
-  seller.save((err) => {
-    if (err) {
+const signup = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.render("seller-sign-in", {
+      errors: errors.array(),
+    });
+  } else {
+    try {
+      const hashPass = await bcrypt.hash(req.body.password, 10);
+      const newseller = new Seller({
+        email: req.body.email,
+        username: req.body.username,
+        password: hashPass,
+        confirmPassword: req.body.confirmPassword
+      });
+      await newseller.save();
+      console.log('Registration successful!');
+      return res.redirect('/seller/products');
+    } catch (err) {
       console.log(err);
-      res.send('Error saving seller data');
-    } else {
-      res.redirect('/seller/register');
+      return res.status(500).render('error.ejs');
     }
-  });
+  }
 };
 
-export { signins, signupValidation};
+
+export { signins, signup, signupValidation};

@@ -13,11 +13,6 @@ router.get('/products', function(req, res, next) {
 });
 
 
-router.post('/register', sellerController.signup);
-
-module.exports = router;
-
 router.post('/', signins);
-
 
 export default router;
