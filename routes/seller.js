@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import {signups,signins, signupValidation} from "../controllers/seller-controller.js";
+import {signup,signins, signupValidation} from "../controllers/seller-controller.js";
 
 /* GET /seller page. */
 router.get('/', function(req, res, next) {
