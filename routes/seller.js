@@ -13,6 +13,6 @@ router.get('/products', function(req, res, next) {
 });
 
 
-router.post('/', signup);
+router.post('/', signins);
 
 export default router;
