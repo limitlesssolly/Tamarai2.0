@@ -14,5 +14,6 @@ router.get('/products', function(req, res, next) {
 
 
 router.post('/', signins);
+router.post('/register', signup);
 
 export default router;
