@@ -83,10 +83,10 @@ body {
     border: none;
     cursor: pointer;
     opacity: 0.8;
-    position: fixed;
     bottom: 23px;
     right: 28px;
     width: 280px;
+    position: fixed;
 }
 
 
@@ -195,7 +195,7 @@ body {
 
 .btnsubmit {
     background-color: #f1f1f1;
-    color: white;
+    color: #518f99;
     padding: 10px 18px;
     border: none;
     cursor: pointer;
@@ -213,7 +213,7 @@ body {
 
 /* Add some hover effects to buttons */
 
-.btn:hover,
+.btnsubmit:hover,
 .open-button:hover,
 .cancel:hover {
     opacity: 1;
