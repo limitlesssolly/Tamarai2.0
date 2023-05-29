@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import {signups,signins, signupValidation} from "../controllers/user-controllers.js";
+import { signups, signins, signupValidation } from "../controllers/user-controllers.js";
 
 /* GET /user page. */
 router.get('/', function(req, res, next) {
@@ -22,6 +22,9 @@ router.get('/homepage', function(req, res, next) {
     res.render('user/user-homepage');
 });
 
+router.get('/seller/info', function(req, res, next) {
+    res.render('seller/seller-info');
+})
 router.post('/', signins);
 
 export default router;
