@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 const Admin = new mongoose.Schema({
     naming:
     {
-        
+        type:String,
+        required:false,
     },
     username:
     {
@@ -14,6 +15,11 @@ const Admin = new mongoose.Schema({
     {
         type:String,
         required:true,
+    },
+    Utype:
+    {
+        type:String,
+        required:false,
     },
 
 }, { timestamps: true })
