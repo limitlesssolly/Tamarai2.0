@@ -227,6 +227,11 @@ input:autofill
     padding: 3px;
     border-radius: 2px;
 } */
+.foots
+{
+    position: relative;
+    top: 850px;
+}
 
 #Uerror {
     color: darkred;
