@@ -1,6 +1,7 @@
 
 import { body, validationResult } from "express-validator";
-import seller from '../models/sellerData.js';
+import seller from '../models/sellerRegister.js';
+
 import bcrypt from 'bcrypt';
 
 // Validation middleware for signups
