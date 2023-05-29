@@ -1,11 +1,19 @@
 const mongoose = require('mongoose');
 
-const sellerSchema = new mongoose.Schema({
-  email: String,
-  username: String,
+const SSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true
+},
+  username: {
+    type: String,
+    required: true,
+    unique: true
+},
   password: String,
   confirmPassword: String
 });
 
-const rege = mongoose.model('SellerData', sellerSchema);
+const rege = mongoose.model('Seller', SSchema);
 export default rege;
