@@ -1,14 +1,21 @@
 import mongoose from 'mongoose';
 
 const Admin = new mongoose.Schema({
-    username:{
+    naming:
+    {
+        
+    },
+    username:
+    {
         type:String,
         required:true,
     },
-    password:{
+    password:
+    {
         type:String,
         required:true,
     },
+
 }, { timestamps: true })
 
 const admin = new mongoose.model("adminData", Admin)

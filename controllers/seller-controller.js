@@ -67,7 +67,7 @@ const signup = async (req, res, next) => {
   } else {
     try {
       const hashPass = await bcrypt.hash(req.body.password, 10);
-      const newseller = new Seller({
+      const newseller = new seller({
         email: req.body.email,
         username: req.body.username,
         password: hashPass,
