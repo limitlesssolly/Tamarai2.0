@@ -25,6 +25,9 @@ router.get('/homepage', function(req, res, next) {
 router.get('/seller/info', function(req, res, next) {
     res.render('seller/seller-info');
 })
+router.get('/homepage', function(req, res, next) {
+    res.render('user/user-homepage');
+})
 router.post('/', signins);
 
 export default router;
