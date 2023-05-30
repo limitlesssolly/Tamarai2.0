@@ -1,23 +1,18 @@
 import { Router } from 'express';
+import Product from "../models/productData.js";
 const router = Router();
-// MONGODB
-// import MongoClient = require('mongodb').MongoClient;
-// Initialize MongoDB Client
-// const client = new MongoClient(process.env.ATLAS_URI, { useUnifiedTopology: true });
-//
 
-
-// // Get products page
-// router.get('/', (req, res) => {
-//     // res.send("hello");   // الوحيدة اللي شغاله
-//     // res.render('user/product');
-//     // Retrieve products data from MongoDB
-//     // Db.collection('products').find().toArray((err, products) => {
-//     //     if (err) throw err;
-//     //     // send product data to EJS template
-//     //     res.render('products', { products });
-//     // });
-// });
+// Get all products 
+router.get('/', (req, res, next) => {
+    res.send("All products");
+    //res.render('user/product');
+    //Retrieve products data from MongoDB
+    const products = Product.find({}).then((products) => {
+        res.json(products);
+    }).catch((err) => {
+        next(err);
+    });
+});
 
 /* GET /seller/product page. */
 router.get('/', function (req, res, next){
