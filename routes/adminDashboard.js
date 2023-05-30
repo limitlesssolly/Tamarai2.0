@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import express from "express";
 const router = Router();
 
 /* GET /admin/dashboard page. */

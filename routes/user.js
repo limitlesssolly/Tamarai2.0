@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import express from "express";
 const router = Router();
 import { signups, signins, signupValidation } from "../controllers/user-controllers.js";
 
@@ -21,9 +22,13 @@ router.get('/register', function(req, res, next) {
 router.get('/homepage', function(req, res, next) {
     res.render('user/user-homepage');
 })
-router.get('/checkout', function(req, res, next) {
+
+/* GET /user/checkout page. */
+router.get('/homepage/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 })
+
+
 router.post('/', signins);
 
 export default router;
