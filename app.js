@@ -52,19 +52,11 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
 
-// app.get('/products', (req, res) => {
-//     res.render('User/products');
-// });
-
 // 404 route
 app.get('/error', (req, res) => {
     // res.sendFile(path.join(staticPath, 'error'));
     res.sendFile(path.join(path.join(__dirname, "public"), 'error'));
 });
-
-// app.use((req, res) => {
-//     res.redirect('views/error');
-// });
 
 app.use((req, res) => {
     res.status(404).render('error');

@@ -18,7 +18,11 @@ h2 {
     left: 19%;
     color: #0d1516;
 }
-
+.foots
+{
+    position: relative;
+    top: 829px;
+}
 h3 
 {
     font-size: 2.7vw;
