@@ -14,9 +14,14 @@ router.get('/', (req, res, next) => {
     });
 });
 
+// Get a single product by its ID
+router.get("/:id", (req, res, next) => {
+    res.send(`Single product test message ${req.params.id}`);
+});
+
 /* GET /seller/product page. */
-router.get('/', function (req, res, next){
-    res.render('seller/seller-product');
-})
+// router.get('/', function (req, res, next){
+//     res.render('seller/seller-product');
+// })
 
 export default router;
