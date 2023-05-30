@@ -37,7 +37,5 @@ router.get('/seller/info', function(req, res, next) {
 router.get('/seller/products', function(req, res, next) {
     res.render('seller/seller-products');
 })
-router.get('/user/homepage', function(req, res, next) {
-    res.render('user/user-homepage');
-})
+
 export default router;
