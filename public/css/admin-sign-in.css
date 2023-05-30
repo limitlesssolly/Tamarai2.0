@@ -19,7 +19,7 @@
 {
     position: absolute;
     top:0%;
-    right:120.3%;
+    right:116%;
 }
 
 label
@@ -230,7 +230,7 @@ input:autofill
 .foots
 {
     position: relative;
-    top: 850px;
+    top: 670px;
 }
 
 #Uerror {

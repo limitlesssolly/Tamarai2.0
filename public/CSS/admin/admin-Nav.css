@@ -65,15 +65,20 @@ nav li.welcomes
 {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    min-height: 90vh;
+    padding: 30px 0 30px 0px;
     height: 100%;
-    width: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:50px;
     overflow: hidden;
     background-color: #d6bd91;
 }
 
 .navtoo li 
 {
+    padding: 10px 0px 10px 0px;
     float: left;
     height: 100%;
     width: 100%;
@@ -100,14 +105,18 @@ nav li.welcomes
 
 .navtoo li a:hover:not(.active) 
 {
-    color:white;
-    background-color: #1c4c56;
     cursor: pointer;
 }
-.navtoo li a.active 
+
+.navtoo li img
 {
-    color:white;
-    background-color: #1c4c56;
+    width:20px;
+    height:20px;
+}
+
+.navtoo li img:hover:not(.active) 
+{
+    padding: 10px 0px 10px 0px;
 }
 
 
