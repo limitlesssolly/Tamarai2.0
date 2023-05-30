@@ -1,27 +1,37 @@
 import { Router } from 'express';
+import Product from "../models/productData.js";
 const router = Router();
-// MONGODB
-// import MongoClient = require('mongodb').MongoClient;
-// Initialize MongoDB Client
-// const client = new MongoClient(process.env.ATLAS_URI, { useUnifiedTopology: true });
-//
 
+// Get all products 
+router.get('/', (req, res, next) => {
+    res.send("All products");
+    //res.render('user/products', { products: products});
+    //Retrieve products data from MongoDB
+    const products = Product.find({}).then((products) => {
+        res.json(products);
+    }).catch((err) => {
+        next(err);
+    });
+});
 
-// // Get products page
-// router.get('/', (req, res) => {
-//     // res.send("hello");   // الوحيدة اللي شغاله
-//     // res.render('user/product');
-//     // Retrieve products data from MongoDB
-//     // Db.collection('products').find().toArray((err, products) => {
-//     //     if (err) throw err;
-//     //     // send product data to EJS template
-//     //     res.render('products', { products });
-//     // });
+// Get a single product by its ID
+router.get("/:id", (req, res, next) => {
+    res.send(`Single product test message ${req.params.id}`);
+});
+
+//Create a product: /products
+// router.post("/", (req, res, next) => {
+//     res.json({message: `Product Created ${req.body.name}`});
 // });
 
-/* GET /seller/product page. */
-router.get('/', function (req, res, next){
-    res.render('seller/seller-product');
-})
+//Update a product: /products/:id
+// router.patch("/:id", (req, res, next) => {
+//     res.json({message: `Product Updated id= ${req.params.id} new value = ${req.body.name}`});
+// });
+
+//Delete a product: /products/:id
+// router.delete("/:id", (req, res, next) => {
+//     res.json({message: `Product Deleted id= ${req.params.id}`});
+// });
 
 export default router;
