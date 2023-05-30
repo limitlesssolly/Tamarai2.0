@@ -20,13 +20,9 @@ router.get('/register', function(req, res, next) {
 /* GET /user/homepage page. */
 router.get('/homepage', function(req, res, next) {
     res.render('user/user-homepage');
-});
-
-router.get('/seller/info', function(req, res, next) {
-    res.render('seller/seller-info');
 })
-router.get('/homepage', function(req, res, next) {
-    res.render('user/user-homepage');
+router.get('/checkout', function(req, res, next) {
+    res.render('user/user-checkout');
 })
 router.post('/', signins);
 
