@@ -19,9 +19,19 @@ router.get("/:id", (req, res, next) => {
     res.send(`Single product test message ${req.params.id}`);
 });
 
-/* GET /seller/product page. */
-// router.get('/', function (req, res, next){
-//     res.render('seller/seller-product');
-// })
+//Create a product: /products
+// router.post("/", (req, res, next) => {
+//     res.json({message: `Product Created ${req.body.name}`});
+// });
+
+//Update a product: /products/:id
+// router.patch("/:id", (req, res, next) => {
+//     res.json({message: `Product Updated id= ${req.params.id} new value = ${req.body.name}`});
+// });
+
+//Delete a product: /products/:id
+// router.delete("/:id", (req, res, next) => {
+//     res.json({message: `Product Deleted id= ${req.params.id}`});
+// });
 
 export default router;
