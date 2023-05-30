@@ -1,7 +1,28 @@
 <html>
-    <head></head>
+    <head>
+        <link rel="stylesheet" href="../../public/CSS/userHomepage.css" />
+    </head>
     <body>
-        <h1>This is the product page</h1>
-        <%- include("../partials/productCard") %>
+        <% for(let i=0; i<products.length; i++) { %>
+            <section class="product">
+                <div class="product-container">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- <span class="discount-tag">number% off</span> -->
+                            <a href="/product/<%= products[i].id %>"> 
+                                <img src="<%= products[i].image %>" class="product-thumb" alt="<%= products[i].name %>">
+                            </a>
+                            <button class="card-btn">Add to wishlist</button>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-brand"><%= products[i].brand %></h2>
+                            <p class="product-short-des"><%= products[i].description %></p>
+                            <!-- <span class="price">Price after discount L.E.</span> -->
+                            <span class="actual-price"><%= products[i].price %></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <% } %>
     </body>
 </html>
