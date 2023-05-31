@@ -28,6 +28,10 @@ router.get('/products', function(req, res, next) {
     res.render('seller/seller-products');
 })
 
+router.get('/profile', function(req, res, next) {
+    res.render('seller/seller-profile');
+})
+
 router.post('/', signins);
 
 router.post('/register', signup);
