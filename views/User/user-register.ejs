@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+  <head>
+    <title>u/Sign Up</title>
+    <link rel="stylesheet" href="/css/seller-signup.css">
+    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
     
-</head>
-<body>
+    <div class="signupFrm">
+        <form action="/user/register" class="form" method="post">
+          <h1 class="title">Sign up</h1>
     
-</body>
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a" name="email" id="emailInput">
+            <label for="" class="label">Email</label>
+          </div>
+          
+          <div class="inputContainer">
+            <input type="text" class="input" placeholder="a" name="username" id="usernameInput">
+            <label for="" class="label">Username</label>
+          </div>
+          
+          <div class="inputContainer">
+            <input type="password" class="input" placeholder="a" name="password" id="passwordInput">
+            <label for="" class="label">Password</label>
+          </div>
+          
+          <div class="inputContainer">
+            <input type="password" class="input" placeholder="a" id="confirmPasswordInput">
+            <label for="" class="label">Confirm Password</label>
+          </div>
+
+    
+          <input type="submit" class="submitBtn" value="Sign up">
+        </form>
+        <%- include('../partials/chat.ejs') %>
+      </div>
+      <%- include('../partials/footer.ejs') %>
+  </body>
+  <script src="/JS/valido.js"></script>
 </html>
