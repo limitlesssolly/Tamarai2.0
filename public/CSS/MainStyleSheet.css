@@ -1,0 +1,506 @@
+* {
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    color: #0d1516;
+    
+}
+label
+{
+    color: #0d1516;
+}
+h2 {
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left: 19%;
+    color: #0d1516;
+}
+.foots
+{
+    position: relative;
+    top: 39px;
+}
+h3 
+{
+    font-size: 2.7vw;
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 23%;
+    color: #ffffff;
+}
+.logo
+{
+    top: 0%;
+    position: absolute;
+    left: 0%;
+    width: 9%;
+    height: 10%;
+}
+.line {
+    width: 50%;
+    height: 0;
+    border: 1px solid #d6bd91;
+    margin: 3px;
+    display: inline-block;
+    position: absolute;
+    top: 43%;
+    left: 25%;
+}
+
+
+
+.URegsiter {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    height: 100%;
+    width: 60%;
+    background-color: #ffffff;
+}
+
+.USbk {
+    position: absolute;
+    float: left;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 40%;
+    background-color: #1c4c56;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.USbutton {
+    margin: 3px;
+    outline: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    padding: 4px 30px;
+    background-color: #518f99;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left: 39%;
+    font-size: 26px;
+}
+
+.USbutton:hover {
+    background-color: #1c4c56;
+    cursor: pointer;
+
+}
+.URbutton {
+    margin: 3px;
+    outline: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    padding: 4px 30px;
+    display: inline-block;
+    background-color: #518f99;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    font-size: 26px;
+}
+
+.URbutton:hover {
+    background-color: #1c4c56;
+    cursor: pointer;
+}
+
+.Vlogin {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 60%;
+    background-color: #ffffff;
+}
+
+.VRegsiter {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    height: 100%;
+    width: 60%;
+    background-color: #ffffff;
+}
+
+.Alogin {
+    position: absolute;
+    top: 0%;
+    left: 18%;
+    height: 100%;
+    width: 60%;
+    background-color: #ffffff;
+}
+
+.words {
+    font-size: 1.5vw;
+    color: #0d1516;
+    position: absolute;
+    top: 23%;
+    left: 39.5%;
+}
+
+label {
+    font-size: 1.1vw;
+    color: #0d1516;
+}
+
+.use {
+    box-sizing: border-box;
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    padding: 20px;
+    clear: left;
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+
+.use:hover {
+    cursor: pointer;
+    top: 28%;
+}
+
+.adds {
+    box-sizing: border-box;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    padding: 20px;
+    clear: none;
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+
+.adds:hover {
+    cursor: pointer;
+    top: 28%;
+}
+
+.vend {
+    box-sizing: border-box;
+    position: absolute;
+    top: 30%;
+    left: 55%;
+    padding: 20px;
+    clear: right;
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+
+.vend:hover {
+    cursor: pointer;
+    top: 28%;
+}
+
+.wordings {
+    font-size: 1.4vw;
+    text-align: center;
+    position: absolute;
+    top: 44%;
+    left: 28%;
+    color: #ffffff;
+}
+
+.codey {
+    position: absolute;
+    left: 38%;
+    margin: 15px 0;
+}
+
+#admincode {
+    font-size: 0.9vw;
+    padding: 5px 35px 5px 3px;
+    border-radius: 2px;
+    width: 250px;
+    display: inline-block;
+    color: #b4640c;
+    border: solid;
+    border-width: 1px;
+    border-color: #d6bd91;
+    align-content: space-between;
+}
+
+.email {
+    position: absolute;
+    top: 48%;
+    left: 33.5%;
+    margin: 15px 0;
+}
+
+#email {
+    font-size: 0.9vw;
+    padding: 5px 35px 5px 3px;
+    border-radius: 2px;
+    width: 250px;
+    display: inline-block;
+    color: #b4640c;
+    border: solid;
+    border-width: 1px;
+    border-color: #d6bd91;
+    align-content: space-between;
+}
+
+::placeholder {
+    color: #b4640c;
+    opacity: 1;
+}
+
+.cpass {
+    position: absolute;
+    top: 58%;
+    left: 33.5%;
+    margin: 15px 0;
+}
+
+#confirmpass {
+    font-size: 0.9vw;
+    padding: 5px 35px 5px 3px;
+    border-radius: 2px;
+    width: 250px;
+    display: inline-block;
+    color: #b4640c;
+    border: solid;
+    border-width: 1px;
+    border-color: #d6bd91;
+    align-content: space-between;
+}
+
+.users {
+    position: absolute;
+    top: 48%;
+    left: 33.5%;
+    margin: 15px 0;
+}
+
+#username {
+    font-size: 0.9vw;
+    padding: 5px 35px 5px 3px;
+    border-radius: 2px;
+    width: 250px;
+    color: #b4640c;
+    display: inline-block;
+    border: solid;
+    border-width: 1px;
+    border-color: #d6bd91;
+    align-content: space-between;
+}
+
+.passes {
+    position: absolute;
+    top: 58%;
+    left: 33.5%;
+    margin: 15px 0;
+}
+
+#password {
+    font-size: 0.9vw;
+    padding: 5px 35px 5px 3px;
+    border-radius: 2px;
+    width: 250px;
+    display: inline-block;
+    border: solid;
+    color: #b4640c;
+    border-width: 1px;
+    border-color: #d6bd91;
+    align-content: space-between;
+}
+
+
+.ASbutton {
+    margin: 3px;
+    outline: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    padding: 4px 30px;
+    background-color: #518f99;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left: 38.5%;
+    font-size: 26px;
+
+}
+
+.ASbutton:hover {
+    background-color: #1c4c56;
+    cursor: pointer;
+
+}
+.VSbk {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 40%;
+    height: 100%;
+    background-color: #1c4c56;
+}
+
+.VRegbk {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 40%;
+    height: 100%;
+    background-color: #1c4c56;
+}
+
+#fyp {
+    position: absolute;
+    top: 70%;
+    left: 37%;
+    color: #0d1516;
+    font-size: 1.2vw;
+    text-decoration: none;
+
+}
+
+#fyp:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+input:autofill
+{
+    color: #b4640c;
+    background-color: #d6bd91;
+}
+
+
+.VSbutton {
+    margin: 3px;
+    outline: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    padding: 4px 30px;
+    background-color: #518f99;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left: 39%;
+    font-size: 26px;
+}
+
+.VSbutton:hover {
+    background-color: #1c4c56;
+    cursor: pointer;
+}
+
+.VRbutton {
+    margin: 3px;
+    outline: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    padding: 4px 30px;
+    display: inline-block;
+    background-color: #518f99;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    font-size: 26px;
+}
+
+.VRbutton:hover {
+    background-color: #1c4c56;
+    cursor: pointer;
+}
+
+#Uerror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    display: none;
+}
+
+#Perror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    display: none;
+}
+
+#Eerror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    display: none;
+}
+
+#Aerror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    display: none;
+}
+
+.successfully {
+    display: none;
+    color: rgb(0, 139, 88);
+    background-color: #e0ffec;
+    padding: 7px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
