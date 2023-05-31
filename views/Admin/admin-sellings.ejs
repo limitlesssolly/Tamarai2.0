@@ -11,10 +11,28 @@
 </head>
 
 <body>
-        <%- include('../partials/adminNav.ejs') %>
+    <%- include('../partials/adminNav.ejs') %>
         <div class="sells">
-            <div class="categories">
-                
+            <div class="products">
+                <h2>Products</h2>
+                <table>
+                    <tr>
+                        <th>Product name</th>
+                        <th>Seller</th>
+                        <th>Price</th>
+                        <th>Count In Stock</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td><input name="name" type="text"></td>
+                        <td><input name="seller" type="text"></td>
+                        <td><input name="price" type="text"></td>
+                        <td><input name="count" type="text"></td>
+                        <td><input name="category" type="text"></td>
+                        <button onclick="addItem()"> Plus one </button>
+                    </tr>
+                </table>
             </div>
         </div>
         <%- include('../partials/footer.ejs') %>
