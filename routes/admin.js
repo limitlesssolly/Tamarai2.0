@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import admin from '../models/adminData.js';
 const router = Router();
-import {signups,signins, signupValidation} from "../controllers/admin-controllers.js";
+import {signins} 
+from "../controllers/admin-controllers.js";
+
 
 /* GET /admin page. */
 router.get('/', function(req, res, next) {
@@ -11,9 +13,9 @@ router.get('/', function(req, res, next) {
 /* POST /admin page. */
 router.post('/', signins );
 
-router.post('/getSearch', async (req, res) => {
-    let payload = req.body.payload.trim();
-    let search = await admin.find({username:{$regex: new RegExp('^' + payload + '.*', 'i')}}).exec();
-})
+// router.post('/getSearch', async (req, res) => {
+//     let payload = req.body.payload.trim();
+//     let search = await admin.find({username:{$regex: new RegExp('^' + payload + '.*', 'i')}}).exec();
+// })
 
 export default router;
