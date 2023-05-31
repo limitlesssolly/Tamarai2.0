@@ -47,6 +47,7 @@ const signins = async (req, res, next) => {
   }
 };
 
+
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -64,7 +65,7 @@ const signup = async (req, res, next) => {
       });
       await newUser.save();
       console.log('Registration successful!');
-      return res.redirect('/user/user-homepage');
+      return res.redirect('user/user-homepage');
     } catch (err) {
       console.log(err);
       return res.status(500).render('error.ejs');
