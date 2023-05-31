@@ -67,12 +67,12 @@ const signup = async (req, res, next) => {
     });
   } else {
     try {
-      const hashPass = await bcrypt.hash(req.body.password, 10);
+      const hashPass = await bcrypt.hash(req.body.pass, 10);
       const newseller = new seller({
         email: req.body.email,
-        username: req.body.username,
+        username: req.body.name,
         password: hashPass,
-        confirmPassword: req.body.confirmPassword
+        confirmPassword: req.body.confirmpass
       });
       await newseller.save();
       console.log('Registration successful!');

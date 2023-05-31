@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>u/Sign Up</title>
     <link rel="stylesheet" href="/css/seller-signup.css">
-    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+    
   </head>
   <body>
     
@@ -40,4 +39,67 @@
       <%- include('../partials/footer.ejs') %>
   </body>
   <script src="/JS/valido.js"></script>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/MainStyleSheet.css">
+  <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+  <title>
+    User Register
+  </title>
+</head>
+
+<body>
+  <div class="USbk">
+    <img src="/images/thewhiteicon.png" alt="logz" class="logo">
+    <h3 class="welcomes">Welcome Back!</h3>
+    <div class="wordings"> Missed us? Hop right in,<br>Sign in now! </div>
+    <a href="/user"><button class="USbutton" style="top: 65%; left: 35%;">Sign In</button></a>
+  </div>
+  <div class="URegsiter">
+    <div class="UReggie">
+      <h2>Sign up to your account</h2>
+      <div class="words">or choose your user</div>
+      <span class="use" style="top: 28%; left: 39.5%;"><i href="#"><img src='/images/user.png' alt="using" /></i></span>
+      <a href="/seller/register"><span class="vend" style="left: 49.5%;"><i href="#"><img src='/images/shopping-bag.png' alt="sells" /></i></span></a>
+
+      <div class="line"></div>
+    </div>
+    <form action="/user/register" method="post">
+      <div class="users" style="left: 15%;">
+        <label for="username"> username </label>
+        <input id="username" type="text" placeholder="username" name="name"> <br>
+        <span id="Uerror"></span>
+      </div>
+      <div class="passes" style="left: 15%;">
+        <label for="password"> password </label>
+        <input id="password" type="password" placeholder="password" name="pass"> <br>
+        <span id="Perror"></span>
+      </div>
+      <div class="email" style="left: 55%;">
+        <label for="email"> email </label>
+        <input id="email" type="email" placeholder="example@mail.com" name="email"> <br>
+        <span id="Eerror"></span>
+      </div>
+      <div class="cpass" style="left: 55%;">
+        <label for="cpass"> confirm pass </label>
+        <input id="confirmpass" type="password" placeholder="confirm password" name="confirmpass"> <br>
+      </div>
+      <div class="successfully" id="Success"> Registration Successful!
+      </div>
+      <button class="URbutton" type="submit" style="top: 75%;">Sign up</button>
+    </form>
+  </div>
+  <!-- <%- include('../partials/chat.ejs') %> -->
+  <div class="foots">
+    <%- include('../partials/footer.ejs') %>
+  </div>
+</body>
+
 </html>
