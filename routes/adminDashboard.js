@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 import {
+    addItem,
     getItem,
     getItems, 
     updateItem,
@@ -38,6 +39,9 @@ router.get('/sellings', function (req, res, next){
     res.render('admin/admin-sellings');
 })
 
+/* Post One item using id */
+router.post('/sellings',addItem);
+
 /* GET One item using id */
 router.get('/getOne/:id',getItem);
 
@@ -59,6 +63,5 @@ router.get('/usings', function (req, res, next){
 router.get('/settings', function (req, res, next){
     res.render('admin/admin-settings');
 })
-
 
 export default router;

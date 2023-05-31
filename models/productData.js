@@ -2,10 +2,6 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema ({
-    id : {
-        type: Number,
-        required: true,
-    },
     name: {
         type: String,
         required: true,
@@ -24,7 +20,7 @@ const productSchema = new Schema ({
     },
     image: {
         type: String,
-        required: true,
+        required: false,
     },
     countInStock: {
         type: Number,
@@ -32,15 +28,15 @@ const productSchema = new Schema ({
     },
     description: {
         type: String,
-        required: true,
+        required: false,
     },
     category: {
         type: String,
-        required: false,
+        required: true,
     },
     color: {
         type: Array,
-        required: true,
+        required: false,
     },
 }, { timestamps: true });
 
