@@ -72,23 +72,21 @@ const signups = async (req, res, next) => {
 };
 
 const addItem = async (req, res, next) => {
-    try {
-      const newItem = new admin({
-        
-
-      });
-      await newItem.save();
-      console.log('Item added successfully');
-      // return res.redirect('/admin/dashboard');
-    } catch (err) {
-      console.log(err);
-      return res.status(500).render('error.ejs');
-      // if (errors && errors.length > 0) {
-      //   for (let i = 0; i < errors.length; i++) {
-      //     errors[i].msg
-      //   }
-      // }
-  }
+  try {
+    const newItem = new products({
+      name: req.body.name,
+      seller: req.body.seller,
+      price: req.body.price,
+      count: req.body.count,
+      category: req.body.category,
+    });
+    // console.log(newItem);
+    await newItem.save();
+    console.log('Item added successfully');
+  } catch (err) {
+    console.log(err);
+    return res.status(500).render('error.ejs');
+}
 };
 
 const getItem = async (req, res, next) => {
