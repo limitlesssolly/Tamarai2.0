@@ -23,12 +23,13 @@ const signins = async (req, res, next) => {
   var un = req.body.name;
   var pw = req.body.pass;
 
+  console.log
   try {
     const users = await user.find({});
     var i;
     for (i = 0; i < users.length; i++) {
       if (users[i].username === un) {
-        if (bcrypt.compareSync(pw, user[i].password)) {
+        if (bcrypt.compareSync(pw, users[i].password)) {
           console.log("login successful!")
           return res.redirect('/user/homepage');
         }
@@ -56,12 +57,12 @@ const signup = async (req, res, next) => {
     });
   } else {
     try {
-      const hashPass = await bcrypt.hash(req.body.password, 10);
+      const hashPass = await bcrypt.hash(req.body.pass, 10);
       const newuser = new user({
         email: req.body.email,
-        username: req.body.username,
+        username: req.body.name,
         password: hashPass,
-        confirmPassword: req.body.confirmPassword
+        confirmPassword: req.body.confirmpass
       });
       await newuser.save();
       console.log('Registration successful!');
