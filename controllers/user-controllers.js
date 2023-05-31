@@ -1,5 +1,6 @@
 import {body, validationResult} from "express-validator";
-import users from '../models/userRegister.js';
+import user from '../models/userRegister.js';
+
 import bcrypt from 'bcrypt';
 
 // const saltRounds = 10;
@@ -23,13 +24,13 @@ const signins = async (req, res, next) => {
   var pw = req.body.pass;
 
   try {
-    const user = await users.find({});
+    const users = await user.find({});
     var i;
-    for (i = 0; i < user.length; i++) {
-      if (user[i].username === un) {
+    for (i = 0; i < users.length; i++) {
+      if (users[i].username === un) {
         if (bcrypt.compareSync(pw, user[i].password)) {
           console.log("login successful!")
-          return res.redirect('/user/user-homepage');
+          return res.redirect('/user/homepage');
         }
         else {
           continue;
@@ -47,28 +48,32 @@ const signins = async (req, res, next) => {
   }
 };
 
-
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.render("user-homepage", {
+    res.render("user-sign-in", {
       errors: errors.array(),
     });
   } else {
     try {
       const hashPass = await bcrypt.hash(req.body.password, 10);
-      const newUser = new user({
+      const newuser = new user({
         email: req.body.email,
         username: req.body.username,
         password: hashPass,
         confirmPassword: req.body.confirmPassword
       });
-      await newUser.save();
+      await newuser.save();
       console.log('Registration successful!');
-      return res.redirect('user/user-homepage');
-    } catch (err) {
-      console.log(err);
-      return res.status(500).render('error.ejs');
+      return res.redirect('/user/homepage');
+    }  catch (err) {
+      // console.log(err);
+      // return res.status(500).render('error.ejs');
+      if (errors && errors.length > 0) {
+        for (let i = 0; i < errors.length; i++) {
+          errors[i].msg
+        }
+      }
     }
   }
 };
