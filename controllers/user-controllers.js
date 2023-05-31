@@ -1,5 +1,5 @@
 import {body, validationResult} from "express-validator";
-import users from '../models/sellerRegister.js';
+import users from '../models/userRegister.js';
 import bcrypt from 'bcrypt';
 
 // const saltRounds = 10;
@@ -47,7 +47,7 @@ const signins = async (req, res, next) => {
   }
 };
 
-const signups = async (req, res, next) => {
+const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     res.render("user-homepage", {
@@ -72,4 +72,4 @@ const signups = async (req, res, next) => {
   }
 };
 
-export { signins, signups, signupValidation };
+export { signins, signup, signupValidation };
