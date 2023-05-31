@@ -114,11 +114,22 @@ nav li.welcomes
     height:20px;
 }
 
-.navtoo li img:hover:not(.active) 
+#searches
 {
-    padding: 10px 0px 10px 0px;
+    -o-border-radius: 20px;
+    padding:  5px;
+    border: 2px solid #d6bd91;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    position: absolute;
+    top : 10px;
+    color: #0d1516;
 }
-
 
 @media screen and (max-width: 600px) 
 {

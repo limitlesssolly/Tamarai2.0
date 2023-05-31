@@ -10,21 +10,30 @@ router.get('/', function(req, res, next) {
 
 /* GET /seller/products page. */
 router.get('/products', function(req, res, next) {
-    res.render('seller-products');
+    res.render('seller/seller-products');
 });
 
 /* GET /seller/register page. */
-router.get('/seller/register', function(req, res, next) {
+router.get('/register', function(req, res, next) {
     res.render('seller/seller-register');
 })
-router.get('/seller/info', function(req, res, next) {
+
+/* GET /seller/info page. */
+router.get('/info', function(req, res, next) {
     res.render('seller/seller-info');
 })
-router.get('/seller/products', function(req, res, next) {
+
+/* GET /seller/products page. */
+router.get('/products', function(req, res, next) {
     res.render('seller/seller-products');
 })
 
+router.get('/profile', function(req, res, next) {
+    res.render('seller/seller-profile');
+})
+
 router.post('/', signins);
+
 router.post('/register', signup);
 
 export default router;
