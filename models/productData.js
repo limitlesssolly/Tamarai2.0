@@ -22,7 +22,7 @@ const productSchema = new Schema ({
         type: String,
         required: false,
     },
-    countInStock: {
+    count: {
         type: Number,
         required: true,
     },

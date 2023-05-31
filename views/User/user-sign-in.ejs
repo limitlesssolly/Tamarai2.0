@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/user-sign-in.css" />
     <link rel="shortcut icon" type="image/jpg" href="images/thebluelogo.png" />
-    <title> User Sign In</title>
+    <title>Sign In</title>
 </head>
 
 <body>
@@ -17,32 +17,31 @@
             <div class="Ulogger">
                 <h2>Sign in to your account</h2>
                 <div class="words">or choose your user</div>
-                <span class="use" style="top: 28%;"><img src='images/user.png' alt="using"/></span>
-                <a href="/admin/"><span class="adds"><img src='images/settings.png' alt="sets" /></span></a>
-                <a href="/seller/"><span class="vend"><img src='images/shopping-bag.png' alt="sells" /></span></a>
+                <span class="use" style="top: 28%;"><img src='images/user.png' alt="using" /></span>
+                <a href="/admin"><span class="adds"><img src='images/settings.png' alt="sets" /></span></a>
+                <a href="/seller"><span class="vend"><img src='images/shopping-bag.png' alt="sells" /></span></a>
 
                 <div class="line"></div>
             </div>
-            <form action="/user/homepage" method="get" class="form" onsubmit="return USValidation(this)">
+            <form action="/user" method="post" class="form">
                 <div class="users">
                     <label for="username"> username </label>
-                    <input id="username" type="text" placeholder="username"> <br>
+                    <input id="username" type="text" placeholder="username" name="name"> <br>
                     <span id="Uerror">error</span>
                 </div>
                 <div class="passes">
                     <label for="password"> password </label>
-                    <input id="password" type="password" placeholder="password"> <br>
+                    <input id="password" type="password" placeholder="password" name="pass"> <br>
                     <span id="Perror">error</span>
                 </div>
                 <span href="#" id="fyp">forgot your password?</span>
-
                 <button class="USbutton" type="submit" id="submit">Sign in</button>
             </form>
         </div>
         <div class="URegbk">
             <h3 class="welcomes">Welcome Aboard!</h3>
             <div class="wordings"> You new here? Experience all <br> the fun, Join us now! </div>
-            <a href="/user/register"><button class = "URbutton">Sign Up</button></a>
+            <a href="/user/register"><button class="URbutton">Sign Up</button></a>
         </div>
     </div>
 

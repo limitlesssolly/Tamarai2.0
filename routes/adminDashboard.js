@@ -39,7 +39,7 @@ router.get('/sellings', function (req, res, next){
     res.render('admin/admin-sellings');
 })
 
-/* Post One item using id */
+/* Post One item */
 router.post('/sellings',addItem);
 
 /* GET One item using id */

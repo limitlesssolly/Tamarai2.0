@@ -24,18 +24,22 @@
                         <th>Category</th>
                         <th>Action</th>
                     </tr>
-                    <tr>
+                    <tr class="adds" style="display: contents;">
+                        <form method="post" action="/admin/dashboard/sellings">
                         <td><input name="name" type="text"></td>
                         <td><input name="seller" type="text"></td>
                         <td><input name="price" type="text"></td>
                         <td><input name="count" type="text"></td>
                         <td><input name="category" type="text"></td>
-                        <button onclick="addItem()"> Plus one </button>
+                        <td><button type="submit"> Plus one </button></td>
+                    </form>
                     </tr>
                 </table>
             </div>
         </div>
         <%- include('../partials/footer.ejs') %>
 </body>
-
+<script>
+    
+</script>
 </html>
