@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import express from "express";
 const router = Router();
-import { signups, signins, signupValidation } from "../controllers/user-controllers.js";
+import { signup, signins, signupValidation } from "../controllers/user-controllers.js";
 
 /* GET /user page. */
 router.get('/', function(req, res, next) {
@@ -28,5 +28,6 @@ router.get('/homepage/bag', function(req, res, next) {
 })
 
 router.post('/', signins);
+router.post('/register', signup);
 
 export default router;
