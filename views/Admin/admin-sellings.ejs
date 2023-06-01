@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sellers</title>
+    <title>
+        <%= title%>
+    </title>
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <link rel="stylesheet" href="/css/admin/admin-sellings.css">
 </head>
@@ -14,7 +16,9 @@
     <%- include('../partials/adminNav.ejs') %>
         <div class="sells">
             <div class="products">
-                <h2>Products</h2>
+                <h2>All Products<span>
+                        <h3 onclick="nav()">+</h3>
+                    </span></h2>
                 <table>
                     <tr>
                         <th>Product name</th>
@@ -24,15 +28,28 @@
                         <th>Category</th>
                         <th>Action</th>
                     </tr>
-                    <tr class="adds" style="display: contents;">
+                    <tr class="views">
+                        <% if (data!=undefined) {%>
+                            <% data.forEach((element)=> {%>
+                                <td><%=element.name></td>
+                                <td><%=element.seller></td>
+                                <td><%=element.price></td>
+                                <td><%=element.count></td>
+                                <td><%=element.category></td>
+                            <%})%> 
+                        <%} else {%>
+                            <p>no product found</p>
+                            <%}%>
+                    </tr>
+                    <tr class="adds" id="adds" style="display: none;">
                         <form method="post" action="/admin/dashboard/sellings">
-                        <td><input name="name" type="text"></td>
-                        <td><input name="seller" type="text"></td>
-                        <td><input name="price" type="text"></td>
-                        <td><input name="count" type="text"></td>
-                        <td><input name="category" type="text"></td>
-                        <td><button type="submit"> Plus one </button></td>
-                    </form>
+                            <td><input name="name" type="text"></td>
+                            <td><input name="seller" type="text"></td>
+                            <td><input name="price" type="text"></td>
+                            <td><input name="count" type="text"></td>
+                            <td><input name="category" type="text"></td>
+                            <td><button type="submit" id="addbutts"> Plus one </button></td>
+                        </form>
                     </tr>
                 </table>
             </div>
@@ -40,6 +57,21 @@
         <%- include('../partials/footer.ejs') %>
 </body>
 <script>
-    
+    function nav() {
+        if (document.getElementById("adds").style.display == "contents") {
+            navClose();
+        }
+        else if (document.getElementById("adds").style.display == "none") {
+            navOpen();
+        }
+    }
+    function navOpen() {
+        document.getElementById("adds").style.display = "contents";
+    }
+
+    function navClose() {
+        document.getElementById("adds").style.display = "none";
+    }
 </script>
+
 </html>

@@ -1,12 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import {
-    addItem,
-    getItem,
-    getItems, 
-    updateItem,
-    deleteItem} 
-from "../controllers/admin-controllers.js";
+import admin from "../controllers/admin-controllers.js";
 
 /* GET /admin/dashboard page. */
 router.get('/', function (req, res, next){
@@ -36,23 +30,23 @@ router.get('/messages', function (req, res, next){
 
 /* GET /admin/dashboard/sellings page. */
 router.get('/sellings', function (req, res, next){
-    res.render('admin/admin-sellings');
+    res.render('admin/admin-sellings', {title: "title"});
 })
 
 /* Post One item */
-router.post('/sellings',addItem);
+router.post('/sellings',admin.addItem);
 
 /* GET One item using id */
-router.get('/getOne/:id',getItem);
+router.get('/getOne/:id',admin.getItem);
 
 /* GET More Than One item using id */
-router.get('/getAll/:id',getItems);
+router.get('/getAll',admin.getItems);
 
 /* UPDATE One item using id */
-router.patch('/update/:id',updateItem)
+router.patch('/update/:id',admin.updateItem)
 
 /* Delete One item using id */
-router.delete('/delete/:id', deleteItem)
+router.delete('/delete/:id', admin.deleteItem)
 
 /* GET /admin/dashboard/usings page. */
 router.get('/usings', function (req, res, next){
