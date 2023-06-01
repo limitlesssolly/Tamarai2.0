@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Display all users</title>
+    </head>
+    <body>
+        <h1>Display all users</h1>
+        <%= if (users.size() > 0) { %>
+            <%= for (int i = 0; i < users.size; i++) { %>
+                <h4> <%- users[i].username %></h4>
+                <br>
+            <%= } %>
+        <% } else {%>
+            <h1>No Users to show</h1>
+        <%= } %>
+    </body>
+</html>
