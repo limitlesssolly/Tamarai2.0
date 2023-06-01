@@ -140,3 +140,14 @@ const deleteItem = async (req, res) => {
     res.status(400).json({ message: error.message })
   }
 };
+
+export {
+  signins,
+  signups,
+  signupValidation,
+  addItem,
+  getItem,
+  getItems,
+  updateItem,
+  deleteItem
+};

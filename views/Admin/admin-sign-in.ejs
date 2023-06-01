@@ -27,12 +27,25 @@
             <div class="users" style="top: 49%;">
                 <label for="username"> username </label>
                 <input id="username" name="name" type="text" placeholder="username"><br>
-                <span id="Uerror"></span>
+                <div id="Lerror">
+                    <span class="errorMsg" id="unerr">
+                      <%if( errorMsg && errorMsg.username) { %>
+                          <%=errorMsg.username%>
+                      <%}%>
+                    </span>
+                </div>
+
             </div>
             <div class="passes" style="top: 58%;">
                 <label for="password"> password </label>
                 <input id="password" name="pass" type="password" placeholder="password"> <br>
-                <span id="Perror"></span>
+                <div id="Lerror">
+                    <span class="errorMsg" id="passerr">
+                      <%if( errorMsg && errorMsg.password) { %>
+                          <%=errorMsg.password%>
+                      <%}%>
+                    </span>
+                </div>
             </div>
             <span href="#" id="fyp">forgot your password?</span>
             <button class="ASbutton" type="submit" id="submit">Sign in</button>
@@ -41,6 +54,7 @@
     <div class="foots">
         <%- include('../partials/footer.ejs') %>
     </div>
-    <!-- <script src="/JS/ajax.js"></script> -->
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="../JS/registervalid.js"></script> -->
 </html>

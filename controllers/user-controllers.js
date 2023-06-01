@@ -1,11 +1,6 @@
-import {body, validationResult} from "express-validator";
+import { body, validationResult } from "express-validator";
 import user from '../models/userRegister.js';
-
 import bcrypt from 'bcrypt';
-
-// const saltRounds = 10;
-
-
 
 const signupValidation = [
   body('name').notEmpty().withMessage('Username is required')
@@ -23,7 +18,6 @@ const signins = async (req, res, next) => {
   var un = req.body.name;
   var pw = req.body.pass;
 
-  console.log
   try {
     const users = await user.find({});
     var i;
@@ -67,7 +61,7 @@ const signup = async (req, res, next) => {
       await newuser.save();
       console.log('Registration successful!');
       return res.redirect('/user/homepage');
-    }  catch (err) {
+    } catch (err) {
       // console.log(err);
       // return res.status(500).render('error.ejs');
       if (errors && errors.length > 0) {
@@ -79,4 +73,89 @@ const signup = async (req, res, next) => {
   }
 };
 
-export { signins, signup, signupValidation };
+// const register = async (req, res) => {
+
+//   //get data from form
+//   const { firstName, lastName, email, password, confirmPass } = req.body;
+
+//   let errorMsg = {};
+
+//   //validate data
+//   if (firstName.trim() == "") errorMsg.firstName = "First name is required";
+
+//   if (lastName.trim() == "") errorMsg.lastName = "Last name is required";
+
+//   let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+//   if (email.trim() == "") errorMsg.email = "Email is required";
+//   else if (!email.match(emailFormat)) errorMsg.email = "Invalid Email";
+//   else {
+//     const existingUser = await User.findOne({ email });
+//     if (existingUser) {
+//       errorMsg.email = "Email already exists!";
+//     }
+//   }
+
+//   if (password.trim() == "") errorMsg.password = "Password is required";
+//   else if (password.trim().length < 8)
+//     errorMsg.password = "Password must be at least 8 characters";
+
+//   if (password.trim() !== confirmPass.trim())
+//     errorMsg.confirmPass = "Passwords do not match";
+
+//   if (Object.keys(errorMsg).length > 0) {
+//     for (let key in errorMsg) {
+//       console.log(errorMsg[key]);
+//     }
+//     if (req.query.ajax)
+//       return res.json({ errors: errorMsg, admin: false });
+//     else
+//       return res.render("register", { errorMsg, admin: false });
+//   }
+
+//   //save user to db
+//   const user = new User({
+//     firstName: firstName,
+//     lastName: lastName,
+//     email: email,
+//     password: password,
+//     userType: "user",
+//   });
+
+//   try {
+//     await user.save();
+//     console.log("User saved:", user);
+//     //save user into algolia
+//     usersIndex.saveObject({
+//       objectID: user._id.toString(),
+//       name: user.firstName + " " + user.lastName,
+//       email: user.email,
+//       userType: user.userType,
+//       createdAt: user.createdAt,
+//     });
+//   }
+//   catch (err) {
+//     console.log(err);
+//   }
+//   //data ok
+//   //create session
+//   req.session.userID = user._id;
+//   req.session.userType = user.userType;
+//   req.session.firstName = user.firstName;
+//   req.session.lastName = user.lastName;
+//   req.session.email = user.email;
+
+//   if (req.query.ajax) {
+//     console.log("Registration done using ajax");
+//     return res.json({ errors: errorMsg, admin: false });
+//   }
+//   else {
+//     console.log("Registration done NOT using ajax");
+//     return res.redirect("/account");
+//   }
+// };
+
+export {
+  signins,
+  signup,
+  signupValidation,
+};

@@ -30,7 +30,11 @@ app.set("view engine", "ejs"); // first thin we do when using ejs
 
 app.use(logger("dev"));
 app.use(fileUpload());
-app.use(session({ secret: 'Your_Secret_Key' }))
+app.use(session({ 
+    secret: 'Your_Secret_Key',
+    resave: false,
+    saveUninitialized: false, 
+ }))
 app.use(express.json());
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 app.use(express.urlencoded({ extended: false }));
