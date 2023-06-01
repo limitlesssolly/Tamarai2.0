@@ -1,5 +1,6 @@
 import { body, validationResult } from "express-validator";
 import admin from '../models/adminData.js';
+import user from '../models/userData.js';
 import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
 import asyncHandler from "express-async-handler"
@@ -141,13 +142,16 @@ const deleteItem = async (req, res) => {
   }
 };
 
-export {
-  signins,
-  signups,
-  signupValidation,
-  addItem,
-  getItem,
-  getItems,
-  updateItem,
-  deleteItem
+const getUsers = async (req, res, next) => {
+  try {
+    const users = await user.find({});
+    return res.render('../views/Admin/admin-users');
+  } catch (err) {
+    console.log(err);
+    return res.status(500).render('error.ejs');
+  }
 };
+
+// module.exports = {signins, signups, addItem, getItem, getItems, updateItem, deleteItem };
+
+export default { signins, signups, addItem, getItem, getItems, updateItem, deleteItem, getUsers };
