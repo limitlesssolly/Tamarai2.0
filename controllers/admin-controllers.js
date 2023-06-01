@@ -141,4 +141,6 @@ const deleteItem = async (req, res) => {
   }
 };
 
-module.exports = {signins, signups, addItem, getItem, getItems, updateItem, deleteItem };
+// module.exports = {signins, signups, addItem, getItem, getItems, updateItem, deleteItem };
+
+export default { signins, signups, addItem, getItem, getItems, updateItem, deleteItem };
