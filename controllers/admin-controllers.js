@@ -140,3 +140,5 @@ const deleteItem = async (req, res) => {
     res.status(400).json({ message: error.message })
   }
 };
+
+module.exports = {signins, signups, addItem, getItem, getItems, updateItem, deleteItem };
