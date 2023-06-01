@@ -2,6 +2,7 @@ import { body, validationResult } from "express-validator";
 import admin from '../models/adminData.js';
 import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
+import asyncHandler from "express-async-handler"
 
 // Validation middleware for signups
 const signupValidation = [
@@ -101,10 +102,15 @@ const getItem = async (req, res, next) => {
 
 const getItems = async (req, res, next) => {
   try {
-    const data = await products.find();
-    res.json(data)
+    let data = await products.find();
+    console.log(data);
+    res.render('/admin/dashboard/sellings', {
+      data,
+    });
+
   }
   catch (error) {
+    console.log(error);
     res.status(500).json({ message: error.message })
   }
 };
@@ -133,15 +139,4 @@ const deleteItem = async (req, res) => {
   catch (error) {
     res.status(400).json({ message: error.message })
   }
-};
-
-export {
-  signins,
-  signups,
-  signupValidation,
-  addItem,
-  getItem,
-  getItems,
-  updateItem,
-  deleteItem
 };
