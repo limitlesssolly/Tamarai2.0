@@ -7,7 +7,13 @@ import admin from "../controllers/admin-controllers.js";
 /* GET /admin page. */
 router.get('/', function(req, res, next) {
     res.render('admin/admin-sign-in');
-})
+});
+
+/* GET /admin/users page. */
+router.get('/users', function(req, res, next) {
+    res.render('admin/admin-users');
+});
+
 
 /* POST /admin page. */
 router.post('/', admin.signins );
