@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 /* GET /admin/users page. */
 router.get('/users', function(req, res, next) {
-    res.render('admin/admin-users');
+    res.render('admin/admin-users', {users: 'Users'});
 });
 
 
