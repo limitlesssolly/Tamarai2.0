@@ -51,6 +51,7 @@ app.use('/admin', adminRouter);
 app.use('/admin/dashboard', adminDashboardRouter);
 app.use('/seller', sellerRouter);
 app.use('/user', userRouter);
+
 app.use('/products', productRouter);
 
 app.get('/', function (req, res) {

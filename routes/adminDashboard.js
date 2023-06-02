@@ -28,22 +28,36 @@ router.get('/sellings', function (req, res, next){
     res.render('admin/admin-sellings');
 })
 
-/* GET /admin/dashboard/usings page. */
-router.get('/usings', function (req, res, next){
-    res.render('admin/admin-usings');
-})
-
-/* GET /admin/dashboard/settings page. */
-router.get('/settings', function (req, res, next){
-    res.render('admin/admin-settings');
-})
-
 /* GET /admin/dashboard/sellings/item page. */
 router.get('/sellings/:_id',getItem);
 
 /* Post One item */
 router.post('/sellings',addItem);
 
+
+// /* GET /admin/dashboard/usings page. */
+ router.get('/usings', function (req, res, next){
+     res.render('admin/admin-usings');
+   // res.send("hello");
+   
+})
+
+// router.get('/usings',getItem);
+// router.post('/usings',addItem);
+
+ 
+
+
+ 
+
+ 
+
+
+
+/* GET /admin/dashboard/settings page. */
+router.get('/settings', function (req, res, next){
+    res.render('admin/admin-settings');
+})
 /* GET More Than One item using id */
 router.get('/getAll',getItems);
 
