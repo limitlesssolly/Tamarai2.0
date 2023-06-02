@@ -5,11 +5,12 @@ const router = Router();
 
 // Get all products 
 router.get('/', (req, res, next) => {
-    res.send("All products");
+    // res.send("All products");
     //res.render('user/products', { products: products});
     //Retrieve products data from MongoDB
     const products = Product.find({}).then((products) => {
-        res.json(products);
+        // res.json(products);
+        res.render('user/products', { products: products });
     }).catch((err) => {
         next(err);
     });
