@@ -35,6 +35,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false, 
  }))
+
+
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 app.use(express.urlencoded({ extended: false }));
