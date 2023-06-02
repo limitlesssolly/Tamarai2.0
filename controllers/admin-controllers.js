@@ -96,6 +96,7 @@ const addItem = async (req, res, next) => {
 
 const getItem = async (req, res, next) => {
   try {
+    console.log(req.cookies);
     const productitem = await products.findById(req.params._id);
     res.send(productitem);
   }
