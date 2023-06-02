@@ -28,7 +28,7 @@ const signins = async (req, res, next) => {
       req.session.admin = {
         username,
       };
-      res.send('session created');
+      res.redirect('/admin/dashboard')
     }
   } else res.sendStatus(401);
   // var un = req.body.name;
