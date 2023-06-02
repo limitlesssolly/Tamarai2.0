@@ -60,15 +60,12 @@ const signup = async (req, res, next) => {
       console.log('Registration successful!');
       return res.redirect('/user/homepage');
     } catch (err) {
-      // console.log(err);
-      // return res.status(500).render('error.ejs');
-      if (errors && errors.length > 0) {
-        for (let i = 0; i < errors.length; i++) {
-          errors[i].msg
+      console.log(err);
+      return res.status(500).render('error.ejs');
         }
       }
-    }
-  }
+    
+  
 };
 
 // const register = async (req, res) => {
