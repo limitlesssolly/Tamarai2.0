@@ -50,7 +50,7 @@ router.get('/profile/:id', async (req, res) => {
     try {
       const sellers = await seller.findById(req.params.id);
       if (!sellers)return res.status(404).render('error.ejs', { message: "Seller not found" });
-      else return res.render('seller/seller-profile', {seller:req.session.seller});
+      else return res.render('seller/seller-profile', {seller});
     } catch (err) {
       console.log(err);
       return res.status(500).render('error.ejs');
