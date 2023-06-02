@@ -82,7 +82,7 @@ const signup = async (req, res, next) => {
 
       //  res.render('seller-register',{message:"sucuss"})
       console.log('Registration successful!');
-      return res.redirect('/seller/profile/' + newseller._id);
+      return res.redirect('/seller/products' );
     } catch (err) {
       console.log(err);
       return res.status(500).render('error.ejs');
