@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import express from "express";
 const router = Router();
-import {signup,signins, signupValidation} from "../controllers/seller-controller.js";
+import {signup ,signins, signupValidation} from "../controllers/seller-controller.js";
 
 /* GET /seller page. */
 router.get('/', function(req, res, next) {
