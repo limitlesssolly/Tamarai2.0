@@ -3,13 +3,13 @@
         <link rel="stylesheet" href="../../public/CSS/userHomepage.css" />
     </head>
     <body>
-        <%- include('../partials/usernav") %>
+        <!-- <%- include('../partials/usernav") %> -->
         <% for(let i=0; i<products.length; i++) { %>
             <!-- <section class="product">
                 <div class="product-container">
                     <div class="product-card">
                         <div class="product-image">
-                            <!-- <span class="discount-tag">number% off</span> Comment here
+                            <span class="discount-tag">number% off</span> Comment here
                             <a href="/product/<%= products[i]._id %>"> 
                                 <img src="<%= products[i].image %>" class="product-thumb" alt="<%= products[i].name %>">
                             </a>
@@ -18,7 +18,7 @@
                         <div class="product-info">
                             <h2 class="product-brand"><%= products[i].brand %></h2>
                             <p class="product-short-des"><%= products[i].description %></p>
-                            <!-- <span class="price">Price after discount L.E.</span> comment here
+                            <span class="price">Price after discount L.E.</span> comment here
                             <span class="actual-price"><%= products[i].price %></span>
                         </div>
                     </div>
