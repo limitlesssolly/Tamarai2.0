@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
     //Retrieve products data from MongoDB
     const products = Product.find({}).then((products) => {
         // res.json(products);
-        res.render('user/products', { products: products });
+        res.render('user/try', { products: products });
     }).catch((err) => {
         next(err);
     });
