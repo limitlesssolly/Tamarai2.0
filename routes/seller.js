@@ -44,7 +44,7 @@ router.get('/products', function(req, res, next) {
 //     }
 //   });
 
-router.get('/seller/profile/:id', async (req, res) => {
+router.get('/profile/:id', async (req, res) => {
     try {
       const seller = await seller.findById(req.params.id);
       if (!seller) {
