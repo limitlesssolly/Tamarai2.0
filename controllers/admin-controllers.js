@@ -12,7 +12,7 @@ const signins = async (req, res, next) => {
     else if (admindb) {
       if (bcrypt.compareSync(password, admindb.password)) {
         req.session.admin = admindb;
-        return res.redirect('/admin/dashboard');
+        return res.redirect('/admin/dashboard/settings/' + admindb._id);
       }
       else return res.status(401).send({ msg: 'Please enter a valid password' });
     }
