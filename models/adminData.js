@@ -1,27 +1,14 @@
 import mongoose from 'mongoose';
 
 const Admin = new mongoose.Schema({
-    naming:
-    {
-        type:String,
-        required:false,
-    },
-    username:
-    {
-        type:String,
-        required:true,
-    },
-    password:
-    {
-        type:String,
-        required:true,
-    },
-    Utype:
-    {
-        type:String,
-        required:false,
-    },
+
+    name: { type: String, required: false, },
+
+    username: { type: String, unique: true, required: true, },
+
+    password: { type: String, required: true, },
     
+    type: { type: String, required: false, },
 
 }, { timestamps: true })
 

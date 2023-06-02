@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="/css/admin-sign-in.css" />
     <link rel="shortcut icon"  href="/images/thebluelogo.png" />
+
     <title>Admin Sign In</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     
     <div class="Alogin">
-        <!-- <img src="/images/thebluelogo.png" alt="logz" class="logo"> -->
+
         <div class="Alogger">
+
             <h2>Sign in to your account</h2>
+
             <div class="words">or choose your user</div>
+
             <a href="/user"><span class="use"><img src='/images/user.png' alt="using"/></span></a>
             <span class="adds" style="top: 28%;"><img src='/images/settings.png' alt="sets"/></span>
             <a href="/seller/"><span class="vend"><img src='/images/shopping-bag.png' alt="sells"/></span></a>
@@ -24,27 +29,35 @@
         </div>
         
         <form action="/admin" method="post" >
+
             <div class="users" style="top: 49%;">
                 <label for="username"> username </label>
                 <input id="username" name="username" type="text" placeholder="username"><br>
-                <div id="Lerror">
+                <div class="errors">
                 </div>
-
             </div>
+
             <div class="passes" style="top: 58%;">
                 <label for="password"> password </label>
                 <input id="password" name="password" type="password" placeholder="password"> <br>
-                <div id="Lerror">
+                <div class="errors">
                 </div>
             </div>
+
             <span href="#" id="fyp">forgot your password?</span>
+
             <button class="ASbutton" type="submit" id="submit">Sign in</button>
+
         </form>
+
     </div>
+
     <div class="foots">
         <%- include('../partials/footer.ejs') %>
     </div>
+
 </body>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- <script src="../JS/registervalid.js"></script> -->
+
 </html>

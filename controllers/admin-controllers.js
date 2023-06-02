@@ -1,89 +1,33 @@
-import { body, validationResult } from "express-validator";
 import admin from '../models/adminData.js';
-import user from '../models/userData.js';
 import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
-// import asyncHandler from "express-async-handler"
-
-// Validation middleware for signups
-const signupValidation = [
-  body('name').notEmpty().withMessage('Username is required')
-    .isLength({ min: 4 }).withMessage('Username must be at least 4 characters long'),
-  body('pass')
-    .notEmpty().withMessage('Password is required')
-    .isLength({ min: 7 }).withMessage('Password must be at least 7 characters long')
-    .matches(/[a-zA-Z]/).withMessage('Password must contain at least one letter')
-    .matches(/[0-9]/).withMessage('Password must contain at least one number')
-];
 
 const signins = async (req, res, next) => {
-  const {username, password} = req.body;
-  if(username && password)
-  {
-    if(req.session.admin)
-    {
-      console.log('you are already logged in');
-      res.redirect('/admin/dashboard')
-    }else{
-      req.session.admin = {
-        username,
-      };
-      res.redirect('/admin/dashboard')
+  const { username, password } = req.body;
+  if (!username) return res.status(400).send({ msg: 'Please enter a username' });
+  else if (!password) return res.status(400).send({ msg: 'Please enter a password' });
+  else {
+    const admindb = await admin.findOne({ username });
+    if (!admindb) return res.status(401).send({ msg: 'Please enter a valid username' });
+    else if (admindb) {
+      if (bcrypt.compareSync(password, admindb.password)) {
+        req.session.admin = admindb;
+        return res.redirect('/admin/dashboard');
+      }
+      else return res.status(401).send({ msg: 'Please enter a valid password' });
     }
-  } else res.sendStatus(401);
-  // var un = req.body.name;
-  // var pw = req.body.pass;
-
-  // try {
-  //   const admins = await admin.find({});
-  //   var i;
-  //   for (i = 0; i < admins.length; i++) {
-  //     if (admins[i].username === un) {
-  //       if (bcrypt.compareSync(pw, admins[i].password)) {
-  //         console.log("login successful!")
-  //         return res.redirect('/admin/dashboard')
-  //       }
-  //       else {
-  //         continue;
-  //       }
-  //     }
-  //     else {
-  //       continue;
-  //     }
-  //   }
-  //   console.log("Invalid credentials");
-  //   return res.render('error.ejs');
-  // } catch (err) {
-  //   console.log(err);
-  //   return res.status(500).render('error.ejs');
-  // }
+  }
 };
 
 const signups = async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    res.render("admin-sign-in", {
-      errors: errors.array(),
-    });
+  const { username } = req.body;
+  const admindb = await admin.findOne({ $or: [{ username }] });
+  if (admindb) {
+    res.status(400).send({ msg: 'Admin already exist!' })
   } else {
-    try {
-      const hashPass = await bcrypt.hash(req.body.pass, 10);
-      const newadmin = new admin({
-        username: req.body.name,
-        password: hashPass,
-      });
-      await newadmin.save();
-      console.log('registration successful!');
-      return res.redirect('/admin/dashboard');
-    } catch (err) {
-      // console.log(err);
-      // return res.status(500).render('error.ejs');
-      if (errors && errors.length > 0) {
-        for (let i = 0; i < errors.length; i++) {
-          errors[i].msg
-        }
-      }
-    }
+    const password = await bcrypt.hash(req.body.password, 10);
+    const newAdmin = await admin.create({ username, password });
+    console.log('Admin Created');
   }
 };
 
@@ -160,20 +104,19 @@ const deleteItem = async (req, res) => {
   }
 };
 
-const getUsers = async (req, res, next) => {
-  try {
-    const users = await user.find({});
-    return res.render('../views/Admin/admin-users');
-  } catch (err) {
-    console.log(err);
-    return res.status(500).render('error.ejs');
-  }
-};
+// const getUsers = async (req, res, next) => {
+//   try {
+//     const users = await user.find({});
+//     return res.render('../views/Admin/admin-users');
+//   } catch (err) {
+//     console.log(err);
+//     return res.status(500).render('error.ejs');
+//   }
+// };
 
 export {
   signins,
   signups,
-  signupValidation,
   addItem,
   getItem,
   getItems,

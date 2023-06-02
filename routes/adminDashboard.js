@@ -7,43 +7,16 @@ import {
     updateItem,
     deleteItem} 
 from "../controllers/admin-controllers.js";
-import Products from '../models/productData.js';
 
 /* GET /admin/dashboard page. */
 router.get('/', function (req, res, next){
     res.render('admin/admin-dashboard');
 })
 
-
 /* GET /admin/dashboard/stats page. */
 router.get('/stats', function (req, res, next){
-    // const {item} = req.session;
-    // if(!item)
-    // {
-    //     res.send('you have no item session');
-    // }
-    // else{
-    //     res.send(item);
-        res.render('admin/admin-stats');
-    // }
+    res.render('admin/admin-stats');
 })
-
-// router.post('/stats/item', function (req, res, next){
-//     const {name, price} = req.body;
-//     const statsItem = {name,price};
-//     // res.send(req.sessionID);
-//     const {item} = req.session;
-//     if (item)
-//     {
-//         req.session.items.push(statsItem);
-//     }else{
-//         req.session.item =
-//         {
-//             items:[statsItem],
-//         }
-//     }
-//     res.sendStatus(201);
-// })
 
 /* GET /admin/dashboard/finances page. */
 router.get('/finances', function (req, res, next){
@@ -57,17 +30,11 @@ router.get('/messages', function (req, res, next){
 
 /* GET /admin/dashboard/sellings page. */
 router.get('/sellings', function (req, res, next){
-    // res.cookie('visited', true, {
-    //     maxAge: 90000,
-    // })
     res.render('admin/admin-sellings');
 })
 
 /* GET /admin/dashboard/usings page. */
 router.get('/usings', function (req, res, next){
-    // res.cookie('visitedtoo', true, {
-    //     maxAge: 90000,
-    // })
     res.render('admin/admin-usings');
 })
 
