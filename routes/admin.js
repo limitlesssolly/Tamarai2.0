@@ -20,7 +20,7 @@ router.post('/getSearch', async (req, res) => {
 router.use((req, res, next) => {
     if (req.session.admin) next();
     else {
-        res.sendStatus(401);
+        res.send('You are not an admin');
     }
 })
 

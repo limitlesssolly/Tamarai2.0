@@ -27,10 +27,6 @@ router.get('/homepage/bag', function(req, res, next) {
 
 router.post('/',signins);
 
-router.post('/register',function(req, res, next) {
-    const{name, pass, confirmpass, email} = req.body;
-    const userInfo = {name, pass, confirmpass, email};
-    console.log(userInfo);
-});
+router.post('/register', signup);
 
 export default router;
