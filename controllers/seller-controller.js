@@ -1,5 +1,7 @@
-
-import { body, validationResult } from "express-validator";
+import {
+  body,
+  validationResult
+} from "express-validator";
 import seller from '../models/sellerRegister.js';
 
 import bcrypt from 'bcrypt';
@@ -7,12 +9,16 @@ import bcrypt from 'bcrypt';
 // Validation middleware for signups
 const signupValidation = [
   body('name').notEmpty().withMessage('Username is required')
-    .isLength({ min: 4 }).withMessage('Username must be at least 4 characters long'),
+  .isLength({
+    min: 4
+  }).withMessage('Username must be at least 4 characters long'),
   body('pass')
-    .notEmpty().withMessage('Password is required')
-    .isLength({ min: 7 }).withMessage('Password must be at least 7 characters long')
-    .matches(/[a-zA-Z]/).withMessage('Password must contain at least one letter')
-    .matches(/[0-9]/).withMessage('Password must contain at least one number')
+  .notEmpty().withMessage('Password is required')
+  .isLength({
+    min: 7
+  }).withMessage('Password must be at least 7 characters long')
+  .matches(/[a-zA-Z]/).withMessage('Password must contain at least one letter')
+  .matches(/[0-9]/).withMessage('Password must contain at least one number')
 ];
 
 const signins = async (req, res, next) => {
@@ -27,12 +33,10 @@ const signins = async (req, res, next) => {
         if (bcrypt.compareSync(pw, sellers[i].password)) {
           console.log("login successful!")
           return res.redirect('/seller/products')
-        }
-        else {
+        } else {
           continue;
         }
-      }
-      else {
+      } else {
         continue;
       }
     }
@@ -75,6 +79,8 @@ const signup = async (req, res, next) => {
         confirmPassword: req.body.confirmpass
       });
       await newseller.save();
+
+    //  res.render('seller-register',{message:"sucuss"})
       console.log('Registration successful!');
       return res.redirect('/seller/products');
     } catch (err) {
@@ -85,4 +91,8 @@ const signup = async (req, res, next) => {
 };
 
 
-export { signins, signup, signupValidation};
+export {
+  signins,
+  signup,
+  signupValidation
+};

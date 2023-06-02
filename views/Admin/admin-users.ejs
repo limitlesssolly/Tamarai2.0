@@ -3,14 +3,30 @@
         <title>Display all users</title>
     </head>
     <body>
-        <h1>Display all users</h1>
-        <%= if (users.size() > 0) { %>
-            <%= for (int i = 0; i < users.size; i++) { %>
-                <h4> <%- users[i].username %></h4>
-                <br>
-            <%= } %>
-        <% } else {%>
-            <h1>No Users to show</h1>
-        <%= } %>
+        <%- include("../partials/adminNav"); %>
+        <div class="container">
+            <h1>Display all users</h1>
+            <%= if (users.length > 0) { %>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>User / Seller</th>
+                    </tr>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td>
+                                <%= user.username %>
+                            </td>
+                            <td>
+                                User
+                            </td>
+                        </tr>
+                        <% }); %>
+                </table>
+                <% } else { %>
+                    <p>No users to display...</p>
+                <% } %>
+        </div>
+        
     </body>
 </html>
