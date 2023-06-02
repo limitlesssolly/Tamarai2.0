@@ -23,12 +23,12 @@ const signins = async (req, res, next) => {
     if(req.session.admin)
     {
       console.log('you are already logged in');
-      res.send(req.session.admin);
+      res.redirect('/admin/dashboard')
     }else{
       req.session.admin = {
         username,
       };
-      res.send(req.session);
+      res.send('session created');
     }
   } else res.sendStatus(401);
   // var un = req.body.name;
