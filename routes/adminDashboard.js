@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import admin from '../models/adminData.js';
+import Prod from '../models/productData.js';
 const router = Router();
 import {
     addItem,
@@ -9,6 +10,7 @@ import {
     deleteItem
 }
     from "../controllers/admin-controllers.js";
+import { Model } from 'mongoose';
 
 /* GET /admin/dashboard page. */
 router.get('/', function (req, res, next) {
@@ -27,7 +29,7 @@ router.get('/messages', function (req, res, next) {
 
 /* GET /admin/dashboard/sellings page. */
 router.get('/sellings', function (req, res, next) {
-    res.render('admin/admin-sellings');
+    res.render('admin/admin-sellings', {Prod});
 })
 
 /* GET /admin/dashboard/usings page. */
@@ -36,11 +38,8 @@ router.get('/usings', function (req, res, next) {
 })
 
 /* GET /admin/dashboard/settings page. */
-router.get('/settings/:id', async function (req, res, next) {
-    const adds = await admin.findById(req.params.id);
-    console.log(adds);
-    if (!adds) return res.status(404).render('error.ejs', { message: "admin not found" });
-    else return res.render('admin/admin-dashboard');
+router.get('/settings/', function (req, res, next) {
+    res.render('admin/admin-settings');
 });
 
 /* GET /admin/dashboard/sellings/item page. */
