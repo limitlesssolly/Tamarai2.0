@@ -88,7 +88,7 @@ const signup = async (req, res, next) => {
       return res.status(500).render('error.ejs');
     }
   }
-
+}
 
 export {
   signins,
