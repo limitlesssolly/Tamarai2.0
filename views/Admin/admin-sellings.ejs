@@ -27,7 +27,14 @@
                         <th>Count In Stock</th>
                         <th>Category</th>
                         <th>Action</th>
-                    </tr>
+                    </tr> 
+                        <% if (Prod.length > 0){ %>
+                            <h1>yarab aho emfrud :</h1>
+                            <h1><%=Prod.length%></h1>
+                            <% for (var i = 0; i <Prod.length; i++) { %>
+                                    <div> <%= Prod[i] %>haga</div>
+                                <% } %> 
+                            <% } %>
                     <tr class="adds" id="adds" style="display: none;">
                         <form method="post" action="/admin/dashboard/sellings">
                             <td><input name="name" type="text"></td>
