@@ -18,11 +18,6 @@ router.get('/stats', function (req, res, next){
     res.render('admin/admin-stats');
 })
 
-/* GET /admin/dashboard/finances page. */
-router.get('/finances', function (req, res, next){
-    res.render('admin/admin-finances');
-})
-
 /* GET /admin/dashboard/messages page. */
 router.get('/messages', function (req, res, next){
     res.render('admin/admin-messages');
