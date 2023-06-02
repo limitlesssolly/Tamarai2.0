@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%= title%>
+        title
     </title>
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <link rel="stylesheet" href="/css/admin/admin-sellings.css">
@@ -27,19 +27,6 @@
                         <th>Count In Stock</th>
                         <th>Category</th>
                         <th>Action</th>
-                    </tr>
-                    <tr class="views">
-                        <% if (data!=undefined) {%>
-                            <% data.forEach((element)=> {%>
-                                <td><%=element.name></td>
-                                <td><%=element.seller></td>
-                                <td><%=element.price></td>
-                                <td><%=element.count></td>
-                                <td><%=element.category></td>
-                            <%})%> 
-                        <%} else {%>
-                            <p>no product found</p>
-                            <%}%>
                     </tr>
                     <tr class="adds" id="adds" style="display: none;">
                         <form method="post" action="/admin/dashboard/sellings">

@@ -3,7 +3,7 @@ import admin from '../models/adminData.js';
 import user from '../models/userData.js';
 import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
-import asyncHandler from "express-async-handler"
+// import asyncHandler from "express-async-handler"
 
 // Validation middleware for signups
 const signupValidation = [
@@ -77,24 +77,27 @@ const addItem = async (req, res, next) => {
   try {
     const newItem = new products({
       name: req.body.name,
+      brand: req.body.brand,
+      // image: req.body.img,
       seller: req.body.seller,
       price: req.body.price,
       count: req.body.count,
+      // description: req.body.description,
       category: req.body.category,
+      // color: req.body.color,
     });
-    // console.log(newItem);
     await newItem.save();
     console.log('Item added successfully');
   } catch (err) {
     console.log(err);
     return res.status(500).render('error.ejs');
-}
+  }
 };
 
 const getItem = async (req, res, next) => {
   try {
-    const data = await products.findById(req.params.id);
-    res.json(data)
+    const productitem = await products.findById(req.params._id);
+    res.send(productitem);
   }
   catch (error) {
     res.status(500).json({ message: error.message })
@@ -152,6 +155,13 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-// module.exports = {signins, signups, addItem, getItem, getItems, updateItem, deleteItem };
-
-export default { signins, signups, addItem, getItem, getItems, updateItem, deleteItem, getUsers };
+export {
+  signins,
+  signups,
+  signupValidation,
+  addItem,
+  getItem,
+  getItems,
+  updateItem,
+  deleteItem
+};

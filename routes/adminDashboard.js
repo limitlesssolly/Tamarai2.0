@@ -36,14 +36,14 @@ router.get('/messages', function (req, res, next){
 
 /* GET /admin/dashboard/sellings page. */
 router.get('/sellings', function (req, res, next){
-    res.render('admin/admin-sellings', {title: "title"});
+    res.render('admin/admin-sellings');
 })
+
+/* GET /admin/dashboard/sellings/item page. */
+router.get('/sellings/:_id',getItem);
 
 /* Post One item */
 router.post('/sellings',addItem);
-
-/* GET One item using id */
-router.get('/getOne/:id',getItem);
 
 /* GET More Than One item using id */
 router.get('/getAll',getItems);

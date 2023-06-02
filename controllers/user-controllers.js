@@ -12,8 +12,6 @@ const signupValidation = [
     .matches(/[0-9]/).withMessage('Password must contain at least one number')
 ];
 
-
-
 const signins = async (req, res, next) => {
   var un = req.body.name;
   var pw = req.body.pass;
