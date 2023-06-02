@@ -8,6 +8,10 @@ import { fileURLToPath } from "url";
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+
+dotenv.config();
 
 //importing the routes
 import mainRouter from "./routes/index.js";
@@ -16,9 +20,12 @@ import adminDashboardRouter from "./routes/adminDashboard.js";
 import sellerRouter from "./routes/seller.js";
 import userRouter from "./routes/user.js";
 import productRouter from "./routes/product.js";
+// import productsRouter from "./routes/products.js";
+
 
 //Read the current directory name
-export const __filename = fileURLToPath(import.meta.url);
+export const __filename = fileURLToPath(
+    import.meta.url);
 export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
 
@@ -30,11 +37,11 @@ app.set("view engine", "ejs"); // first thin we do when using ejs
 
 app.use(logger("dev"));
 app.use(fileUpload());
-app.use(session({ 
+app.use(session({
     secret: 'Your_Secret_Key',
     resave: false,
-    saveUninitialized: false, 
- }))
+    saveUninitialized: false,
+}))
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
@@ -54,7 +61,7 @@ app.use('/user', userRouter);
 
 app.use('/products', productRouter);
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
 
@@ -69,7 +76,7 @@ app.use((req, res) => {
 });
 
 // Error handling
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

@@ -32,7 +32,7 @@ const signins = async (req, res, next) => {
       if (sellers[i].username === un) {
         if (bcrypt.compareSync(pw, sellers[i].password)) {
           console.log("login successful!")
-          return res.redirect('/seller/products')
+          return res.redirect('/seller/products' )
         } else {
           continue;
         }
@@ -80,17 +80,16 @@ const signup = async (req, res, next) => {
       });
       await newseller.save();
 
-    //  res.render('seller-register',{message:"sucuss"})
+      //  res.render('seller-register',{message:"sucuss"})
       console.log('Registration successful!');
-      return res.redirect('/seller/products');
+      return res.redirect('/seller/products' );
     } catch (err) {
       console.log(err);
       return res.status(500).render('error.ejs');
     }
   }
+
 };
-
-
 export {
   signins,
   signup,

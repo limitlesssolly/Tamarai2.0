@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../../public/CSS/userHomepage.css" />
+    </head>
+    <body>
+        <!-- <%- include('../partials/usernav") %> -->
+        <h1>All Tamarai's products</h1>
+        <% for(let i = 0; i < products.length; i++) { %>
+            <section class="product">
+                <div class="product-container">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <!-- <span class="discount-tag">number% off</span> -->
+                            <a href="/product/<%= products[i]._id %>"> 
+                                <img src="<%= products[i].image %>" class="product-thumb" alt="<%= products[i].name %>">
+                            </a>
+                            <button class="card-btn">Add to wishlist</button>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-brand"><%= products[i].brand %></h2>
+                            <p class="product-short-des"><%= products[i].description %></p>
+                            <!-- <span class="price">Price after discount L.E.</span> -->
+                            <span class="actual-price"><%= products[i].price %></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- <section class="product">
+                <div class="product-container">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="discount-tag">number% off</span> Comment here
+                            <a href="<%= /product/products._id %>"> 
+                                <img src="<%= products.image %>" class="product-thumb" alt="<%= products.name %>">
+                            </a>
+                            <button class="card-btn">Add to wishlist</button>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="product-brand"><%= products.brand %></h2>
+                            <p class="product-short-des"><%= products.description %></p>
+                            <span class="price">Price after discount L.E.</span> Comment here
+                            <span class="actual-price"><%= products.price %></span>
+                        </div>
+                    </div>
+                </div>
+            </section>       -->
+        <% } %>
+    </body>
+</html>

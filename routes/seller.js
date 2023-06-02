@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import express from "express";
 const router = Router();
+import seller from '../models/sellerRegister.js';
 import {signup,signins, signupValidation} from "../controllers/seller-controller.js";
 
 /* GET /seller page. */
@@ -31,13 +32,14 @@ router.get('/products', function(req, res, next) {
 router.get('/profile', function(req, res, next) {
     res.render('seller/seller-profile');
 })
-// router.get('/seller/profile/:id', async (req, res) => {
+
+
+// router.get('/profile/:id', async (req, res) => {
+//     console.log('bydkhol hna');
 //     try {
-//       const seller = await seller.findById(req.params.id);
-//       if (!seller) {
-//         return res.status(404).render('error.ejs', { message: "Seller not found" });
-//       }
-//       return res.render('seller-profile', { seller });
+//       const sellers = await seller.findById(req.params.id);
+//       if (!sellers)return res.status(404).render('error.ejs', { message: "Seller not found" });
+//       else return res.render('seller/seller-profile', {seller});
 //     } catch (err) {
 //       console.log(err);
 //       return res.status(500).render('error.ejs');
