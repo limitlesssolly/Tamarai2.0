@@ -17,32 +17,46 @@ const signupValidation = [
 ];
 
 const signins = async (req, res, next) => {
-  var un = req.body.name;
-  var pw = req.body.pass;
-
-  try {
-    const admins = await admin.find({});
-    var i;
-    for (i = 0; i < admins.length; i++) {
-      if (admins[i].username === un) {
-        if (bcrypt.compareSync(pw, admins[i].password)) {
-          console.log("login successful!")
-          return res.redirect('/admin/dashboard')
-        }
-        else {
-          continue;
-        }
-      }
-      else {
-        continue;
-      }
+  const {username, password} = req.body;
+  if(username && password)
+  {
+    if(req.session.admin)
+    {
+      console.log('you are already logged in');
+      res.send(req.session.admin);
+    }else{
+      req.session.admin = {
+        username,
+      };
+      res.send(req.session);
     }
-    console.log("Invalid credentials");
-    return res.render('error.ejs');
-  } catch (err) {
-    console.log(err);
-    return res.status(500).render('error.ejs');
-  }
+  } else res.sendStatus(401);
+  // var un = req.body.name;
+  // var pw = req.body.pass;
+
+  // try {
+  //   const admins = await admin.find({});
+  //   var i;
+  //   for (i = 0; i < admins.length; i++) {
+  //     if (admins[i].username === un) {
+  //       if (bcrypt.compareSync(pw, admins[i].password)) {
+  //         console.log("login successful!")
+  //         return res.redirect('/admin/dashboard')
+  //       }
+  //       else {
+  //         continue;
+  //       }
+  //     }
+  //     else {
+  //       continue;
+  //     }
+  //   }
+  //   console.log("Invalid credentials");
+  //   return res.render('error.ejs');
+  // } catch (err) {
+  //   console.log(err);
+  //   return res.status(500).render('error.ejs');
+  // }
 };
 
 const signups = async (req, res, next) => {
