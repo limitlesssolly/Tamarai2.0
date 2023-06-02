@@ -20,7 +20,7 @@ import adminDashboardRouter from "./routes/adminDashboard.js";
 import sellerRouter from "./routes/seller.js";
 import userRouter from "./routes/user.js";
 import productRouter from "./routes/product.js";
-import productsRouter from "./routes/products.js";
+//import productsRouter from "./routes/products.js";
 
 
 //Read the current directory name
