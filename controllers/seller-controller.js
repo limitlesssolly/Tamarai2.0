@@ -79,8 +79,6 @@ const signup = async (req, res, next) => {
         confirmPassword: req.body.confirmpass
       });
       await newseller.save();
-
-      //  res.render('seller-register',{message:"sucuss"})
       console.log('Registration successful!');
       return res.redirect('/seller/profile/' + newseller._id);
     } catch (err) {
