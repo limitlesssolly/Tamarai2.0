@@ -19,8 +19,8 @@ const signupValidation = [
 ];
 
 const signins = async (req, res, next) => {
-  var un = req.body.name;
-  var pw = req.body.pass;
+  var un = req.body.username;
+  var pw = req.body.password;
 
   try {
     const sellers = await seller.find({});
@@ -68,12 +68,12 @@ const signup = async (req, res, next) => {
     });
   } else {
     try {
-      const hashPass = await bcrypt.hash(req.body.pass, 10);
+      const hashPass = await bcrypt.hash(req.body.password, 10);
       const newseller = new seller({
         email: req.body.email,
-        username: req.body.name,
+        username: req.body.username,
         password: hashPass,
-        confirmPassword: req.body.confirmpass
+        confirmPassword: req.body.confirmPassword
       });
       await newseller.save();
 

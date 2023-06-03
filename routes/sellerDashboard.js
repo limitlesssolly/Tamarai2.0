@@ -50,15 +50,8 @@ router.get('/info', function(req, res, next) {
 
 /* GET /seller/dashboard/profile page. */
  router.get('/profile/:id', async (req, res) => {
-    console.log('bydkhol hna');
-    try {
       const sellers = await seller.findById(req.params.id);
-      if (!sellers)return res.status(404).render('error.ejs', { message: "Seller not found" });
-      else return res.render('seller/seller-profile', {seller});
-    } catch (err) {
-       console.log(err);
-       return res.status(500).render('error.ejs');
-     }
+      return res.render('seller/seller-profile', {sellers});
    });
 
 export default router;

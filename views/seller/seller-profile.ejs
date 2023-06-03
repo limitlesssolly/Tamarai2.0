@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/productcard.css">
     <link rel="stylesheet" type="text/css" href="/css/sellerproducts.css">
     <!--manage.css-->
-    <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png">
+    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png">
 </head>
 <style>
     li {
@@ -61,9 +61,14 @@
         <div id="header">
             <%- include('../partials/sellernav.ejs') %>
         </div>
-<p><%= seller.username %></p>
-<p><%= seller.email %></p>
-
+    </div>
+    <div>
+        <%= sellers.username %>
+    </div>
+    <br>
+    <div>
+        <%= sellers.email %>
+    </div>
 
 </body>
 
