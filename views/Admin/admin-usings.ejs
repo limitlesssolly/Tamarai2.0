@@ -13,33 +13,19 @@
 <body>
         <%- include('../partials/adminNav.ejs') %>
         <h1>add user</h1>
-        <div class="sells">
-            <div class="products">
-                <h2>All Products<span>
-                        <h3 onclick="nav()">+</h3>
-                    </span></h2>
-                <table>
-                    <tr>
-                        <th>Product name</th>
-                        <th>Seller</th>
-                        <th>Price</th>
-                        <th>Count In Stock</th>
-                        <th>Category</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr class="adds" id="adds" style="display: none;">
-                        <form method="post" action="/admin/dashboard/usings">
-                            <td><input name="name" type="text"></td>
-                            <td><input name="seller" type="text"></td>
-                            <td><input name="price" type="text"></td>
-                            <td><input name="count" type="text"></td>
-                            <td><input name="category" type="text"></td>
-                            <td><button type="submit" id="addbutts"> Plus one </button></td>
-                        </form>
-                    </tr>
-                </table>
+        <form method="post " action="/admin/dashboard/add-user">
+            <div class="users">
+                <label for="username"> username </label>
+                <input id="username" type="text" placeholder="username" name="username"> <br>
+                <span id="Uerror">error</span>
             </div>
-        </div>
+            <div class="passes">
+                <label for="password"> password </label>
+                <input id="password" type="password" placeholder="password" name="password"> <br>
+                <span id="Perror">error</span>
+            </div>
+            <button type="submit"> amira</button>
+        </form>
         <%- include('../partials/footer.ejs') %>
 </body>
 <script>
