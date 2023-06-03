@@ -1,7 +1,7 @@
 import { body, validationResult } from "express-validator";
 import user from '../models/userRegister.js';
-import bcrypt from 'bcrypt';
 import ProductsData from '../models/productData.js';
+import bcrypt from 'bcrypt';
 
 
 const signupValidation = [

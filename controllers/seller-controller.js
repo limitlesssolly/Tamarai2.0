@@ -29,7 +29,7 @@ const signins = async (req, res, next) => {
       if (sellers[i].username === un) {
         if (bcrypt.compareSync(pw, sellers[i].password)) {
           console.log("login successful!")
-          return res.redirect('/seller/products' )
+          return res.redirect('/seller/dashboard' )
         } else {
           continue;
         }
@@ -79,7 +79,7 @@ const signup = async (req, res, next) => {
 
       //  res.render('seller-register',{message:"sucuss"})
       console.log('Registration successful!');
-      return res.redirect('/seller/products' );
+      return res.redirect('/seller/dashboard' );
     } catch (err) {
       console.log(err);
       return res.status(500).render('error.ejs');

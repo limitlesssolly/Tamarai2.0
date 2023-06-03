@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Seller Products View
+    </title>
+
+    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+
+</head>
+
+<body>
+    <%- include('../partials/sellernav.ejs') %>
+    <div class="products">
+        <h2>All Products<span>
+                <a href="/seller/dashboard/add"><h3>+</h3></a>
+            </span></h2>
+        <table>
+            <tr>
+                <th>Product name</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+            <% Products.forEach(function(product) { %>
+                <tr>
+                    <td>
+                        <%= product.name %>
+                    </td>
+                    <td>
+                        <%= product.brand %>
+                    </td>
+                    <td>
+                        <%= product.category%>
+                    </td>
+                    <td>
+                        <span>
+                            <span><a class="deleter"
+                                href="/seller/dashboard/view/delete/<%=product._id%>">Delete</a></span>
+                            <span><a class="viewer" 
+                                href="/seller/dashboard/view/<%=product._id%>">View</a></span>
+                        </span>
+                    </td>
+
+                </tr>
+                <% }); %>
+        </table>
+    </div>
+        <%- include('../partials/footer.ejs') %>
+</body>
+</html>
