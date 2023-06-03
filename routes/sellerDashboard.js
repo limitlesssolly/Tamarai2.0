@@ -49,13 +49,13 @@ router.get('/info', function(req, res, next) {
 
 /* GET /seller/dashboard/profile page. */
 // router.get('/profile', async (req, res) => {
-//     const sellers = await seller.findById(req.params.id);
+//     const sellers = await seller.find();
 //       return res.render('seller/seller-profile', {sellers});
 //  });
 
 /* GET /seller/dashboard/profile page. */
  router.get('/profile/:id', async (req, res) => {
-      const sellers = await seller.findById(req.params.id);
+      const sellers = await seller.findById(req.session.id);
       return res.render('seller/seller-profile', {sellers});
    });
 
