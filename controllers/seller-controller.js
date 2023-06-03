@@ -19,8 +19,8 @@ const signupValidation = [
 ];
 
 const signins = async (req, res, next) => {
-  var un = req.body.name;
-  var pw = req.body.pass;
+  var un = req.body.username;
+  var pw = req.body.password;
 
   try {
     const sellers = await seller.find({});
@@ -29,7 +29,7 @@ const signins = async (req, res, next) => {
       if (sellers[i].username === un) {
         if (bcrypt.compareSync(pw, sellers[i].password)) {
           console.log("login successful!")
-          return res.redirect('/seller/products' )
+          return res.redirect('/seller/dashboard' )
         } else {
           continue;
         }
@@ -68,18 +68,18 @@ const signup = async (req, res, next) => {
     });
   } else {
     try {
-      const hashPass = await bcrypt.hash(req.body.pass, 10);
+      const hashPass = await bcrypt.hash(req.body.password, 10);
       const newseller = new seller({
         email: req.body.email,
-        username: req.body.name,
+        username: req.body.username,
         password: hashPass,
-        confirmPassword: req.body.confirmpass
+        confirmPassword: req.body.confirmPassword
       });
       await newseller.save();
 
       //  res.render('seller-register',{message:"sucuss"})
       console.log('Registration successful!');
-      return res.redirect('/seller/products' );
+      return res.redirect('/seller/dashboard/profile/'+newseller._id );
     } catch (err) {
       console.log(err);
       return res.status(500).render('error.ejs');
