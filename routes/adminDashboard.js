@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import Prod from '../models/productData.js';
-import {   signups } from "../controllers/admin-controllers.js";
+import {signups} from "../controllers/admin-controllers.js";
 const router = Router();
 
 /* GET /admin/dashboard page. */
@@ -48,7 +48,7 @@ router.get('/usings', function (req, res, next) {
     res.render('admin/admin-usings');
 })
 
-router.post('/add-user',signups); 
+router.post('/addUser',signups); 
 
 
 /* GET /admin/dashboard/settings page. */

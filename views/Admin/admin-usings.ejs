@@ -13,7 +13,7 @@
 <body>
         <%- include('../partials/adminNav.ejs') %>
         <h1>add user</h1>
-        <form method="post " action="/admin/dashboard/add-user">
+        <form method="post" action="/admin/dashboard/addUser">
             <div class="users">
                 <label for="username"> username </label>
                 <input id="username" type="text" placeholder="username" name="username"> <br>
@@ -28,21 +28,4 @@
         </form>
         <%- include('../partials/footer.ejs') %>
 </body>
-<script>
-    function nav() {
-        if (document.getElementById("adds").style.display == "contents") {
-            navClose();
-        }
-        else if (document.getElementById("adds").style.display == "none") {
-            navOpen();
-        }
-    }
-    function navOpen() {
-        document.getElementById("adds").style.display = "contents";
-    }
-
-    function navClose() {
-        document.getElementById("adds").style.display = "none";
-    }
-</script>
 </html>
