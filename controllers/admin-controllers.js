@@ -1,6 +1,5 @@
 import admin from '../models/adminData.js';
 import products from '../models/productData.js';
-import path from 'path';
 import bcrypt from 'bcrypt';
 
 const signins = async (req, res, next) => {
@@ -32,28 +31,6 @@ const signups = async (req, res, next) => {
   }
 };
 
-const addItem = async (req, res, next) => {
-  try {
-    const newItem = new products({
-      name: req.body.name,
-      brand: req.body.brand,
-      seller: req.body.seller,
-      price: req.body.price,
-      image: req.body.image,
-      count: req.body.count,
-      description: req.body.description,
-      category: req.body.category,
-      color: req.body.color,
-    });
-    await newItem.save();
-    console.log('Item added successfully');
-    return res.redirect('/admin/dashboard/sellings');
-  } catch (err) {
-    console.log(err);
-    return res.status(500).render('error.ejs');
-  }
-};
-
 const updateItem = async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -82,6 +59,4 @@ const updateItem = async (req, res, next) => {
 export {
   signins,
   signups,
-  addItem,
-  updateItem,
 };
