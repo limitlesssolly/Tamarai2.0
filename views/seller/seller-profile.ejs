@@ -52,10 +52,15 @@
 </style>
 
 <body>
-    <h1>sha8ala</h1>
-    <!-- <div class="wahed">
-    //    <h1>Welcome <%= seller.username %></h1>
-</div> -->
+    <div class="chatbox ">
+        <div>
+            <%- include('../partials/chat.ejs') %>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div id="header">
+            <%- include('../partials/sellernav.ejs') %>
+        </div>
 </body>
 
 </html>
