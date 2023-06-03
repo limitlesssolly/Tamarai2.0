@@ -27,3 +27,13 @@ export const getHomepage = async(req, res) => {
         res.status(500).send('Internal server error');
     }
 };
+export const getProducts = async(req, res) => {
+    try {
+        const productData = await ProductsData.find();
+        console.log('productData:', productData);
+        res.render('admin/admin-sellings', { productData });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal server error');
+    }
+};

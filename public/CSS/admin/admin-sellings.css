@@ -69,6 +69,22 @@ button
     border-radius: 20px;
 }
 
+a
+{
+    outline:none;
+    text-decoration: none;
+    cursor: pointer;
+    color: #d6bd91;
+}
+
+.sellstoo
+{
+    position: absolute;
+    top: 10%;
+    left: 7%;
+}
+
+
 @media screen and (max-width: 600px) {
     nav li {
         float: none;

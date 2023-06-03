@@ -1,5 +1,6 @@
 import admin from '../models/adminData.js';
 import products from '../models/productData.js';
+import path from 'path';
 import bcrypt from 'bcrypt';
 
 const signins = async (req, res, next) => {
@@ -36,16 +37,17 @@ const addItem = async (req, res, next) => {
     const newItem = new products({
       name: req.body.name,
       brand: req.body.brand,
-      // image: req.body.img,
       seller: req.body.seller,
       price: req.body.price,
+      image: req.body.image,
       count: req.body.count,
-      // description: req.body.description,
+      description: req.body.description,
       category: req.body.category,
-      // color: req.body.color,
+      color: req.body.color,
     });
     await newItem.save();
     console.log('Item added successfully');
+    return res.redirect('/admin/dashboard/sellings');
   } catch (err) {
     console.log(err);
     return res.status(500).render('error.ejs');
@@ -63,21 +65,6 @@ const getItem = async (req, res, next) => {
   }
 };
 
-const getItems = async (req, res, next) => {
-  try {
-    let data = await products.find();
-    console.log(data);
-    res.render('/admin/dashboard/sellings', {
-      data,
-    });
-
-  }
-  catch (error) {
-    console.log(error);
-    res.status(500).json({ message: error.message })
-  }
-};
-
 const updateItem = async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -87,17 +74,6 @@ const updateItem = async (req, res, next) => {
     const result = await products.findByIdAndUpdate(id, updatedData, options)
     console.log(result);
     res.send(result)
-  }
-  catch (error) {
-    res.status(400).json({ message: error.message })
-  }
-};
-
-const deleteItem = async (req, res) => {
-  try {
-    const id = req.params.id;
-    const data = await products.findByIdAndDelete(id)
-    res.send(`Document with ${data.name} has been deleted..`)
   }
   catch (error) {
     res.status(400).json({ message: error.message })
@@ -118,8 +94,5 @@ export {
   signins,
   signups,
   addItem,
-  getItem,
-  getItems,
   updateItem,
-  deleteItem
 };

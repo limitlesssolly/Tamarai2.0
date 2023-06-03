@@ -8,7 +8,7 @@ const productSchema = new Schema({
     },
     brand: {
         type: String,
-        required: false,
+        required: true,
     },
     seller: {
         type: String,
@@ -20,7 +20,7 @@ const productSchema = new Schema({
     },
     image: {
         type: String,
-        required: false,
+        required: true,
     },
     count: {
         type: Number,
@@ -28,7 +28,7 @@ const productSchema = new Schema({
     },
     description: {
         type: String,
-        required: false,
+        required: true,
     },
     category: {
         type: String,
@@ -36,7 +36,7 @@ const productSchema = new Schema({
     },
     color: {
         type: Array,
-        required: false,
+        required: true,
     },
 }, { timestamps: true });
 

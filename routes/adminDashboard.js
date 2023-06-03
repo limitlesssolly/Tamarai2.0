@@ -4,10 +4,7 @@ import Prod from '../models/productData.js';
 const router = Router();
 import {
     addItem,
-    getItem,
-    getItems,
     updateItem,
-    deleteItem
 }
     from "../controllers/admin-controllers.js";
 import { Model } from 'mongoose';
@@ -28,8 +25,29 @@ router.get('/messages', function (req, res, next) {
 })
 
 /* GET /admin/dashboard/sellings page. */
-router.get('/sellings', function (req, res, next) {
-    res.render('admin/admin-sellings', {Prod});
+router.get('/sellings', async function (req, res, next) {
+    const Products = await Prod.find();
+    res.render('admin/admin-sellings', {Products});
+})
+
+/* Post One item */
+router.post('/sellings', addItem);
+
+/* GET /admin/dashboard/sellings/view page. */
+router.get('/sellings/view/:id', async function (req, res, next) {
+    const Products = await Prod.findById(req.params.id);
+    res.render('admin/admin-sellings-view', {Products});
+})
+
+/* UPDATE One item using id */
+router.get('/sellings/view/update/:id', updateItem)
+
+/* Delete One item using id */
+router.get('/sellings/delete/:id', async function (req, res, next) {
+    const id = req.params.id;
+    const data = await Prod.findByIdAndDelete(id)
+    console.log(`Item ${data.name} has been deleted..`)
+    return res.redirect('/admin/dashboard/sellings');
 })
 
 /* GET /admin/dashboard/usings page. */
@@ -41,36 +59,6 @@ router.get('/usings', function (req, res, next) {
 router.get('/settings/', function (req, res, next) {
     res.render('admin/admin-settings');
 });
-
-/* GET /admin/dashboard/sellings/item page. */
-router.get('/sellings/:_id', getItem);
-
-/* Post One item */
-router.post('/sellings', addItem);
-
- 
-
-// router.get('/usings',getItem);
-// router.post('/usings',addItem);
-
- 
-
-
- 
-
- 
-
-
-
- 
-/* GET More Than One item using id */
-router.get('/getAll', getItems);
-
-/* UPDATE One item using id */
-router.patch('/update/:id', updateItem)
-
-/* Delete One item using id */
-router.delete('/delete/:id', deleteItem)
 
 router.use((req, res, next) => {
     if (req.session.admin) next();
