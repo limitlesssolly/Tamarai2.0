@@ -48,6 +48,21 @@ router.get('/sellings/:_id', getItem);
 /* Post One item */
 router.post('/sellings', addItem);
 
+ 
+
+// router.get('/usings',getItem);
+// router.post('/usings',addItem);
+
+ 
+
+
+ 
+
+ 
+
+
+
+ 
 /* GET More Than One item using id */
 router.get('/getAll', getItems);
 

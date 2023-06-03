@@ -29,33 +29,22 @@ router.get('/products', function(req, res, next) {
     res.render('seller/seller-products');
 })
 
-// router.get('/profile', function(req, res, next) {
-//     res.render('seller/seller-profile');
-// })
-// router.get('/seller/profile/:id', async (req, res) => {
+router.get('/profile', function(req, res, next) {
+    res.render('seller/seller-profile');
+})
+
+
+// router.get('/profile/:id', async (req, res) => {
+//     console.log('bydkhol hna');
 //     try {
-//       const seller = await seller.findById(req.params.id);
-//       if (!seller) {
-//         return res.status(404).render('error.ejs', { message: "Seller not found" });
-//       }
-//       return res.render('seller-profile', { seller });
+//       const sellers = await seller.findById(req.params.id);
+//       if (!sellers)return res.status(404).render('error.ejs', { message: "Seller not found" });
+//       else return res.render('seller/seller-profile', {seller});
 //     } catch (err) {
 //       console.log(err);
 //       return res.status(500).render('error.ejs');
 //     }
 //   });
-
-router.get('/profile/:id', async (req, res) => {
-    console.log('bydkhol hna');
-    try {
-      const sellers = await seller.findById(req.params.id);
-      if (!sellers)return res.status(404).render('error.ejs', { message: "Seller not found" });
-      else return res.render('seller/seller-profile', {seller:req.session.seller});
-    } catch (err) {
-      console.log(err);
-      return res.status(500).render('error.ejs');
-    }
-  });
 
 router.post('/', signins);
 
