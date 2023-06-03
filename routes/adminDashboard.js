@@ -1,16 +1,9 @@
 import { Router } from 'express';
-import admin from '../models/adminData.js';
 import Prod from '../models/productData.js';
 const router = Router();
-import {
-    addItem,
-    updateItem,
-}
-    from "../controllers/admin-controllers.js";
-import { Model } from 'mongoose';
 
 /* GET /admin/dashboard page. */
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) {
     res.render('admin/admin-dashboard');
 })
 
@@ -30,8 +23,6 @@ router.get('/sellings', async function (req, res, next) {
     res.render('admin/admin-sellings', {Products});
 })
 
-/* Post One item */
-router.post('/sellings', addItem);
 
 /* GET /admin/dashboard/sellings/view page. */
 router.get('/sellings/view/:id', async function (req, res, next) {
@@ -40,7 +31,7 @@ router.get('/sellings/view/:id', async function (req, res, next) {
 })
 
 /* UPDATE One item using id */
-router.post('/sellings/view/update/:id', updateItem)
+// router.post('/sellings/view/update/:id', updateItem)
 
 /* Delete One item using id */
 router.get('/sellings/delete/:id', async function (req, res, next) {

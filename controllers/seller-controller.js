@@ -1,9 +1,6 @@
-import {
-  body,
-  validationResult
-} from "express-validator";
+import {body,validationResult} from "express-validator";
 import seller from '../models/sellerRegister.js';
-
+import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
 
 // Validation middleware for signups
@@ -90,8 +87,32 @@ const signup = async (req, res, next) => {
   }
 
 };
+
+const addItem = async (req, res, next) => {
+  try {
+    const newItem = new products({
+      name: req.body.name,
+      brand: req.body.brand,
+      seller: req.body.seller,
+      price: req.body.price,
+      image: req.body.image,
+      count: req.body.count,
+      description: req.body.description,
+      category: req.body.category,
+      color: req.body.color,
+    });
+    await newItem.save();
+    console.log('Item added successfully');
+    return res.redirect('/seller/dashboard');
+  } catch (err) {
+    console.log(err);
+    return res.status(500).render('error.ejs');
+  }
+};
+
 export {
   signins,
   signup,
-  signupValidation
+  signupValidation,
+  addItem
 };
