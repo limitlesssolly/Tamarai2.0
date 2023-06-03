@@ -47,6 +47,10 @@ router.get('/info', function(req, res, next) {
     res.render('seller/seller-info');
 })
 
+/* GET /seller/dashboard/profile page. */
+router.get('/profile', async (req, res) => {
+    return res.render('seller/seller-profile');
+ });
 
 /* GET /seller/dashboard/profile page. */
  router.get('/profile/:id', async (req, res) => {
