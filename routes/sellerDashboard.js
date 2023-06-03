@@ -2,7 +2,7 @@ import { Router } from 'express';
 const router = Router();
 import Prod from '../models/productData.js';
 import {addItem} from "../controllers/seller-controller.js";
-
+import seller from "../models/sellerRegister.js";
 /* GET /seller/dashboard page. */
 router.get('/', function(req, res, next) {
     res.render('seller/seller-dashboard');
@@ -49,8 +49,16 @@ router.get('/info', function(req, res, next) {
 
 
 /* GET /seller/dashboard/profile page. */
-router.get('/profile', function(req, res, next) {
-    res.render('seller/seller-profile');
-})
+ router.get('/profile/:id', async (req, res) => {
+    console.log('bydkhol hna');
+    try {
+      const sellers = await seller.findById(req.params.id);
+      if (!sellers)return res.status(404).render('error.ejs', { message: "Seller not found" });
+      else return res.render('seller/seller-profile', {seller});
+    } catch (err) {
+       console.log(err);
+       return res.status(500).render('error.ejs');
+     }
+   });
 
 export default router;
