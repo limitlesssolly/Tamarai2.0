@@ -15,34 +15,43 @@
 <body>
 
     <div class="Cart-Container">
+
         <div class="Header">
             <h3 class="Heading , tooltip"><span class="tooltiptext">shopping cart</span>Shopping Cart</h3>
             <button class="Action" onclick="remove_all()">Remove all</button>
             <!-- <h5 class="Action">Remove all</h5> -->
         </div>
+
         <div class="Cart-Items">
-            <div class="image-box">
-                <img src="photos/face.jpg" alt="face" style="height: 120px;" />
-            </div>
-            <div class="about">
-                <h1 class="title">portrait design</h1>
-                <h3 class="subtitle">artist:mohy elshrkawy</h3>
-                <img src="photos/street.jpg" alt="street" style="height: 30px;" />
-            </div>
-            <div class="counter"></div>
-            <div class="prices"></div>
-            <div class="counter">
-                <button class="btn" onclick="counting()">+</button>
-                <!-- <div class="btn">+</div> -->
-                <div class="count">1</div>
-                <button class="btn" onclick="decreasing()">-</button>
-                <!-- <div class="btn">-</div> -->
-            </div>
-            <div class="prices">
-                <div class="amount">175 </div>
-                <div class="save"><u>Save for later</u></div>
-                <button class="remove" onclick="remove_element()"><u>Remove</u></button>
-            </div>
+            <% productData.forEach(function(product) { %>
+
+                <div class="image-box">
+                    <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>">
+                </div>
+                <div class="about">
+                    <h1 class="title">
+                        <%= product.name %>
+                    </h1>
+                    <h3 class="subtitle">
+                        <%= product.seller%>
+                    </h3>
+                    <img src="photos/street.jpg" alt="street" style="height: 30px;" />
+                </div>
+                <div class="counter"></div>
+                <div class="prices"></div>
+                <div class="counter">
+                    <button class="btn" onclick="counting()">+</button>
+                    <!-- <div class="btn">+</div> -->
+                    <div class="count">1</div>
+                    <button class="btn" onclick="decreasing()">-</button>
+                    <!-- <div class="btn">-</div> -->
+                </div>
+                <div class="prices">
+                    <div class="amount">175 </div>
+                    <div class="save"><u>Save for later</u></div>
+                    <button class="remove" onclick="remove_element()"><u>Remove</u></button>
+                </div>
+                <% }); %>
         </div>
 
 

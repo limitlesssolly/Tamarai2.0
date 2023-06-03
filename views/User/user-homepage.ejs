@@ -36,10 +36,7 @@
     </header>
     <!-- Products  -->
     <section class="product">
-        <h2 class="product-category">Best Selling</h2>
-        <!-- Arrows -->
-        <button class="pre-btn"><img src="/images/right-arrow.png" alt="left-arrow"></button>
-        <button class="nxt-btn"><img src="/images/right-arrow.png" alt="right-arrow"></button>
+
         <div class="product-container">
             <section class="products">
                 <h2 class="product-category">Best Selling</h2>
@@ -54,13 +51,12 @@
                                     <% } %>
                                         <a href="">
                           <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>">
-                          
                         </a>
-                                        <a class="card-btn" href="/user/homepage/checkout">Add to Bag</a>
+                                        <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
                             </div>
                             <div class="product-info">
                                 <h2 class="product-brand">
-                                    <%= product.brand %>
+                                    <%= product.seller%>
                                 </h2>
                                 <p class="product-short-des">
                                     <%= product.description %>
@@ -124,6 +120,9 @@
     </div>
 </body>
 
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+</html>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 </html>
