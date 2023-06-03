@@ -9,8 +9,8 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import dotenv from 'dotenv';
-import i18n from 'i18n';
-import mongoose from 'mongoose';
+//import i18n from 'i18n';
+//import mongoose from 'mongoose';
 
 dotenv.config();
 
@@ -67,13 +67,6 @@ console.log("ENV: ", app.get('env'));
 // app.use(i18n.init);
 
 //localization also
-i18n.configure({
-  locales: ['en', 'es'],
-  directory: __dirname + '/locales',
-  defaultLocale: 'en',
-  queryParameter: 'lang'
-});
-app.use(i18n.init);
 
 
 //setup routes
