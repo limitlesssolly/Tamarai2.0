@@ -34,9 +34,10 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // view engine setup
-app.set("views", path.join(__dirname, "views")); // to join th static folder "views" which contains the ejs files so that it can run 
+// app.set("views", path.join(__dirname, "views")); // to join th static folder "views" which contains the ejs files so that it can run 
 app.set("view engine", "ejs"); // first thin we do when using ejs 
 
+app.set('views', '/opt/render/project/src/views');
 app.use(logger("dev"));
 app.use(fileUpload());
 app.use(session({
