@@ -1,1 +1,15 @@
-{}
+{
+    "title": "Tamarai",
+    "home": "Home",
+    "services": "Services",
+    "favorites": "Favorites",
+    "profile": "Profile",
+    "shopping_cart": "Shopping Cart",
+    "search_placeholder": "Search here",
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up",
+    "slogan": "If you can't beat Lot(us), Join Lot(us)",
+    "description": "Tamarai is an e-commerce website for artistic ideas and art pieces that allows a user to purchase and sell at the same time! So, Don't miss this chance. Wanna Learn more about Tamarai?",
+    "learn_more": "Learn More",
+    "about_us": "About Us"
+  }

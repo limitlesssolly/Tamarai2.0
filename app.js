@@ -55,15 +55,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 console.log("ENV: ", app.get('env'));
 
-//localization
+// //localization
 
-// Define supported locales
+// // Define supported locales
+// i18n.configure({
+//     locales: ['en', 'fr'],
+//     defaultLocale: 'en',
+//     directory: path.join(__dirname, 'locales')
+// });
+// // Set up middleware to handle localization
+// app.use(i18n.init);
+
+//localization also
 i18n.configure({
-    locales: ['en', 'fr'],
-    defaultLocale: 'en',
-    directory: path.join(__dirname, 'locales')
+  locales: ['en', 'es'],
+  directory: __dirname + '/locales',
+  defaultLocale: 'en',
+  queryParameter: 'lang'
 });
-// Set up middleware to handle localization
 app.use(i18n.init);
 
 
