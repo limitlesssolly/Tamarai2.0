@@ -50,7 +50,9 @@
                                     <span class="discount-tag"><%= product.discount %>% off</span>
                                     <% } %>
                                         <a href="">
-                          <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>">
+                          <!-- <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>"> -->
+                          <img src="/images/<%= product.image %>" width="100">
+
                         </a>
                                         <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
                             </div>
