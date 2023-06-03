@@ -54,26 +54,15 @@ const addItem = async (req, res, next) => {
   }
 };
 
-const getItem = async (req, res, next) => {
-  try {
-    console.log(req.cookies);
-    const productitem = await products.findById(req.params._id);
-    res.send(productitem);
-  }
-  catch (error) {
-    res.status(500).json({ message: error.message })
-  }
-};
-
 const updateItem = async (req, res, next) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
-    const options = { new: true };
+    const options = { new: false };
 
     const result = await products.findByIdAndUpdate(id, updatedData, options)
     console.log(result);
-    res.send(result)
+    res.redirect('/admin/dashboard/sellings/view/' + id)
   }
   catch (error) {
     res.status(400).json({ message: error.message })

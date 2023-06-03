@@ -40,7 +40,7 @@ router.get('/sellings/view/:id', async function (req, res, next) {
 })
 
 /* UPDATE One item using id */
-router.get('/sellings/view/update/:id', updateItem)
+router.post('/sellings/view/update/:id', updateItem)
 
 /* Delete One item using id */
 router.get('/sellings/delete/:id', async function (req, res, next) {

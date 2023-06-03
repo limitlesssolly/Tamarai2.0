@@ -28,6 +28,12 @@ router.get('/info', function(req, res, next) {
 router.get('/products', function(req, res, next) {
     res.render('seller/seller-products');
 })
+
+/* GET /seller/dashboard page. */
+router.get('/dashboard', function(req, res, next) {
+    res.render('seller/seller-products');
+})
+
 /* GET /seller/profile page. */
 router.get('/profile', function(req, res, next) {
     res.render('seller/seller-profile');

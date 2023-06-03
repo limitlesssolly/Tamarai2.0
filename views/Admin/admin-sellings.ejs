@@ -23,13 +23,7 @@
                     <tr>
                         <th>Product name</th>
                         <th>Brand</th>
-                        <th>Seller</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>Count In Stock</th>
-                        <th>Description</th>
                         <th>Category</th>
-                        <th>Color</th>
                         <th>Action</th>
                     </tr>
                     <% Products.forEach(function(product) { %>
@@ -41,39 +35,20 @@
                                 <%= product.brand %>
                             </td>
                             <td>
-                                <%= product.seller%>
-                            </td>
-                            <td>
-                                <%= product.price%>
-                            </td>
-                            <td>
-                                <%= product.image%>
-                            </td>
-                            <td>
-                                <%= product.count%>
-                            </td>
-                            <td>
-                                <%= product.description%>
-                            </td>
-                            <td>
                                 <%= product.category%>
                             </td>
                             <td>
-                                <%= product.color%>
-                            </td>
-                            <td>
                                 <span>
-                                    <a class="deleter"
-                                        href="/admin/dashboard/sellings/delete/<%=product._id%>">Delete</a>
-                                    <br>
-                                    <a class="viewer" 
-                                        href="/admin/dashboard/sellings/view/<%=product._id%>">View</a>
+                                    <span><a class="deleter"
+                                        href="/admin/dashboard/sellings/delete/<%=product._id%>">Delete</a></span>
+                                    <span><a class="viewer" 
+                                        href="/admin/dashboard/sellings/view/<%=product._id%>">View</a></span>
                                 </span>
                             </td>
 
                         </tr>
                         <% }); %>
-                            <tr class="adds" id="adds" style="display: none;">
+                            <!-- <tr class="adds" id="adds" style="display: none;">
                                 <form method="post" action="/admin/dashboard/sellings">
                                     <td><input name="name" type="text"></td>
                                     <td><input name="brand" type="text"></td>
@@ -86,11 +61,15 @@
                                     <td><input name="color" type="color"></td>
                                     <td><button type="submit" id="addbutts"> Plus one </button></td>
                                 </form>
-                            </tr>
+                            </tr> -->
                 </table>
             </div>
         </div>
+        <div class="foots">
+            <%- include('../partials/footer.ejs') %>
+        </div>
 </body>
+
 <script>
     function nav() {
         if (document.getElementById("adds").style.display == "contents") {
