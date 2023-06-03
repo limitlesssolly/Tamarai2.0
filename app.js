@@ -20,7 +20,7 @@ import adminDashboardRouter from "./routes/adminDashboard.js";
 import sellerRouter from "./routes/seller.js";
 import userRouter from "./routes/user.js";
 import productRouter from "./routes/product.js";
-// import productsRouter from "./routes/products.js";
+import productestRouter from "./routes/products.js";
 
 
 //Read the current directory name
@@ -30,6 +30,7 @@ export const __dirname = path.dirname(__filename);
 console.log(`Project Root dir : ${__dirname}`);
 
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
 // view engine setup
 app.set("views", path.join(__dirname, "views")); // to join th static folder "views" which contains the ejs files so that it can run 
@@ -59,6 +60,8 @@ app.use('/admin/dashboard', adminDashboardRouter);
 app.use('/seller', sellerRouter);
 app.use('/user', userRouter);
 app.use('/products', productRouter);
+app.use('/productest', productestRouter);
+
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index'));
