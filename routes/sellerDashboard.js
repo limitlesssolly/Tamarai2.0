@@ -34,6 +34,14 @@ router.get('/view',async function(req, res, next) {
     res.render('seller/seller-view' , {Products});
 })
 
+/* Delete One item using id */
+router.get('/view/delete/:id', async function (req, res, next) {
+    const id = req.params.id;
+    const data = await Prod.findByIdAndDelete(id)
+    console.log(`Item ${data.name} has been deleted..`)
+    return res.redirect('/seller/dashboard/view');
+})
+
 /* GET /seller/dashboard/info page. */
 router.get('/info', function(req, res, next) {
     res.render('seller/seller-info');
