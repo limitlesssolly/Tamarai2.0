@@ -1,50 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>add user</title>
+    <title>Users</title>
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <link rel="stylesheet" href="/css/admin/admin-sellings.css">
-</head>
+  </head>
 
-<body>
-        <%- include('../partials/adminNav.ejs') %>
-        <h1>add user</h1>
-        <form action="/admin/dashboard/addUser" method="post">
-            <div class="users" style="left: 15%;">
-              <label for="username"> username </label>
-              <input id="username" type="text" placeholder="username" name="username"> <br>
-              <div id="error-div">
-            </div>
-            </div>
-            <div class="passes" style="left: 15%;">
-              <label for="password"> password </label>
-              <input id="password" type="password" placeholder="password" name="password"> <br>
-              <div id="error-div">
-            </div>
-      
-            </div>
-            <div class="email" style="left: 55%;">
-              <label for="email"> email </label>
-              <input id="email" type="email" placeholder="example@mail.com" name="email"> <br>
-              <div id="error-div">
-            </div>
-      
-            </div>
-            <div class="cpass" style="left: 55%;">
-              <label for="cpass"> confirm pass </label>
-              <input id="confirmpass" type="password" placeholder="confirm password" name="confirmpassword"> <br>
-              <div id="error-div">
-              </div>
-      
-            </div>
-            <div class="successfully" id="Success"> Registration Successful!
-            </div>
-            <button class="URbutton" type="submit" style="top: 75%;">Sign up</button>
-          </form>
-        <%- include('../partials/footer.ejs') %>
-</body>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    table {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-collapse: collapse;
+      width: 800px;
+      height: 200px;
+      border: 1px solid #1c4c56;
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+    tr {
+      transition: all .2s ease-in;
+      cursor: pointer;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #8e7e64;
+    }
+    #header {
+      background-color: #2a7589;
+      color: #83a7b6;
+    }
+    h1 {
+      font-weight: 600;
+      text-align: center;
+      background-color: #2a7589;
+      color: #0d1516;
+      padding: 10px 0px;
+    }
+    tr:hover {
+      background-color: #8e7e64;
+      transform: scale(1.02);
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+
+  <body>
+    <%- include('../partials/adminNav.ejs') %>
+    <% if (users.length > 0) { %>
+      <h2>All Users</h2>
+      <table>
+        <tr id="header">
+          <th>ID</th>
+          <th>E-mail</th>
+          <th>Name</th>
+        </tr>
+        <% users.forEach(user => { %>
+          <tr>
+            <td><%= user._id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.username %></td>
+          </tr>
+        <% }) %>
+      </table>
+      <% } else { %>
+        <h2>No users to display</h2>
+      <% } %>
+    <%- include('../partials/footer.ejs') %>
+  </body>
 </html>

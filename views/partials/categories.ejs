@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/admin/cats.css">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>current categories <span onclick="nav()"> +</span></th>
+            <th>Action</th>
+        </tr>
+        <% cats.forEach(function(cat) { %>
+        <tr>
+            <td>
+                <%= cat.name %>
+            </td>
+            <td>
+                <span>
+                    <span>
+                        <a class="deleter" href="/admin/dashboard/category/delete/<%=cat._id%>">Delete</a>
+                    </span>
+                </span>
+            </td>
+        </tr>
+        <% }); %>
+        <tr>
+            <td>
+            <div class="pagination">
+                <a href="#"><</a>
+                <a class="active" href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">></a>
+              </div>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr id="adds" style="display: none;">
+            <form method="post" action="/admin/dashboard/addcategory">
+                <td><input name="cats" type="text"></td>
+                <td><button type="submit" class="adds"> Plus one </button></td>
+            </form>
+        </tr>
+    </table>
+</body>
+<script>
+    function nav() {
+        if (document.getElementById("adds").style.display == "block") {
+            navClose();
+        }
+        else if (document.getElementById("adds").style.display == "none") {
+            navOpen();
+        }
+    }
+    function navOpen() {
+        document.getElementById("adds").style.display = "block";
+    }
+
+    function navClose() {
+        document.getElementById("adds").style.display = "none";
+    }
+</script>
+
+</html>
