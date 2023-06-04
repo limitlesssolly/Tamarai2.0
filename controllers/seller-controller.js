@@ -24,7 +24,7 @@ const signins = async (req, res, next) => {
   var pw = req.body.password;
 
   try {
-    const sellers = await seller.find({});
+    const sellers = await rege.find({});
     var i;
     for (i = 0; i < sellers.length; i++) {
       if (sellers[i].username === un) {
