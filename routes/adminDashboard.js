@@ -41,6 +41,11 @@ router.get('/sellings/delete/:id', async function (req, res, next) {
     return res.redirect('/admin/dashboard/sellings');
 })
 
+// Get /admin/dashboard/allUsers. 
+router.get('/admin/dashboard/allUsers', function(req, res, next) {
+    res.render('admin/admin-allUsers');
+});
+
 /* GET /admin/dashboard/usings/user page. */
 router.get('/usings/user', function (req, res, next) {
     res.render('admin/admin-usings');
