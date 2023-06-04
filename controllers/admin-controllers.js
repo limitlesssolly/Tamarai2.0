@@ -5,6 +5,22 @@ import user from '../models/userRegister.js';
 import kitty from '../models/categories.js'
 import bcrypt from 'bcrypt';
 
+const deleteUser = async (req, res,next)=>{
+  Employees.findByIdAndDelete(req.params.id)
+  .then(result => {
+     
+      if (err) {
+        throw err;
+      }
+      res.redirect('/admin/admin-dashboard');
+  
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
+
 const signins = async (req, res, next) => {
   const { username, password } = req.body;
   if (!username) return res.status(400).send({ msg: 'Please enter a username' });
@@ -114,4 +130,5 @@ export {
   signupstoo,
   signupstre,
   addCategory,
+  deleteUser
 };

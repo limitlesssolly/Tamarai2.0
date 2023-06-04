@@ -3,6 +3,7 @@ import Prod from '../models/productData.js';
 import kitty from '../models/categories.js';
 import Users from '../models/userRegister.js';
 import {signups, signupstoo, signupstre, addCategory} from "../controllers/admin-controllers.js";
+import { deleteUser } from '../controllers/admin-controllers.js';
 const router = Router();
 
 /* GET /admin/dashboard page. */
@@ -78,7 +79,7 @@ router.get('/usings/seller', function (req, res, next) {
 router.post('/addUser',signups); 
 router.post('/addSeller',signupstoo); 
 router.post('/addAdmin',signupstre); 
-
+router.post('/deleteUSer',deleteUser);
 
 /* GET /admin/dashboard/settings page. */
 router.get('/settings/', function (req, res, next) {

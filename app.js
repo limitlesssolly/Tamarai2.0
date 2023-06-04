@@ -23,6 +23,17 @@ import productRouter from "./routes/product.js";
 import productestRouter from "./routes/products.js";
 
 
+var siteStatusData = {
+	labels: ['Up', 'Down', 'Degraded'],
+	datasets: [{
+		label: 'Site Status',
+		data: [75, 5, 20],
+		backgroundColor: [
+			'rgba(52, 152, 219, 0.8)',
+			'rgba(231, 76, 60, 0.8)'
+        ]	 
+        }
+    ]}
 //Read the current directory name
 export const __filename = fileURLToPath(
     import.meta.url);
@@ -50,6 +61,14 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(
+    session({
+        secret:'nnfkjhfjjdiwudqkldkwopiwqmduih',
+        resave:false,
+        saveUninitialized:false,
+    })
+);
 
 console.log("ENV: ", app.get('env'));
 

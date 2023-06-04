@@ -3,17 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stats</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Insights</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+  -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+	<script src="app.js"></script>
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-    <link rel="stylesheet" href="/css/admin/admin-stats.css">
+    <link rel="stylesheet" href="/css/admin/admin-stats.css"> -->
+     
 </head>
 
 <body>
-        <%- include('../partials/adminNav.ejs') %>
-        <h1>Stats</h1>
-        <%- include('../partials/footer.ejs') %>
+	<header>
+		<h1>Admin Insights</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="#">Overview</a></li>
+			<li><a href="#">Users</a></li>
+			<li><a href="#">Revenue</a></li>
+			<li><a href="#">Traffic Sources</a></li>
+		</ul>
+	</nav>
+    <script>
+        // Replace the placeholders with actual data
+        document.getElementById("status").textContent = "Online";
+        document.getElementById("users").textContent = "1000";
+        document.getElementById("revenue").textContent = "$5000";
+        document.getElementById("traffic-sources").textContent = "Organic, Referral, Direct";
+      </script>
+	<main>
+		<section>
+			<h2>Site Status</h2>
+			<canvas id="siteStatusChart"></canvas>
+		</section>
+		<section>
+			<h2>Users</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tristique felis quis massa finibus blandit. Sed bibendum erat ligula, sed lobortis mi vestibulum auctor. Etiam at convallis leo.</p>
+		</section>
+		<section>
+			<h2>Revenue</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tristique felis quis massa finibus blandit. Sed bibendum erat ligula, sed lobortis mi vestibulum auctor. Etiam at convallis leo.</p>
+		</section>
+		<section>
+			<h2>Traffic Sources</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tristique felis quis massa finibus blandit. Sed bibendum erat ligula, sed lobortis mi vestibulum auctor. Etiam at convallis leo.</p>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 Admin Insights</p>
+	</footer>
 </body>
-
 </html>
