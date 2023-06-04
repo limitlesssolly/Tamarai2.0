@@ -1,7 +1,6 @@
 import express from "express";
 const app = express();
-
-import path from "path";
+ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
@@ -9,7 +8,7 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import dotenv from 'dotenv';
-
+ 
 
 dotenv.config();
 

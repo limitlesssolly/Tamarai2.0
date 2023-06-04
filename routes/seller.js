@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-// import seller from '../models/sellerRegister.js';
+import seller from '../models/sellerRegister.js';
 import {signup,signins} from "../controllers/seller-controller.js";
 
 /* GET /seller page. */
