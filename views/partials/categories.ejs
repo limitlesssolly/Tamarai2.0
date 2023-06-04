@@ -12,6 +12,7 @@
     <table>
         <tr>
             <th>current categories <span onclick="nav()"> +</span></th>
+            <th>Action</th>
         </tr>
         <% cats.forEach(function(cat) { %>
         <tr>
@@ -25,15 +26,29 @@
                     </span>
                 </span>
             </td>
-
         </tr>
         <% }); %>
-            <tr id="adds" style="display: block;">
-                <form method="post" action="/admin/dashboard/addcategory">
-                    <td><input name="cats" type="text"></td>
-                    <td><button type="submit" class="adds"> Plus one </button></td>
-                </form>
-            </tr>
+        <tr>
+            <td>
+            <div class="pagination">
+                <a href="#"><</a>
+                <a class="active" href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">></a>
+              </div>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr id="adds" style="display: none;">
+            <form method="post" action="/admin/dashboard/addcategory">
+                <td><input name="cats" type="text"></td>
+                <td><button type="submit" class="adds"> Plus one </button></td>
+            </form>
+        </tr>
     </table>
 </body>
 <script>

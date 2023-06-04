@@ -1,12 +1,8 @@
-import {
-    Router
-} from 'express';
+import {Router} from 'express';
 const router = Router();
 import Prod from '../models/productData.js';
-import {
-    addItem
-} from "../controllers/seller-controller.js";
-import seller from "../models/sellerRegister.js";
+import {addItem} from "../controllers/seller-controller.js";
+// import seller from "../models/sellerRegister.js";
 import regi from "../models/tryseller.js";
 
 /* GET /seller/dashboard page. */
@@ -21,7 +17,7 @@ router.get('/add', function (req, res, next) {
 });
 
 /* GET /seller/dashboard/view page. */
-router.get('/add', function (req, res, next) {
+router.get('/add',async function (req, res, next) {
     res.render('seller/seller-add');
 });
 
