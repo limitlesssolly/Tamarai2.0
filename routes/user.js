@@ -21,6 +21,9 @@ router.get('/homepage/checkout', function(req, res, next) {
 router.get('/homepage/bag', function(req, res, next) {
     res.render('user/user-shoppingbag');
 });
+router.get('/homepage/whishlist', function(req, res, next) {
+    res.render('/user/user-whishlist',{Title:"wishList"});
+});
 
 router.post('/', signins);
 

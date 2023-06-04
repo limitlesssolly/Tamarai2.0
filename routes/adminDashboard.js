@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import Prod from '../models/productData.js';
 import {signups} from "../controllers/admin-controllers.js";
+import { deleteUser } from '../controllers/admin-controllers.js';
 const router = Router();
 
 /* GET /admin/dashboard page. */
@@ -49,7 +50,7 @@ router.get('/usings', function (req, res, next) {
 })
 
 router.post('/addUser',signups); 
-
+router.post('/deleteUSer',deleteUser);
 
 /* GET /admin/dashboard/settings page. */
 router.get('/settings/', function (req, res, next) {

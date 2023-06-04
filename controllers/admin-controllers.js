@@ -3,6 +3,22 @@ import products from '../models/productData.js';
 import user from '../models/userRegister.js';
 import bcrypt from 'bcrypt';
 
+const deleteUser = async (req, res,next)=>{
+  Employees.findByIdAndDelete(req.params.id)
+  .then(result => {
+     
+      if (err) {
+        throw err;
+      }
+      res.redirect('/admin/admin-dashboard');
+  
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
+
 const signins = async (req, res, next) => {
   const { username, password } = req.body;
   if (!username) return res.status(400).send({ msg: 'Please enter a username' });
@@ -69,4 +85,5 @@ const updateItem = async (req, res, next) => {
 export {
   signins,
   signups,
+  deleteUser
 };
