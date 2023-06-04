@@ -37,7 +37,7 @@ const signups = async (req, res, next) => {
     });
     await newuser.save();
     console.log('user Created');
-    res.redirect('/admin/dashboard/usings/user')
+    res.redirect('/admin/dashboard/usings')
   };
 };
 
@@ -57,7 +57,7 @@ const signupstoo = async (req, res, next) => {
     });
     await newseller.save();
     console.log('seller Created');
-    res.redirect('/admin/dashboard/usings/seller')
+    res.redirect('/admin/dashboard/usings')
   };
 };
 
@@ -74,7 +74,7 @@ const signupstre = async (req, res, next) => {
     });
     await newadmin.save();
     console.log('admin Created');
-    res.redirect('/admin/dashboard/usings/admin')
+    res.redirect('/admin/dashboard/usings')
   };
 };
 
