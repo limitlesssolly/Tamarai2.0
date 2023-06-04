@@ -329,6 +329,13 @@ a
     border-radius: 20px;
 }
 
+.viewsa .buttons
+{
+    position: absolute;
+    top : 70%;
+    left: 43%;
+}
+
 .foots
 {
     position: relative;
