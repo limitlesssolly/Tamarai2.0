@@ -7,16 +7,16 @@
     <title>Your Profile</title>
     <!-- <link rel="stylesheet" href="/css/userHomepage.css"> -->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-    <link rel="stylesheet" type="text/css" href="/css/sellersc.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/css/sellersc.css"> -->
     <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/css/add.css">
-    <link rel="stylesheet" href="/css/productcard.css">
-    <link rel="stylesheet" type="text/css" href="/css/sellerproducts.css">
+    <!-- <link rel="stylesheet" href="/css/add.css"> -->
+    <!-- <link rel="stylesheet" href="/css/productcard.css">
+    <link rel="stylesheet" type="text/css" href="/css/sellerproducts.css"> -->
     <!--manage.css-->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png">
 </head>
-<style>
+<!-- <style>
     li {
         grid-row-start: auto;
     }
@@ -49,25 +49,26 @@
     /*.column:nth-of-type(4) {
         width: 100px;
         /* Replace 300 with your desired width */
-</style>
+</style> -->
 
 <body>
-    <%= regs.username %>
-        <%= regs.email %>
-    
+
+    <!-- <%= regs.email %> -->
+
     <div class="chatbox ">
         <div>
             <%- include('../partials/chat.ejs') %>
         </div>
     </div>
+
     <div class="grid-container">
         <div id="header">
             <%- include('../partials/sellernav.ejs') %>
-        </div>
+        </div> <h1> Welcome, <%= regs.username %></h1>
     </div>
 
-        
-  
+   
+
 </body>
 
 </html>
