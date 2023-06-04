@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import Prod from '../models/productData.js';
-import {signups} from "../controllers/admin-controllers.js";
+import {signups, signupstoo, signupstre} from "../controllers/admin-controllers.js";
 const router = Router();
 
 /* GET /admin/dashboard page. */
@@ -43,12 +43,24 @@ router.get('/sellings/delete/:id', async function (req, res, next) {
     return res.redirect('/admin/dashboard/sellings');
 })
 
-/* GET /admin/dashboard/usings page. */
-router.get('/usings', function (req, res, next) {
+/* GET /admin/dashboard/usings/user page. */
+router.get('/usings/user', function (req, res, next) {
     res.render('admin/admin-usings');
 })
 
+/* GET /admin/dashboard/usings/admin page. */
+router.get('/usings/admin', function (req, res, next) {
+    res.render('admin/admin-add-admin');
+})
+
+/* GET /admin/dashboard/usings/seller page. */
+router.get('/usings/seller', function (req, res, next) {
+    res.render('admin/admin-add-seller');
+})
+
 router.post('/addUser',signups); 
+router.post('/addSeller',signupstoo); 
+router.post('/addAdmin',signupstre); 
 
 
 /* GET /admin/dashboard/settings page. */

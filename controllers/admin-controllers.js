@@ -1,4 +1,5 @@
 import admin from '../models/adminData.js';
+import seller from '../models/sellerRegister.js'
 import products from '../models/productData.js';
 import user from '../models/userRegister.js';
 import bcrypt from 'bcrypt';
@@ -36,7 +37,44 @@ const signups = async (req, res, next) => {
     });
     await newuser.save();
     console.log('user Created');
-    res.redirect('/admin/dashboard/usings')
+    res.redirect('/admin/dashboard/usings/user')
+  };
+};
+
+const signupstoo = async (req, res, next) => {
+  const { username, email } = req.body;
+  const sellerdb = await seller.findOne({ $or: [{ username }, { email }] });
+  if (sellerdb) {
+    res.status(400).send({ msg: 'seller already exist!' })
+  } else {
+    const Password = await bcrypt.hash(req.body.password, 10);
+    const CPassword = await bcrypt.hash(req.body.confirmpassword, 10);
+    const newseller = new seller({
+      email: req.body.email,
+      username: req.body.username,
+      password: Password,
+      confirmPassword: CPassword,
+    });
+    await newseller.save();
+    console.log('seller Created');
+    res.redirect('/admin/dashboard/usings/seller')
+  };
+};
+
+const signupstre = async (req, res, next) => {
+  const {username} = req.body;
+  const admindb = await admin.findOne({ $or: [{ username }] });
+  if (admindb) {
+    res.status(400).send({ msg: 'admin already exist!' })
+  } else {
+    const Password = await bcrypt.hash(req.body.password, 10);
+    const newadmin = new admin({
+      username: req.body.username,
+      password: Password,
+    });
+    await newadmin.save();
+    console.log('admin Created');
+    res.redirect('/admin/dashboard/usings/admin')
   };
 };
 
@@ -56,17 +94,9 @@ const updateItem = async (req, res, next) => {
 };
 
 
-// const getUsers = async (req, res, next) => {
-//   try {
-//     const users = await user.find({});
-//     return res.render('../views/Admin/admin-users');
-//   } catch (err) {
-//     console.log(err);
-//     return res.status(500).render('error.ejs');
-//   }
-// };
-
 export {
   signins,
   signups,
+  signupstoo,
+  signupstre,
 };
