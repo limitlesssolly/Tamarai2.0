@@ -41,9 +41,14 @@ router.get('/sellings/delete/:id', async function (req, res, next) {
     return res.redirect('/admin/dashboard/sellings');
 })
 
+/* GET /admin/dashboard/usings page. */
+router.get('/usings', function (req, res, next) {
+    res.render('admin/admin-usings');
+})
+
 /* GET /admin/dashboard/usings/user page. */
 router.get('/usings/user', function (req, res, next) {
-    res.render('admin/admin-usings');
+    res.render('admin/admin-add-user');
 })
 
 /* GET /admin/dashboard/usings/admin page. */
