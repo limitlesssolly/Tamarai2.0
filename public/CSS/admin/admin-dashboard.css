@@ -7,6 +7,12 @@ body
     margin: 0;
 }
 
+.addcategory
+{ 
+    position: absolute;
+    left: 77%;
+    top: 20%;
+}
 
 @media screen and (max-width: 600px) 
 {
