@@ -1,11 +1,23 @@
 import { Router } from 'express';
 import Prod from '../models/productData.js';
-import {signups, signupstoo, signupstre} from "../controllers/admin-controllers.js";
+import kitty from '../models/categories.js'
+import {signups, signupstoo, signupstre, addCategory} from "../controllers/admin-controllers.js";
 const router = Router();
 
 /* GET /admin/dashboard page. */
 router.get('/', async function (req, res, next) {
-    res.render('admin/admin-dashboard');
+    const cats = await kitty.find();
+    res.render('admin/admin-dashboard', {cats});
+})
+
+router.post('/addcategory',addCategory);
+
+/* Delete One category using id */
+router.get('/category/delete/:id', async function (req, res, next) {
+    const id = req.params.id;
+    const data = await kitty.findByIdAndDelete(id)
+    console.log(`Category ${data.name} has been deleted..`)
+    return res.redirect('/admin/dashboard');
 })
 
 /* GET /admin/dashboard/stats page. */
@@ -29,9 +41,6 @@ router.get('/sellings/view/:id', async function (req, res, next) {
     const Products = await Prod.findById(req.params.id);
     res.render('admin/admin-sellings-view', {Products});
 })
-
-/* UPDATE One item using id */
-// router.post('/sellings/view/update/:id', updateItem)
 
 /* Delete One item using id */
 router.get('/sellings/delete/:id', async function (req, res, next) {

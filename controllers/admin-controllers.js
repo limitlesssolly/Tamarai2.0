@@ -2,6 +2,7 @@ import admin from '../models/adminData.js';
 import seller from '../models/sellerRegister.js'
 import products from '../models/productData.js';
 import user from '../models/userRegister.js';
+import kitty from '../models/categories.js'
 import bcrypt from 'bcrypt';
 
 const signins = async (req, res, next) => {
@@ -78,6 +79,19 @@ const signupstre = async (req, res, next) => {
   };
 };
 
+const addCategory = async (req, res, next) => {
+  const {cats} = req.body;
+  const category = await kitty.findOne({ $or: [{ cats }] });
+  if (category) {
+    res.status(400).send({ msg: 'category already exist!' })
+  } else {
+    const newCat = new kitty({name: cats});
+    await newCat.save();
+    console.log('category Created');
+    res.redirect('/admin/dashboard');
+  };
+}
+
 const updateItem = async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -99,4 +113,5 @@ export {
   signups,
   signupstoo,
   signupstre,
+  addCategory,
 };
