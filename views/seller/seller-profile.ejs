@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Profile</title>
+    <title><%= regs.username %>'s Profile</title>
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 
@@ -19,16 +19,29 @@
             <%- include('../partials/chat.ejs') %>
         </div>
     </div>
-
-    <div class="grid-container">
-        <div id="header">
-            <%- include('../partials/sellernav.ejs') %>
+    <header>
+        <div class="grid-container">
+            <div id="header">
+                <%- include('../partials/sellernav.ejs') %>
+            </div>
         </div>
+    </header>
+    <main>
         <h1> Welcome, <%= regs.username %></h1>
+        <form method="POST" action="/seller/dashboard/profile/<%= regs.id %>">
+            <label for="name">Name:</label>
+            <input type="text" name="username" value="<%= regs.username %>"><br>
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="<%= regs.email %>"><br>
+            <!-- <label for="password">Password:</label>
+            <input type="text" name="password" value="<%= regs.password %>"><br> -->
+            <button type="submit">Update</button>
+          </form>
+
+
+    </main>
+    <div class="foots">
+        <%- include('../partials/footer.ejs') %>
     </div>
 
-
-
 </body>
-
-</html>
