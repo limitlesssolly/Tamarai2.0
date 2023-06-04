@@ -13,19 +13,38 @@
 <body>
         <%- include('../partials/adminNav.ejs') %>
         <h1>add user</h1>
-        <form method="post" action="/admin/dashboard/addUser">
-            <div class="users">
-                <label for="username"> username </label>
-                <input id="username" type="text" placeholder="username" name="username"> <br>
-                <span id="Uerror">error</span>
+        <form action="/admin/dashboard/addUser" method="post">
+            <div class="users" style="left: 15%;">
+              <label for="username"> username </label>
+              <input id="username" type="text" placeholder="username" name="username"> <br>
+              <div id="error-div">
             </div>
-            <div class="passes">
-                <label for="password"> password </label>
-                <input id="password" type="password" placeholder="password" name="password"> <br>
-                <span id="Perror">error</span>
             </div>
-            <button type="submit"> amira</button>
-        </form>
+            <div class="passes" style="left: 15%;">
+              <label for="password"> password </label>
+              <input id="password" type="password" placeholder="password" name="password"> <br>
+              <div id="error-div">
+            </div>
+      
+            </div>
+            <div class="email" style="left: 55%;">
+              <label for="email"> email </label>
+              <input id="email" type="email" placeholder="example@mail.com" name="email"> <br>
+              <div id="error-div">
+            </div>
+      
+            </div>
+            <div class="cpass" style="left: 55%;">
+              <label for="cpass"> confirm pass </label>
+              <input id="confirmpass" type="password" placeholder="confirm password" name="confirmpassword"> <br>
+              <div id="error-div">
+              </div>
+      
+            </div>
+            <div class="successfully" id="Success"> Registration Successful!
+            </div>
+            <button class="URbutton" type="submit" style="top: 75%;">Sign up</button>
+          </form>
         <%- include('../partials/footer.ejs') %>
 </body>
 </html>

@@ -50,11 +50,12 @@ const signup = async(req, res, next) => {
     } else {
         try {
             const hashPass = await bcrypt.hash(req.body.pass, 10);
+            const CPassword = await bcrypt.hash(req.body.confirmpass, 10);
             const newuser = new user({
                 email: req.body.email,
                 username: req.body.name,
                 password: hashPass,
-                confirmPassword: req.body.confirmpass
+                confirmPassword: CPassword,
             });
             await newuser.save();
             console.log('Registration successful!');

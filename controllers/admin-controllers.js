@@ -1,6 +1,6 @@
 import admin from '../models/adminData.js';
 import products from '../models/productData.js';
-import user from '../models/userData.js';
+import user from '../models/userRegister.js';
 import bcrypt from 'bcrypt';
 
 const signins = async (req, res, next) => {
@@ -21,18 +21,23 @@ const signins = async (req, res, next) => {
 };
 
 const signups = async (req, res, next) => {
-  console.log("7mada");
-  const { username } = req.body;
-  const admindb = await user.findOne({ $or: [{ username }] });
-  if (admindb) {
-    res.status(400).send({ msg: 'Admin already exist!' })
+  const { username, email } = req.body;
+  const userdb = await user.findOne({ $or: [{ username }, { email }] });
+  if (userdb) {
+    res.status(400).send({ msg: 'user already exist!' })
   } else {
-    const password = await bcrypt.hash(req.body.password, 10);
-    const newAdmin = await user.create({ username, password });
-    newAdmin.save();
+    const Password = await bcrypt.hash(req.body.password, 10);
+    const CPassword = await bcrypt.hash(req.body.confirmpassword, 10);
+    const newuser = new user({
+      email: req.body.email,
+      username: req.body.username,
+      password: Password,
+      confirmPassword: CPassword,
+    });
+    await newuser.save();
     console.log('user Created');
     res.redirect('/admin/dashboard/usings')
-  }
+  };
 };
 
 const updateItem = async (req, res, next) => {
