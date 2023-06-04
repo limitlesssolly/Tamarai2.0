@@ -24,13 +24,11 @@ router.get('/sellings', async function (req, res, next) {
     res.render('admin/admin-sellings', {Products});
 })
 
-
 /* GET /admin/dashboard/sellings/view page. */
 router.get('/sellings/view/:id', async function (req, res, next) {
     const Products = await Prod.findById(req.params.id);
     res.render('admin/admin-sellings-view', {Products});
 })
-
 
 /* UPDATE One item using id */
 // router.post('/sellings/view/update/:id', updateItem)
