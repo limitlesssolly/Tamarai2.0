@@ -16,12 +16,17 @@ h3
 }
 
 table {
+    position: absolute;
+    left: 75%;
+    top: 20%;
     border-collapse: collapse;
-    width: 30%;
+    width: 20%;
+    
 }
 
 th,
 td {
+    
     text-align: center;
     padding: 8px;
     border-bottom: 1px solid #d6bd91;
@@ -34,4 +39,44 @@ tr:nth-child(even) {
 th {
     background-color: #1c4c56;
     color: white;
+}
+
+th span 
+{
+    cursor: pointer;
+}
+
+#adds
+{
+    position: relative;
+    left: 15%;
+}
+
+#adds input
+{
+    width: 120px;
+}
+
+a
+{
+    color: #d6bd91;
+    text-decoration: none;
+}
+
+td button
+{
+    /* margin: 3px; */
+    padding: 2px;
+    font-size: 11px;
+    width: 160%;
+    outline:none;
+    border: 1px solid #d6bd91;
+    -o-border-radius: 20px;
+    cursor: pointer;
+    color: #d6bd91;
+    background: #ffffff;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 10px;
 }

@@ -5,42 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>add user</title>
+
+    <title>Add Admin</title>
+
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <link rel="stylesheet" href="/css/admin/admin-sellings.css">
+
 </head>
 
 <body>
     <%- include('../partials/adminNav.ejs') %>
 
-        <h1>Add Admin</h1>
+        <h2>Add Admin</h2>
         <div class="words">or choose your user</div>
 
-        <a href="/admin/dashboard/usings/user"><span class="use"><img src='/images/user.png' alt="using" /></span></a>
-        <span class="adds" style="top: 28%;"><img src='/images/settings.png' alt="sets" /></span>
-        <a href="/admin/dashboard/usings/seller"><span class="vend"><img src='/images/shopping-bag.png'
-                    alt="sells" /></span></a>
-
-        <div class="line"></div>
+        <a href="/admin/dashboard/usings/user"><span class="use"><img src='/images/user.png' alt="using"/></span></a>
+            <span class="adds" style="top: 28%;"><img src='/images/settings.png' alt="sets"/></span>
+            <a href="/admin/dashboard/usings/seller"><span class="vend"><img src='/images/shopping-bag.png' alt="sells"/></span></a>
 
         <form action="/admin/dashboard/addAdmin" method="post">
+
             <div class="users" style="left: 15%;">
                 <label for="username"> username </label>
-                <input id="username" type="text" placeholder="username" name="username"> <br>
-                <div id="error-div">
-                </div>
+                <input id="username" type="text" placeholder="username" name="username">
             </div>
+
             <div class="passes" style="left: 15%;">
                 <label for="password"> password </label>
-                <input id="password" type="password" placeholder="password" name="password"> <br>
-                <div id="error-div">
-                </div>
-
+                <input id="password" type="password" placeholder="password" name="password">
             </div>
 
-            <button class="URbutton" type="submit" style="top: 75%;">Sign up</button>
+            <div class="buts">
+                <button class="buttons" type="submit" style="top: 75%;">Sign up</button>
+                <a href="/admin/dashboard/usings" class="buttons">Back</a>
+            </div>
+
         </form>
-        <a href="/admin/dashboard/usings">Back</a>
+
         <%- include('../partials/footer.ejs') %>
 </body>
 

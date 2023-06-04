@@ -10,9 +10,71 @@
     <link rel="stylesheet" href="/css/admin/admin-sellings.css">
   </head>
 
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    table {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-collapse: collapse;
+      width: 800px;
+      height: 200px;
+      border: 1px solid #1c4c56;
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+    tr {
+      transition: all .2s ease-in;
+      cursor: pointer;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #8e7e64;
+    }
+    #header {
+      background-color: #2a7589;
+      color: #83a7b6;
+    }
+    h1 {
+      font-weight: 600;
+      text-align: center;
+      background-color: #2a7589;
+      color: #0d1516;
+      padding: 10px 0px;
+    }
+    tr:hover {
+      background-color: #8e7e64;
+      transform: scale(1.02);
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+
   <body>
     <%- include('../partials/adminNav.ejs') %>
-    <h2>All Users</h2>
+    <% if (users.length > 0) { %>
+      <h2>All Users</h2>
+      <table>
+        <tr id="header">
+          <th>ID</th>
+          <th>E-mail</th>
+          <th>Name</th>
+        </tr>
+        <% users.forEach(user => { %>
+          <tr>
+            <td><%= user._id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.username %></td>
+          </tr>
+        <% }) %>
+      </table>
+      <% } else { %>
+        <h2>No users to display</h2>
+      <% } %>
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>
