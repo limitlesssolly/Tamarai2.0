@@ -52,6 +52,9 @@
 </style>
 
 <body>
+    <%= regs.username %>
+        <%= regs.email %>
+    
     <div class="chatbox ">
         <div>
             <%- include('../partials/chat.ejs') %>
@@ -62,14 +65,9 @@
             <%- include('../partials/sellernav.ejs') %>
         </div>
     </div>
-    <div>
-        <%= sellers.username %>
-    </div>
-    <br>
-    <div>
-        <%= sellers.email %>
-    </div>
 
+        
+  
 </body>
 
 </html>

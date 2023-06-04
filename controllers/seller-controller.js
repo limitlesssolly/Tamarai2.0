@@ -1,5 +1,6 @@
 import {body,validationResult} from "express-validator";
-import seller from '../models/sellerRegister.js';
+// import seller from '../models/sellerRegister.js';
+import rege from '../models/tryseller.js';
 import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
 
@@ -69,7 +70,7 @@ const signup = async (req, res, next) => {
   } else {
     try {
       const hashPass = await bcrypt.hash(req.body.password, 10);
-      const newseller = new seller({
+      const newseller = new rege({
         email: req.body.email,
         username: req.body.username,
         password: hashPass,

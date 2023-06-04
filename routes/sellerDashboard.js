@@ -3,6 +3,8 @@ const router = Router();
 import Prod from '../models/productData.js';
 import {addItem} from "../controllers/seller-controller.js";
 import seller from "../models/sellerRegister.js";
+import regi from "../models/tryseller.js";
+
 /* GET /seller/dashboard page. */
 router.get('/', function(req, res, next) {
     res.render('seller/seller-dashboard');
@@ -49,14 +51,14 @@ router.get('/info', function(req, res, next) {
 
 /* GET /seller/dashboard/profile page. */
 router.get('/profile', async (req, res) => {
-    const sellers = await seller.find();
-      return res.render('seller/seller-profile', {sellers});
+    const sellers = await regi.find();
+       res.render('seller/seller-profile', {sellers});
  });
 
 /* GET /seller/dashboard/profile page. */
  router.get('/profile/:id', async (req, res) => {
-      const sellers = await seller.findById(req.session.id);
-      return res.render('seller/seller-profile', {sellers});
+      const regs = await regi.findById(req.params.id);
+       res.render('seller/seller-profile', {regs});
    });
 
 export default router;
