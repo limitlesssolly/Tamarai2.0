@@ -37,3 +37,14 @@ export const getProducts = async(req, res) => {
         res.status(500).send('Internal server error');
     }
 };
+
+export const getShoppingBag = async(req, res) => {
+    try {
+        const productData = await ProductsData.find();
+        console.log('productData:', productData);
+        res.render('user/user-shoppingbag', { productData });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal server error');
+    }
+}

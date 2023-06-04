@@ -1,6 +1,6 @@
 import express from 'express';
 import { signins, signup } from "../controllers/user-controllers.js";
-import { getHomepage } from '../controllers/products-controllers.js';
+import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
 
 const router = express.Router();
 
@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/homepage', getHomepage);
+router.get('/homepage/bag', getShoppingBag);
 
 router.get('/register', function(req, res, next) {
     res.render('user/user-register', { Title: "Register" });
@@ -22,7 +23,7 @@ router.get('/homepage/bag', function(req, res, next) {
     res.render('user/user-shoppingbag');
 });
 router.get('/homepage/whishlist', function(req, res, next) {
-    res.render('/user/user-whishlist',{Title:"wishList"});
+    res.render('/user/user-whishlist', { Title: "wishList" });
 });
 
 router.post('/', signins);
