@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import Prod from '../models/productData.js';
-import kitty from '../models/categories.js'
+import kitty from '../models/categories.js';
+import Users from '../models/userRegister.js';
 import {signups, signupstoo, signupstre, addCategory} from "../controllers/admin-controllers.js";
 const router = Router();
 
@@ -52,7 +53,11 @@ router.get('/sellings/delete/:id', async function (req, res, next) {
 
 /* GET /admin/dashboard/usings page. */
 router.get('/usings', function (req, res, next) {
-    res.render('admin/admin-usings');
+    const users = Users.find({}).then((users) => {
+        res.render('admin/admin-usings', {users: users});
+    }).catch((err) => {
+        next(err);
+    });
 })
 
 /* GET /admin/dashboard/usings/user page. */
