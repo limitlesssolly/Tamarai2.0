@@ -20,46 +20,23 @@ const signupValidation = [
 ];
 
 const signins = async (req, res, next) => {
-  var un = req.body.username;
-  var pw = req.body.password;
-
-  try {
-    const sellers = await rege.find({});
-    var i;
-    for (i = 0; i < sellers.length; i++) {
-      if (sellers[i].username === un) {
-        if (bcrypt.compareSync(pw, sellers[i].password)) {
-          console.log("login successful!")
-          return res.redirect('/seller/dashboard' )
-        } else {
-          continue;
-        }
-      } else {
-        continue;
+  const { username, password } = req.body;
+  if (!username) return res.status(400).send({ msg: 'Please enter a username' });
+  else if (!password) return res.status(400).send({ msg: 'Please enter a password' });
+  else {
+    const sellerdb = await rege.findOne({ username });
+    if (!sellerdb) return res.status(401).send({ msg: 'Please enter a valid username' });
+    else if (sellerdb) {
+      if (bcrypt.compareSync(password, sellerdb.password)) {
+        req.session.rege = sellerdb;
+        console.log('correct');
+        return res.redirect('/seller/dashboard');
       }
+      else return res.status(401).send({ msg: 'Please enter a valid password' });
     }
-    console.log("Invalid credentials");
-    return res.render('error.ejs');
-  } catch (err) {
-    console.log(err);
-    return res.status(500).render('error.ejs');
   }
 };
-// const checkUN = (req, res) => {
-//   var query = { UserName: req.body.UserName };
-//   Employees.find(query)
-//       .then(result => {
-//           if (result.length > 0) {
-//               res.send('taken');
-//           }
-//           else {
-//               res.send('available');
-//           }
-//       })
-//       .catch(err => {
-//           console.log(err);
-//       });
-// };
+
 
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
