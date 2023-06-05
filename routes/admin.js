@@ -10,12 +10,12 @@ router.get('/', function (req, res, next) {
 });
 
 /* POST /admin page. */
-router.post('/', signins);
+// router.post('/', signins);
 
-// router.post('/', passport.authenticate('local'), (req, res) => {
-//     console.log('logged in');
-//     res.send(200);
-// });
+router.post('/', passport.authenticate('local'), (req, res) => {
+    console.log('logged in');
+    res.send(200);
+});
 
 
 router.post('/getSearch', async (req, res) => {
