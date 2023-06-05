@@ -3,15 +3,14 @@ import express from "express";
 import Product from "../models/productData.js";
 const router = Router();
 
-// Get all products 
+// Get all products /products
 router.get('/', (req, res, next) => {
     // res.send("All products");
-    //res.render('user/products', { products: products});
     //Retrieve products data from MongoDB
     const products = Product.find({}).then((products) => {
         //  res.json(products);
         // res.render('user/try', { products: products });  // NOT WORKING WITH PRODUCT
-        res.render('user/products', { products: products });
+        // res.render('user/products', { products: products });
     }).catch((err) => {
         next(err);
     });
