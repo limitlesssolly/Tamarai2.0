@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
     //Retrieve products data from MongoDB
     const products = Product.find({}).then((products) => {
         //  res.json(products);
-        // res.render('user/try', { products: products });  // NOT WORKING WITH PRODUCT
+        // res.render('user/try', { products: products });  // NOT WORKING if you add a comment
         res.render('user/products', { products });
     }).catch((err) => {
         next(err);
