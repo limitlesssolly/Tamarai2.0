@@ -22,11 +22,12 @@ router.get('/homepage/checkout', function(req, res, next) {
 router.get('/homepage/bag', function(req, res, next) {
     res.render('user/user-shoppingbag');
 });
-router.get('/whishlist', function(req, res, next) {
+
+router.get('/homepage/whishlist', function(req, res, next) {
     res.render( 'user/user-whishlist', { Title: "whishlist" });
 });
 
-
+ 
 
 // router.post('user/user-whishlist',(req,res)=>{
 // const   {weddingdress,designerAmitabbatchan}=req.body;
