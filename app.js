@@ -21,7 +21,7 @@ import sellerDashboardRouter from "./routes/sellerDashboard.js";
 import userRouter from "./routes/user.js";
 import productRouter from "./routes/product.js";
 import productestRouter from "./routes/products.js";
-
+ 
 
 var siteStatusData = {
 	labels: ['Up', 'Down', 'Degraded'],
@@ -82,6 +82,7 @@ app.use('/seller/dashboard', sellerDashboardRouter);
 app.use('/user', userRouter);
 app.use('/products', productRouter);
 app.use('/productest', productestRouter);
+ 
 
 
 app.get('/', function(req, res) {
