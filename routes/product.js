@@ -6,17 +6,17 @@ const router = Router();
 
 // Get all products /products
 router.get('/', async (req, res, next) => {
-    // // res.send("All products");
-    // //Retrieve products data from MongoDB
-    // const products = Product.find({}).then((products) => {
-    //     //  res.json(products);
-    //     // res.render('user/try', { products: products });  // NOT WORKING WITH PRODUCT
-    //     res.render('user/products', { products });
-    // }).catch((err) => {
-    //     next(err);
-    // });
-    const products = await Product.find();
-    res.render('user/products', { products });
+    // res.send("All products");
+    //Retrieve products data from MongoDB
+    const products = Product.find({}).then((products) => {
+        //  res.json(products);
+        // res.render('user/try', { products: products });  // NOT WORKING WITH PRODUCT
+        res.render('user/products', { products });
+    }).catch((err) => {
+        next(err);
+    });
+    // const products = await Product.find();
+    // res.render('user/try', { products });
 });
 
 // Get a single product by its ID
