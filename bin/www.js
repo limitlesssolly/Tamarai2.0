@@ -62,3 +62,17 @@ function onListening() {
   const { port } = server.address();
   console.log(`Listening on Port ${port}`);
 }
+ 
+
+mongoose.connect(
+    "mongodb://3000:27017/Wishlist-API",
+    {
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
+).catch( (err) => {
+    if (err) {
+        console.log(err)
+    }
+} )
