@@ -36,16 +36,29 @@ router.get('/products', async (req, res) => {
         else {
             sortBy[sort[0]] = "asc";
         }
+
         const products = await Product.find({ name: { $regex: search, $options: "i" } })
             .where("cat")
             .in({...cat})
             .sort(sortBy)
             .skip(page*limit)
             .limit(limit);
+
         const total = await Product.countDocuments({
             cat: { $in: [...cat]},
             name: { $regex: search, $options: "i" },
-        })
+        });
+
+        const response = {
+            error: false,
+            total: total,
+            page: page + 1,
+            limit: limit,
+            cat: catOptions,
+            products: products,
+        }
+
+        res.status(200).json(response);
     } catch (e) {
         console.log(e);
         res.status(500).json({ error: true, message: "Internal Server Error" });
