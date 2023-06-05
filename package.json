@@ -1,43 +1,44 @@
 {
-  "name": "tamarai2.0",
-  "version": "1.0.0",
-  "description": "Tamarai is a web application for software course.",
-  "main": "index.js",
-  "scripts": {
-    "start": "node ./bin/www",
-    "devStart": "nodemon ./bin/www"
-  },
-  "author": "Tamarai",
-  "type": "module",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.1.0",
-    "body-parser": "^1.20.2",
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.6",
-    "cookieparser": "^0.1.0",
-    "dotenv": "^16.0.3",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "express-async-handler": "^1.2.0",
-    "express-ejs-layouts": "^2.5.1",
-    "express-fileupload": "^1.4.0",
-    "express-session": "^1.17.3",
-    "express-validator": "^7.0.1",
-    "http-errors": "^2.0.0",
-    "i18n": "^0.15.1",
-    "mongodb": "^5.5.0",
-    "mongoose": "^7.2.1",
-    "morgan": "^1.10.0",
-    "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-    "session": "^0.1.0"
-  },
-  "keywords": [],
-  "devDependencies": {
-    "nodemon": "^2.0.22"
-  },
-  "bin": {
-    "tamarai2.0": "bin/www.js"
-  }
+    "name": "tamarai2.0",
+    "version": "1.0.0",
+    "description": "Tamarai is a web application for software course.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./bin/www",
+        "devStart": "nodemon ./bin/www"
+
+    },
+    "author": "Tamarai",
+    "type": "module",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.1.0",
+        "body-parser": "^1.20.2",
+        "connect-flash": "^0.1.1",
+        "cookie-parser": "^1.4.6",
+        "cookieparser": "^0.1.0",
+        "dotenv": "^16.0.3",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "express-async-handler": "^1.2.0",
+        "express-ejs-layouts": "^2.5.1",
+        "express-fileupload": "^1.4.0",
+        "express-session": "^1.17.3",
+        "express-validator": "^7.0.1",
+        "http-errors": "^2.0.0",
+        "i18n": "^0.15.1",
+        "mongodb": "^5.5.0",
+        "mongoose": "^7.2.1",
+        "morgan": "^1.10.0",
+        "passport": "^0.6.0",
+        "passport-local": "^1.0.0",
+        "session": "^0.1.0"
+    },
+    "keywords": [],
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    },
+    "bin": {
+        "tamarai2.0": "bin/www.js"
+    }
 }
