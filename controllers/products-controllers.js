@@ -1,4 +1,5 @@
 import ProductsData from '../models/productData.js';
+import path from 'path';
 
 export const getAllProducts = async(req, res) => {
     try {

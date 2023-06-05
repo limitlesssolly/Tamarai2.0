@@ -3,6 +3,7 @@ import seller from '../models/sellerRegister.js'
 import products from '../models/productData.js';
 import user from '../models/userRegister.js';
 import kitty from '../models/categories.js'
+import path from 'path';
 import bcrypt from 'bcrypt';
 
 const deleteUser = async (req, res,next)=>{
