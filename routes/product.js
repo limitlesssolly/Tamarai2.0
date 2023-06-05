@@ -4,7 +4,7 @@ import Product from "../models/productData.js";
 import Categories from '../models/categories.js';
 const router = Router();
 
-// Get all products /products
+// Get all products /products/
 router.get('/', async (req, res, next) => {
     // // res.send("All products");
     // //Retrieve products data from MongoDB
@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
     //     next(err);
     // });
     const products = await Product.find();
-    res.render('user/products', { products });
+    res.render('user/try', {products});
 });
 
 // router.get('/products', async (req, res) => {
