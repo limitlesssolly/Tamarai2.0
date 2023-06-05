@@ -28,7 +28,7 @@ const signins = async (req, res, next) => {
     if (!sellerdb) return res.status(401).send({ msg: 'Please enter a valid username' });
     else if (sellerdb) {
       if (bcrypt.compareSync(password, sellerdb.password)) {
-        req.session.rege = sellerdb;
+        req.session.seller = sellerdb;
         console.log('correct');
         return res.redirect('/seller/dashboard');
       }
