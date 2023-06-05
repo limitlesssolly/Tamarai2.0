@@ -25,12 +25,13 @@
             <h5 class="Heading">wishList</h5>
             <h5 class="Action">Remove all</h5>
         </div>
-        <% users.forEach(user => { %>
+        
         <div class="the_first_list_items">
             <div class="the_first_image_box">
                 <!-- <img src="photos/wedding dress.jpg" alt="weddingdress" style="height: 120px;" /> -->
             </div>
             <div class="about_the_item">
+                <% users.forEach(user => { %>
                 <h1 class="title"><%= user.weddingdress %></h1>
                 <h3 class="subtitle"><%= user.designerAmitabbatchan %></h3>
                 <!-- <img src="photos/designer.jpg" alt="designer" style="height: 30px;"> -->
