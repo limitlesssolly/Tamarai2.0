@@ -28,6 +28,15 @@ router.post("/SaveWishlist", (req, res) => {
         res.status(400).send(e);
     })
 })
+router.patch("/UpdateWishlist/:id", async(req, res) => {
+    try {
+        const _id = req.params.id
+        const UpdateRequest = await Wishlist.findByIdAndUpdate(_id, req.body)
+        res.send(UpdateRequest);
+    } catch(e) {
+        res.status(404).send("Couldn't update your wish :(");
+    }
+})
 
 
 router.post('/', signins);
