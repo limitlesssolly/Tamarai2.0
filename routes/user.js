@@ -25,7 +25,7 @@ router.get('/homepage/bag', function(req, res, next) {
 });
 
 router.get('/homepage/whishlist', function(req, res, next) {
-    res.render( 'user/user-whishlist', { Title: "whishlist" });
+     res.render( 'user/user-whishlist', { Title: "whishlist" });
 });
 
  
