@@ -34,11 +34,20 @@
         </ul>     
         <script>
             function sendData(e) {
+                const searchResults = document.getElementById('searchResults');
                 fetch('getProducts', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({payload: e.value})
-                });
+                }).then(res => res.json()).then(data => {
+                    let payload = data.payload;
+                    // console.log(payload);
+                    searchResults.innerHTML = '';
+                    if (payload.length < 1) {
+                        searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+                        return;
+                    }
+                })
             }
         </script>   
     </body>
