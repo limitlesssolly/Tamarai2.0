@@ -1,4 +1,5 @@
 import express from 'express';
+import Product from "../models/productData.js";
 import { signins, signup } from "../controllers/user-controllers.js";
 import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
 
@@ -35,8 +36,16 @@ router.get('/homepage/whishlist', function(req, res, next) {
 // console.log(whishlist);
 // })
 router.post('/', signins);
-
 router.post('/register', signup);
+router.post('/getProducts', async (req, res) => {
+    let payload = req.body.payload.trim();
+    console.log(payload);
+    // Case insensitive (WHAT IS INSIDE THE FIND)
+    let search = await Products.find({ name: {$regex: new RegExp('^' + payload + '.*','i')} }).exec();
+    // Limit search results to 10
+    search = search.slice(0, 10);
+    res.send({payload: search});
+});
 
 // Add this debug statement
 router.use((err, req, res, next) => {

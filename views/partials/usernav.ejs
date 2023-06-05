@@ -32,14 +32,29 @@
             <li class="link-item"><a href="" class="link">Accessories</a></li>
             <li class="link-item"><a href="" class="link">Gifts</a></li>
         </ul>     
-    <script>
-        function sendData(e) {
-            fetch('getProducts', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({payload: e.value})
-            });
-        }
-    </script>   
+        <script>
+            function sendData(e) {
+                const searchResults = document.getElementById('searchResults');
+                fetch('getProducts', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({payload: e.value})
+                }).then(res => res.json()).then(data => {
+                    let payload = data.payload;
+                    // console.log(payload);
+                    searchResults.innerHTML = '';
+                    if (payload.length < 1) {
+                        searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+                        return;
+                    }
+                    payload.forEach((item, index) => {
+                        if(index > 0) {
+                            searchResults.innerHTML += '<hr>';
+                        }
+                        searchResults.innerHTML += `<p>${item.name}</p>`;
+                    });
+                });
+            }
+        </script>   
     </body>
 </html>
