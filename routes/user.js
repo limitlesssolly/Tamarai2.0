@@ -35,8 +35,10 @@ router.get('/homepage/whishlist', function(req, res, next) {
 // console.log(whishlist);
 // })
 router.post('/', signins);
-
 router.post('/register', signup);
+router.post('/getProducts', (req, res) => {
+    let payload = req.body.payload.trim();
+});
 
 // Add this debug statement
 router.use((err, req, res, next) => {

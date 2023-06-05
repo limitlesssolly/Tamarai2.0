@@ -32,14 +32,14 @@
             <li class="link-item"><a href="" class="link">Accessories</a></li>
             <li class="link-item"><a href="" class="link">Gifts</a></li>
         </ul>     
-    <script>
-        function sendData(e) {
-            fetch('getProducts', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({payload: e.value})
-            });
-        }
-    </script>   
+        <script>
+            function sendData(e) {
+                fetch('getProducts', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({payload: e.value})
+                });
+            }
+        </script>   
     </body>
 </html>
