@@ -5,60 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        whishlist
-    </title>
-    <!-- <link rel="stylesheet" href="css/wishList.css">  -->
+    <link rel="stylesheet" href="/css/whishlist.css">
     <link rel="shortcut icon" type="image/jpg" href="photos/thebluelogo.png" />
-    <!-- <title><%=Title%></title>  -->
+    <title>wishList</title>
 </head>
 
 <body>
-    <!-- <nav class="navbar"></nav> -->
-    <!-- <div id="header"> -->
-        <% include('../partials/usernav.ejs') %>
-    </div>
+
     <div class="list-Container">
-        <% if (users.length > 0) { %>
         <div class="Header">
-           
             <h5 class="Heading">wishList</h5>
             <h5 class="Action">Remove all</h5>
         </div>
-        
+
         <div class="the_first_list_items">
             <div class="the_first_image_box">
-                <!-- <img src="photos/wedding dress.jpg" alt="weddingdress" style="height: 120px;" /> -->
+                <img src="photos/wedding dress.jpg" alt="weddingdress" style="height: 120px;" />
             </div>
             <div class="about_the_item">
-                <% users.forEach(user => { %>
-                <h1 class="title"><%= user.weddingdress %></h1>
-                <h3 class="subtitle"><%= user.designerAmitabbatchan %></h3>
-                <!-- <img src="photos/designer.jpg" alt="designer" style="height: 30px;"> -->
+                <h1 class="title">wedding dress</h1>
+                <h3 class="subtitle">designer:Amitab batchan</h3>
+                <img src="photos/designer.jpg" alt="designer" style="height: 30px;">
             </div>
             <div class="details"></div>
             <div class="prices"></div>
             <div class="counter">
-                <div class="btn"><u>user.Un Available</u></div>
+                <div class="btn"><u>Un Available</u></div>
             </div>
-             
+
             <div class="prices">
-                <div class="amount"><%= user.350 %> EG</div>
-                <% if (users.length > 0) { %>
-                    <div class="add"><u>add to shopping cart</u></div>
-                    <div class="remove"><u>Remove</u></div>
-                <% } %>
+                <div class="amount">350 EG</div>
+                <div class="add"><u>add to shopping cart</u></div>
+                <div class="remove"><u>Remove</u></div>
             </div>
 
         </div>
-        <% }) %>
-        <% } else { %>
-            <h2>No whishes to display</h2>
-        <% } %>
 
 
 
-        <!-- <div class="the_first_list_items">
+        <div class="the_first_list_items">
             <div class="the_first_image_box">
                 <img src="photos/decor.jpg" alt="decor" style="height: 120px;" />
             </div>
@@ -80,14 +65,14 @@
                 <div class="remove"><u>Remove</u></div>
             </div>
         </div>
-    </div> -->
+    </div>
 
      <!-- <footer></footer> 
         <script src="JS/footer.js"></script> -->
         <!-- putting scripts here to work -->
         <!-- Making card's button arrow scroll left and right in java script -->
-         <!-- <script src="JS/home.js"></script> --> 
-         <% include('../partials/footer.ejs') %>
+        <!-- <script src="JS/home.js"></script> -->
+
 </body>
 
 </html>
