@@ -1,11 +1,19 @@
-
 <html>
-    <head></head>
+    <head>
+        <title>Our products</title>
+        <link rel="stylesheet" href="../public/CSS/userHomepage.css" />
+    </head>
     <body>
+        <%- include('../partials/usernav.ejs') %>
         <% if (products.length > 0) { %>
-            <h1>FII PRODUCTS</h1>
+            <% products.forEach(function(product) { %>
+                <% product.name %>
+                <br>
+            <% }); %>
         <% } else { %>
-            <h1>No products to display</h1>
+            <h1>No products to show</h1>
         <% } %>
+        <%- include('../partials/footer.ejs') %>
+        <%- include('../partials/translate.ejs') %>
     </body>
 </html>
