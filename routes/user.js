@@ -12,6 +12,24 @@ router.get('/register', function(req, res, next) {
     res.render('user/user-register', { Title: "User Register" });
 });
 
+router.get("/homepage/whishlist", async(req, res) => {
+    try {
+        const Wishes = await Wishlist.find();
+        res.send(Wishes);
+    } catch(e) {
+        res.send(e);
+    }
+})
+router.post("/SaveWishlist", (req, res) => {
+    const wish = new Wishlist(req.body)
+    wish.save().then( () => {
+        res.status(201).send("Wish Added to Wishlist!");
+    }).catch( (e) => {
+        res.status(400).send(e);
+    })
+})
+
+
 router.post('/', signins);
 router.post('/register', signup);
 

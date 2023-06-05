@@ -1,7 +1,7 @@
 import { body, validationResult } from "express-validator";
 import user from '../models/userRegister.js';
 import ProductsData from '../models/productData.js';
-import whishlistData from '../models/whishlist.js';
+ 
 
 import bcrypt from 'bcrypt';
 
