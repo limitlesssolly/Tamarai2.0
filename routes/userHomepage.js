@@ -30,7 +30,7 @@ router.use((err, req, res, next) => {
 });
 
 router.use((req, res, next) => {
-    if (req.session.user) next();
+    if (req.session.user || req.session.admin) next();
     else {
         res.send('You must login to procceed');
     }

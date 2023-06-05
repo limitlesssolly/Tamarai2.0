@@ -1,5 +1,5 @@
 import express from 'express';
-import Product from "../models/productData.js";
+import Products from "../models/productData.js";
 import { signins, signup } from "../controllers/user-controllers.js";
 
 const router = express.Router();

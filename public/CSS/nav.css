@@ -37,21 +37,28 @@
 }
 
 .box {
+    -o-border-radius: 20px;
+    padding:  5px;
+    border: 2px solid #d6bd91;
+    width: 500px;
+    max-width: 550px;
+    background: #fff;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    color: #0d1516;
     height: 25px;
     display: flex;
-    cursor: pointer;
     justify-content: center;
     padding: 0px;
     margin-right: 10px;
-    background: #d6bd91;
-    border-radius: 15px;
     align-items: center;
-    box-shadow: 0 3px 1px #1C4C56;
 }
 
-.box:hover input {
+/* .box:hover input {
     width: 380px;
-}
+} */
 
 .box input {
     width: 0;
