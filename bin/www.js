@@ -62,10 +62,10 @@ function onListening() {
   const { port } = server.address();
   console.log(`Listening on Port ${port}`);
 }
-const mongoose = require("mongoose");
+ 
 
 mongoose.connect(
-    "mongodb://localhost:27017/Wishlist-API",
+    "mongodb://3000:27017/Wishlist-API",
     {
         useCreateIndex: true,
         useNewUrlParser: true,
