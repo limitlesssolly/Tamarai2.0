@@ -28,7 +28,14 @@ router.get('/homepage/whishlist', function(req, res, next) {
      res.render( 'user/user-whishlist', { Title: "whishlist" });
 });
 
- 
+app.post("/SaveWishlist", (req, res) => {
+    const wish = new Wishlist(req.body)
+    wish.save().then( () => {
+        res.status(201).send("Wish Added to Wishlist!");
+    }).catch( (e) => {
+        res.status(400).send(e);
+    })
+})
 
 // router.post('user/user-whishlist',(req,res)=>{
 // const   {weddingdress,designerAmitabbatchan}=req.body;
