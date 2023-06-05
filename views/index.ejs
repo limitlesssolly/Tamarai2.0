@@ -67,7 +67,7 @@
             </p>
             <div class="btn">
                 <button type="button" data-i18n="learnmore">Learn More</button>
-                <button type="button"data-i18n="about-us">About us</button>
+                <button type="button" data-i18n="about-us">About us</button>
             </div>
             <div class="social-icons">
                 <img src="images/twitter.png" alt="twitter">
@@ -82,7 +82,20 @@
         <%- include('partials/chat.ejs') %>
 
     </div>
-    <script src="/JS/lang.js"></script>
+    <!-- <script src="/JS/lang.js"></script> -->
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en'
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
 </body>
 
 </html>
