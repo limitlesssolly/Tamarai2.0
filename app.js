@@ -1,6 +1,6 @@
 import express from "express";
 const app = express();
- import path from "path";
+import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
