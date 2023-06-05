@@ -106,4 +106,18 @@ app.use(function(err, req, res, next) {
 
 app.set('port', process.env.PORT || 7777);
 
+// app.use(function (req, res, next) {
+
+//     Event.find({name: {$gte: new categories()}}, function (err, allEvents) {
+//         if (err) {
+//             console.log(err);
+//             res.locals.categories = [];
+//             next();
+//         } else {
+//             res.locals.categories = allCategories;
+//             next();
+//         }
+//     });
+// });
+
 export default app;
