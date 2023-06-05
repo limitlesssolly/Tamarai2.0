@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
     //Retrieve products data from MongoDB
     const products = Product.find({}).then((products) => {
         //  res.json(products);
-        // res.render('user/try', { products: products });  // NOT WORKING WITH PRODUCT
+        res.render('user/try', { products: products });  // NOT WORKING WITH PRODUCT
         // res.render('user/products', { products: products });
     }).catch((err) => {
         next(err);
