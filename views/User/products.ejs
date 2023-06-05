@@ -7,26 +7,8 @@
         <%- include('../partials/usernav.ejs') %>
         <% if (products.length > 0) { %>
             <% products.forEach(product => { %>
-                <section class="product">
-                    <div class="product-container">
-                        <div class="product-card">
-                            <div class="product-image">
-                                <span class="discount-tag">number% off</span>
-                                <a href="<%= /product/product/:id %>"> 
-                                    <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>">
-                                </a>
-                                <button class="card-btn">Add to wishlist</button>
-                            </div>
-                            <div class="product-info">
-                                <h2 class="product-brand"><%= product.brand %></h2>
-                                <h3 class="product-name"><%= product.name %></h3>
-                                <p class="product-short-des"><%= product.description %></p>
-                                <span class="price">Price after discount L.E.</span>
-                                <span class="actual-price"><%= product.price %></span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <% product.name %>
+                <br>
             <% }) %>
         <% } else { %>
             <h1>No products to show</h1>
