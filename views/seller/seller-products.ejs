@@ -90,19 +90,20 @@
 
 
 <body>
+  
     <div class="chatbox ">
         <div>
             <%- include('../partials/chat.ejs') %>
         </div>
     </div>
     <div class="grid-container">
-
+ 
         <div class="header">
             <%- include('../partials/sellernav.ejs') %>
 
         </div>
         <div class="body">
-
+ <%- include('../partials/translate.ejs') %>
             <div class="prlist">
                 <div class="headoflist">
                     <div class="buttons">
@@ -198,8 +199,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
+   
     <div class="chatbox" id="chatbox">
     </div>
 </body>
