@@ -38,6 +38,7 @@ router.post('/', signins);
 router.post('/register', signup);
 router.post('/getProducts', (req, res) => {
     let payload = req.body.payload.trim();
+    console.log(payload);
 });
 
 // Add this debug statement
