@@ -98,7 +98,7 @@ nav {
 .navbar {
     width: 100%;
     position: flex;
-    overflow: hidden;
+    overflow: visible;
     margin: auto;
     display: grid;
     grid-template-columns: 25% 65% 20%;
@@ -128,9 +128,9 @@ nav {
 .nav_li {
     width: 100%;
     min-width: 500px;
-    position: absolute;
-    top : 35px;
-    left : 450px;
+    position: relative;
+    top : 55%;
+    left : 15%;
 }
 
 .nav_li ul {
@@ -138,7 +138,7 @@ nav {
     margin: 3px;
     width: 100%;
     min-width: 500px;
-    display: none;
+    display: flex;
 }
 
 .nav_li ul li:hover {
@@ -153,7 +153,7 @@ nav {
 .nav_li ul li a {
     text-decoration: none;
     margin: 0 20px;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 #search {
@@ -171,12 +171,12 @@ nav {
 }
 
 .nav_btn button {
-    margin: 3px;
+    margin: 0px;
     padding: 5px;
     font-size: 18px;
     position: relative;
-    top : 20%;
-    left: 80%;
+    top : 60%;
+    right: 20%;
     outline:none;
     border: 2px solid #d6bd91;
     -o-border-radius: 20px;
@@ -187,10 +187,11 @@ nav {
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     border-radius: 20px;
+    z-index: 10;
 }
 .nav_logo{
     position: relative;
-    top: 15%;
+    top:35%;
     left: 20%;
 }
 

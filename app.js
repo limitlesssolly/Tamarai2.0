@@ -8,7 +8,7 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import dotenv from 'dotenv';
- 
+import passport from "passport";
 
 dotenv.config();
 
@@ -72,6 +72,8 @@ app.use(
 
 console.log("ENV: ", app.get('env'));
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 //setup routes
 app.use('/', mainRouter);
