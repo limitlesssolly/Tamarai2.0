@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 // import admin from '../models/adminData.js';
+import passport from 'passport';
 import {signins} from "../controllers/admin-controllers.js";
  
 /* GET /admin page. */
@@ -9,7 +10,12 @@ router.get('/', function (req, res, next) {
 });
 
 /* POST /admin page. */
-router.post('/', signins);
+// router.post('/', signins);
+
+router.post('/', passport.authenticate('local'), (req, res) => {
+    console.log('logged in');
+    res.send(200);
+});
 
 
 router.post('/getSearch', async (req, res) => {

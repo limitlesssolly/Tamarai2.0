@@ -1,63 +1,10 @@
-<!-- <!DOCTYPE html>
-
-<html lang="en">
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/MainStyleSheet.css">
-    <title>
-        Seller Login
-    </title>
-    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-</head>
-
-<body>
-    <div class="User">
-      <div class="Ulogin">
-        <img src="/images/thebluelogo.png" alt="logo" class="logo">
-        <div class="Ulogger">
-            <h2 style="color:  #1c4c56;">Sign in to your account</h2>
-            <div class="words">or choose your user</div>
-            <a href="/user"><span class="use"><img src='/images/user.png' alt="using" /></span></a>
-            <a href="/admin"><span class="adds"><img src='/images/settings.png' alt="sets" /></span></a>
-            <span class="vend" style="top: 28%;"><img src='/images/shopping-bag.png' alt="sells" /></span>
-
-            <div class="line"></div>
-        </div>
-        <form action="/seller" method="post" class="form">
-            <div class="users">
-                <label for="username"> username </label>
-                <input id="username" type="text" placeholder="username" name="name"> <br>
-                <span id="Uerror"></span>
-            </div>
-            <div class="passes">
-                <label for="password"> password </label>
-                <input id="password" type="password" placeholder="password" name="pass"> <br>
-                <span id="Perror"></span>
-            </div>
-            <span href="#" id="fyp">forgot your password?</span>
-            <button class="USbutton" type="submit" id="submit">Sign in</button>
-        </form>
-    </div>
-    <div class="URegbk">
-        <h3 class="welcomes">Welcome Aboard!</h3>
-        <div class="wordings"> You new here? Experience all <br> the fun, Join us now!</div>
-        <a href="/seller/register"><button class="URbutton">Sign Up</button></a>
-    </div>
-    </div>
-</body>
-
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/MainStyleSheet.css">
+    <link rel="stylesheet" href="/css/seller/seller-sign-in.css">
     <title>
         Seller Login
     </title>
@@ -65,6 +12,7 @@
 </head>
 
 <body>
+    <div class="seller">
     <div class="Vlogin">
             <!-- <img src="/images/thebluelogo.png" alt="logo" class="logo"> -->
         <div class="Vlogger">
@@ -96,6 +44,8 @@
         <div class="wordings"> You new here? Experience all <br> the fun, Join us now!</div>
         <a href="/seller/register"><button class = "VRbutton">Sign Up</button></a>
     </div>
+</div>
+    <%- include('../partials/translate.ejs') %>
 </body>
 
 </html>

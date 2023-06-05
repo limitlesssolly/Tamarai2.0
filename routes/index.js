@@ -7,4 +7,5 @@ router.get('/', function(req, res, next) {
     res.render('index', {title: "Landing Page"});
 });
 
+
 export default router;

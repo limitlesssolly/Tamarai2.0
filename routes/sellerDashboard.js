@@ -80,4 +80,11 @@ router.get('/profile', async (req, res) => {
     res.render('seller/seller-profile', { regs: updatedSell });
 });
 
+router.use((req, res, next) => {
+    if (req.session.seller) next();
+    else {
+        res.send('You must login to procceed');
+    }
+})
+
 export default router;

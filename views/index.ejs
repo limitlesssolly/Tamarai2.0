@@ -38,12 +38,12 @@
                     <li>
                         <a href="#">Shopping-cart</a>
                     </li>
-                    <i class="fas fa-search" id="search"></i>
+                    <!-- <i class="fas fa-search" id="search"></i> -->
                 </ul>
-                <div class="input_search d-flex">
+                <!-- <div class="input_search d-flex">
                     <input type="text" placeholder="Search here">
                     <i class="fas fa-times font-16" id="remove"></i>
-                </div>
+                </div> -->
 
             </div>
 
@@ -52,7 +52,7 @@
                     <option value="en" selected data-i18n="english">English</option>
                     <option value="ar" data-i18n="arabic">Arabic</option>
                 </select> -->
-                <a href="user"><button style="right: 110px;" data-i18n="signin">sign in</button></a>
+                <a href="user"><button data-i18n="signin">sign in</button></a>
                 <a href="user/register"><button data-i18n="signup">sign up</button></a>
             </div>
 
@@ -82,7 +82,9 @@
         <%- include('partials/chat.ejs') %>
 
     </div>
-    <script src="/JS/lang.js"></script>
+    <!-- <script src="/JS/lang.js"></script> -->
+    <%- include('partials/translate.ejs') %>
+
 </body>
 
 </html>

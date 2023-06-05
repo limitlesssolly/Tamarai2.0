@@ -28,7 +28,7 @@ const signins = async (req, res, next) => {
     if (!sellerdb) return res.status(401).send({ msg: 'Please enter a valid username' });
     else if (sellerdb) {
       if (bcrypt.compareSync(password, sellerdb.password)) {
-        req.session.rege = sellerdb;
+        req.session.seller = sellerdb;
         console.log('correct');
         return res.redirect('/seller/dashboard');
       }
@@ -47,11 +47,12 @@ const signup = async (req, res, next) => {
   } else {
     try {
       const hashPass = await bcrypt.hash(req.body.password, 10);
+      const CPassword = await bcrypt.hash(req.body.confirmPassword, 10);
       const newseller = new rege({
         email: req.body.email,
         username: req.body.username,
         password: hashPass,
-        confirmPassword: req.body.confirmPassword
+        confirmPassword: CPassword,
       });
       await newseller.save();
 

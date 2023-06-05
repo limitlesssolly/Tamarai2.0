@@ -1,35 +1,60 @@
-<link rel="stylesheet" href="/css/sellersc.css">
-<link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-<div class="nav">
-    <img src="/images/thebluelogo.png" class="brand-logo" alt="Tamarii Logo">
-    <span class="title"><h1>Tamarai</h1></span>
-    <div class="nav_items">
-        <div class="search">
-            <div class="box">
-                <input type="text" placeholder="Search...">
-                <a href="#">
-                    <i class="fas"><img src="/images/search.png" style="width:18px;height:18px"></i>
-                </a>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="/css/sellersc.css">
+        <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+    </head>
+    <body>
+        <div class="nav">
+            <img src="/images/thebluelogo.png" class="brand-logo" alt="Tamarii Logo">
+            <span class="title"><h1>Tamarai</h1></span>
+            <div class="nav_items">
+                <div class="search">
+                    <div class="box">
+                        <input type="text" id="search-box" placeholder="Search..." onkeyup="sendData(this)">
+                        <section id="searchResults"></section>
+                        <a href="#">
+                            <i class="fas"><img src="/images/search.png" style="width:18px;height:18px"></i>
+                        </a>
+                    </div>
+                    <a href="profile.html"><img src="/images/user2.0.png" alt="user"></a>
+                    <a href="/user/homepage/bag"><img src="/images/shoppingCart.png" alt="cart"></a>
+                    <a href="/user/homepage/whishlist"><img src="/images/wishlist.png" alt="Wishlist"></a>
+                </div>
             </div>
-            <!-- <form class="search-box">
-                <input type="text" placeholder="Search...">
-                <button type="reset"></button>
-            </form> -->
-            <!-- <input type="text" class="search-bar" placeholder="Search for a shop, product !">
-            <button class="search-btn">Search</button> -->
-            <a href="profile.html"><img src="/images/user2.0.png" alt="user"></a>
-            <a href="/user/homepage/bag"><img src="/images/shoppingCart.png" alt="cart"></a>
-            <a href="wishList.html"><img src="/images/wishlist.png" alt="Wishlist"></a>
-            <!--<a href="chat.html"><img src="photos/chat.png" alt="chat"></a>-->
         </div>
-    </div>
-</div>
-<ul class="links">
-    <li class="link-item"><a href="" class="link">Home</a></li>
-    <li class="link-item"><a href="" class="link">Craft</a></li>
-    <li class="link-item"><a href="" class="link">Women</a></li>
-    <li class="link-item"><a href="" class="link">Men</a></li>
-    <li class="link-item"><a href="" class="link">kids</a></li>
-    <li class="link-item"><a href="" class="link">Accessories</a></li>
-    <li class="link-item"><a href="" class="link">Gifts</a></li>
-</ul>
+        <ul class="links">
+            <li class="link-item"><a href="" class="link">Home</a></li>
+            <li class="link-item"><a href="" class="link">Craft</a></li>
+            <li class="link-item"><a href="" class="link">Women</a></li>
+            <li class="link-item"><a href="" class="link">Men</a></li>
+            <li class="link-item"><a href="" class="link">kids</a></li>
+            <li class="link-item"><a href="" class="link">Accessories</a></li>
+            <li class="link-item"><a href="" class="link">Gifts</a></li>
+        </ul>     
+        <script>
+            function sendData(e) {
+                const searchResults = document.getElementById('searchResults');
+                fetch('getProducts', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({payload: e.value})
+                }).then(res => res.json()).then(data => {
+                    let payload = data.payload;
+                    // console.log(payload);
+                    searchResults.innerHTML = '';
+                    if (payload.length < 1) {
+                        searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+                        return;
+                    }
+                    payload.forEach((item, index) => {
+                        if(index > 0) {
+                            searchResults.innerHTML += '<hr>';
+                        }
+                        searchResults.innerHTML += `<p>${item.name}</p>`;
+                    });
+                });
+            }
+        </script>   
+    </body>
+</html>
