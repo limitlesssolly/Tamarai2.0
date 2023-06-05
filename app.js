@@ -10,6 +10,7 @@ import fileUpload from 'express-fileupload';
 import dotenv from 'dotenv';
 import passport from "passport";
 
+import strats from './strategies/local.js';
 dotenv.config();
 
 //importing the routes
@@ -19,6 +20,7 @@ import adminDashboardRouter from "./routes/adminDashboard.js";
 import sellerRouter from "./routes/seller.js";
 import sellerDashboardRouter from "./routes/sellerDashboard.js";
 import userRouter from "./routes/user.js";
+import userHomepageRouter from './routes/userHomepage.js'
 import productRouter from "./routes/product.js";
 import productestRouter from "./routes/products.js";
  
@@ -62,14 +64,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(
-    session({
-        secret:'nnfkjhfjjdiwudqkldkwopiwqmduih',
-        resave:false,
-        saveUninitialized:false,
-    })
-);
-
 console.log("ENV: ", app.get('env'));
 
 app.use(passport.initialize());
@@ -82,10 +76,9 @@ app.use('/admin/dashboard', adminDashboardRouter);
 app.use('/seller', sellerRouter);
 app.use('/seller/dashboard', sellerDashboardRouter);
 app.use('/user', userRouter);
+app.use('/user/homepage', userHomepageRouter);
 app.use('/products', productRouter);
 app.use('/productest', productestRouter);
- 
-
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index'));

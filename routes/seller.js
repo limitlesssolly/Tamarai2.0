@@ -13,10 +13,15 @@ router.get('/register', function(req, res, next) {
     res.render('seller/seller-register');
 })
 
-
-
 router.post('/', signins);
 
 router.post('/register', signup);
+
+router.use((req, res, next) => {
+    if (req.session.seller) next();
+    else {
+        res.send('You must login to procceed');
+    }
+})
 
 export default router;

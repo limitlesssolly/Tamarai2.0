@@ -15,30 +15,20 @@ const signupValidation = [
 ];
 
 const signins = async(req, res, next) => {
-    var un = req.body.name;
-    var pw = req.body.pass;
-
-    try {
-        const users = await user.find({});
-        var i;
-        for (i = 0; i < users.length; i++) {
-            if (users[i].username === un) {
-                if (bcrypt.compareSync(pw, users[i].password)) {
-                    console.log("login successful!")
-                    return res.redirect('/user/homepage');
-                } else {
-                    continue;
-                }
-            } else {
-                continue;
-            }
-        }
-        console.log("Invalid credentials");
-        return res.render('error.ejs');
-    } catch (err) {
-        console.log(err);
-        return res.status(500).render('error.ejs');
+  const { username, password } = req.body;
+  if (!username) return res.status(400).send({ msg: 'Please enter a username' });
+  else if (!password) return res.status(400).send({ msg: 'Please enter a password' });
+  else {
+    const userdb = await user.findOne({ username });
+    if (!userdb) return res.status(401).send({ msg: 'Please enter a valid username' });
+    else if (userdb) {
+      if (bcrypt.compareSync(password, userdb.password)) {
+        req.session.user = userdb;
+        return res.redirect('/user/homepage');
+      }
+      else return res.status(401).send({ msg: 'Please enter a valid password' });
     }
+  }
 };
 
 const signup = async(req, res, next) => {

@@ -1,42 +1,20 @@
 import express from 'express';
 import Product from "../models/productData.js";
 import { signins, signup } from "../controllers/user-controllers.js";
-import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
 
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.render('user/user-sign-in', { Title: "Sign In" });
+    res.render('user/user-sign-in', { Title: "User Sign In" });
 });
-
-router.get('/homepage', getHomepage);
-router.get('/homepage/bag', getShoppingBag);
 
 router.get('/register', function(req, res, next) {
-    res.render('user/user-register', { Title: "Register" });
+    res.render('user/user-register', { Title: "User Register" });
 });
 
-router.get('/homepage/checkout', function(req, res, next) {
-    res.render('user/user-checkout');
-});
-
-router.get('/homepage/bag', function(req, res, next) {
-    res.render('user/user-shoppingbag');
-});
-
-router.get('/homepage/whishlist', function(req, res, next) {
-    res.render( 'user/user-whishlist', { Title: "whishlist" });
-});
-
- 
-
-// router.post('user/user-whishlist',(req,res)=>{
-// const   {weddingdress,designerAmitabbatchan}=req.body;
-// const whishlist= {weddingdress,designerAmitabbatchan};
-// console.log(whishlist);
-// })
 router.post('/', signins);
 router.post('/register', signup);
+
 router.post('/getProducts', async (req, res) => {
     let payload = req.body.payload.trim();
     console.log(payload);
@@ -52,5 +30,12 @@ router.use((err, req, res, next) => {
     console.error(err);
     res.status(500).send('Internal server error');
 });
+
+router.use((req, res, next) => {
+    if (req.session.user) next();
+    else {
+        res.send('You must login to procceed');
+    }
+})
 
 export default router;
