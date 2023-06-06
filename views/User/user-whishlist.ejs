@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -73,6 +73,43 @@
         <!-- Making card's button arrow scroll left and right in java script -->
         <!-- <script src="JS/home.js"></script> -->
 
-</body>
+<!-- </body>
 
+</html> --> 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Wishlist</title>
+
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <!-- <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/wishlist">Wishlist</a></li>
+        <li><a href="/cart">Cart</a></li>
+      </ul>
+    </nav> -->
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="wishlist-container">
+      <h2>My Wishlist</h2>
+      <% if (wishlist.length > 0) { %>
+        <ul>
+          <% wishlist.forEach(item => { %>
+            <li><%= item.name %> - <%= item.price %></li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p>Your wishlist is currently empty.</p>
+      <% } %>
+    </div>
+  </main>
+
+</body>
 </html>
