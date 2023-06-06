@@ -27,7 +27,7 @@ import productRouter from "./routes/product.js";
 import productestRouter from "./routes/products.js";
 // import shoppingbag from "./routes/bag.js";
 
-
+// const http= require("http").Server(app);
 
 var siteStatusData = {
         labels: ['Up', 'Down', 'Degraded'],
