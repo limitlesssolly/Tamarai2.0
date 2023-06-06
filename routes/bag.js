@@ -1,8 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import { getShoppingBag } from '../controllers/products-controllers.js'
-import Prod from '../models/productData.js';
-import products from '../models/productData.js'
+import Product from '../models/productData.js'
 
 let admin = false;
 
@@ -20,14 +19,14 @@ router.get('/bag/checkout', function(req, res, next) {
     res.render('user/user-shoppingbag');
 });
 router.get('/add/:product', function(req, res) {
-    var slug = req.params.product;
-    Product.findOne({ slug: slug }, function(err, p) {
+    var _id = req.params.product;
+    Product.findOne({ _id: _id }, function(err, p) {
         if (err) {}
         console.log(err);
         if (typeof req.session.bag == "undefined") {
             req.session.bag = [];
             req.session.bag.push({
-                tittle: slug,
+                tittle: _id,
                 qty: 1,
                 price: 1,
                 price: parseFloat(p.price).toFixed(2),
@@ -37,7 +36,7 @@ router.get('/add/:product', function(req, res) {
             var bag = req.session.bag;
             var newItem = true;
             for (var i = 0; i < bag.length; i++) {
-                if (bag[i].tittle == slug) {
+                if (bag[i].tittle == _id) {
                     bag[i].qty++;
                     newItem = false;
                     break;
@@ -45,7 +44,7 @@ router.get('/add/:product', function(req, res) {
             }
             if (newItem) {
                 bag.push({
-                    tittle: slug,
+                    tittle: _id,
                     qty: 1,
                     price: parseFloat(p.price).toFixed(2),
                     image: '/product_images/' + p._id + '/' + p.image
