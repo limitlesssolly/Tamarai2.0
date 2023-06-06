@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
     <title>
         User Homepage
     </title>
@@ -44,6 +44,8 @@
                 <button class="nxt-btn"><img src="/images/right-arrow.png" alt="right-arrow"></button>
                 <div class="product-container">
                     <% productData.forEach(function(product) { %>
+                        <a href="/user-whishlist"><i class="fa-regular fa-star"></i></a>
+
                         <div class="product-card">
                             <div class="product-image">
                                 <% if (product.discount > 0) { %>
@@ -54,9 +56,8 @@
                           <img src="/images/<%= product.image %>" width="100">
 
                         </a>
-                         
+
                                         <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
-                                        <a class="card-btn" href="/user-whishlist">Add to whishlist</a>
                             </div>
                             <div class="product-info">
                                 <h2 class="product-brand">
@@ -104,8 +105,8 @@
             <img src="/images/accessories.jpeg" alt="Accessories">
             <p style="font-size: 40px;" class="collection-title">Accessories</p>
         </a> -->
-        <!-- To add a new collection take this code copy -->
-        <!-- 
+    <!-- To add a new collection take this code copy -->
+    <!-- 
             <a href="#" class="collection">
                 <img src="/images/accessories.jpeg" alt="Accessories">
                 <p class="collection-title">Accessories</p>
@@ -114,7 +115,7 @@
     </section>
     <!-- Last footer inshallah -->
     <footer>
-        
+
     </footer>
     <!-- <script src="JS/footer.js"></script> -->
     <!-- putting scripts here to work -->
@@ -125,7 +126,7 @@
         <div id="chatbox"></div>
     </div>
     <%- include('../partials/translate.ejs') %>
-    <%- include('../partials/footer.ejs') %>
+        <%- include('../partials/footer.ejs') %>
 </body>
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
