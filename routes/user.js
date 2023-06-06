@@ -44,31 +44,31 @@ router.use((req, res, next) => {
         res.send('You must login');
     }
 })
-router.get('/profile', async (req, res) => {
-    const regs = await regi.find();
-    res.render('user/user-profile', {
-        regs
-    });
-});
+// router.get('/profile', async (req, res) => {
+//     const regs = await regi.find();
+//     res.render('user/user-profile', {
+//         regs
+//     });
+// });
 
-/* GET /seller/dashboard/profile page. */
- router.get('/profile/:id', async (req, res) => {
-    const regs = await regi.findById(req.params.id);
-    res.render('user/user-profile', {regs});
- });
+// /* GET /seller/dashboard/profile page. */
+//  router.get('/profile/:id', async (req, res) => {
+//     const regs = await regi.findById(req.params.id);
+//     res.render('user/user-profile', {regs});
+//  });
 
- router.post('/profile/:id', async (req, res) => {
-    const regs = await regi.findById(req.params.id);
-    regs.username = req.body.username;
-    regs.email = req.body.email;
-    // regs.password = req.body.password;
-    await regs.save();
+//  router.post('/profile/:id', async (req, res) => {
+//     const regs = await regi.findById(req.params.id);
+//     regs.username = req.body.username;
+//     regs.email = req.body.email;
+//     // regs.password = req.body.password;
+//     await regs.save();
 
-    // Retrieve the updated seller data from the database
-    const updateduser = await regi.findById(req.params.id);
+//     // Retrieve the updated seller data from the database
+//     const updateduser = await regi.findById(req.params.id);
 
-    // Render the "profile" view with the updated seller data
-    res.render('user/user-profile', { regs: updateduser });
-});
+//     // Render the "profile" view with the updated seller data
+//     res.render('user/user-profile', { regs: updateduser });
+// });
 
 export default router;
