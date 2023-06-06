@@ -93,7 +93,7 @@ const addItem = async (req, res, next) => {
       image: req.body.image,
       count: req.body.count,
       description: req.body.description,
-      category: req.body.category,
+      category: req.body.categories,
       color: req.body.color,
     });
     await newItem.save();
