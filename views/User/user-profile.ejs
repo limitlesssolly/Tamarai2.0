@@ -39,7 +39,7 @@
                     <div class="signup-form">
                         <h2 class="form-title"> Edit profile </h2>
 
-                        <form method="POST" action="/seller/dashboard/profile/<%= regs.id %>" class="register-form"
+                        <form method="POST" action="/user/profile/<%= regs.id %>" class="register-form"
                             id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <figure><img  src="/images/signup-image.jpg" class="img1" alt="sing up image"></figure>
+            <figure><img src="/images/signup-image.jpg" class="img1" alt="sing up image"></figure>
         </div>
 
         <!-- JS -->
@@ -71,6 +71,6 @@
     <div class="foots">
         <%- include('../partials/footer.ejs') %>
     </div>
-    
+
     <script src="vendor/jquery/jquery.min.js"></script>
 </body>

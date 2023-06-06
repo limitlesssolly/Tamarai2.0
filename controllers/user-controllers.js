@@ -51,7 +51,7 @@ const signup = async(req, res, next) => {
             await newuser.save();
             console.log('Registration successful!');
             req.session.user = newuser;
-            return res.redirect('/user/homepage');
+            return res.redirect('/user/profile/'+newuser._id);
         } catch (err) {
             console.log(err);
             return res.status(500).render('error.ejs');
