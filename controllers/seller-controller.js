@@ -126,6 +126,12 @@ const addItem = async (req, res, next) => {
       category: req.body.categories,
       color: req.body.color,
     });
+
+    // Read the contents of the image file and store it as binary data in the database
+    const imageBuffer = fs.readFileSync(req.file.path);
+    newItem.image.data = imageBuffer;
+    newItem.image.contentType = req.file.mimetype;
+
     await newItem.save();
     console.log('Item added successfully');
     return res.redirect('/seller/dashboard');
