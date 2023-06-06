@@ -104,7 +104,6 @@ i.fa-solid.fa-spa {
     padding-top: 15px;
 }
 
-
 section#productslist {
     background-color: #89bbbb;
     align-items: center;
@@ -209,22 +208,30 @@ section#productslist {
     background-color: #1C4C56;
     color: #fff;
     border: none;
-    text-decoration: none;
     padding: 10px 20px;
+    text-decoration: none;
     margin-top: 20px;
     font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s ease;
+    -webkit-border-radius: ;
+    -moz-border-radius: ;
+    -ms-border-radius: ;
+    -o-border-radius: ;
 }
 
 .btn-edit:hover {
     background-color: #89bbbb;
 }
+
+
 /* .fa-user-edit {
     color: whfite;
   } */
-  .fa-user-edit:hover {
-    color: #89bbbb; /* replace "red" with the desired color */
-  }
+
+.fa-user-edit:hover {
+    color: #89bbbb;
+    /* replace "red" with the desired color */
+}
