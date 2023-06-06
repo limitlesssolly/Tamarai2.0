@@ -23,5 +23,11 @@ router.post('/getSearch', async (req, res) => {
     let search = await admin.find({ username: { $regex: new RegExp('^' + payload + '.*', 'i') } }).exec();
 })
 
+router.use((req, res, next) => {
+    if (req.session.user) next();
+    else {
+        res.send('You are not an admin');
+    }
+})
 
 export default router;

@@ -21,5 +21,11 @@ router.post('/', signins);
 
 router.post('/register', signup);
 
+router.use((req, res, next) => {
+    if (req.session.user) next();
+    else {
+        res.send('You must login');
+    }
+})
 
 export default router;

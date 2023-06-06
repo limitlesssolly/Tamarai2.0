@@ -58,5 +58,11 @@ router.use((err, req, res, next) => {
     res.status(500).send('Fee mashakel');
 });
 
+router.use((req, res, next) => {
+    if (req.session.user) next();
+    else {
+        res.send('You must login');
+    }
+})
 
 export default router;
