@@ -26,13 +26,24 @@
             </div>
 
             <a href="/user/homepage/profile"><img src="/images/uses.png" alt="user"></a>
-            <a href="/user/homepage/bag"><img src="/images/carter.png" alt="cart"></a>
+            <a href="/user/homepage/bag/checkout"><img src="/images/carter.png" alt="cart"> (
+                <% if (typeof cart !== 'undefined') { %>
+                    <%= cart.length %>
+                        <% } else { %>
+                            0
+                            <% } %>
+
+                                )</a>
             <a href="/user/homepage/whishlist"><img src="/images/wishes.png" alt="Wishlist"></a>
-            <a href="/user/logout"><img src= "/images/lo.png" alt="logout"></a>
+            <a href="/user/logout"><img src="/images/lo.png" alt="logout"></a>
         </div>
 
     </div>
+    <ul>
+        <li>
 
+        </li>
+    </ul>
     <div class="container">
         <%- messages('messages', locals) %>
     </div>
@@ -40,7 +51,6 @@
 </body>
 
 <script>
-
     function sendData(e) {
         const searchResults = document.getElementById('searchResults');
         fetch('getProducts', {

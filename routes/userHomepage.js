@@ -6,17 +6,16 @@ import products from '../models/productData.js'
 import regi from "../models/userRegister.js";
 import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
 
-router.get('/', async function(req, res, next){
-    try{
+router.get('/', async function(req, res, next) {
+    try {
         const cats = await categories.find();
         const productData = await products.find();
-        res.render('user/user-homepage', {productData, cats});
+        res.render('user/user-homepage', { productData, cats });
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');
     }
 });
-router.get('/bag', getShoppingBag);
 
 router.get('/checkout', function(req, res, next) {
     res.render('user/user-checkout');
@@ -26,9 +25,6 @@ router.get('/profile', function(req, res, next) {
     res.render('user/user-profile');
 });
 
-router.get('/bag', function(req, res, next) {
-    res.render('user/user-shoppingbag');
-});
 
 // router.get('/whishlist',async function(req, res, next) {
 //     const wishlist = await Wishlist.find();
@@ -36,26 +32,26 @@ router.get('/bag', function(req, res, next) {
 // });
 
 router.get('/add-to-wishlist/:id', async function(req, res, next) {
-    const wishlisted = await products.findById(req.params.id);
-    // wishlisted = {
-    //   name: prod.name,
-    //   brand: prod.brand,
-    //   seller: prod.seller,
-    //   price: prod.price,
-    //   image: prod.image,
-    //   count: prod.count,
-    //   description: prod.description,
-    //   category: prod.category,
-    //   color: prod.color,
-    // };
-    const JSONS = JSON.stringify(wishlisted);
-    // Wishlist.setItem("wished", JSONS);
-    const newWish = new Wishlist({Wish: JSONS,});
-    await newWish.save();
-    console.log('et7at');
-    res.redirect('user/user-homepage');
-} 
- 
+        const wishlisted = await products.findById(req.params.id);
+        // wishlisted = {
+        //   name: prod.name,
+        //   brand: prod.brand,
+        //   seller: prod.seller,
+        //   price: prod.price,
+        //   image: prod.image,
+        //   count: prod.count,
+        //   description: prod.description,
+        //   category: prod.category,
+        //   color: prod.color,
+        // };
+        const JSONS = JSON.stringify(wishlisted);
+        // Wishlist.setItem("wished", JSONS);
+        const newWish = new Wishlist({ Wish: JSONS, });
+        await newWish.save();
+        console.log('et7at');
+        res.redirect('user/user-homepage');
+    }
+
 );
 
 /*const myObj = {name: "John", age: 31, city: "New York"};
@@ -72,19 +68,17 @@ router.get('/whishlist', async(req, res) => {
     const wished = await Wishlist.find();
     //let wish = JSON.parse(wished.wished);
     let wish = JSON.parse(wished);
-   
+
     try {
         wish = await products.find();
         let wishaya = JSON.parse(wish);
-       //res.send(wishaya);
-       console.log(wishaya);
+        //res.send(wishaya);
+        console.log(wishaya);
         //document.getElementById("user/user-whishlist").newWish = wish.name;
         //res.render('user/user-whishlist', { wish });
         // res.send(wish);
-        res.render('user/user-whishlist',{wish});
-    } 
-     
-    catch(e) {
+        res.render('user/user-whishlist', { wish });
+    } catch (e) {
         res.send(e);
     }
 })
@@ -126,7 +120,7 @@ router.use((req, res, next) => {
     }
 })
 
-router.get('/profile', async (req, res) => {
+router.get('/profile', async(req, res) => {
     const regs = await regi.find();
     res.render('user/user-profile', {
         regs
@@ -134,12 +128,12 @@ router.get('/profile', async (req, res) => {
 });
 
 /* GET /seller/dashboard/profile page. */
- router.get('/profile/:id', async (req, res) => {
+router.get('/profile/:id', async(req, res) => {
     const regs = await regi.findById(req.params.id);
-    res.render('user/user-profile', {regs});
- });
+    res.render('user/user-profile', { regs });
+});
 
- router.post('/profile/:id', async (req, res) => {
+router.post('/profile/:id', async(req, res) => {
     const regs = await regi.findById(req.params.id);
     regs.username = req.body.username;
     regs.email = req.body.email;
