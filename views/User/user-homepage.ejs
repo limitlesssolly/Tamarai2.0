@@ -5,144 +5,108 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
-    <title>
-        User Homepage
-    </title>
+
+    <title> User Homepage</title>
 
     <link rel="stylesheet" type="text/css" href="/css/userHomepage.css">
 
-    <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css">
 
-    <!-- adding an favicon -->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+
 </head>
 
 <body>
-    <!-- Navigation bar -->
-    <nav class="navbar"></nav>
     <%- include ('../partials/usernav.ejs')%>
-    <div id="header">
-        <ul class="links">
-            <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
-            <% cats.forEach(function(cat) { %>
-                <li class="link-item">
-                    <a href="" class="link"><%= cat.name %></a>
-                </li>
-            <% }); %>
-        </ul>
-    </div>
 
-    <!-- Photo of collections containning logo  -->
-    <!-- Header  -->
-    <header class="hero-section section">
-        <div class="content">
-            <img src="/images/theblackicon.png" class="logo" alt="Tamarai's Logo">
-            <p class="sub-heading">Best collection of all time.</p>
+        <div id="header">
+            <ul class="links">
+                <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
+                <% cats.forEach(function(cat) { %>
+                    <li class="link-item">
+                        <a href="" class="link">
+                            <%= cat.name %>
+                        </a>
+                    </li>
+                    <% }); %>
+            </ul>
         </div>
-    </header>
-    <!-- Products  -->
-    <section class="product">
 
-        <div class="product-container">
-            <section class="products">
-                <h2 class="product-category">Best Selling</h2>
-                <button class="pre-btn"><img src="/images/right-arrow.png" alt="left-arrow"></button>
-                <button class="nxt-btn"><img src="/images/right-arrow.png" alt="right-arrow"></button>
-                <div class="product-container">
-                    <% productData.forEach(function(product) { %>
-                        <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
+        <header class="hero-section section">
+            <div class="content">
+                <img src="/images/theblackicon.png" class="logo" alt="Tamarai's Logo">
+                <p class="sub-heading">Best collection of all time.</p>
+            </div>
+        </header>
 
-                        <div class="product-card">
-                            <div class="product-image">
-                                <% if (product.discount> 0) { %>
-                                    <span class="discount-tag">
-                                        <%= product.discount %>% off
-                                    </span>
-                                    <% } %>
-                                        <a href="">
-                                            <!-- <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>"> -->
-                                            <img src="/images/<%= product.image %>" width="100"></a>
-                                        <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
-                            </div>
-                            <div class="product-info">
-                                <h2 class="product-brand">
-                                    <%= product.seller%>
-                                </h2>
-                                <p class="product-short-des">
-                                    <%= product.description %>
-                                </p>
-                                <% if (product.discount> 0) { %>
-                                    <span class="price">
-                                        <%= product.price %>L.E.
-                                    </span>
-                                    <span class="actual-price">
-                                        <%= product.price %>L.E.
-                                    </span>
-                                    <% } else { %>
+        <section class="product">
+
+            <div class="product-container">
+
+                <section class="products">
+
+                    <h2 class="product-category">Best Selling</h2>
+
+                    <button class="pre-btn"><img src="/images/right-arrow.png" alt="left-arrow"></button>
+                    <button class="nxt-btn"><img src="/images/right-arrow.png" alt="right-arrow"></button>
+
+                    <div class="product-container">
+                        <% productData.forEach(function(product) { %>
+
+                            <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
+
+                            <div class="product-card">
+
+                                <div class="product-image">
+                                    <% if (product.discount> 0) { %>
+                                        <span class="discount-tag">
+                                            <%= product.discount %>% off
+                                        </span>
+                                        <% } %>
+                                            <a href="">
+                                                <img src="/images/<%= product.image %>" width="100"></a>
+                                            <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
+                                </div>
+
+                                <div class="product-info">
+                                    <h2 class="product-brand">
+                                        <%= product.seller%>
+                                    </h2>
+                                    <p class="product-short-des">
+                                        <%= product.description %>
+                                    </p>
+                                    <% if (product.discount> 0) { %>
                                         <span class="price">
                                             <%= product.price %>L.E.
                                         </span>
-                                        <% } %>
+                                        <span class="actual-price">
+                                            <%= product.price %>L.E.
+                                        </span>
+                                        <% } else { %>
+                                            <span class="price">
+                                                <%= product.price %>L.E.
+                                            </span>
+                                            <% } %>
+                                </div>
                             </div>
-                        </div>
-                        <% }); %>
-                </div>
-            </section>
-    </section>
-    <!-- Collections -->
-    <h1>Shop by Category</h1>
-    <!-- <section class="collection-container">
-        <a href="#" class="collection">
-            <img src="/images/women's-collection.jpg" alt="Women collection">
-            <p class="collection-title">Women <br> apparels</p>
-        </a>
-        <a href="#" class="collection">
-            <img src="/images/men's-collection.jpg" alt="Men's collection">
-            <p class="collection-title">Men <br> apparels</p>
-        </a>
-        <a href="#" class="collection">
-            <img src="/images/Kid's collection.jpg" alt="Kid's collection">
-            <p class="collection-title">Kids <br> apparels</p>
-        </a>
-        <a href="#" class="collection">
-            <img src="/images/shoes.jpg" alt="Shoe's collection">
-            <p class="collection-title">Shoes</p>
-        </a>
-        <a href="#" class="collection">
-            <img src="/images/Bags.jpg" alt="Bags">
-            <p style="font-size: 40px;" class="collection-title">Bags <br>Collection</p>
-        </a>
-        <a href="#" class="collection">
-            <img src="/images/accessories.jpeg" alt="Accessories">
-            <p style="font-size: 40px;" class="collection-title">Accessories</p>
-        </a> -->
-    <!-- To add a new collection take this code copy -->
-    <!-- 
-            <a href="#" class="collection">
-                <img src="/images/accessories.jpeg" alt="Accessories">
-                <p class="collection-title">Accessories</p>
-            </a>
-            -->
-    </section>
-    <!-- Last footer inshallah -->
-    <footer>
+                            <% }); %>
+                    </div>
+                </section>
+        </section>
 
-    </footer>
-    <!-- <script src="JS/footer.js"></script> -->
-    <!-- putting scripts here to work -->
-    <!-- Making card's button arrow scroll left and right in java script -->
-    <!-- <script src="JS/home.js"></script> -->
+        <h1>Shop by Category</h1>
 
-    <div class="chatbox">
-        <div id="chatbox"></div>
-    </div>
-    <%- include('../partials/translate.ejs') %>
+        <div class="chatbox">
+            <div id="chatbox"></div>
+        </div>
+
         <%- include('../partials/footer.ejs') %>
+            <%- include('../partials/translate.ejs') %>
+
 </body>
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 
 </html>

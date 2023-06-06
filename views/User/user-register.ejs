@@ -10,9 +10,7 @@
   <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
   <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 
-  <title>
-    <%=Title%>
-  </title>
+  <title>User Register</title>
 
 </head>
 
@@ -47,22 +45,48 @@
 
         <div class="users" style="left: 15%;">
           <label for="username"> username </label>
-          <input id="username" type="text" placeholder="username" name="name">
+          <input id="username" type="text" placeholder="username" name="username">
+          <span class="Uerror" id="usernameErrorMsg">
+            <%if( errorMsg && errorMsg.username) { %>
+                <%=errorMsg.username%>
+            <%}%>
+          </span>
         </div>
 
         <div class="passes" style="left: 15%;">
           <label for="password"> password </label>
-          <input id="password" type="password" placeholder="password" name="pass">
+          <input id="password" type="password" placeholder="password" name="password">
+          <span class="Perror" id="passwordErrorMsg">
+            <%if( errorMsg && errorMsg.password) { %>
+                <%=errorMsg.password%>
+            <%}%>
+          </span>
+
+
         </div>
 
         <div class="email" style="left: 55%;">
           <label for="email"> email </label>
           <input id="email" type="email" placeholder="example@mail.com" name="email">
+          <span class="Eerror" id="emailErrorMsg">
+            <%if( errorMsg && errorMsg.email) { %>
+                <%=errorMsg.email%>
+            <%}%>
+          </span>
+
+
         </div>
 
         <div class="cpass" style="left: 55%;">
           <label for="cpass"> confirm pass </label>
-          <input id="confirmpass" type="password" placeholder="confirm password" name="confirmpass">
+          <input id="confirmPassword" type="password" placeholder="confirm password" name="confirmPassword">
+          <span class="Perrortoo" id="confirmPassErrorMsg">
+            <%if( errorMsg && errorMsg.confirmPassword) { %>
+                <%=errorMsg.confirmPassword%>
+            <%}%>
+          </span>
+
+
         </div>
 
         <button class="URbutton" type="submit" style="top: 75%;">Sign up</button>
@@ -74,6 +98,8 @@
 
   <%- include('../partials/translate.ejs') %>
 </body>
+<script src="/public/js/Validations.js"></script>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- <script src="/public/js/Validations.js"></script> -->
 

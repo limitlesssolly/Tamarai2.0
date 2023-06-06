@@ -11,6 +11,7 @@ const SellSchema = new mongoose.Schema({
     required: true,
     unique: true
 },
+  type: { type: String, required: false, },
   password: String,
   confirmPassword: String,
 });

@@ -392,6 +392,45 @@ input:autofill
     }
 }
 
+.Uerror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+
+.Perror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+.Perrortoo {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+
+.Eerror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+
 /* desktops */
 @media only screen and (min-width: 1200px) {
     .VRegsiter{
