@@ -17,4 +17,5 @@
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
     overflow: hidden;
+    grid-row-start: 2;
 }
