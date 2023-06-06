@@ -87,13 +87,13 @@
 
 </head>
 <body> -->
-<html> 
+  <!DOCTYPE html>
   <head>
     <title>My whishlist</title> 
     </head>
     <body>
    <!-- Header -->
-   <header>
+   <!-- <header>
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
@@ -101,12 +101,15 @@
         <li><a href="/cart">Cart</a></li>
       </ul>
     </nav>
-  </header>
+  </header> -->
 
   <!-- Main Content -->
-  <!-- <main> -->
+  
     <div class="wishlist-container">
-      <h2>My Wishlist</h2>
+      
+      <h2>My wishlist<h2>
+        <!-- <a href="/user/homepage/whishlist"></a>
+    </span></h2> -->
       <% if (wished.length > 0) { %>
         <table>
           <tr>
@@ -116,7 +119,7 @@
               <th>Action</th>
           </tr> 
           <% wished.forEach(function(n) { %>
-              <tr>
+              <!-- <tr>
                   <td>
                       <%= n.name %>
                   </td>
@@ -140,18 +143,18 @@
           </td>
           <td>
             <%= n.category%>
-        </td>
+        </td> -->
         <td>
           <%= n.color%>
       </td>
-              </tr>
+              <!-- </tr> -->
               <% }); %>
       </table>
       <% } else { %>
         <p>Your wishlist is currently empty.</p>
       <% } %>
     </div>
-  </main> 
-  <%- include('../partials/footer.ejs') %>
+  </main>
+</body>
 </body>
 </html> 

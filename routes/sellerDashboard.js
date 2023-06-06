@@ -37,9 +37,7 @@ router.post('/add', addItem);
 
 router.get('/products', async function (req, res, next) {
     const Products = await Prod.find();
-    res.render('seller/seller-products', {
-        Products
-    });
+    res.render('seller/seller-products', { Products});
 })
 
 /* GET /seller/dashboard/view page. */

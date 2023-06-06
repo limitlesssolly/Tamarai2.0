@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const WishListSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: false,
     },
     brand: {
         type: String,
@@ -11,31 +11,31 @@ const WishListSchema = new mongoose.Schema({
     },
     seller: {
         type: String,
-        required: true,
+        required: false,
     },
     price: {
         type: Number,
-        required: true,
+        required: false,
     },
     image: {
         type: String,
-        required: true,
+        required: false,
     },
     count: {
         type: Number,
-        required: true,
+        required:false,
     },
     description: {
         type: String,
-        required: true,
+        required: false,
     },
     category: {
         type: String,
-        required: true,
+        required: false,
     },
     color: {
         type: Array,
-        required: true,
+        required: false,
     },
 }) 
 
