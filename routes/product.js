@@ -4,26 +4,21 @@ import Product from "../models/productData.js";
 import Categories from '../models/categories.js';
 const router = Router();
 
-// Get all products /products
+// Get all products /products/
 router.get('/', async (req, res, next) => {
-    // res.send("All products");
-    //Retrieve products data from MongoDB
-    const products = Product.find({}).then((products) => {
-        //  res.json(products);
-        // res.render('user/try', { products: products });  // NOT WORKING if you add a comment
-        res.render('user/products', { products });
-    }).catch((err) => {
-        next(err);
-    });
-    // const products = await Product.find();
-    // res.render('user/try', { products });
+    // // res.send("All products");
+    // //Retrieve products data from MongoDB
+    // const products = Product.find({}).then((products) => {
+    //     //  res.json(products);
+    //     // res.render('user/try', { products: products });  // NOT WORKING WITH PRODUCT
+    //     res.render('user/products', { products });
+    // }).catch((err) => {
+    //     next(err);
+    // });
+    const products = await Product.find();
+    // res.render('user/try', {products});
+    res.render('user/products', { products });
 });
-
-// Get a single product by its ID
-router.get("/:id", (req, res, next) => {
-    res.send(`Single product test message ${req.params.id}`);
-});
-
 
 // router.get('/products', async (req, res) => {
 //     try {
@@ -70,6 +65,11 @@ router.get("/:id", (req, res, next) => {
 //         res.status(500).json({ error: true, message: "Internal Server Error" });
 //     }
 // });
+
+// Get a single product by its ID
+router.get("/:id", (req, res, next) => {
+    res.send(`Single product test message ${req.params.id}`);
+});
 
 //Create a product: /products
 // router.post("/", (req, res, next) => {

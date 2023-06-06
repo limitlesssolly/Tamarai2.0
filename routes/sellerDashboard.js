@@ -1,6 +1,7 @@
 import {Router} from 'express';
 const router = Router();
 import Prod from '../models/productData.js';
+import cats from '../models/categories.js'
 import {addItem} from "../controllers/seller-controller.js";
 // import seller from "../models/sellerRegister.js";
 import regi from "../models/tryseller.js";
@@ -12,13 +13,14 @@ router.get('/', function (req, res, next) {
 
 
 /* GET /seller/dashboard/add page. */
-router.get('/add', function (req, res, next) {
-    res.render('seller/seller-add');
-});
+// router.get('/add', function (req, res, next) {
+//     res.render('seller/seller-add');
+// });
 
-/* GET /seller/dashboard/view page. */
+/* GET /seller/dashboard/add page. */
 router.get('/add',async function (req, res, next) {
-    res.render('seller/seller-add');
+    const Cats = await cats.find();
+    res.render('seller/seller-add', {Cats});
 });
 
 /* post an item */
@@ -33,9 +35,7 @@ router.get('/products', function (req, res, next) {
 /* GET /seller/dashboard/view page. */
 router.get('/view', async function (req, res, next) {
     const Products = await Prod.find();
-    res.render('seller/seller-view', {
-        Products
-    });
+    res.render('seller/seller-view', { Products });
 })
 
 /* Delete One item using id */
@@ -81,7 +81,7 @@ router.get('/profile', async (req, res) => {
 });
 
 router.use((req, res, next) => {
-    if (req.session.seller) next();
+    if (req.session.seller || req.session.admin) next();
     else {
         res.send('You must login to procceed');
     }

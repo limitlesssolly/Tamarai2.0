@@ -1,9 +1,8 @@
 import { body, validationResult } from "express-validator";
 import user from '../models/userRegister.js';
 import ProductsData from '../models/productData.js';
-import path from 'path';
 import bcrypt from 'bcrypt';
-
+import Categories from '../models/categories.js';
 
 const signupValidation = [
     body('name').notEmpty().withMessage('Username is required')
@@ -25,6 +24,7 @@ const signins = async(req, res, next) => {
     else if (userdb) {
       if (bcrypt.compareSync(password, userdb.password)) {
         req.session.user = userdb;
+
         return res.redirect('/user/homepage');
       }
       else return res.status(401).send({ msg: 'Please enter a valid password' });
@@ -62,8 +62,9 @@ const signup = async(req, res, next) => {
 export const getHomepage = async(req, res) => {
     try {
         const productData = await ProductsData.find();
+        const cat = await Categories.find();
         console.log('productData:', productData);
-        res.render('user/user-homepage', { Title: "Homepage", productData });
+        res.render('user/user-homepage', { Title: "Homepage", productData, cat: cat });
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');

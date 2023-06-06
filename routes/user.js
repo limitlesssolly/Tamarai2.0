@@ -1,5 +1,5 @@
 import express from 'express';
-import Product from "../models/productData.js";
+import Products from "../models/productData.js";
 import { signins, signup } from "../controllers/user-controllers.js";
 
 const router = express.Router();
@@ -12,7 +12,33 @@ router.get('/register', function(req, res, next) {
     res.render('user/user-register', { Title: "User Register" });
 });
 
- 
+router.get("/homepage/whishlist", async(req, res) => {
+    try {
+        const Wishes = await Wishlist.find();
+        res.send(Wishes);
+    } catch(e) {
+        res.send(e);
+    }
+})
+router.post("/SaveWishlist", (req, res) => {
+    const wish = new Wishlist(req.body)
+    wish.save().then( () => {
+        res.status(201).send("Wish Added to Wishlist!");
+    }).catch( (e) => {
+        res.status(400).send(e);
+    })
+})
+router.patch("/UpdateWishlist/:id", async(req, res) => {
+    try {
+        const _id = req.params.id
+        const UpdateRequest = await Wishlist.findByIdAndUpdate(_id, req.body)
+        res.send(UpdateRequest);
+    } catch(e) {
+        res.status(404).send("Couldn't update your wish :(");
+    }
+})
+
+
 router.post('/', signins);
 router.post('/register', signup);
 

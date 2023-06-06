@@ -4,7 +4,6 @@
         <link rel="stylesheet" href="../public/CSS/userHomepage.css" />
     </head>
     <body>
-        <%- include('../partials/usernav.ejs') %>
         <% if (products.length > 0) { %>
             <% products.forEach(product => { %>
                 <% product.name %>
@@ -13,7 +12,5 @@
         <% } else { %>
             <h1>No products to show</h1>
         <% } %>
-        <%- include('../partials/footer.ejs') %>
-        <%- include('../partials/translate.ejs') %>
     </body>
 </html>
