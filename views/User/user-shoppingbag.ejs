@@ -1,3 +1,4 @@
+@ -1,95 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +35,7 @@
                 <div class="Cart-Items">
                     <div class="product-container">
 
-                        <% Prod.forEach(function(product) { %>
+                        <% productData.forEach(function(product) { %>
                             <div>
                                 <div class="image-box">
                                     <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>">
@@ -65,6 +66,7 @@
                                     <button class="remove" onclick="remove_element()"><u>Remove</u></button>
                                 </div>
                                 <% }); %>
+
 
                             </div>
                     </div>

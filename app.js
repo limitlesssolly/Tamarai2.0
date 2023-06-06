@@ -94,6 +94,7 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
 
+
 // 404 route
 app.get('/error', (req, res) => {
     // res.sendFile(path.join(staticPath, 'error'));
