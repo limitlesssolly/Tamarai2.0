@@ -34,37 +34,7 @@
                 <div class="Cart-Items">
                     <div class="product-container">
 
-                        <% productData.forEach(function(product) { %>
-                            <div>
-                                <div class="image-box">
-                                    <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>">
-                                </div>
-                                <div class="about">
-                                    <h1 class="title">
-                                        <%= product.name %>
-                                    </h1>
-                                    <h3 class="subtitle">
-                                        <%= product.seller%>
-                                    </h3>
-                                    <img src="photos/street.jpg" alt="street" style="height: 30px;" />
-                                </div>
-                                <div class="counter"></div>
-                                <div class="prices"></div>
-                                <div class="counter">
-                                    <button class="btn" onclick="counting()">+</button>
-                                    <!-- <div class="btn">+</div> -->
-                                    <div class="count">1</div>
-                                    <button class="btn" onclick="decreasing()">-</button>
-                                    <!-- <div class="btn">-</div> -->
-                                </div>
-                                <div class="prices">
-                                    <div class="amount">
-                                        <%= product.price%>
-                                    </div>
-                                    <div class="save"><u>Save for later</u></div>
-                                    <button class="remove" onclick="remove_element()"><u>Remove</u></button>
-                                </div>
-                                <% }); %>
+                        
 
                             </div>
                     </div>
