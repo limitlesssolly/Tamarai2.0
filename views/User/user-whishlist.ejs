@@ -1,115 +1,12 @@
- <!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/whishlist.css">
-    <!-- Adding a favicon  -->
-    <!-- <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-    <title>wishList</title>
-</head>
-
-<body>
-
-    <div class="list-Container">
-        <div class="Header">
-            <h5 class="Heading">wishList</h5>
-            <h5 class="Action">Remove all</h5>
-        </div>
-
-        <div class="the_first_list_items">
-          <% if (wishlist.length > 0) { %>
-            <div class="the_first_image_box">
-                <img src="photos/wedding dress.jpg" alt="weddingdress" style="height: 120px;" />
-            </div>
-            <div class="about_the_item">
-                <h1 class="title">wedding dress</h1>
-                <h3 class="subtitle">designer:Amitab batchan</h3>
-                <img src="photos/designer.jpg" alt="designer" style="height: 30px;">
-            </div>
-            <div class="details"></div>
-            <div class="prices"></div>
-            <div class="counter">
-                <div class="btn"><u>Un Available</u></div>
-            </div>
-
-            <div class="prices">
-                <div class="amount">350 EG</div>
-                <div class="add"><u>add to shopping cart</u></div>
-                <div class="remove"><u>Remove</u></div>
-            </div>
-
-        </div>
-
- -->
-
-        <!-- <div class="the_first_list_items">
-            <div class="the_first_image_box">
-                <img src="photos/decor.jpg" alt="decor" style="height: 120px;" />
-            </div>
-            <div class="about_the_item">
-                <h1 class="title">wedding dress</h1>
-                <h3 class="subtitle">designer:amitab batchan</h3>
-                <img src="photos/decor_designer.jpg" alt="decordesigner" style="height: 30px;">
-            </div>
-            <div class="details"></div>
-            <div class="prices"></div>
-            <div class="counter">
-                <div class="btn"><u>Un Available</u></div>
-            </div>
-            <div class="prices">
-
-
-                <div class="amount">450 EG</div>
-                <div class="add"><u>add to shopping cart</u></div>
-                <div class="remove"><u>Remove</u></div>
-            </div>
-        </div>
-    </div> -->
-
-     <!-- <footer></footer> 
-        <script src="JS/footer.js"></script> -->
-        <!-- putting scripts here to work -->
-        <!-- Making card's button arrow scroll left and right in java script -->
-        <!-- <script src="JS/home.js"></script> -->
-
-<!-- </body>
-
-</html>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My Wishlist</title>
-
-</head>
-<body> -->
   <!DOCTYPE html>
+  <html>
   <head>
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+
     <title>My whishlist</title> 
     </head>
     <body>
-   <!-- Header -->
-   <!-- <header>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/wishlist">Wishlist</a></li>
-        <li><a href="/cart">Cart</a></li>
-      </ul>
-    </nav>
-  </header> -->
-
-  <!-- Main Content -->
-  
-    <div class="wishlist-container">
-      
-      <h2>My wishlist<h2>
-        <!-- <a href="/user/homepage/whishlist"></a>
-    </span></h2> -->
+   
       <% if (wished.length > 0) { %>
         <table>
           <tr>
@@ -118,43 +15,25 @@
               <th>Category</th>
               <th>Action</th>
           </tr> 
-          <% wished.forEach(function(n) { %>
-              <!-- <tr>
-                  <td>
-                      <%= n.name %>
-                  </td>
-                  <td>
-                      <%= n.brand %>
-                  </td>
-                  <td>
-                      <%= n.seller%>
-                  </td>
-                  <td>
-                    <%= n.price%>
-                </td>
-                <td>
-                <%= n.image%>
-              </td>
-              <td>
-                <%= n.count%>
-            </td>
-            <td>
-              <%= n.description%>
-          </td>
-          <td>
-            <%= n.category%>
-        </td> -->
-        <td>
-          <%= n.color%>
-      </td>
-              <!-- </tr> -->
-              <% }); %>
+          <% wished.forEach(function(wish) { %>
+            <td> <%= wish.name %></td>
+            <td> <%= wish.brand %></td>
+            <td> <%= wish.seller %></td>
+            <td> <%= wish.price %></td>
+            <td> <%= wish.image %></td>
+            <td> <%= wish.count %></td>
+            <td> <%= wish.description %></td>
+            <td> <%= wish.category %></td>
+             <td> <%= wish.color %></td>
+            
+              
+              <% }) %>
       </table>
-      <% } else { %>
+      <%  }else { %>
         <p>Your wishlist is currently empty.</p>
       <% } %>
     </div>
-  </main>
+ 
 </body>
-</body>
+
 </html> 
