@@ -46,7 +46,15 @@ router.get('/add-to-wishlist/:id', async function(req, res, next) {
     // };
     //const JSONS = JSON.stringify(wishlisted);
     // Wishlist.setItem("wished", JSONS);
-    const newWish = new Wishlist({Wish: wishlisted});
+    const newWish = new Wishlist({name: wishlisted.name},
+        {brand: wishlisted.brand},
+        {seller: wishlisted.seller},
+        {price: wishlisted.price},
+        {image: wishlisted.count},
+        {description: wishlisted.description},
+        {category: wishlisted.category},
+        {color: wishlisted.color},
+        );
     await newWish.save();
     console.log('et7at');
     res.redirect('user/user-homepage');
