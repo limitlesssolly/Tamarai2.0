@@ -12,7 +12,7 @@ const SellSchema = new mongoose.Schema({
     unique: true
 },
   password: String,
-  confirmPassword: String
+  confirmPassword: String,
 });
 
 const rege1 = mongoose.model('tries', SellSchema);

@@ -25,7 +25,7 @@ const signins = async(req, res, next) => {
       if (bcrypt.compareSync(password, userdb.password)) {
         req.session.user = userdb;
 
-        return res.redirect('/user/homepage');
+        return res.redirect('/user/homepage', { user: (req.session.user === undefined ? "" : req.session.user) });
       }
       else return res.status(401).send({ msg: 'Please enter a valid password' });
     }
@@ -50,7 +50,8 @@ const signup = async(req, res, next) => {
             });
             await newuser.save();
             console.log('Registration successful!');
-            return res.redirect('/user/homepage');
+            req.session.user = newuser;
+            return res.redirect('/user/homepage', { user: (req.session.user === undefined ? "" : req.session.user) });
         } catch (err) {
             console.log(err);
             return res.status(500).render('error.ejs');
@@ -64,12 +65,13 @@ export const getHomepage = async(req, res) => {
         const productData = await ProductsData.find();
         const cat = await Categories.find();
         console.log('productData:', productData);
-        res.render('user/user-homepage', { Title: "Homepage", productData, cat: cat });
+        res.render('user/user-homepage', { Title: "Homepage", productData, cat: cat }, { user: (req.session.user === undefined ? "" : req.session.user) });
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');
     }
 };
+
 // const register = async (req, res) => {
 
 //   //get data from form

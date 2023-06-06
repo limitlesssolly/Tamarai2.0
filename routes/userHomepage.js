@@ -6,18 +6,18 @@ router.get('/', getHomepage);
 router.get('/bag', getShoppingBag);
 
 router.get('/checkout', function(req, res, next) {
-    res.render('user/user-checkout');
+    res.render('user/user-checkout', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 router.get('/profile', function(req, res, next) {
-    res.render('user/user-profile');
+    res.render('user/user-profile', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 
 router.get('/bag', function(req, res, next) {
-    res.render('user/user-shoppingbag');
+    res.render('user/user-shoppingbag', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 
 router.get('/whishlist', function(req, res, next) {
-    res.render( 'user/user-whishlist', { Title: "whishlist" });
+    res.render( 'user/user-whishlist', { Title: "whishlist" }, { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 
 // router.post('user/user-whishlist',(req,res)=>{
@@ -29,14 +29,7 @@ router.get('/whishlist', function(req, res, next) {
 // Add this debug statement
 router.use((err, req, res, next) => {
     console.error(err);
-    res.status(500).send('Internal server error');
+    res.status(500).send('Fe mashakel');
 });
-
-router.use((req, res, next) => {
-    if (req.session.user || req.session.admin) next();
-    else {
-        res.send('You must login to procceed');
-    }
-})
 
 export default router;
