@@ -99,7 +99,7 @@ router.get('/settings/', function (req, res, next) {
 router.get('/usings/delete/:id', async function(req, res, next) {
     const id = req.params.id;
     const data = await Users.findByIdAndDelete(id)
-    console.log(`Item ${data.name} has been deleted..`)
+    console.log(`user ${data.username} has been deleted..`)
     return res.redirect('/seller/dashboard/usings');
 })
 
