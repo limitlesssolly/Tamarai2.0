@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Seller Add Product</title>
     <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
     <!-- Adding a favicon  -->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <%- include('../partials/sellernav.ejs') %>
-    <div class="adds">
-        <form method="post" action="/seller/dashboard/add">
-                <div class="name">Product Name : <input name="name" type="text"><div>
+        <div class="adds">
+            <form method="post" action="/seller/dashboard/add">
+                <div class="name">Product Name : <input name="name" type="text"></div>
                 <div class="brand">Brand : <input name="brand" type="text"></div>
                 <div class="seller">Seller : <input name="seller" type="text"></div>
                 <div class="price">Price : <input name="price" type="text"></div>
-                <div class="image">Image : <input name="image" type="file"></div>
-                <div class="count">Count In Stock: <input name="count" type="text" ></div>
+                <div class="image">Image : <input name="image" type="file" id="img"><img src="#" id="imgPreview" alt=""></div>
+                <div class="count">Count In Stock: <input name="count" type="text"></div>
                 <div class="description">Description : <input name="description" type="text"></div>
-                <div class="category">Category : 
+                <div class="category">Category :
                     <input list="categories" name="categories">
                     <datalist id="categories">
                         <% Cats.forEach(function(cats) { %>
@@ -31,8 +34,22 @@
                 </div>
                 <div class="color">Color : <input name="color" type="color"></div>
                 <button type="submit" id="updatebutts"> Plus One </button>
-        </form>
-    </div>
-    <%- include('../partials/translate.ejs') %>
+            </form>
+            <%- include('../partials/translate.ejs') %>
 </body>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $("#imgPreview").attr('src', e.target.result).width(100).height(100);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#img").change(function() {
+        readURL(this);
+    });
+</script>
+
 </html>
