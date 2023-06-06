@@ -1,16 +1,23 @@
 <html>
-    <head>
-        <title>Our products</title>
-        <link rel="stylesheet" href="../public/CSS/userHomepage.css" />
-    </head>
-    <body>
-        <% if (products.length > 0) { %>
-            <% products.forEach(product => { %>
-                <% product.name %>
-                <br>
-            <% }) %>
-        <% } else { %>
-            <h1>No products to show</h1>
-        <% } %>
-    </body>
+
+<head>
+    <title>Our products</title>
+    <link rel="stylesheet" href="../public/CSS/userHomepage.css" />
+</head>
+
+<body>
+    <% if (Products.length> 0) { %>
+        <% Products.forEach(function(product) { %>
+            <li>
+                <%= product.name %>
+                    <%= product.brand %>
+                        <%= product.category%>
+
+            </li>
+            <% }); %>
+                <% } else { %>
+                    <h1>No products to show</h1>
+                    <% } %>
+</body>
+
 </html>
