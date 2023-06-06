@@ -53,7 +53,7 @@ router.get('/add-to-wishlist/:id', async function(req, res, next) {
     const newWish = new Wishlist({Wish: JSONS,});
     await newWish.save();
     console.log('et7at');
-    res.render('user/homepage');
+    res.render('user/user-homepage');
 });
 
 /*const myObj = {name: "John", age: 31, city: "New York"};
@@ -115,7 +115,20 @@ router.use((req, res, next) => {
     }
 })
 
-router.post('/profile/:id', async (req, res) => {
+router.get('/profile', async (req, res) => {
+    const regs = await regi.find();
+    res.render('user/user-profile', {
+        regs
+    });
+});
+
+/* GET /seller/dashboard/profile page. */
+ router.get('/profile/:id', async (req, res) => {
+    const regs = await regi.findById(req.params.id);
+    res.render('user/user-profile', {regs});
+ });
+
+ router.post('/profile/:id', async (req, res) => {
     const regs = await regi.findById(req.params.id);
     regs.username = req.body.username;
     regs.email = req.body.email;
@@ -129,10 +142,4 @@ router.post('/profile/:id', async (req, res) => {
     res.render('user/user-profile', { regs: updateduser });
 });
 
-router.use((req, res, next) => {
-    if (req.session.user) next();
-    else {
-        res.send('You must login');
-    }
-})
 export default router;
