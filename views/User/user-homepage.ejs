@@ -25,11 +25,11 @@
                 <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
                 <% cats.forEach(function(cat) { %>
                     <li class="link-item">
-                        <a href="" class="link">
+                        <a href="/cat/:name" class="link">
                             <%= cat.name %>
                         </a>
                     </li>
-                    <% }); %>
+                <% }); %>
             </ul>
         </div>
 
