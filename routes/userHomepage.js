@@ -52,7 +52,7 @@ router.get('/add-to-wishlist/:id', async function(req, res, next) {
     const newWish = new Wishlist({Wish: JSONS,});
     await newWish.save();
     console.log('et7at');
-    res.render('user/homepage');
+    res.render('user/user-homepage');
 });
 
 /*const myObj = {name: "John", age: 31, city: "New York"};
