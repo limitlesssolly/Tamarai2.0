@@ -12,6 +12,7 @@ router.get('/register', function(req, res, next) {
     res.render('seller/seller-register');
 })
 
+
 router.get('/logout', function(req, res, next){
     req.session.destroy();
     res.redirect('/');
