@@ -7,9 +7,9 @@ const signins = async (req, res, next) => {
     const { username, password} = req.body;
 
     let errorMsg = {};
-  
-    let userdb = await user.findOne({ username });
+    const userdb = await user.findOne({ username });
     let bools = false;
+
     if (username.trim() == "") errorMsg.username = "Username is required";
     else if (!userdb) errorMsg.username = "Invalid Username";
   

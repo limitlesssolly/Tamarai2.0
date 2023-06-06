@@ -24,7 +24,7 @@ const signins = async (req, res, next) => {
 
     let errorMsg = {};
   
-    let admindb = await admin.findOne({ username });
+    const admindb = await admin.findOne({ username });
     let bools = false;
     if (username.trim() == "") errorMsg.username = "Username is required";
     else if (!admindb) errorMsg.username = "Invalid Username";

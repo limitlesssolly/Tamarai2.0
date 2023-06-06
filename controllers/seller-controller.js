@@ -7,7 +7,7 @@ const signins = async (req, res, next) => {
 
   let errorMsg = {};
 
-  let sellerdb = await rege.findOne({ username });
+  const sellerdb = await rege.findOne({ username });
   let bools = false;
   if (username.trim() == "") errorMsg.username = "Username is required";
   else if (!sellerdb) errorMsg.username = "Invalid Username";
