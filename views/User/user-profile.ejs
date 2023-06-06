@@ -20,13 +20,11 @@
             <%- include('../partials/chat.ejs') %>
         </div>
     </div>
-    <header>
         <!-- <div class="grid-container">
             <div id="header"> -->
-        <%- include('../partials/sellernav.ejs') %>
-        </div>
+        <%- include('../partials/usernav.ejs') %>
         <!-- </div> -->
-    </header>
+
     <main>
 
         <div class="main">
@@ -39,7 +37,7 @@
                     <div class="signup-form">
                         <h2 class="form-title"> Edit profile </h2>
 
-                        <form method="POST" action="/user/profile/<%= regs.id %>" class="register-form"
+                        <form method="POST" action="/user/homepage/profile/<%= regs.id %>" class="register-form"
                             id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
