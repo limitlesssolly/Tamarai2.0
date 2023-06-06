@@ -2,6 +2,10 @@ import rege from '../models/tryseller.js';
 import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const signins = async (req, res, next) => {
   const { username, password} = req.body;
@@ -120,18 +124,12 @@ const addItem = async (req, res, next) => {
       brand: req.body.brand,
       seller: req.body.seller,
       price: req.body.price,
-      image: req.body.name +  path.extname(imgFile.name),
+      image: req.body.img +  path.extname(imgFile.name),
       count: req.body.count,
       description: req.body.description,
       category: req.body.categories,
       color: req.body.color,
     });
-
-    // Read the contents of the image file and store it as binary data in the database
-    const imageBuffer = fs.readFileSync(req.file.path);
-    newItem.image.data = imageBuffer;
-    newItem.image.contentType = req.file.mimetype;
-
     await newItem.save();
     console.log('Item added successfully');
     return res.redirect('/seller/dashboard');
