@@ -6,7 +6,7 @@ let admin = false;
 
 router.use(function (req, res, next) {
     if (req.session.type == 'seller' ||req.session.type == 'user')
-    return res.send('You are not an admin');
+    console.log(200);
     else if (req.session.type == 'admin')
       admin = true;
     next();

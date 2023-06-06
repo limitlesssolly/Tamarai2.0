@@ -21,15 +21,13 @@ router.get('/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 });
 
-router.get('/bag', async(req, res) => {
-    try {
-        const productData = await products.find();
-        console.log(productData);
-        res.render('user/user-shoppingbag', { productData });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal server error');
-    }
+router.get('/bag', function (req, res, next) {
+    const Prod = products.find({}).then((users) => {
+        console.log(Prod);
+        res.render('user/user-shoppingbag', {Prod});
+    }).catch((err) => {
+        next(err);
+    });
 });
 
 router.get('/bag/checkout', function(req, res, next) {
