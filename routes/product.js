@@ -16,7 +16,8 @@ router.get('/', async (req, res, next) => {
     //     next(err);
     // });
     const products = await Product.find();
-    res.render('user/try', {products});
+    // res.render('user/try', {products});
+    res.render('user/products', { products });
 });
 
 // router.get('/products', async (req, res) => {
