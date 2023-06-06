@@ -3,19 +3,19 @@ import mongoose from 'mongoose';
 const WishListSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: false,
+        required: true,
     },
     brand: {
         type: String,
-        required: false,
+        required: true,
     },
     seller: {
         type: String,
-        required: false,
+        required: true,
     },
     price: {
         type: Number,
-        required: false,
+        required: true,
     },
     image: {
         type: String,
@@ -23,11 +23,11 @@ const WishListSchema = new mongoose.Schema({
     },
     count: {
         type: Number,
-        required:false,
+        required:true,
     },
     description: {
         type: String,
-        required: false,
+        required: true,
     },
     category: {
         type: String,
@@ -35,9 +35,11 @@ const WishListSchema = new mongoose.Schema({
     },
     color: {
         type: Array,
-        required: false,
+        required: true,
     },
-}) 
+},
 
+
+{ timestamps: true});
 const Wishlist = new mongoose.model('Wishlist', WishListSchema);
 export default Wishlist;

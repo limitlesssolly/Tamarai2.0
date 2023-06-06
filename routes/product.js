@@ -13,8 +13,9 @@ router.get('/', async (req, res, next) => {
 // Get single product /product/:id
 router.get('/:id', async function (req, res, next) {
     const product = await Product.findById(req.params.id);
+     
     // res.send(product);
-    res.render('user/productaya', { product });
+    res.render('user/productaya', { product },{prodact});
 })
 
 // router.get('/products', async (req, res) => {
