@@ -12,15 +12,19 @@ body {
     font-family: 'Ubuntu', sans-serif;
     color: #0d1516;
 }
-
+.brand-logo
+{
+    position: relative;
+    left: 30px;
+}
 
 #searches
 {
+    display: flex;
     -o-border-radius: 20px;
     padding:  5px;
-    border: 2px solid #1C4C56;
-    width: 250%;
-    max-width: 550px;
+    width: 350px;
+    max-width: 500px;
     background: #fff;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -28,7 +32,7 @@ body {
     border-radius: 20px;
     position: relative;
     top : 0px;
-    right: 180%;
+    right: 10%;
     color: #0d1516;
 }
 
@@ -43,7 +47,7 @@ body {
 
 .nav {
     background-color: #d6bd91;
-    padding: 10px 10vw;
+    /* padding: 10px 10vw; */
     display: flex;
     justify-content: space-between; 
 }
@@ -51,7 +55,7 @@ body {
 .nav_items {
     display: flex;
     position: relative;
-    top: 10px;
+    top: 2px;
     align-items: center;
 }
 
@@ -71,12 +75,17 @@ body {
 }
 
 .nav_items a {
-    margin-right: 20px;
-    margin-left: 10px;
+    margin-right: 20px
 }
 
 .nav_items a img {
     width: 30px;
+}
+
+.brand-logo
+{
+    width: 60px;
+    height: 60px;
 }
 
 .links {
@@ -94,7 +103,7 @@ body {
     padding: 8px;
     margin: 0 5px;
     text-decoration: none;
-    color: #1C4C56;
+    color: #0d1516;
     opacity: 1;
     transition: .5s;
 }
@@ -107,11 +116,12 @@ body {
 
 h1{
     position: relative;
-    top: 10%;
-    right: 90%;
-    text-align: center;
-    color: #1C4C56;
-    font-size: 50px;
+    top: 20%;
+    right: 250%;
+    float: left;
+    /* text-align: center; */
+    color: #0d1516;
+    font-size: 30px;
 }
 
 ul {
