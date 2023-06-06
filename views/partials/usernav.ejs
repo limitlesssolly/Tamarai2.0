@@ -15,9 +15,9 @@
         <div class="nav_items">
             <div class="search">
                 <div class="box">
-                        <input type="text" placeholder="Search" id="searches" onkeyup="sendData(this)">
-                        <section id="srchResults">
-                        </section>
+                    <input type="text" placeholder="Search" id="searches" onkeyup="sendData(this)">
+                    <section id="srchResults">
+                    </section>
                 </div>
                 <a href="/user/homepage/profile"><img src="/images/user2.0.png" alt="user"></a>
                 <a href="/user/homepage/bag"><img src="/images/shoppingCart.png" alt="cart"></a>
@@ -28,15 +28,22 @@
     <ul class="links">
         <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
     </ul>
+
+    <div class="container">
+        <%- messages('messages', locals) %>
+    </div>
 </body>
 <script>
-
     function sendData(e) {
         const searchResults = document.getElementById('searchResults');
         fetch('getProducts', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ payload: e.value })
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                payload: e.value
+            })
         }).then(res => res.json()).then(data => {
             let payload = data.payload;
             // console.log(payload);
