@@ -1,5 +1,6 @@
 import ProductsData from '../models/productData.js';
 import categories from '../models/categories.js';
+
 export const getAllProducts = async(req, res) => {
     try {
         const products = await ProductsData.find();
@@ -59,3 +60,4 @@ export const getSellerProducts = async(req, res) => {
         res.status(500).send('Internal server error');
     }
 }
+
