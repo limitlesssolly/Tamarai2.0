@@ -9,15 +9,14 @@
     <% if (Products.length> 0) { %>
         <% Products.forEach(function(product) { %>
             <li>
-                <%= product.name %>
-                    <%= product.brand %>
-                        <%= product.category%>
-
+            <%= product.name %>
+            <%= product.brand %>
+            <%= product.category%>
             </li>
-            <% }); %>
-                <% } else { %>
-                    <h1>No products to show</h1>
-                    <% } %>
+        <% }); %>
+    <% } else { %>
+        <h1>No products to show</h1>
+    <% } %>
 </body>
 
 </html>
