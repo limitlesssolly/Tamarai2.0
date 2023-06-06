@@ -107,11 +107,19 @@
   <!-- <main> -->
     <div class="wishlist-container">
       <h2>My Wishlist</h2>
-      <% if (wishlisted.length > 0) { %>
+      <% if (paresdData.length > 0) { %>
         <ul>
-          <% wished.forEach(wishlisted => { %>
+          <% paresdData.forEach(n => { %>
             <li>
-              <%= whishlisted.name %>
+              <%= n.name %><br />
+              <%= n.brand %><br />
+              <%= n.seller %><br />
+              <%= n.price %><br />
+              <img src="<%= n.image %>" /><br />
+              <%= n.count %><br />
+              <%= n.description %><br />
+              <%= n.category %><br />
+              <%= n.color %><br />
             </li>
           <% }) %>
         </ul>

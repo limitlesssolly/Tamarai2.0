@@ -129,7 +129,10 @@ const noOfusers= async(req,res,next)=>
 {
   try{
     const id=req.params.id;
-    
+
+  }
+  catch(e){
+    res.send(e);
   }
 }
 export {
