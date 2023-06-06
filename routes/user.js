@@ -31,11 +31,11 @@ router.use((err, req, res, next) => {
     res.status(500).send('Internal server error');
 });
 
-// router.use((req, res, next) => {
-//     if (req.session.user) next();
-//     else {
-//         res.send('You must login to procceed');
-//     }
-// })
+router.use((req, res, next) => {
+    if (req.session.user) next();
+    else {
+        res.send('You must login to procceed');
+    }
+})
 
 export default router;

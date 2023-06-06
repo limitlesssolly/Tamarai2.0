@@ -8,6 +8,9 @@ router.get('/bag', getShoppingBag);
 router.get('/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 });
+router.get('/profile', function(req, res, next) {
+    res.render('user/user-profile');
+});
 
 router.get('/bag', function(req, res, next) {
     res.render('user/user-shoppingbag');
@@ -29,11 +32,11 @@ router.use((err, req, res, next) => {
     res.status(500).send('Internal server error');
 });
 
-// router.use((req, res, next) => {
-//     if (req.session.user || req.session.admin) next();
-//     else {
-//         res.send('You must login to procceed');
-//     }
-// })
+router.use((req, res, next) => {
+    if (req.session.user || req.session.admin) next();
+    else {
+        res.send('You must login to procceed');
+    }
+})
 
 export default router;
