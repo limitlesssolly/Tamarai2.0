@@ -83,4 +83,9 @@ router.use((req, res, next) => {
     }
 })
 
+router.get('/logout', function(req, res, next){
+  req.session.destroy();
+  res.redirect('/');
+})
+
 export default router;
