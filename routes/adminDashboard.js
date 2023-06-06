@@ -96,5 +96,11 @@ router.get('/settings/', function (req, res, next) {
     res.render('admin/admin-settings');
 });
 
+router.get('/usings/delete/:id', async function(req, res, next) {
+    const id = req.params.id;
+    const data = await Users.findByIdAndDelete(id)
+    console.log(`Item ${data.name} has been deleted..`)
+    return res.redirect('/seller/dashboard/usings');
+})
 
 export default router;
