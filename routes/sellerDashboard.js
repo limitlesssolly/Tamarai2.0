@@ -82,7 +82,7 @@ router.get('/profile/:id', async(req, res) => {
     });
 });
 
-// app.get('/image/:id', function(req, res) {
+// router.get('/image/:id', function(req, res) {
 //     const id = req.params.id;
 //     products.findOne({ _id: ObjectId(id) }, function(err, result) {
 //       if (err) throw err;

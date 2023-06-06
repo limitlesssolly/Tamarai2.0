@@ -35,6 +35,17 @@ router.get('/category/delete/:id', async function (req, res, next) {
 /* GET /admin/dashboard/stats page. */
 router.get('/stats', function (req, res, next) {
     res.render('admin/admin-stats');
+    // try{
+    //     const collection = connect.collection("user");
+    //     collection.countDocuments().then((count_documents) => {
+    //         console.log(count_documents);
+    //       }).catch((err) => {
+    //         console.log(err.Message);
+    //       })
+    //   }
+    //   catch(e){
+    //     res.send(e);
+    //   }
 })
 
 /* GET /admin/dashboard/messages page. */

@@ -45,61 +45,33 @@ router.get('/profile', function(req, res, next) {
 // });
 
 router.get('/add-to-wishlist/:id', async function(req, res, next) {
-    //const wishlisted = await products.findById(req.params.id);
-    // wishlisted = {
-    //   name: prod.name,
-    //   brand: prod.brand,
-    //   seller: prod.seller,
-    //   price: prod.price,
-    //   image: prod.image,
-    //   count: prod.count,
-    //   description: prod.description,
-    //   category: prod.category,
-    //   color: prod.color,
-    // };
-    //const JSONS = JSON.stringify(wishlisted);
-    // Wishlist.setItem("wished", JSONS);
-    // const newWish = new Wishlist({name: wishlisted.name},
-    //     {brand: wishlisted.brand},
-    //     {seller: wishlisted.seller},
-    //     {price: wishlisted.price},
-    //     {image: wishlisted.count},
-    //     {description: wishlisted.description},
-    //     {category: wishlisted.category},
-    //     {color: wishlisted.color},
-    //     );
-    const wish = new  Wishlist
+    const product = await products.findById(req.params.id);
+    console.log(product);
+    const wishat = new  Wishlist
     ({
-        name: req.body.name,
-        brand: req.body.brand,
-        seller: req.body.seller,
-        price: req.body.price,
-        image: req.body.image,
-        count: req.body.count,
-        description: req.body.description,
-        category: req.body.categories,
-        color: req.body.color,
+        name:product.name,
+        brand: product.brand,
+        seller: product.seller,
+        price: product.price,
+        image: product.image,
+        count: product.count,
+        description: product.description,
+        category: product.categories,
+        color: product.color,
       });
-    await wish.save();
+    await wishat.save();
     console.log('et7at');
     res.redirect('/user/homepage');
 } 
  
 );
 
-/*const myObj = {name: "John", age: 31, city: "New York"};
-const myJSON = JSON.stringify(myObj);
-localStorage.setItem("testJSON", myJSON);
+ 
 
-// Retrieving data:
-let text = localStorage.getItem("testJSON");
-let obj = JSON.parse(text);
-document.getElementById("demo").innerHTML = obj.name;*/
-
-router.get('/whishlist', async function(req, res, next)  {
+router.get('/whishlist', async function(req, res,next) {
     const wished = await Wishlist.find();
     console.log(wished);
-    res.render('user/user-whishlist',{wished});
+        res.render('user/user-whishlist',{wished});
     
 })
 

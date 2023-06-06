@@ -1,6 +1,11 @@
 import rege from '../models/tryseller.js';
 import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const signins = async (req, res, next) => {
   const { username, password} = req.body;
@@ -105,31 +110,65 @@ const signup = async (req, res, next) => {
 };
 
 const addItem = async (req, res, next) => {
+  let imgFile;
+    let uploadPath;
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+    imgFile = req.files.img;
+    uploadPath = path.join(__dirname,'../public/images/products/' + req.body.name + path.extname(imgFile.name));
   try {
+    imgFile.mv(uploadPath,async function (err) { 
     const newItem = new products({
       name: req.body.name,
       brand: req.body.brand,
       seller: req.body.seller,
       price: req.body.price,
+      image: req.body.name +  path.extname(imgFile.name),
       count: req.body.count,
       description: req.body.description,
       category: req.body.categories,
       color: req.body.color,
     });
-
-    // Read the contents of the image file and store it as binary data in the database
-    const imageBuffer = fs.readFileSync(req.file.path);
-    newItem.image.data = imageBuffer;
-    newItem.image.contentType = req.file.mimetype;
-
     await newItem.save();
     console.log('Item added successfully');
     return res.redirect('/seller/dashboard');
+  })
   } catch (err) {
     console.log(err);
     return res.status(500).render('error.ejs');
   }
 };
+
+// const addItem = async (req, res, next) => {
+//   try {
+//     let imgFile;
+//     let uploadPath;
+//     if (!req.files || Object.keys(req.files).length === 0) {
+//         return res.status(400).send('No files were uploaded.');
+//     }
+//     imgFile = req.files.img;
+//     uploadPath = path.join(__dirname, '../public/images/' + req.body.name + path.extname(imgFile.name));
+    
+//     const newItem = new products({
+//       name: req.body.name,
+//       brand: req.body.brand,
+//       seller: req.body.seller,
+//       price: req.body.price,
+//       image: req.body.name +  path.extname(imgFile.name),
+//       count: req.body.count,
+//       description: req.body.description,
+//       category: req.body.categories,
+//       color: req.body.color,
+//     });
+//     await newItem.save();
+//     console.log('Item added successfully');
+//     return res.redirect('/seller/dashboard');
+//   } catch (err) {
+//     console.log(err);
+//     return res.status(500).render('error.ejs');
+//   }
+// };
 
 export {
   signins,

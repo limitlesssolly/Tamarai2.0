@@ -1,58 +1,39 @@
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 
-<head>
-
-  <title>My whishlist</title>
-
-</head>
-
-<body>
-  <div class="wishlist-container">
-    <h2>My wishlist<h2>
-        <% if (wished.length> 0) { %>
-          <table>
-            <tr>
+    <title>My whishlist</title> 
+    </head>
+    <body>
+   
+      <% if (wished.length > 0) { %>
+        <table>
+          <tr>
               <th>Product name</th>
               <th>Brand</th>
               <th>Category</th>
-            </tr>
-            <% wished.forEach(function(wish) { %>
-              <tr>
-                <td>
-                  <%= wish.name %>
-                </td>
-                <td>
-                  <%= wish.brand %>
-                </td>
-                <td>
-                  <%= wish.seller%>
-                </td>
-                <td>
-                  <%=wish.price%>
-                </td>
-                <td>
-                  <%= wish.image%>
-                </td>
-                <td>
-                  <%= wish.count%>
-                </td>
-                <td>
-                  <%= wish.description%>
-                </td>
-                <td>
-                  <%= wish.category%>
-                </td>
-                <td>
-                  <%= wish.color%>
-                </td>
-              </tr>
+              <th>Action</th>
+          </tr> 
+          <% wished.forEach(function(wish) { %>
+            <td> <%= wish.name %></td>
+            <td> <%= wish.brand %></td>
+            <td> <%= wish.seller %></td>
+            <td> <%= wish.price %></td>
+            <td> <%= wish.image %></td>
+            <td> <%= wish.count %></td>
+            <td> <%= wish.description %></td>
+            <td> <%= wish.category %></td>
+             <td> <%= wish.color %></td>
+            
+              
               <% }) %>
-          </table>
-          <% } else { %>
-            <p>Your wishlist is currently empty.</p>
-          <% } %>
-  </div>
+      </table>
+      <%  }else { %>
+        <p>Your wishlist is currently empty.</p>
+      <% } %>
+    </div>
+ 
 </body>
 
-</html>
+</html> 
