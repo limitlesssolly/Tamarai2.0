@@ -30,10 +30,10 @@ router.get('/bag', function(req, res, next) {
     res.render('user/user-shoppingbag');
 });
 
-router.get('/whishlist',async function(req, res, next) {
-    const wishlist = await Wishlist.find();
-    res.render( 'user/user-whishlist', {wishlist});
-});
+// router.get('/whishlist',async function(req, res, next) {
+//     const wishlist = await Wishlist.find();
+//     res.render( 'user/user-whishlist', {wishlist});
+// });
 
 router.get('/add-to-wishlist/:id', async function(req, res, next) {
     const wishlisted = await products.findById(req.params.id);
@@ -53,8 +53,10 @@ router.get('/add-to-wishlist/:id', async function(req, res, next) {
     const newWish = new Wishlist({Wish: JSONS,});
     await newWish.save();
     console.log('et7at');
-    res.render('user/user-homepage');
-});
+    res.redirect('user/user-homepage');
+} 
+ 
+);
 
 /*const myObj = {name: "John", age: 31, city: "New York"};
 const myJSON = JSON.stringify(myObj);
@@ -68,34 +70,42 @@ document.getElementById("demo").innerHTML = obj.name;*/
 router.get('/whishlist', async(req, res) => {
     // let wished = Wishlist.getItem("wished");
     const wished = await Wishlist.find();
+    //let wish = JSON.parse(wished.wished);
     let wish = JSON.parse(wished);
+   
     try {
         wish = await products.find();
         let wishaya = JSON.parse(wish);
-        res.send(wishaya);
-        res.render('user/user-whishlist',{wishlist})
-    } catch(e) {
+       //res.send(wishaya);
+       console.log(wishaya);
+        //document.getElementById("user/user-whishlist").newWish = wish.name;
+        //res.render('user/user-whishlist', { wish });
+        // res.send(wish);
+        res.render('user/user-whishlist',{wish});
+    } 
+     
+    catch(e) {
         res.send(e);
     }
 })
 
-router.post("/SaveWishlist", (req, res) => {
-    const wish = new Wishlist(req.body)
-    wish.save().then( () => {
-        res.status(201).send("Wish Added to Wishlist!");
-    }).catch( (e) => {
-        res.status(400).send(e);
-    })
-})
-router.patch("/UpdateWishlist/:id", async(req, res) => {
-    try {
-        const _id = req.params.id
-        const UpdateRequest = await Wishlist.findByIdAndUpdate(_id, req.body)
-        res.send(UpdateRequest);
-    } catch(e) {
-        res.status(404).send("Couldn't update your wish :(");
-    }
-})
+// router.post("/SaveWishlist", (req, res) => {
+//     const wish = new Wishlist(req.body)
+//     wish.save().then( () => {
+//         res.status(201).send("Wish Added to Wishlist!");
+//     }).catch( (e) => {
+//         res.status(400).send(e);
+//     })
+// })
+// router.patch("/UpdateWishlist/:id", async(req, res) => {
+//     try {
+//         const _id = req.params.id
+//         const UpdateRequest = await Wishlist.findByIdAndUpdate(_id, req.body)
+//         res.send(UpdateRequest);
+//     } catch(e) {
+//         res.status(404).send("Couldn't update your wish :(");
+//     }
+// })
 
 // router.post('user/user-whishlist',(req,res)=>{
 // const   {weddingdress,designerAmitabbatchan}=req.body;

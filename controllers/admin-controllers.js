@@ -237,6 +237,31 @@ const addCategory = async (req, res, next) => {
   };
 }
 
+const updateItem = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const updatedData = req.body;
+    const options = { new: false };
+
+    const result = await products.findByIdAndUpdate(id, updatedData, options)
+    console.log(result);
+    res.redirect('/admin/dashboard/sellings/view/' + id)
+  }
+  catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+};
+
+const noOfusers= async(req,res,next)=>
+{
+  try{
+    const id=req.params.id;
+
+  }
+  catch(e){
+    res.send(e);
+  }
+}
 export {
   signins,
   signups,
