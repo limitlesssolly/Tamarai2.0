@@ -4,11 +4,18 @@ import Product from "../models/productData.js";
 import Categories from '../models/categories.js';
 const router = Router();
 
-// Get all products /products/
+// Get all products /product/
 router.get('/', async (req, res, next) => {
     const Products = await Product.find();
     res.render('user/products', { Products });
 });
+
+// Get single product /product/:id
+router.get('/:id', async function (req, res, next) {
+    const product = await Product.findById(req.params.id);
+    // res.send(product);
+    res.render('user/productaya', { product });
+})
 
 // router.get('/products', async (req, res) => {
 //     try {
@@ -57,17 +64,7 @@ router.get('/', async (req, res, next) => {
 // });
 
 // Get a single product by its ID
-router.get("/:id", (req, res, next) => {
-    // res.send(`Single product test message ${req.params.id}`);
-    var query = { "_id": req.params.id };
-    Products.find(query)
-    .then(result => {
-        res.render('productaya', { prod: result[0] })
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
+
 
 //Create a product: /products
 // router.post("/", (req, res, next) => {

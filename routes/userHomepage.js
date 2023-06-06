@@ -21,7 +21,14 @@ router.get('/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 });
 
-router.get('/bag', getShoppingBag);
+router.get('/bag', function (req, res, next) {
+    const Prod = products.find({}).then((users) => {
+        console.log(Prod);
+        res.render('user/user-shoppingbag', {Prod});
+    }).catch((err) => {
+        next(err);
+    });
+});
 
 router.get('/bag/checkout', function(req, res, next) {
     res.render('user/user-shoppingbag');

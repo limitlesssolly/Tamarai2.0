@@ -43,7 +43,7 @@ export const getProducts = async(req, res) => {
 export const getShoppingBag = async(req, res) => {
     try {
         const productData = await ProductsData.find();
-        console.log('productData:', productData);
+        console.log('ProductsData:', productData);
         res.render('user/user-shoppingbag', { productData });
     } catch (err) {
         console.error(err);

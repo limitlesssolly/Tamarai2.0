@@ -11,8 +11,6 @@
     <link rel="stylesheet" type="text/css" href="/css/userHomepage.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css">
-
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
 
 </head>
@@ -29,7 +27,7 @@
                             <%= cat.name %>
                         </a>
                     </li>
-                <% }); %>
+                    <% }); %>
             </ul>
         </div>
 
@@ -58,21 +56,25 @@
 
                             <div class="product-card">
                                 <div class="product-image">
-                                <% if (product.discount> 0) { %>
-                                    <span class="discount-tag">
+                                    <% if (product.discount> 0) { %>
+                                        <span class="discount-tag">
                                     <%= product.discount %>% off
                                     </span>
-                                <% } %>
-                                <a href="">
+                                        <% } %>
+                                            <a href="">
                                     <img src="/images/<%= product.image %>" width="100"></a>
-                                <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
-                            </div>
+                                            <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
+                                </div>
 
                                 <div class="product-info">
-                                    <a href="/product/<%= product.id %>"><h2><%= product.name %></h2></a>
-                                    <h2 class="product-brand">
+                                    <a href="/product/<%= product.id %>">
+                                        <h2>
+                                            <%= product.name %>
+                                        </h2>
+                                    </a>
+                                    <h5 class="product-brand">
                                         <%= product.seller%>
-                                    </h2>
+                                    </h5>
                                     <p class="product-short-des">
                                         <%= product.description %>
                                     </p>
@@ -102,7 +104,7 @@
         </div>
 
         <%- include('../partials/footer.ejs') %>
-            <%- include('../partials/translate.ejs') %>
+        <%- include('../partials/translate.ejs') %>
 
 </body>
 
