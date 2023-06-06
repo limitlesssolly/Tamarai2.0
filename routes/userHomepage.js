@@ -38,7 +38,7 @@ router.get('/profile', function(req, res, next) {
 // });
 
 router.get('/add-to-wishlist/:id', async function(req, res, next) {
-    const wishlisted = await products.findById(req.params.id);
+    //const wishlisted = await products.findById(req.params.id);
     // wishlisted = {
     //   name: prod.name,
     //   brand: prod.brand,
@@ -52,18 +52,30 @@ router.get('/add-to-wishlist/:id', async function(req, res, next) {
     // };
     //const JSONS = JSON.stringify(wishlisted);
     // Wishlist.setItem("wished", JSONS);
-    const newWish = new Wishlist({name: wishlisted.name},
-        {brand: wishlisted.brand},
-        {seller: wishlisted.seller},
-        {price: wishlisted.price},
-        {image: wishlisted.count},
-        {description: wishlisted.description},
-        {category: wishlisted.category},
-        {color: wishlisted.color},
-        );
-    await newWish.save();
+    // const newWish = new Wishlist({name: wishlisted.name},
+    //     {brand: wishlisted.brand},
+    //     {seller: wishlisted.seller},
+    //     {price: wishlisted.price},
+    //     {image: wishlisted.count},
+    //     {description: wishlisted.description},
+    //     {category: wishlisted.category},
+    //     {color: wishlisted.color},
+    //     );
+    const wish = new  Wishlist
+    ({
+        name: req.body.name,
+        brand: req.body.brand,
+        seller: req.body.seller,
+        price: req.body.price,
+        image: req.body.image,
+        count: req.body.count,
+        description: req.body.description,
+        category: req.body.categories,
+        color: req.body.color,
+      });
+    await wish.save();
     console.log('et7at');
-    res.redirect('user/user-homepage');
+    res.redirect('/user/homepage');
 } 
  
 );
@@ -80,6 +92,7 @@ document.getElementById("demo").innerHTML = obj.name;*/
 router.get('/whishlist', async(req, res) => {
     //let wished = Wishlist.getItem("wished");
     const wished = await Wishlist.find();
+    console.log(wished);
     //let wish = JSON.parse(wished.wished);
    // let wish = JSON.parse(wished);
    
