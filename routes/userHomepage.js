@@ -64,10 +64,10 @@ let obj = JSON.parse(text);
 document.getElementById("demo").innerHTML = obj.name;*/
 
 router.get('/whishlist', async(req, res) => {
-    // let wished = Wishlist.getItem("wished");
-    const wished = await Wishlist.find();
-    //let wish = JSON.parse(wished.wished);
-    let wish = JSON.parse(wished);
+    let wished = Wishlist.getItem("wished");
+    //const wished = await Wishlist.find();
+    let wish = JSON.parse(wished.wished);
+    // let wish = JSON.parse(wished);
 
     try {
         wish = await products.find();
