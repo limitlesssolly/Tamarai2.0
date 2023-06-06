@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    <%- include('../partials/usernav.ejs') %>
     <% if (Products.length> 0) { %>
         <% Products.forEach(function(product) { %>
             <section class="product">
@@ -30,6 +31,8 @@
     <% } else { %>
         <h1>No products to show</h1>
     <% } %>
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/translate.ejs') %>
 </body>
 
 </html>
