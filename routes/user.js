@@ -16,16 +16,27 @@ router.get('/', function (req, res, next) {
 //     res.render('user/user-register', { Title: "User Register" });
 // });
 
-router.get('/cat/:id', (req, res) => {
-    var query = { "_id": req.params.id };
-    Categories.find(query)
-        .then(result => {
-            res.render('cat', {});
-        })
-        .catch(err => {
-            console.log(err);
-        });
-});
+router.get('/cat/:name', async (req, res) => {
+    // const prod = await Products.find();
+    // let catsOnly = {};
+    // for (let i = 0; i < prod.length; i++) {
+    //     if (prod[i].name === ) {
+    //         catsOnly.append(prod[i]);
+    //     }
+    // }
+    // res.render('user/cat', {catsOnly});
+    var query = { "name": req.params.name };
+    const prod = await Products.findOne();
+    res.render('user/cat', {catname: query}, {prod});
+    // Categories.find(query)
+    //     .then(result => {
+    //         console.log(result);
+    //         // res.render('user/cat', {result});
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     });
+  });
 
 router.post('/checkUN', checkUN);
 

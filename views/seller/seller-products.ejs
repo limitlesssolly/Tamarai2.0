@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -91,118 +92,54 @@
 
 
 <body>
-  
+
     <div class="chatbox ">
         <div>
             <%- include('../partials/chat.ejs') %>
         </div>
     </div>
     <div class="grid-container">
- 
+
         <div class="header">
             <%- include('../partials/sellernav.ejs') %>
 
         </div>
         <div class="body">
- <%- include('../partials/translate.ejs') %>
-            <div class="prlist">
-                <div class="headoflist">
-                    <div class="buttons">
-                        <button type="button" role="button" class="buttonadd btn js-add-btn" onclick="window.location.href = '';">Delete
+            <%- include('../partials/translate.ejs') %>
+                <div class="prlist">
+                    <div class="headoflist">
+                        <div class="buttons">
+                            <button type="button" role="button" class="buttonadd btn js-add-btn" onclick="window.location.href = '';">Delete
                             Item</button>
-                        <button type="button" role="button" class="buttonadd" onclick="window.location.href = 'add_product.html';">Add New Item</button>
+                            <button type="button" role="button" class="buttonadd" onclick="window.location.href = 'add_product.html';">Add New Item</button>
+                        </div>
+
                     </div>
+                    <% Products.forEach(function(product) { %>
+                        <div class="product-card" id="product-card">
+                            <div class="product-image">
+                                <% if (product.image == "") { %>
+                                    <img src="images/no-image.png" class="product-thumb" alt="No image available">
+                                    <% } else { %>
+                                        <img src="images/product_images/<%= product._id%>/<%=product.image%>" class="product-thumb" alt="product">
+                                        <% } %>
+
+                            </div>
+                            <div class="product-info">
+                                <h2 class="product-brand">
+                                    <%= product.seller%>
+                                </h2>
+                                <p class="product-short-des">Summer dress.</p>
+                                <span class="price">100L.E.</span>
+                                <span class="actual-price">200L.E.</span>
+                            </div>
+                        </div>
+                        <% }); %>
 
                 </div>
-
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card1.webp" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card2.webp" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card3.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <img src="photos/card4.jpg" class="product-thumb" alt="Dress">
-                        <button class="card-btn">Edit</button>
-                    </div>
-                    <div class="product-info">
-                        <h2 class="product-brand">Brand</h2>
-                        <p class="product-short-des">Summer dress.</p>
-                        <span class="price">100L.E.</span>
-                        <span class="actual-price">200L.E.</span>
-                    </div>
-                </div>
-            </div>
-        </div> 
+        </div>
     </div>
-   
+
     <div class="chatbox" id="chatbox">
     </div>
 </body>
