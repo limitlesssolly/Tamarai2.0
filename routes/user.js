@@ -13,7 +13,7 @@ router.get('/register', function(req, res, next) {
     res.render('user/user-register', { Title: "User Register" });
 });
 
-app.get('/cat/:id', (req, res) => {
+router.get('/cat/:id', (req, res) => {
     var query = { "_id": req.params.id };
     Categories.find(query)
           .then(result => {
