@@ -13,7 +13,7 @@
 .section {
     width: 100%;
     height: calc(100vh - 120px);
-    background-image: url('../photos/collection.jpg');
+    background-image: url('/images/collection.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
