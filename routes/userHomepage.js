@@ -120,9 +120,7 @@ router.use((req, res, next) => {
 
 router.get('/profile', async(req, res) => {
     const regs = await regi.find();
-    res.render('user/user-profile', {
-        regs
-    });
+    res.render('user/user-profile', {regs});
 });
 
 /* GET /seller/dashboard/profile page. */

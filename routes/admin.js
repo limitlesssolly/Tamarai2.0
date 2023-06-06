@@ -4,13 +4,7 @@ import {signins} from "../controllers/admin-controllers.js";
  
 let admin = false;
 
-router.use(function (req, res, next) {
-  if (req.session.type)
-    return res.redirect('/admin');
-  else if (req.session.type == 'admin')
-    admin = true;
-  next();
-});
+router.use(function (req, res, next) {if (req.session.type == 'admin')admin = true;next();});
 
 /* GET /admin page. */
 router.get('/', function (req, res, next) {

@@ -25,7 +25,7 @@ const signins = async (req, res, next) => {
     if (req.query.ajax)
         return res.json({ errors: errorMsg, admin: false });
     else
-        return res.render("seller/seller-sign-in", { errorMsg, admin: false });
+        return res.redirect("/seller", { errorMsg, admin: false });
 }
   if (sellerdb)
   {

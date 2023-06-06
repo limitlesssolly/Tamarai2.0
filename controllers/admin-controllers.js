@@ -42,7 +42,7 @@ const signins = async (req, res, next) => {
       if (req.query.ajax)
           return res.json({ errors: errorMsg, admin: false });
       else
-          return res.render("admin/admin-sign-in", { errorMsg, admin: false });
+          return res.redirect("/admin", { errorMsg, admin: false });
   }
     if (admindb)
     {

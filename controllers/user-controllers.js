@@ -22,11 +22,12 @@ const signins = async (req, res, next) => {
     if (Object.keys(errorMsg).length > 0) {
       for (let key in errorMsg) {
           console.log(errorMsg[key]);
+          break;
       }
       if (req.query.ajax)
           return res.json({ errors: errorMsg, admin: false });
       else
-          return res.render("user/user-sign-in", { errorMsg, admin: false });
+          return res.redirect("/user", { errorMsg, admin: false });
   }
     if (userdb)
     {
@@ -64,6 +65,7 @@ const signup = async (req, res, next) => {
     if (Object.keys(errorMsg).length > 0) {
         for (let key in errorMsg) {
             console.log(errorMsg[key]);
+            break;
         }
         if (req.query.ajax)
             return res.json({ errors: errorMsg, admin: false });
