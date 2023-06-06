@@ -11,17 +11,10 @@ router.get('/', async (req, res, next) => {
 });
 
 // Get single product /product/:id
-router.get("/:id", (req, res, next) => {
-    // res.send(`Single product test message ${req.params.id}`);
-    var query = { "_id": req.params.id };
-    Products.find(query)
-    .then(result => {
-        res.render('productaya', { prod: result[0] })
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
+router.get('/:id', async function (req, res, next) {
+    const product = await Product.findById(req.params.id);
+    res.render('user/productaya', { product });
+})
 
 // router.get('/products', async (req, res) => {
 //     try {
