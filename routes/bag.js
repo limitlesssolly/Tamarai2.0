@@ -18,17 +18,23 @@ router.get('/', getShoppingBag);
 router.get('/bag/checkout', function(req, res, next) {
     res.render('user/user-shoppingbag');
 });
+
 router.get('/add/:product', function(req, res) {
+    console.log("Product ID:", req.params.product);
     var _id = req.params.product;
     Product.findOne({ _id: _id }, function(err, p) {
-        if (err) {}
-        console.log(err);
+        if (err) {
+            console.log(err);
+            // Handle the error appropriately
+            // For example, you can send an error response to the client
+            return res.status(500).send('Internal Server Error');
+        }
+
         if (typeof req.session.bag == "undefined") {
             req.session.bag = [];
             req.session.bag.push({
-                tittle: _id,
+                title: _id, // Fix typo from tittle to title
                 qty: 1,
-                price: 1,
                 price: parseFloat(p.price).toFixed(2),
                 image: '/product_images/' + p._id + '/' + p.image
             });
@@ -36,7 +42,7 @@ router.get('/add/:product', function(req, res) {
             var bag = req.session.bag;
             var newItem = true;
             for (var i = 0; i < bag.length; i++) {
-                if (bag[i].tittle == _id) {
+                if (bag[i].title == _id) { // Fix typo from tittle to title
                     bag[i].qty++;
                     newItem = false;
                     break;
@@ -44,7 +50,7 @@ router.get('/add/:product', function(req, res) {
             }
             if (newItem) {
                 bag.push({
-                    tittle: _id,
+                    title: _id, // Fix typo from tittle to title
                     qty: 1,
                     price: parseFloat(p.price).toFixed(2),
                     image: '/product_images/' + p._id + '/' + p.image
@@ -56,4 +62,5 @@ router.get('/add/:product', function(req, res) {
         res.redirect('back');
     });
 });
+
 export default router;
