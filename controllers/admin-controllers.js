@@ -1,25 +1,24 @@
 import admin from '../models/adminData.js';
-import seller from '../models/sellerRegister.js'
+import seller from '../models/tryseller.js';
 import products from '../models/productData.js';
 import user from '../models/userRegister.js';
 import kitty from '../models/categories.js'
 import bcrypt from 'bcrypt';
 
-const deleteUser = async (req, res,next)=>{
-  Employees.findByIdAndDelete(req.params.id)
-  .then(result => {
+// const deleteUser = async (req, res,next)=>{
+//   Employees.findByIdAndDelete(req.params.id)
+//   .then(result => {
      
-      if (err) {
-        throw err;
-      }
-      res.redirect('/admin/admin-dashboard');
+//       if (err) {
+//         throw err;
+//       }
+//       res.redirect('/admin/admin-dashboard', { user: (req.session.user === undefined ? "" : req.session.user) });
   
-  })
-  .catch(err => {
-    console.log(err);
-  });
-};
-
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+// };
 
 const signins = async (req, res, next) => {
   const { username, password } = req.body;
@@ -30,8 +29,8 @@ const signins = async (req, res, next) => {
     if (!admindb) return res.status(401).send({ msg: 'Please enter a valid username' });
     else if (admindb) {
       if (bcrypt.compareSync(password, admindb.password)) {
-        req.session.admin = admindb;
-        return res.redirect('/admin/dashboard');
+        req.session.user = admindb;
+        return res.redirect('/admin/dashboard', { user: (req.session.user === undefined ? "" : req.session.user) });
       }
       else return res.status(401).send({ msg: 'Please enter a valid password' });
     }
@@ -54,7 +53,7 @@ const signups = async (req, res, next) => {
     });
     await newuser.save();
     console.log('user Created');
-    res.redirect('/admin/dashboard/usings')
+    res.redirect('/admin/dashboard/usings', { user: (req.session.user === undefined ? "" : req.session.user) })
   };
 };
 
@@ -74,7 +73,7 @@ const signupstoo = async (req, res, next) => {
     });
     await newseller.save();
     console.log('seller Created');
-    res.redirect('/admin/dashboard/usings')
+    res.redirect('/admin/dashboard/usings', { user: (req.session.user === undefined ? "" : req.session.user) })
   };
 };
 
@@ -91,7 +90,7 @@ const signupstre = async (req, res, next) => {
     });
     await newadmin.save();
     console.log('admin Created');
-    res.redirect('/admin/dashboard/usings')
+    res.redirect('/admin/dashboard/usings', { user: (req.session.user === undefined ? "" : req.session.user) })
   };
 };
 
@@ -104,7 +103,7 @@ const addCategory = async (req, res, next) => {
     const newCat = new kitty({name: cats});
     await newCat.save();
     console.log('category Created');
-    res.redirect('/admin/dashboard');
+    res.redirect('/admin/dashboard', { user: (req.session.user === undefined ? "" : req.session.user) });
   };
 }
 
@@ -116,7 +115,7 @@ const updateItem = async (req, res, next) => {
 
     const result = await products.findByIdAndUpdate(id, updatedData, options)
     console.log(result);
-    res.redirect('/admin/dashboard/sellings/view/' + id)
+    res.redirect('/admin/dashboard/sellings/view/' + id, { user: (req.session.user === undefined ? "" : req.session.user) })
   }
   catch (error) {
     res.status(400).json({ message: error.message })
@@ -130,5 +129,5 @@ export {
   signupstoo,
   signupstre,
   addCategory,
-  deleteUser
+  // deleteUser
 };

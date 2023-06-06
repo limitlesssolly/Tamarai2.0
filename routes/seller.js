@@ -1,6 +1,5 @@
 import { Router } from 'express';
 const router = Router();
-import seller from '../models/sellerRegister.js';
 import {signup,signins} from "../controllers/seller-controller.js";
 
 /* GET /seller page. */
@@ -13,15 +12,14 @@ router.get('/register', function(req, res, next) {
     res.render('seller/seller-register');
 })
 
+router.get('/logout', function(req, res, next){
+    req.session.destroy();
+    res.redirect('/');
+})
+
 router.post('/', signins);
 
 router.post('/register', signup);
 
-router.use((req, res, next) => {
-    if (req.session.seller) next();
-    else {
-        res.send('You must login to procceed');
-    }
-})
 
 export default router;

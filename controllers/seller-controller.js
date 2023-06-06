@@ -1,5 +1,4 @@
 import {body,validationResult} from "express-validator";
-// import seller from '../models/sellerRegister.js';
 import rege from '../models/tryseller.js';
 import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
@@ -28,9 +27,9 @@ const signins = async (req, res, next) => {
     if (!sellerdb) return res.status(401).send({ msg: 'Please enter a valid username' });
     else if (sellerdb) {
       if (bcrypt.compareSync(password, sellerdb.password)) {
-        req.session.seller = sellerdb;
+        req.session.user = sellerdb;
         console.log('correct');
-        return res.redirect('/seller/dashboard');
+        return res.redirect('/seller/dashboard', { user: (req.session.user === undefined ? "" : req.session.user) });
       }
       else return res.status(401).send({ msg: 'Please enter a valid password' });
     }
@@ -58,8 +57,8 @@ const signup = async (req, res, next) => {
 
       //  res.render('seller-register',{message:"sucuss"})
       console.log('Registration successful!');
-      req.session.seller = newseller;
-      return res.redirect('/seller/dashboard/profile/'+ newseller._id );
+      req.session.user = newseller;
+      return res.redirect('/seller/dashboard/profile/'+ newseller._id , { user: (req.session.user === undefined ? "" : req.session.user) });
     } catch (err) {
       console.log(err);
       return res.status(500).render('error.ejs');
@@ -83,7 +82,7 @@ const addItem = async (req, res, next) => {
     });
     await newItem.save();
     console.log('Item added successfully');
-    return res.redirect('/seller/dashboard');
+    return res.redirect('/seller/dashboard', { user: (req.session.user === undefined ? "" : req.session.user) });
   } catch (err) {
     console.log(err);
     return res.status(500).render('error.ejs');

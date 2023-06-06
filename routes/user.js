@@ -55,14 +55,8 @@ router.post('/getProducts', async (req, res) => {
 // Add this debug statement
 router.use((err, req, res, next) => {
     console.error(err);
-    res.status(500).send('Internal server error');
+    res.status(500).send('Fee mashakel');
 });
 
-router.use((req, res, next) => {
-    if (req.session.user) next();
-    else {
-        res.send('You must login to procceed');
-    }
-})
 
 export default router;

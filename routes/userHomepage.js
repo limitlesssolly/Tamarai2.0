@@ -6,45 +6,19 @@ router.get('/', getHomepage);
 router.get('/bag', getShoppingBag);
 
 router.get('/checkout', function(req, res, next) {
-    res.render('user/user-checkout');
+    res.render('user/user-checkout', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 router.get('/profile', function(req, res, next) {
-    res.render('user/user-profile');
+    res.render('user/user-profile', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 
 router.get('/bag', function(req, res, next) {
-    res.render('user/user-shoppingbag');
+    res.render('user/user-shoppingbag', { user: (req.session.user === undefined ? "" : req.session.user) });
 });
 
-// router.get('/whishlist', function(req, res, next) {
-//     res.render( 'user/user-whishlist', { Title: "whishlist" });
-// });
-router.get('/whishlist', async(req, res) => {
-    try {
-        const Wishes = await Wishlist.find();
-        res.send(Wishes);
-    } catch(e) {
-        res.send(e);
-    }
-})
-router.post("/SaveWishlist", (req, res) => {
-    const wish = new Wishlist(req.body)
-    wish.save().then( () => {
-        res.status(201).send("Wish Added to Wishlist!");
-    }).catch( (e) => {
-        res.status(400).send(e);
-    })
-})
-router.patch("/UpdateWishlist/:id", async(req, res) => {
-    try {
-        const _id = req.params.id
-        const UpdateRequest = await Wishlist.findByIdAndUpdate(_id, req.body)
-        res.send(UpdateRequest);
-    } catch(e) {
-        res.status(404).send("Couldn't update your wish :(");
-    }
-})
-
+router.get('/whishlist', function(req, res, next) {
+    res.render( 'user/user-whishlist', { Title: "whishlist" }, { user: (req.session.user === undefined ? "" : req.session.user) });
+});
 
 // router.post('user/user-whishlist',(req,res)=>{
 // const   {weddingdress,designerAmitabbatchan}=req.body;
@@ -55,14 +29,7 @@ router.patch("/UpdateWishlist/:id", async(req, res) => {
 // Add this debug statement
 router.use((err, req, res, next) => {
     console.error(err);
-    res.status(500).send('Internal server error');
+    res.status(500).send('Fe mashakel');
 });
-
-router.use((req, res, next) => {
-    if (req.session.user || req.session.admin) next();
-    else {
-        res.send('You must login to procceed');
-    }
-})
 
 export default router;
