@@ -13,6 +13,17 @@ router.get('/register', function(req, res, next) {
     res.render('user/user-register', { Title: "User Register" });
 });
 
+app.get('/cat/:id', (req, res) => {
+    var query = { "_id": req.params.id };
+    // Employees.find(query)
+    //   .then(result => {
+    //     res.render('emp', { emp: result[0], user: (req.session.user === undefined ? "" : req.session.user) });
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+  });
+
 // router.get('/nav',async function(req,res,next){
 //     const cats = await categories.find();
 //     res.render('partials/usernav', {cats})
