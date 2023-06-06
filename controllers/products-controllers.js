@@ -49,3 +49,19 @@ export const getShoppingBag = async(req, res) => {
         res.status(500).send('Internal server error');
     }
 }
+export const getAllReviews = async (req, res) => {
+    try {
+      const product = await ProductsData.findById(req.params.id);
+      const reviews = product.reviews.find({});
+      return res.status(200).json({
+        success: true,
+        reviews,
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        success: false,
+        message: "Internal server error",
+      });
+    }
+  };
