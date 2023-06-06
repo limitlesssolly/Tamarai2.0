@@ -124,7 +124,7 @@ const addItem = async (req, res, next) => {
       brand: req.body.brand,
       seller: req.body.seller,
       price: req.body.price,
-      image: req.body.img +  path.extname(imgFile.name),
+      image: req.body.name +  path.extname(imgFile.name),
       count: req.body.count,
       description: req.body.description,
       category: req.body.categories,
