@@ -125,7 +125,13 @@ const updateItem = async (req, res, next) => {
   }
 };
 
-
+const noOfusers= async(req,res,next)=>
+{
+  try{
+    const id=req.params.id;
+    
+  }
+}
 export {
   signins,
   signups,
