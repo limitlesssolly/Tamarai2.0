@@ -59,7 +59,7 @@ router.get('/view/delete/:id', async function (req, res, next) {
 })
 router.get('/view/view/:id', async function (req, res, next) {
     const Products = await Prod.findById(req.params.id);
-    res.render('seller/seller-single-peoduct', {
+    res.render('seller/seller-single-product', {
         Products
     });
 })
