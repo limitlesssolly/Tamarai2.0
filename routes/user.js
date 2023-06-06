@@ -1,7 +1,6 @@
 import express from 'express';
 import Products from "../models/productData.js";
-import categories from '../models/categories.js';
-import regi from "../models/userRegister.js";
+import Categories from '../models/categories.js';
 import { signins, signup } from "../controllers/user-controllers.js";
 
 const router = express.Router();
@@ -13,6 +12,17 @@ router.get('/', function(req, res, next) {
 router.get('/register', function(req, res, next) {
     res.render('user/user-register', { Title: "User Register" });
 });
+
+router.get('/cat/:id', (req, res) => {
+    var query = { "_id": req.params.id };
+    Categories.find(query)
+          .then(result => {
+                res.render('cat', {});
+            })
+          .catch(err => {
+                console.log(err);
+            });
+  });
 
 // router.get('/nav',async function(req,res,next){
 //     const cats = await categories.find();
@@ -44,31 +54,5 @@ router.use((req, res, next) => {
         res.send('You must login');
     }
 })
-router.get('/profile', async (req, res) => {
-    const regs = await regi.find();
-    res.render('user/user-profile', {
-        regs
-    });
-});
-
-/* GET /seller/dashboard/profile page. */
- router.get('/profile/:id', async (req, res) => {
-    const regs = await regi.findById(req.params.id);
-    res.render('user/user-profile', {regs});
- });
-
- router.post('/profile/:id', async (req, res) => {
-    const regs = await regi.findById(req.params.id);
-    regs.username = req.body.username;
-    regs.email = req.body.email;
-    // regs.password = req.body.password;
-    await regs.save();
-
-    // Retrieve the updated seller data from the database
-    const updateduser = await regi.findById(req.params.id);
-
-    // Render the "profile" view with the updated seller data
-    res.render('user/user-profile', { regs: updateduser });
-});
 
 export default router;
