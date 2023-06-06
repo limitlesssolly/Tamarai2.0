@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= regs.username %>'s Profile</title>
+    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/profile.css">
+    <!-- Adding a favicon  -->
+    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+</head>
+
+<body>
+
+
+    <div class="chatbox ">
+        <div>
+            <%- include('../partials/chat.ejs') %>
+        </div>
+    </div>
+    <header>
+        <!-- <div class="grid-container">
+            <div id="header"> -->
+        <%- include('../partials/sellernav.ejs') %>
+        </div>
+        <!-- </div> -->
+    </header>
+    <main>
+
+        <div class="main">
+
+            <!-- Sign up form -->
+
+            <div class="container">
+                <div class="signup-content">
+
+                    <div class="signup-form">
+                        <h2 class="form-title"> Edit profile </h2>
+
+                        <form method="POST" action="/seller/dashboard/profile/<%= regs.id %>" class="register-form"
+                            id="register-form">
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="name" value="<%= regs.username %>"
+                                    placeholder="Your Name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" value="<%= regs.email %>"
+                                    placeholder="Your Email" />
+                            </div>
+                            <div class="form-group form-button">
+                                <button type="submit" class="form-submit">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+
+                    </div>
+                </div>
+            </div>
+            <figure><img  src="/images/signup-image.jpg" class="img1" alt="sing up image"></figure>
+        </div>
+
+        <!-- JS -->
+
+
+    </main><%- include('../partials/translate.ejs') %>
+    <div class="foots">
+        <%- include('../partials/footer.ejs') %>
+    </div>
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
+</body>
