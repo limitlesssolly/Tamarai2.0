@@ -11,6 +11,8 @@ import dotenv from 'dotenv';
 import passport from "passport";
 import expressMessages from "express-messages";
 import strats from './strategies/local.js';
+import flash from 'connect-flash';
+
 dotenv.config();
 
 //importing the routes
@@ -68,12 +70,11 @@ console.log("ENV: ", app.get('env'));
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(require('connect-flash')());
-app.use(function(req, res, next) {
-    res.locals.messages = require('express-messages')(req, res);
+app.use(flash());
+app.use((req, res, next) => {
+    res.locals.messages = expressMessages(req, res);
     next();
 });
-
 //setup routes
 app.use('/', mainRouter);
 app.use('/admin', adminRouter);
