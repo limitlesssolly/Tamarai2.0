@@ -32,8 +32,12 @@ const signins = async (req, res, next) => {
     if (admindb)
     {
       if (bools) {
-        req.session.user;
-        console.log(req.session.user);
+        req.session.Id = admindb._id;
+        req.session.type = admindb.type;
+        req.session.username = admindb.username;
+        console.log(req.session.Id);
+        console.log(req.session.type);
+        console.log(req.session.username);
         return res.redirect('/admin/dashboard');
       }
     }

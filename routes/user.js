@@ -6,7 +6,13 @@ const router = express.Router();
 
 let admin = false;
 
-router.use(function (req, res, next) {if (req.session.type == 'admin')admin = true;next();});
+router.use(function (req, res, next) {
+    if (req.session.type == 'seller' ||req.session.type == 'user')
+    console.log(200);
+    else if (req.session.type == 'admin')
+      admin = true;
+    next();
+})
 
 router.get('/', function (req, res, next) {
     res.render('user/user-sign-in', { errorMsg: {}, admin: admin });
