@@ -6,15 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Admin Product Management
+        seller Product 
     </title>
     <!-- adding an favicon -->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-    <link rel="stylesheet" href="/css/admin/admin-sellings.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <%- include('../partials/adminNav.ejs') %>
+    <%- include('../partials/sellernav.ejs') %>
         <div class="sellstoo" >
             <!-- <a onclick="nav()" class="editia">edits</a> -->
             <div class="viewing" id="viewing" style="display: block;">
@@ -36,9 +37,9 @@
                     </h4>
                 </div>
                 <div class="image">
-                    <h4>
-                        <%= Products.image%>
-                    </h4>
+                    
+                        <img src="./images/<%= Products.image %>">
+                    
                 </div>
                 <div class="count">
                     <h4>Count In Stock : <%= Products.count%>
@@ -56,10 +57,12 @@
                     <h4>Color : <%= Products.color%>
                     </h4>
                 </div>
-                <a href="/admin/dashboard/sellings/delete/<%=Products._id%>" class="delta">Delete</a>
+                <a href="/seller/dashboard/view/delete/<%=Products._id%>" class="delta">Delete</a>
             </div>
+            <%- include('../partials/translate.ejs') %>
+            <%- include('../partials/footer.ejs') %>
         </div>
-        <%- include('../partials/footer.ejs') %>
+       
 </body>
 <script>
     function nav() {

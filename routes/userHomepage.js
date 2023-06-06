@@ -21,15 +21,13 @@ router.get('/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 });
 
-router.get('/bag', async(req, res) => {
-    try {
-        const productData = await products.find();
-        console.log(productData);
-        res.render('user/user-shoppingbag', { productData });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal server error');
-    }
+router.get('/bag', function (req, res, next) {
+    const Prod = products.find({}).then((users) => {
+        console.log(Prod);
+        res.render('user/user-shoppingbag', {Prod});
+    }).catch((err) => {
+        next(err);
+    });
 });
 
 router.get('/bag/checkout', function(req, res, next) {
@@ -47,7 +45,7 @@ router.get('/profile', function(req, res, next) {
 // });
 
 router.get('/add-to-wishlist/:id', async function(req, res, next) {
-    const wishlisted = await products.findById(req.params.id);
+    //const wishlisted = await products.findById(req.params.id);
     // wishlisted = {
     //   name: prod.name,
     //   brand: prod.brand,
@@ -61,18 +59,30 @@ router.get('/add-to-wishlist/:id', async function(req, res, next) {
     // };
     //const JSONS = JSON.stringify(wishlisted);
     // Wishlist.setItem("wished", JSONS);
-    const newWish = new Wishlist({name: wishlisted.name},
-        {brand: wishlisted.brand},
-        {seller: wishlisted.seller},
-        {price: wishlisted.price},
-        {image: wishlisted.count},
-        {description: wishlisted.description},
-        {category: wishlisted.category},
-        {color: wishlisted.color},
-        );
-    await newWish.save();
+    // const newWish = new Wishlist({name: wishlisted.name},
+    //     {brand: wishlisted.brand},
+    //     {seller: wishlisted.seller},
+    //     {price: wishlisted.price},
+    //     {image: wishlisted.count},
+    //     {description: wishlisted.description},
+    //     {category: wishlisted.category},
+    //     {color: wishlisted.color},
+    //     );
+    const wish = new  Wishlist
+    ({
+        name: req.body.name,
+        brand: req.body.brand,
+        seller: req.body.seller,
+        price: req.body.price,
+        image: req.body.image,
+        count: req.body.count,
+        description: req.body.description,
+        category: req.body.categories,
+        color: req.body.color,
+      });
+    await wish.save();
     console.log('et7at');
-    res.redirect('user/user-homepage');
+    res.redirect('/user/homepage');
 } 
  
 );
@@ -86,21 +96,10 @@ let text = localStorage.getItem("testJSON");
 let obj = JSON.parse(text);
 document.getElementById("demo").innerHTML = obj.name;*/
 
-router.get('/whishlist', async(req, res) => {
-    //let wished = Wishlist.getItem("wished");
+router.get('/whishlist', async function(req, res, next)  {
     const wished = await Wishlist.find();
-    //let wish = JSON.parse(wished.wished);
-   // let wish = JSON.parse(wished);
-   
-    // try {
-       // wish = await products.find();
-        //et wishaya = JSON.parse(wish);
-       //res.send(wishaya);
-       //console.log(wishaya);
-        //document.getElementById("user/user-whishlist").newWish = wish.name;
-        //res.render('user/user-whishlist', { wish });
-        // res.send(wish);
-        res.render('user/user-whishlist',{wished});
+    console.log(wished);
+    res.render('user/user-whishlist',{wished});
     
 })
 
