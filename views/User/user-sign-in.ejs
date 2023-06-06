@@ -10,7 +10,7 @@
     <!-- Adding a favicon  -->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
 
-    <title><%=Title%></title>
+    <title>User Sign In</title>
 </head>
 
 
@@ -31,15 +31,24 @@
                 <div class="users">
                     <label for="username"> username </label>
                     <input id="username" type="text" placeholder="username" name="username"> <br>
-                    <span id="Uerror">error</span>
+                    <span class="Uerror" id="usernameErrorMsg">
+                        <%if( errorMsg && errorMsg.username) { %>
+                          <%=errorMsg.username%>
+                            <%}%>
+                      </span>
                 </div>
                 <div class="passes">
                     <label for="password"> password </label>
                     <input id="password" type="password" placeholder="password" name="password"> <br>
-                    <span id="Perror">error</span>
+                    <span class="Perror" id="passwordErrorMsg">
+                        <%if( errorMsg && errorMsg.password) { %>
+                          <%=errorMsg.password%>
+                            <%}%>
+                      </span>
                 </div>
                 <span href="#" id="fyp">forgot your password?</span>
                 <button class="USbutton" type="submit" id="submit">Sign in</button>
+                
             </form>
         </div>
         <div class="URegbk">
@@ -50,5 +59,8 @@
     </div>
     <%- include('../partials/translate.ejs') %>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/public/js/Validations.js"></script>
 
 </html>

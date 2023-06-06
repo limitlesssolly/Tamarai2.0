@@ -4,21 +4,36 @@ import bcrypt from 'bcrypt';
 import Categories from '../models/categories.js';
 
 const signins = async (req, res, next) => {
-    const { username, password } = req.body;
-    if (!username) return res.status(400).send({ msg: 'Please enter a username' });
-    else if (!password) return res.status(400).send({ msg: 'Please enter a password' });
-    else {
-        const userdb = await user.findOne({ username });
-        if (!userdb) return res.status(401).send({ msg: 'Please enter a valid username' });
-        else if (userdb) {
-            if (bcrypt.compareSync(password, userdb.password)) {
-                req.session.user = userdb;
+    const { username, password} = req.body;
+  let errorMsg = {};
 
-                return res.redirect('/user/homepage');
-            }
-            else return res.status(401).send({ msg: 'Please enter a valid password' });
-        }
-    }
+  if (username.trim() == "") errorMsg.username = "Username is required";
+
+  if (password.trim() == "") errorMsg.password = "Password is required";
+
+  if (Object.keys(errorMsg).length > 0) {
+      for (let key in errorMsg) {
+          console.log(errorMsg[key]);
+      }
+      if (req.query.ajax)
+          return res.json({ errors: errorMsg, admin: false });
+      else
+          return res.render("user/user-sign-in", { errorMsg, admin: false });
+  }
+  try {
+    const userdb = await user.findOne({ username });
+    if (!userdb) return res.status(401);
+    else if (userdb) {
+      if (bcrypt.compareSync(password, userdb.password)) {
+        req.session.Id = user._id;
+        req.session.type = user.type;
+        req.session.username = user.username;
+        return res.redirect('/user/homepage');
+      }
+    }} catch (err) {
+      console.log(err);
+      return res.status(500).render('error.ejs');
+  }
 };
 
 const signup = async (req, res, next) => {
@@ -78,8 +93,6 @@ const signup = async (req, res, next) => {
         console.log("Registration done NOT using ajax");
         return res.redirect("/user/homepage");
     }
-        // req.session.user = newuser;
-        // return res.redirect('/user/homepage/profile/' + newuser._id);
     } catch (err) {
         console.log(err);
         return res.status(500).render('error.ejs');

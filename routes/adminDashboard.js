@@ -6,6 +6,16 @@ import {signups, signupstoo, signupstre, addCategory} from "../controllers/admin
 // import { deleteUser } from '../controllers/admin-controllers.js';
 const router = Router();
 
+let admin = false;
+
+router.use(function (req, res, next) {
+  if (req.session.type)
+    return res.redirect('/');
+  else if (req.session.type == 'admin')
+    admin = true;
+  next();
+});
+
 /* GET /admin/dashboard page. */
 router.get('/', async function (req, res, next) {
     const cats = await kitty.find();
@@ -63,17 +73,17 @@ router.get('/usings', function (req, res, next) {
 
 /* GET /admin/dashboard/usings/user page. */
 router.get('/usings/user', function (req, res, next) {
-    res.render('admin/admin-add-user');
+    res.render('admin/admin-add-user', { errorMsg: {}, admin: admin });
 })
 
 /* GET /admin/dashboard/usings/admin page. */
 router.get('/usings/admin', function (req, res, next) {
-    res.render('admin/admin-add-admin');
+    res.render('admin/admin-add-admin', { errorMsg: {}, admin: admin });
 })
 
 /* GET /admin/dashboard/usings/seller page. */
 router.get('/usings/seller', function (req, res, next) {
-    res.render('admin/admin-add-seller');
+    res.render('admin/admin-add-seller', { errorMsg: {}, admin: admin });
 })
 
 router.post('/addUser',signups); 
@@ -86,11 +96,5 @@ router.get('/settings/', function (req, res, next) {
     res.render('admin/admin-settings');
 });
 
-router.use((req, res, next) => {
-    if (req.session.user) next();
-    else {
-        res.send('You are not an admin');
-    }
-})
 
 export default router;

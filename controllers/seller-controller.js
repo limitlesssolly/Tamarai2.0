@@ -3,20 +3,35 @@ import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
 
 const signins = async (req, res, next) => {
-  const { username, password } = req.body;
-  if (!username) return res.status(400).send({ msg: 'Please enter a username' });
-  else if (!password) return res.status(400).send({ msg: 'Please enter a password' });
-  else {
+  const { username, password} = req.body;
+  let errorMsg = {};
+
+  if (username.trim() == "") errorMsg.username = "Username is required";
+
+  if (password.trim() == "") errorMsg.password = "Password is required";
+
+  if (Object.keys(errorMsg).length > 0) {
+      for (let key in errorMsg) {
+          console.log(errorMsg[key]);
+      }
+      if (req.query.ajax)
+          return res.json({ errors: errorMsg, admin: false });
+      else
+          return res.render("/seller/seller-sign-in", { errorMsg, admin: false });
+  }
+  try {
     const sellerdb = await rege.findOne({ username });
-    if (!sellerdb) return res.status(401).send({ msg: 'Please enter a valid username' });
+    if (!sellerdb) return res.status(401);
     else if (sellerdb) {
       if (bcrypt.compareSync(password, sellerdb.password)) {
-        req.session.user = sellerdb;
-        console.log('correct');
+        req.session.Id = user._id;
+        req.session.type = user.type;
+        req.session.username = user.username;
         return res.redirect('/seller/dashboard');
       }
-      else return res.status(401).send({ msg: 'Please enter a valid password' });
-    }
+    }} catch (err) {
+      console.log(err);
+      return res.status(500).render('error.ejs');
   }
 };
 

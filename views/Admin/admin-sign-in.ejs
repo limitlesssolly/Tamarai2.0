@@ -34,15 +34,21 @@
             <div class="users" style="top: 49%;">
                 <label for="username"> username </label>
                 <input id="username" name="username" type="text" placeholder="username"><br>
-                <div class="errors">
-                </div>
+                <span class="Uerror" id="usernameErrorMsg">
+                    <%if( errorMsg && errorMsg.username) { %>
+                      <%=errorMsg.username%>
+                        <%}%>
+                  </span>
             </div>
 
             <div class="passes" style="top: 58%;">
                 <label for="password"> password </label>
                 <input id="password" name="password" type="password" placeholder="password"> <br>
-                <div class="errors">
-                </div>
+                <span class="Perror" id="passwordErrorMsg">
+                    <%if( errorMsg && errorMsg.password) { %>
+                      <%=errorMsg.password%>
+                        <%}%>
+                  </span>
             </div>
 
             <span href="#" id="fyp">forgot your password?</span>
@@ -55,5 +61,6 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/public/js/Validations.js"></script>
 
 </html>

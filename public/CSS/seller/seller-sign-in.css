@@ -234,21 +234,24 @@ input:autofill
     color: #b4640c;
     background-color: #d6bd91;
 }
-#Uerror {
+.Uerror {
     color: darkred;
-    background-color: #ffe0e0;
     padding: 3px;
     border-radius: 2px;
-    display: none;
+    position: absolute;
+    top: 100%;
+    left: 22%;
 }
 
-#Perror {
+.Perror {
     color: darkred;
-    background-color: #ffe0e0;
     padding: 3px;
     border-radius: 2px;
-    display: none;
+    position: absolute;
+    top: 100%;
+    left: 22%;
 }
+
 /* phones */
 @media only screen and (max-width: 600px) {
     .Vlogin{

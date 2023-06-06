@@ -163,7 +163,7 @@ label {
     margin: 15px 0;
 }
 
-#confirmpass {
+#cpass {
     font-size: 0.9vw;
     padding: 5px 35px 5px 3px;
     border-radius: 2px;
@@ -300,7 +300,6 @@ input:autofill
 
 .Uerror {
     color: darkred;
-    background-color: #ffe0e0;
     padding: 3px;
     border-radius: 2px;
     position: absolute;
@@ -310,7 +309,6 @@ input:autofill
 
 .Perror {
     color: darkred;
-    background-color: #ffe0e0;
     padding: 3px;
     border-radius: 2px;
     position: absolute;
@@ -319,7 +317,6 @@ input:autofill
 }
 .Perrortoo {
     color: darkred;
-    background-color: #ffe0e0;
     padding: 3px;
     border-radius: 2px;
     position: absolute;
@@ -329,7 +326,6 @@ input:autofill
 
 .Eerror {
     color: darkred;
-    background-color: #ffe0e0;
     padding: 3px;
     border-radius: 2px;
     position: absolute;

@@ -336,6 +336,41 @@ a
     left: 43%;
 }
 
+.Uerror {
+    color: darkred;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+
+.Perror {
+    color: darkred;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+.Perrortoo {
+    color: darkred;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+
+.Eerror {
+    color: darkred;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+
 .foots
 {
     position: relative;

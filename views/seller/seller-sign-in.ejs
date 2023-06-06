@@ -29,10 +29,20 @@
             <div class="users">
                 <label for="username"> username </label>
                 <input id="username" type="text" placeholder="username" name="username">
+                <span class="Uerror" id="usernameErrorMsg">
+                    <%if( errorMsg && errorMsg.username) { %>
+                      <%=errorMsg.username%>
+                        <%}%>
+                  </span>
             </div>
             <div class="passes">
                 <label for="password"> password </label>
                 <input id="password" type="password" placeholder="password" name="password">
+                <span class="Perror" id="passwordErrorMsg">
+                    <%if( errorMsg && errorMsg.password) { %>
+                      <%=errorMsg.password%>
+                        <%}%>
+                  </span>
             </div>
             <span id="fyp"><a href="/forget">forgot your password?</a> </span>
             <button class="VSbutton" type="submit" id="submit">Sign in</button>
@@ -47,6 +57,7 @@
     <%- include('../partials/translate.ejs') %>
 </body>
 
-</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/public/js/Validations.js"></script>
 
 </html>
