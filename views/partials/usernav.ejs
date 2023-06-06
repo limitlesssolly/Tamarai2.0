@@ -2,38 +2,44 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="/css/sellersc.css">
+
+    <link rel="stylesheet" href="/css/user/usernav.css">
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+
 </head>
 
 <body>
+
     <div class="nav">
+
         <img src="/images/thebluelogo.png" class="brand-logo" alt="Tamarii Logo">
+
         <span class="title">
             <h1>Tamarai</h1>
         </span>
+
         <div class="nav_items">
-            <div class="search">
-                <div class="box">
-                    <input type="text" placeholder="Search" id="searches" onkeyup="sendData(this)">
-                    <section id="srchResults">
-                    </section>
-                </div>
-                <a href="/user/homepage/profile"><img src="/images/user2.0.png" alt="user"></a>
-                <a href="/user/homepage/bag"><img src="/images/shoppingCart.png" alt="cart"></a>
-                <a href="/user/homepage/whishlist"><img src="/images/wishlist.png" alt="Wishlist"></a>
+
+            <div class="box">
+                <input type="text" placeholder="Search" id="searches" onkeyup="sendData(this)">
+                <section id="srchResults"></section>
             </div>
+
+            <a href="/user/homepage/profile"><img src="/images/uses.png" alt="user"></a>
+            <a href="/user/homepage/bag"><img src="/images/carter.png" alt="cart"></a>
+            <a href="/user/homepage/whishlist"><img src="/images/wishes.png" alt="Wishlist"></a>
         </div>
+
     </div>
-    <ul class="links">
-        <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
-    </ul>
 
     <div class="container">
         <%- messages('messages', locals) %>
     </div>
+
 </body>
+
 <script>
+
     function sendData(e) {
         const searchResults = document.getElementById('searchResults');
         fetch('getProducts', {

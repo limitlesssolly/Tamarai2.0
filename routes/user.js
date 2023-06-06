@@ -1,5 +1,6 @@
 import express from 'express';
 import Products from "../models/productData.js";
+import categories from '../models/categories.js';
 import { signins, signup } from "../controllers/user-controllers.js";
 
 const router = express.Router();
@@ -11,6 +12,11 @@ router.get('/', function(req, res, next) {
 router.get('/register', function(req, res, next) {
     res.render('user/user-register', { Title: "User Register" });
 });
+
+// router.get('/nav',async function(req,res,next){
+//     const cats = await categories.find();
+//     res.render('partials/usernav', {cats})
+// })
 
 router.post('/', signins);
 router.post('/register', signup);
@@ -28,7 +34,7 @@ router.post('/getProducts', async (req, res) => {
 // Add this debug statement
 router.use((err, req, res, next) => {
     console.error(err);
-    res.status(500).send('Fee mashakel');
+    res.status(500).send('Kol haga hatb2a kwisa inshallah');
 });
 
 router.use((req, res, next) => {

@@ -1,10 +1,20 @@
 import express from 'express';
 const router = express.Router();
+import categories from '../models/categories.js';
 import Wishlist from '../models/whishlist.js'
 import products from '../models/productData.js'
 import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
 
-router.get('/', getHomepage);
+router.get('/', async function(req, res, next){
+    try {
+        const cats = await categories.find();
+        const productData = await products.find();
+        res.render('user/user-homepage', {productData, cats});
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal server error');
+    }
+});
 router.get('/bag', getShoppingBag);
 
 router.get('/checkout', function(req, res, next) {
@@ -94,7 +104,7 @@ router.patch("/UpdateWishlist/:id", async(req, res) => {
 // Add this debug statement
 router.use((err, req, res, next) => {
     console.error(err);
-    res.status(500).send('Fe mashakel');
+    res.status(500).send('Kol haga hatb2a kwisa inshallah');
 });
 
 router.use((req, res, next) => {

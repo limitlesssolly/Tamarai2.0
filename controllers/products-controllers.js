@@ -1,5 +1,5 @@
 import ProductsData from '../models/productData.js';
-
+import categories from '../models/categories.js';
 export const getAllProducts = async(req, res) => {
     try {
         const products = await ProductsData.find();
@@ -19,9 +19,10 @@ export const getProductById = async(req, res) => {
 };
 export const getHomepage = async(req, res) => {
     try {
+        const cats = await categories.find();
         const productData = await ProductsData.find();
         console.log('productData:', productData);
-        res.render('user/user-homepage', {productData});
+        res.render('user/user-homepage', {productData}, {cats});
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');
