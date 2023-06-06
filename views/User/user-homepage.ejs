@@ -57,19 +57,19 @@
                             <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
 
                             <div class="product-card">
-
                                 <div class="product-image">
-                                    <% if (product.discount> 0) { %>
-                                        <span class="discount-tag">
-                                            <%= product.discount %>% off
-                                        </span>
-                                        <% } %>
-                                            <a href="">
-                                                <img src="/images/<%= product.image %>" width="100"></a>
-                                            <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
-                                </div>
+                                <% if (product.discount> 0) { %>
+                                    <span class="discount-tag">
+                                    <%= product.discount %>% off
+                                    </span>
+                                <% } %>
+                                <a href="">
+                                    <img src="/images/<%= product.image %>" width="100"></a>
+                                <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
+                            </div>
 
                                 <div class="product-info">
+                                    <a href="/product/<%= product.id %>"><h2><%= product.name %></h2></a>
                                     <h2 class="product-brand">
                                         <%= product.seller%>
                                     </h2>

@@ -62,7 +62,7 @@ router.get("/:id", (req, res, next) => {
     var query = { "_id": req.params.id };
     Products.find(query)
     .then(result => {
-        res.render('productaya', {  })
+        res.render('productaya', { prod: result[0] })
     })
     .catch(err => {
       console.log(err);
