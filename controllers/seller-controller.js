@@ -58,6 +58,7 @@ const signup = async (req, res, next) => {
 
       //  res.render('seller-register',{message:"sucuss"})
       console.log('Registration successful!');
+      req.session.seller = newseller;
       return res.redirect('/seller/dashboard/profile/'+ newseller._id );
     } catch (err) {
       console.log(err);
