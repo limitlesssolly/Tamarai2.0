@@ -94,6 +94,14 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index'));
 });
 
+// for search DO NOT DELETE THIS PLEASE
+// DO NOT 
+// I CAN SEE YOU
+app.get('/getproduct', function(req, res) {
+    let payload = req.body.payload.trim();
+    console.log(payload);
+});
+
 // 404 route
 app.get('/error', (req, res) => {
     // res.sendFile(path.join(staticPath, 'error'));
