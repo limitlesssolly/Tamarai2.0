@@ -1,10 +1,6 @@
 import express from 'express';
 import Products from "../models/productData.js";
-import Categories from '../models/categories.js';
-import {signins,
-    signup,
-    signupValidation,
-    checkUN,} from "../controllers/user-controllers.js";
+import {signins,signup,} from "../controllers/user-controllers.js";
 
 const router = express.Router();
 
@@ -17,28 +13,10 @@ router.get('/', function (req, res, next) {
 // });
 
 router.get('/cat/:name', async (req, res) => {
-    // const prod = await Products.find();
-    // let catsOnly = {};
-    // for (let i = 0; i < prod.length; i++) {
-    //     if (prod[i].name === ) {
-    //         catsOnly.append(prod[i]);
-    //     }
-    // }
-    // res.render('user/cat', {catsOnly});
     var query = { "name": req.params.name };
     const prod = await Products.findOne();
     res.render('user/cat', {catname: query}, {prod});
-    // Categories.find(query)
-    //     .then(result => {
-    //         console.log(result);
-    //         // res.render('user/cat', {result});
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //     });
   });
-
-router.post('/checkUN', checkUN);
 
 router.post('/', signins);
 
@@ -57,8 +35,6 @@ router.get('/register', function (req, res, next) {
 });
 
 router.post('/register',signup);
-
-// router.post('/register', User.signup);
 
 router.post('/getProducts', async (req, res) => {
     let payload = req.body.payload.trim();

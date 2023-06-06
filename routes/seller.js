@@ -7,10 +7,20 @@ router.get('/', function(req, res, next) {
     res.render('seller/seller-sign-in');
 });
 
+let admin = false;
+
+router.use(function (req, res, next) {
+  if (req.session.type)
+    return res.redirect('/');
+  else if (req.session.type == 'admin')
+    admin = true;
+  next();
+});
+
 /* GET /seller/register page. */
-router.get('/register', function(req, res, next) {
-    res.render('seller/seller-register');
-})
+router.get('/register', function (req, res, next) {
+    res.render('seller/seller-register', { errorMsg: {}, admin: admin })
+});
 
 
 router.get('/logout', function(req, res, next){
@@ -20,13 +30,7 @@ router.get('/logout', function(req, res, next){
 
 router.post('/', signins);
 
-router.post('/register', signup);
+router.post('/register',signup);
 
-router.use((req, res, next) => {
-    if (req.session.user) next();
-    else {
-        res.send('You must login');
-    }
-})
 
 export default router;

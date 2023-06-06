@@ -1,18 +1,7 @@
-import { body, validationResult } from "express-validator";
 import user from '../models/userRegister.js';
 import ProductsData from '../models/productData.js';
 import bcrypt from 'bcrypt';
 import Categories from '../models/categories.js';
-
-const signupValidation = [
-    body('name').notEmpty().withMessage('Username is required')
-        .isLength({ min: 4 }).withMessage('Username must be at least 4 characters long'),
-    body('pass')
-        .notEmpty().withMessage('Password is required')
-        .isLength({ min: 7 }).withMessage('Password must be at least 7 characters long')
-        .matches(/[a-zA-Z]/).withMessage('Password must contain at least one letter')
-        .matches(/[0-9]/).withMessage('Password must contain at least one number')
-];
 
 const signins = async (req, res, next) => {
     const { username, password } = req.body;
@@ -65,21 +54,6 @@ const signup = async (req, res, next) => {
             return res.render("user/user-register", { errorMsg, admin: false });
     }
     try {
-        await user.save();
-        console.log("User saved:", user);
-        //save user into algolia
-        usersIndex.saveObject({
-            objectID: user._id.toString(),
-            name: user.firstName + " " + user.lastName,
-            email: user.email,
-            userType: user.userType,
-            createdAt: user.createdAt,
-        });
-    }
-    catch (err) {
-        console.log(err);
-    }
-    try {
         const hashPass = await bcrypt.hash(password, 10);
         const CPassword = await bcrypt.hash(confirmPassword, 10);
         const newuser = new user({
@@ -113,22 +87,6 @@ const signup = async (req, res, next) => {
 };
 
 
-const checkUN = (req, res) => {
-    var query = { username: req.body.username };
-    user.find(query)
-        .then(result => {
-            if (result.length > 0) {
-                res.send('taken');
-            }
-            else {
-                res.send('available');
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        });
-};
-
 export const getHomepage = async (req, res) => {
     try {
         const productData = await ProductsData.find();
@@ -144,6 +102,4 @@ export const getHomepage = async (req, res) => {
 export {
     signins,
     signup,
-    signupValidation,
-    checkUN,
 };

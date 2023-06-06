@@ -1,22 +1,6 @@
-import {body,validationResult} from "express-validator";
 import rege from '../models/tryseller.js';
 import products from '../models/productData.js';
 import bcrypt from 'bcrypt';
-
-// Validation middleware for signups
-const signupValidation = [
-  body('name').notEmpty().withMessage('Username is required')
-  .isLength({
-    min: 4
-  }).withMessage('Username must be at least 4 characters long'),
-  body('pass')
-  .notEmpty().withMessage('Password is required')
-  .isLength({
-    min: 7
-  }).withMessage('Password must be at least 7 characters long')
-  .matches(/[a-zA-Z]/).withMessage('Password must contain at least one letter')
-  .matches(/[0-9]/).withMessage('Password must contain at least one number')
-];
 
 const signins = async (req, res, next) => {
   const { username, password } = req.body;
@@ -36,36 +20,67 @@ const signins = async (req, res, next) => {
   }
 };
 
-
 const signup = async (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    res.render("seller-sign-in", {
-      errors: errors.array(),
-    });
-  } else {
-    try {
-      const hashPass = await bcrypt.hash(req.body.password, 10);
-      const CPassword = await bcrypt.hash(req.body.confirmPassword, 10);
-      const newseller = new rege({
-        email: req.body.email,
-        username: req.body.username,
-        password: hashPass,
-        confirmPassword: CPassword,
-        type: "seller",
-      });
-      await newseller.save();
+  const { username, email, password, confirmPassword } = req.body;
+    let errorMsg = {};
 
-      //  res.render('seller-register',{message:"sucuss"})
-      console.log('Registration successful!');
-      req.session.user = newseller;
-      return res.redirect('/seller/dashboard/profile/'+ newseller._id );
-    } catch (err) {
-      console.log(err);
-      return res.status(500).render('error.ejs');
+    if (username.trim() == "") errorMsg.username = "Username is required";
+
+    let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (email.trim() == "") errorMsg.email = "Email is required";
+    else if (!email.match(emailFormat)) errorMsg.email = "Invalid Email";
+    else {
+        const existingUser = await rege.findOne({ email });
+        if (existingUser) {
+            errorMsg.email = "Email already exists!";
+        }
     }
-  }
 
+    if (password.trim() == "") errorMsg.password = "Password is required";
+    else if (password.trim().length < 8)
+        errorMsg.password = "Password must be at least 8 characters";
+
+    if (password.trim() !== confirmPassword.trim())
+        errorMsg.confirmPassword = "Passwords do not match";
+
+    if (Object.keys(errorMsg).length > 0) {
+        for (let key in errorMsg) {
+            console.log(errorMsg[key]);
+        }
+        if (req.query.ajax)
+            return res.json({ errors: errorMsg, admin: false });
+        else
+            return res.render("user/user-register", { errorMsg, admin: false });
+    }
+    try {
+        const hashPass = await bcrypt.hash(password, 10);
+        const CPassword = await bcrypt.hash(confirmPassword, 10);
+        const newuser = new rege({
+            email: email,
+            username: username,
+            password: hashPass,
+            confirmPassword: CPassword,
+            type: "seller",
+        });
+        await newuser.save();
+        console.log('Registration successful!');
+        req.session.Id = user._id;
+        req.session.type = user.type;
+        req.session.username = user.username;
+        req.session.email = user.email;
+
+    if (req.query.ajax) {
+        console.log("Registration done using ajax");
+        return res.json({ errors: errorMsg, admin: false });
+    }
+    else {
+        console.log("Registration done NOT using ajax");
+        return res.redirect("/seller/dashboard");
+    }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).render('error.ejs');
+    }
 };
 
 const addItem = async (req, res, next) => {
@@ -93,6 +108,5 @@ const addItem = async (req, res, next) => {
 export {
   signins,
   signup,
-  signupValidation,
   addItem
 };
