@@ -9,12 +9,12 @@ const router = Router();
 let admin = false;
 
 router.use(function (req, res, next) {
-  if (req.session.type)
-    return res.redirect('/');
-  else if (req.session.type == 'admin')
-    admin = true;
-  next();
-});
+    if (req.session.type == 'seller' ||req.session.type == 'user')
+      return res.send('You are not an admin');
+    else if (req.session.type == 'admin')
+      admin = true;
+    next();
+})
 
 /* GET /admin/dashboard page. */
 router.get('/', async function (req, res, next) {

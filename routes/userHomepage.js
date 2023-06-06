@@ -21,6 +21,12 @@ router.get('/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 });
 
+router.get('/bag', getShoppingBag);
+
+router.get('/bag/checkout', function(req, res, next) {
+    res.render('user/user-shoppingbag');
+});
+
 router.get('/profile', function(req, res, next) {
     res.render('user/user-profile');
 });
@@ -111,12 +117,6 @@ router.use((err, req, res, next) => {
     res.status(500).send('Kol haga hatb2a kwisa inshallah');
 });
 
-router.use((req, res, next) => {
-    if (req.session.user) next();
-    else {
-        res.send('You must login');
-    }
-})
 
 router.get('/profile', async(req, res) => {
     const regs = await regi.find();

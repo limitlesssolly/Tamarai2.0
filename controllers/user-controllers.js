@@ -32,8 +32,12 @@ const signins = async (req, res, next) => {
     if (userdb)
     {
       if (bools) {
-        req.session.user;
-        console.log(req.session.user);
+        req.session.Id = userdb._id;
+        req.session.type = userdb.type;
+        req.session.username = userdb.username;
+        console.log(req.session.Id);
+        console.log(req.session.type);
+        console.log(req.session.username);
         return res.redirect('/user/homepage');
       }
     }

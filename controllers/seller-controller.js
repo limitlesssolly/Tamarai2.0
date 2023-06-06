@@ -30,8 +30,12 @@ const signins = async (req, res, next) => {
   if (sellerdb)
   {
     if (bools) {
-      req.session.user;
-      console.log(req.session.user);
+      req.session.Id = sellerdb._id;
+        req.session.type = sellerdb.type;
+        req.session.username = sellerdb.username;
+        console.log(req.session.Id);
+        console.log(req.session.type);
+        console.log(req.session.username);
       return res.redirect('/seller/dashboard');
     }
   }
