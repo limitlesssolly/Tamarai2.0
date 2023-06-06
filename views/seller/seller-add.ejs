@@ -16,12 +16,12 @@
 <body>
     <%- include('../partials/sellernav.ejs') %>
         <div class="adds">
-            <form method="post" action="/seller/dashboard/add">
+            <form enctype="multipart/form-data" method="post" action="/seller/dashboard/add" >
                 <div class="name">Product Name : <input name="name" type="text"></div>
                 <div class="brand">Brand : <input name="brand" type="text"></div>
                 <div class="seller">Seller : <input name="seller" type="text"></div>
                 <div class="price">Price : <input name="price" type="text"></div>
-                <div class="image">Image : <input name="image" type="file" id="img"><img src="#" id="imgPreview" alt=""></div>
+                <div class="image">Image : <input name="img" type="file" id="img"></div>
                 <div class="count">Count In Stock: <input name="count" type="text"></div>
                 <div class="description">Description : <input name="description" type="text"></div>
                 <div class="category">Category :
