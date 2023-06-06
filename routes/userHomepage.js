@@ -96,22 +96,10 @@ let text = localStorage.getItem("testJSON");
 let obj = JSON.parse(text);
 document.getElementById("demo").innerHTML = obj.name;*/
 
-router.get('/whishlist', async(req, res) => {
-    //let wished = Wishlist.getItem("wished");
+router.get('/whishlist', async function(req, res, next)  {
     const wished = await Wishlist.find();
     console.log(wished);
-    //let wish = JSON.parse(wished.wished);
-   // let wish = JSON.parse(wished);
-   
-    // try {
-       // wish = await products.find();
-        //et wishaya = JSON.parse(wish);
-       //res.send(wishaya);
-       //console.log(wishaya);
-        //document.getElementById("user/user-whishlist").newWish = wish.name;
-        //res.render('user/user-whishlist', { wish });
-        // res.send(wish);
-        res.render('user/user-whishlist',{wished});
+    res.render('user/user-whishlist',{wished});
     
 })
 
