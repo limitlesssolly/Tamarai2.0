@@ -107,22 +107,53 @@
   <!-- <main> -->
     <div class="wishlist-container">
       <h2>My Wishlist</h2>
-      <% if (paresdData.length > 0) { %>
-        <ul>
-          <% paresdData.forEach(n => { %>
-            <li>
-              <%= n.name %><br />
-              <%= n.brand %><br />
-              <%= n.seller %><br />
-              <%= n.price %><br />
-              <img src="<%= n.image %>" /><br />
-              <%= n.count %><br />
-              <%= n.description %><br />
-              <%= n.category %><br />
-              <%= n.color %><br />
-            </li>
-          <% }) %>
-        </ul>
+      <% if (wished.length > 0) { %>
+        <table>
+          <tr>
+              <th>Product name</th>
+              <th>Brand</th>
+              <th>Category</th>
+              <!-- <th>Action</th> -->
+          </tr>
+          <% wished.forEach(function(n) { %>
+              <tr>
+                  <td>
+                      <%= n.name %>
+                  </td>
+                  <td>
+                      <%= n.brand %>
+                  </td>
+                  <td>
+                      <%= n.seller%>
+                  </td>
+                  <td>
+                    <%= n.price%>
+                </td>
+                <td>
+                  <%= n.image%>
+              </td>
+              <td>
+                <%= n.count%>
+            </td>
+            <td>
+              <%= n.description%>
+          </td>
+          <td>
+            <%= n.category%>
+        </td>
+        <td>
+          <%= n.color%>
+      </td>
+                  <!-- <td>
+                      <span>
+                          <span><a class="deleter"
+                              href="/seller/dashboard/view/delete/<%=product._id%>">Delete</a></span>
+                      </span>
+                  </td> -->
+
+              </tr>
+              <% }); %>
+      </table>
       <% } else { %>
         <p>Your wishlist is currently empty.</p>
       <% } %>

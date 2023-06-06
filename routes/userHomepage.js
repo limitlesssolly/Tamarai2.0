@@ -32,26 +32,26 @@ router.get('/profile', function(req, res, next) {
 // });
 
 router.get('/add-to-wishlist/:id', async function(req, res, next) {
-        const wishlisted = await products.findById(req.params.id);
-        // wishlisted = {
-        //   name: prod.name,
-        //   brand: prod.brand,
-        //   seller: prod.seller,
-        //   price: prod.price,
-        //   image: prod.image,
-        //   count: prod.count,
-        //   description: prod.description,
-        //   category: prod.category,
-        //   color: prod.color,
-        // };
-        const JSONS = JSON.stringify(wishlisted);
-        // Wishlist.setItem("wished", JSONS);
-        const newWish = new Wishlist({ Wish: JSONS, });
-        await newWish.save();
-        console.log('et7at');
-        res.redirect('user/user-homepage');
-    }
-
+    const wishlisted = await products.findById(req.params.id);
+    // wishlisted = {
+    //   name: prod.name,
+    //   brand: prod.brand,
+    //   seller: prod.seller,
+    //   price: prod.price,
+    //   image: prod.image,
+    //   count: prod.count,
+    //   description: prod.description,
+    //   category: prod.category,
+    //   color: prod.color,
+    // };
+    //const JSONS = JSON.stringify(wishlisted);
+    // Wishlist.setItem("wished", JSONS);
+    const newWish = new Wishlist({Wish: wishlisted});
+    await newWish.save();
+    console.log('et7at');
+    res.redirect('user/user-homepage');
+} 
+ 
 );
 
 /*const myObj = {name: "John", age: 31, city: "New York"};
@@ -64,23 +64,21 @@ let obj = JSON.parse(text);
 document.getElementById("demo").innerHTML = obj.name;*/
 
 router.get('/whishlist', async(req, res) => {
-    let wished = Wishlist.getItem("wished");
-    //const wished = await Wishlist.find();
-    let wish = JSON.parse(wished.wished);
-    // let wish = JSON.parse(wished);
-
-    try {
-        wish = await products.find();
-        let wishaya = JSON.parse(wish);
-        //res.send(wishaya);
-        console.log(wishaya);
+    //let wished = Wishlist.getItem("wished");
+    const wished = await Wishlist.find();
+    //let wish = JSON.parse(wished.wished);
+   // let wish = JSON.parse(wished);
+   
+    // try {
+       // wish = await products.find();
+        //et wishaya = JSON.parse(wish);
+       //res.send(wishaya);
+       //console.log(wishaya);
         //document.getElementById("user/user-whishlist").newWish = wish.name;
         //res.render('user/user-whishlist', { wish });
         // res.send(wish);
-        res.render('user/user-whishlist', { wish });
-    } catch (e) {
-        res.send(e);
-    }
+        res.render('user/user-whishlist',{wished});
+    
 })
 
 // router.post("/SaveWishlist", (req, res) => {
