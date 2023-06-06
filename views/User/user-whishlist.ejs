@@ -77,8 +77,8 @@
 
 <!-- </body>
 
-</html> --> 
-<!-- <!DOCTYPE html>
+</html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>My Wishlist</title>
@@ -86,25 +86,25 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <!-- <header> -->
-    <!-- <nav>
+   Header
+   <header> 
+    <nav>
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/wishlist">Wishlist</a></li>
         <li><a href="/cart">Cart</a></li>
       </ul>
-    </nav> -->
+    <!-- </nav> -->
   <!-- </header> -->
 
   <!-- Main Content -->
-  <!-- <main>
+  <!-- <main> -->
     <div class="wishlist-container">
       <h2>My Wishlist</h2>
       <% if (wishlist.length > 0) { %>
         <ul>
-          <% wishlist.forEach(item => { %>
-            <li><%= item.Wish %></li>
+          <% wishlist.forEach(wishlisted => { %>
+            <li><%= wishlisted.Wish %></li>
           <% }) %>
         </ul>
       <% } else { %>

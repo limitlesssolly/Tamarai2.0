@@ -105,7 +105,7 @@ router.patch("/UpdateWishlist/:id", async(req, res) => {
 // Add this debug statement
 router.use((err, req, res, next) => {
     console.error(err);
-    res.status(500).send('Fe mashakel');
+    res.status(500).send('Kol haga hatb2a kwisa inshallah');
 });
 
 router.use((req, res, next) => {
