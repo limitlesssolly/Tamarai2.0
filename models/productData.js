@@ -38,7 +38,29 @@ const productSchema = new Schema({
         type: Array,
         required: true,
     },
-}, { timestamps: true });
-
+    reviews: [{
+            name: {
+                type: String,
+                required: false
+            },
+            rating: {
+                type: Number,
+                required: false
+            },
+            comment: {
+                type: String,
+                required: false
+            },
+            user: {
+                type: Schema.Types.ObjectId,
+                required: false,
+                ref: "users",
+            },
+        },
+        {
+            timestamps: true,
+        },
+    ],
+});
 const ProductsData = mongoose.model('ProductsData', productSchema);
 export default ProductsData;
