@@ -4,34 +4,36 @@ import bcrypt from 'bcrypt';
 
 const signins = async (req, res, next) => {
   const { username, password} = req.body;
+
   let errorMsg = {};
 
+  let sellerdb = await rege.findOne({ username });
+  let bools = false;
   if (username.trim() == "") errorMsg.username = "Username is required";
+  else if (!sellerdb) errorMsg.username = "Invalid Username";
 
   if (password.trim() == "") errorMsg.password = "Password is required";
+  else {
+    if (bcrypt.compareSync(password, sellerdb.password)) bools = true;
+    else errorMsg.password = "Invalid Password";
+  }
 
   if (Object.keys(errorMsg).length > 0) {
-      for (let key in errorMsg) {
-          console.log(errorMsg[key]);
-      }
-      if (req.query.ajax)
-          return res.json({ errors: errorMsg, admin: false });
-      else
-          return res.render("/seller/seller-sign-in", { errorMsg, admin: false });
-  }
-  try {
-    const sellerdb = await rege.findOne({ username });
-    if (!sellerdb) return res.status(401);
-    else if (sellerdb) {
-      if (bcrypt.compareSync(password, sellerdb.password)) {
-        req.session.Id = user._id;
-        req.session.type = user.type;
-        req.session.username = user.username;
-        return res.redirect('/seller/dashboard');
-      }
-    }} catch (err) {
-      console.log(err);
-      return res.status(500).render('error.ejs');
+    for (let key in errorMsg) {
+        console.log(errorMsg[key]);
+    }
+    if (req.query.ajax)
+        return res.json({ errors: errorMsg, admin: false });
+    else
+        return res.render("seller/seller-sign-in", { errorMsg, admin: false });
+}
+  if (sellerdb)
+  {
+    if (bools) {
+      req.session.user;
+      console.log(req.session.user);
+      return res.redirect('/seller/dashboard');
+    }
   }
 };
 
@@ -70,19 +72,19 @@ const signup = async (req, res, next) => {
     try {
         const hashPass = await bcrypt.hash(password, 10);
         const CPassword = await bcrypt.hash(confirmPassword, 10);
-        const newuser = new rege({
+        const newseller = new rege({
             email: email,
             username: username,
             password: hashPass,
             confirmPassword: CPassword,
             type: "seller",
         });
-        await newuser.save();
+        await newseller.save();
         console.log('Registration successful!');
-        req.session.Id = user._id;
-        req.session.type = user.type;
-        req.session.username = user.username;
-        req.session.email = user.email;
+        req.session.Id = newseller._id;
+        req.session.type = newseller.type;
+        req.session.username = newseller.username;
+        req.session.email = newseller.email;
 
     if (req.query.ajax) {
         console.log("Registration done using ajax");

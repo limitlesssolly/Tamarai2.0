@@ -5,13 +5,21 @@ import Categories from '../models/categories.js';
 
 const signins = async (req, res, next) => {
     const { username, password} = req.body;
-  let errorMsg = {};
 
-  if (username.trim() == "") errorMsg.username = "Username is required";
-
-  if (password.trim() == "") errorMsg.password = "Password is required";
-
-  if (Object.keys(errorMsg).length > 0) {
+    let errorMsg = {};
+  
+    let userdb = await user.findOne({ username });
+    let bools = false;
+    if (username.trim() == "") errorMsg.username = "Username is required";
+    else if (!userdb) errorMsg.username = "Invalid Username";
+  
+    if (password.trim() == "") errorMsg.password = "Password is required";
+    else {
+      if (bcrypt.compareSync(password, userdb.password)) bools = true;
+      else errorMsg.password = "Invalid Password";
+    }
+  
+    if (Object.keys(errorMsg).length > 0) {
       for (let key in errorMsg) {
           console.log(errorMsg[key]);
       }
@@ -20,20 +28,14 @@ const signins = async (req, res, next) => {
       else
           return res.render("user/user-sign-in", { errorMsg, admin: false });
   }
-  try {
-    const userdb = await user.findOne({ username });
-    if (!userdb) return res.status(401);
-    else if (userdb) {
-      if (bcrypt.compareSync(password, userdb.password)) {
-        req.session.Id = user._id;
-        req.session.type = user.type;
-        req.session.username = user.username;
+    if (userdb)
+    {
+      if (bools) {
+        req.session.user;
+        console.log(req.session.user);
         return res.redirect('/user/homepage');
       }
-    }} catch (err) {
-      console.log(err);
-      return res.status(500).render('error.ejs');
-  }
+    }
 };
 
 const signup = async (req, res, next) => {
@@ -80,10 +82,10 @@ const signup = async (req, res, next) => {
         });
         await newuser.save();
         console.log('Registration successful!');
-        req.session.Id = user._id;
-        req.session.type = user.type;
-        req.session.username = user.username;
-        req.session.email = user.email;
+        req.session.Id = newuser._id;
+        req.session.type = newuser.type;
+        req.session.username = newuser.username;
+        req.session.email = newuser.email;
 
     if (req.query.ajax) {
         console.log("Registration done using ajax");
@@ -98,7 +100,6 @@ const signup = async (req, res, next) => {
         return res.status(500).render('error.ejs');
     }
 };
-
 
 export const getHomepage = async (req, res) => {
     try {

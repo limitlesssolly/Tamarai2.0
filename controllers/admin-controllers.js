@@ -20,14 +20,22 @@ import bcrypt from 'bcrypt';
 // };
 
 const signins = async (req, res, next) => {
-  const { username, password} = req.body;
-  let errorMsg = {};
+    const { username, password} = req.body;
 
-  if (username.trim() == "") errorMsg.username = "Username is required";
-
-  if (password.trim() == "") errorMsg.password = "Password is required";
-
-  if (Object.keys(errorMsg).length > 0) {
+    let errorMsg = {};
+  
+    let admindb = await admin.findOne({ username });
+    let bools = false;
+    if (username.trim() == "") errorMsg.username = "Username is required";
+    else if (!admindb) errorMsg.username = "Invalid Username";
+  
+    if (password.trim() == "") errorMsg.password = "Password is required";
+    else {
+      if (bcrypt.compareSync(password, admindb.password)) bools = true;
+      else errorMsg.password = "Invalid Password";
+    }
+  
+    if (Object.keys(errorMsg).length > 0) {
       for (let key in errorMsg) {
           console.log(errorMsg[key]);
       }
@@ -36,20 +44,14 @@ const signins = async (req, res, next) => {
       else
           return res.render("admin/admin-sign-in", { errorMsg, admin: false });
   }
-  try {
-    const admindb = await admin.findOne({ username });
-    if (!admindb) return res.status(401);
-    else if (admindb) {
-      if (bcrypt.compareSync(password, admindb.password)) {
-        req.session.Id = user._id;
-        req.session.type = user.type;
-        req.session.username = user.username;
+    if (admindb)
+    {
+      if (bools) {
+        req.session.user;
+        console.log(req.session.user);
         return res.redirect('/admin/dashboard');
       }
-    }} catch (err) {
-      console.log(err);
-      return res.status(500).render('error.ejs');
-  }
+    }
 };
 
 const signups = async (req, res, next) => {
@@ -96,10 +98,10 @@ const signups = async (req, res, next) => {
         });
         await newuser.save();
         console.log('Registration successful!');
-        req.session.Id = user._id;
-        req.session.type = user.type;
-        req.session.username = user.username;
-        req.session.email = user.email;
+        req.session.Id = newuser._id;
+        req.session.type = newuser.type;
+        req.session.username = newuser.username;
+        req.session.email = newuser.email;
 
     if (req.query.ajax) {
         console.log("Registration done using ajax");
@@ -150,19 +152,19 @@ const signupstoo = async (req, res, next) => {
     try {
         const hashPass = await bcrypt.hash(password, 10);
         const CPassword = await bcrypt.hash(confirmPassword, 10);
-        const newuser = new rege({
+        const newseller = new rege({
             email: email,
             username: username,
             password: hashPass,
             confirmPassword: CPassword,
             type: "seller",
         });
-        await newuser.save();
+        await newseller.save();
         console.log('Registration successful!');
-        req.session.Id = user._id;
-        req.session.type = user.type;
-        req.session.username = user.username;
-        req.session.email = user.email;
+        req.session.Id = newseller._id;
+        req.session.type = newseller.type;
+        req.session.username = newseller.username;
+        req.session.email = newseller.email;
 
     if (req.query.ajax) {
         console.log("Registration done using ajax");
@@ -206,9 +208,9 @@ const signupstre = async (req, res, next) => {
         });
         await newadmin.save();
         console.log('Registration successful!');
-        req.session.Id = user._id;
-        req.session.type = user.type;
-        req.session.username = user.username;
+        req.session.Id = newadmin._id;
+        req.session.type = newadmin.type;
+        req.session.username = newadmin.username;
 
     if (req.query.ajax) {
         console.log("Registration done using ajax");
