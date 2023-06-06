@@ -28,9 +28,9 @@
         <ul class="links">
             <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
             <% cats.forEach(function(cat) { %>
-                <li class="link-item">
-                    <a href="" class="link"><%= cat.name %></a>
-                </li>
+            <li class="link-item">
+                <a href="" class="link"><%= cat.name %></a>
+            </li>
             <% }); %>
         </ul>
     </div>
@@ -53,42 +53,42 @@
                 <button class="nxt-btn"><img src="/images/right-arrow.png" alt="right-arrow"></button>
                 <div class="product-container">
                     <% productData.forEach(function(product) { %>
-                        <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
+                    <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
 
-                        <div class="product-card">
-                            <div class="product-image">
-                                <% if (product.discount> 0) { %>
-                                    <span class="discount-tag">
-                                        <%= product.discount %>% off
-                                    </span>
-                                    <% } %>
-                                        <a href="">
-                                            <!-- <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>"> -->
-                                            <img src="/images/<%= product.image %>" width="100"></a>
-                                        <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
-                            </div>
-                            <div class="product-info">
-                                <h2 class="product-brand">
-                                    <%= product.seller%>
-                                </h2>
-                                <p class="product-short-des">
-                                    <%= product.description %>
-                                </p>
-                                <% if (product.discount> 0) { %>
-                                    <span class="price">
-                                        <%= product.price %>L.E.
-                                    </span>
-                                    <span class="actual-price">
-                                        <%= product.price %>L.E.
-                                    </span>
-                                    <% } else { %>
-                                        <span class="price">
-                                            <%= product.price %>L.E.
-                                        </span>
-                                        <% } %>
-                            </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <% if (product.discount> 0) { %>
+                            <span class="discount-tag">
+                                <%= product.discount %>% off
+                            </span>
+                            <% } %>
+                            <a href="">
+                                <!-- <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>"> -->
+                                <img src="/images/<%= product.image %>" width="100"></a>
+                            <a class="card-btn" href="/user/homepage/bag">Add to Bag</a>
                         </div>
-                        <% }); %>
+                        <div class="product-info">
+                            <h2 class="product-brand">
+                                <%= product.seller%>
+                            </h2>
+                            <p class="product-short-des">
+                                <%= product.description %>
+                            </p>
+                            <% if (product.discount> 0) { %>
+                            <span class="price">
+                                <%= product.price %>L.E.
+                            </span>
+                            <span class="actual-price">
+                                <%= product.price %>L.E.
+                            </span>
+                            <% } else { %>
+                            <span class="price">
+                                <%= product.price %>L.E.
+                            </span>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% }); %>
                 </div>
             </section>
     </section>
@@ -139,8 +139,8 @@
     <div class="chatbox">
         <div id="chatbox"></div>
     </div>
-    <%- include('../partials/translate.ejs') %>
-        <%- include('../partials/footer.ejs') %>
+
+    <%- include('../partials/footer.ejs') %> <%- include('../partials/translate.ejs') %>
 </body>
 
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
