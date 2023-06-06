@@ -13,7 +13,7 @@ router.get('/register', function(req, res, next) {
     res.render('user/user-register', { Title: "User Register" });
 });
 
-app.get('/cat/:name', async (req, res) => {
+router.get('/cat/:name', async (req, res) => {
     // const prod = await Products.find();
     // let catsOnly = {};
     // for (let i = 0; i < prod.length; i++) {
