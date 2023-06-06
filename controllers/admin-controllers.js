@@ -243,21 +243,26 @@ const updateItem = async (req, res, next) => {
   }
 };
 
-const noOfusers= async(req,res,next)=>
-{
-  try{
-    const id=req.params.id;
-
-  }
-  catch(e){
-    res.send(e);
-  }
-}
+// const noOfusers= async(req,res,next)=>
+// {
+//   try{
+//     const collection = connect.collection("user");
+//     collection.countDocuments().then((count_documents) => {
+//         console.log(count_documents);
+//       }).catch((err) => {
+//         console.log(err.Message);
+//       })
+//   }
+//   catch(e){
+//     res.send(e);
+//   }
+// }
 export {
   signins,
   signups,
   signupstoo,
   signupstre,
   addCategory,
+  //noOfusers
   // deleteUser
 };
