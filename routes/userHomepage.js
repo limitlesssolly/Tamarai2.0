@@ -13,9 +13,35 @@ router.get('/bag', function(req, res, next) {
     res.render('user/user-shoppingbag');
 });
 
-router.get('/whishlist', function(req, res, next) {
-    res.render( 'user/user-whishlist', { Title: "whishlist" });
-});
+// router.get('/whishlist', function(req, res, next) {
+//     res.render( 'user/user-whishlist', { Title: "whishlist" });
+// });
+router.get('/whishlist', async(req, res) => {
+    try {
+        const Wishes = await Wishlist.find();
+        res.send(Wishes);
+    } catch(e) {
+        res.send(e);
+    }
+})
+router.post("/SaveWishlist", (req, res) => {
+    const wish = new Wishlist(req.body)
+    wish.save().then( () => {
+        res.status(201).send("Wish Added to Wishlist!");
+    }).catch( (e) => {
+        res.status(400).send(e);
+    })
+})
+router.patch("/UpdateWishlist/:id", async(req, res) => {
+    try {
+        const _id = req.params.id
+        const UpdateRequest = await Wishlist.findByIdAndUpdate(_id, req.body)
+        res.send(UpdateRequest);
+    } catch(e) {
+        res.status(404).send("Couldn't update your wish :(");
+    }
+})
+
 
 // router.post('user/user-whishlist',(req,res)=>{
 // const   {weddingdress,designerAmitabbatchan}=req.body;
