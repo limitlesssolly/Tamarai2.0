@@ -129,9 +129,11 @@
                                 <h2 class="product-brand">
                                     <%= product.seller%>
                                 </h2>
-                                <p class="product-short-des">Summer dress.</p>
-                                <span class="price">100L.E.</span>
-                                <span class="actual-price">200L.E.</span>
+                                <p class="product-short-des">
+                                    <%=product.name%>
+                                </p>
+                                <span class="price"><%=product.price%> L.E</span>
+                                <!-- <span class="actual-price">200L.E.</span> -->
                             </div>
                         </div>
                         <% }); %>
