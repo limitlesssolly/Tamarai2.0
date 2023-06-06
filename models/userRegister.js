@@ -11,9 +11,11 @@ const USchema = new mongoose.Schema({
     required: true,
     unique: true
 },
+  type: { type: String, required: false, },
   password: String,
   confirmPassword: String
-});
+  
+},);
 
 const usi = mongoose.model('User', USchema);
 export default usi;

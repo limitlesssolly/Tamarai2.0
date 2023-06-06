@@ -63,22 +63,19 @@ class FormClass {
 
     for (let i = 0; i < fields.length; i++) {
       fields[i].value = fields[i].value.trim();
-      let error = document.querySelectorAll("#form .errorMsg")[i];
+      let error = document.querySelectorAll("#form.errorMsg")[i];
       if (fields[i].value === "") {
         switch (fields[i].id) {
-          case "firstName":
-            error.innerHTML = "First name is required";
+          case "username":
+            error.innerHTML = "Username name is required";
             break;
-          case "lastName":
-            error.innerHTML = "Last name is required";
-            break;
-          case "Email":
+          case "email":
             error.innerHTML = "Email is required";
             break;
-          case "Password":
+          case "password":
             error.innerHTML = "Password is required";
             break;
-          case "ConfirmPass":
+          case "confirmPassword":
             error.innerHTML = "Confirm password is required";
             break;
         }
@@ -86,7 +83,7 @@ class FormClass {
       }
       else {
         switch (fields[i].id) {
-          case "Password":
+          case "password":
             console.log(fields[i].value.length);
             if (fields[i].value.length < 8) {
               error.innerHTML = fields[i].id + " must be more than 8 characters";
@@ -94,8 +91,8 @@ class FormClass {
               this.noErr = false;
             }
             break;
-          case "ConfirmPass":
-            let pass = document.getElementById("Password");
+          case "confirmPassword":
+            let pass = document.getElementById("password");
             if (pass.value != fields[i].value) {
               error.innerHTML = "Passwords do not match!";
               error.style.visibility = "visible";
@@ -127,11 +124,10 @@ class FormClass {
         if (Object.keys(response.errors).length === 0)
           window.location.href = "/account";
         else {
-          $("#firstNameErrorMsg").html(response.errors.firstName);
-          $("#lastNameErrorMsg").html(response.errors.lastName);
+          $("#usernameErrorMsg").html(response.errors.username);
           $("#emailErrorMsg").html(response.errors.email);
           $("#passwordErrorMsg").html(response.errors.password);
-          $("#confirmPassErrorMsg").html(response.errors.confirmPass);
+          $("#confirmPassErrorMsg").html(response.errors.confirmPassword);
         }
       },
       error: function (err) {

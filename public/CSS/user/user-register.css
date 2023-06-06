@@ -298,6 +298,45 @@ input:autofill
     cursor: pointer;
 }
 
+.Uerror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+
+.Perror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+.Perrortoo {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+
+.Eerror {
+    color: darkred;
+    background-color: #ffe0e0;
+    padding: 3px;
+    border-radius: 2px;
+    position: absolute;
+    top: 100%;
+    left: 22%;
+}
+
 /* phones */
 @media only screen and (max-width: 600px) {
     .URegsiter{

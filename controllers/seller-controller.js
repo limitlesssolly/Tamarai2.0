@@ -52,6 +52,7 @@ const signup = async (req, res, next) => {
         username: req.body.username,
         password: hashPass,
         confirmPassword: CPassword,
+        type: "seller",
       });
       await newseller.save();
 

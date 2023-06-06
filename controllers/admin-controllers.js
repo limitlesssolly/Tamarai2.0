@@ -50,6 +50,7 @@ const signups = async (req, res, next) => {
       username: req.body.username,
       password: Password,
       confirmPassword: CPassword,
+      type: "user",
     });
     await newuser.save();
     console.log('user Created');
@@ -70,6 +71,7 @@ const signupstoo = async (req, res, next) => {
       username: req.body.username,
       password: Password,
       confirmPassword: CPassword,
+      type: "seller",
     });
     await newseller.save();
     console.log('seller Created');
@@ -87,6 +89,7 @@ const signupstre = async (req, res, next) => {
     const newadmin = new admin({
       username: req.body.username,
       password: Password,
+      type: "admin",
     });
     await newadmin.save();
     console.log('admin Created');

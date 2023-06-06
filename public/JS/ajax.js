@@ -1,14 +1,14 @@
 $(document).ready(function () {
-    $("#un").on('keyup', function (e) {
+    $("#username").on('keyup', function (e) {
         e.preventDefault();
-        var data = $('#un').val();
+        var data = $('#username').val();
         $.ajax({
             url: '/user/checkUN',
             method: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ UserName: data }),
+            data: JSON.stringify({ username: data }),
             success: function (response) {
-                $('#result').html('UserName is ' + response);
+                $('#result').html('username is ' + response);
 
                 if (response == 'taken') {
                     $('#result').css("color", "red");
