@@ -58,7 +58,15 @@ router.get('/', async (req, res, next) => {
 
 // Get a single product by its ID
 router.get("/:id", (req, res, next) => {
-    res.send(`Single product test message ${req.params.id}`);
+    // res.send(`Single product test message ${req.params.id}`);
+    var query = { "_id": req.params.id };
+    Products.find(query)
+    .then(result => {
+        res.render('productaya', {  })
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
 
 //Create a product: /products
