@@ -10,7 +10,8 @@
     </title>
     <!-- adding an favicon -->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-    <link rel="stylesheet" href="/css/admin/admin-sellings.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -36,9 +37,9 @@
                     </h4>
                 </div>
                 <div class="image">
-                    <h4>
-                        <%= Products.image%>
-                    </h4>
+                    
+                        <img src="./images/<%= Products.image %>">
+                    
                 </div>
                 <div class="count">
                     <h4>Count In Stock : <%= Products.count%>
@@ -58,6 +59,8 @@
                 </div>
                 <a href="/seller/dashboard/view/delete/<%=Products._id%>" class="delta">Delete</a>
             </div>
+            <%- include('../partials/translate.ejs') %>
+            <%- include('../partials/footer.ejs') %>
         </div>
        
 </body>
