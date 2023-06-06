@@ -7,7 +7,7 @@ import regi from "../models/userRegister.js";
 import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
 
 router.get('/', async function(req, res, next){
-    try {
+    try{
         const cats = await categories.find();
         const productData = await products.find();
         res.render('user/user-homepage', {productData, cats});
@@ -73,6 +73,7 @@ router.get('/whishlist', async(req, res) => {
         wish = await products.find();
         let wishaya = JSON.parse(wish);
         res.send(wishaya);
+        res.render('user/user-whishlist',{wishlist})
     } catch(e) {
         res.send(e);
     }
