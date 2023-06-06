@@ -6,7 +6,7 @@ let admin = false;
 
 router.use(function (req, res, next) {
   if (req.session.type)
-    return res.redirect('/');
+    return res.redirect('/admin');
   else if (req.session.type == 'admin')
     admin = true;
   next();
