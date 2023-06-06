@@ -4,21 +4,6 @@ import user from '../models/userRegister.js';
 import kitty from '../models/categories.js'
 import bcrypt from 'bcrypt';
 
-// const deleteUser = async (req, res,next)=>{
-//   Employees.findByIdAndDelete(req.params.id)
-//   .then(result => {
-     
-//       if (err) {
-//         throw err;
-//       }
-//       res.redirect('/admin/admin-dashboard', { user: (req.session.user === undefined ? "" : req.session.user) });
-  
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-// };
-
 const signins = async (req, res, next) => {
     const { username, password} = req.body;
 
@@ -42,7 +27,7 @@ const signins = async (req, res, next) => {
       if (req.query.ajax)
           return res.json({ errors: errorMsg, admin: false });
       else
-          return res.redirect("/admin", { errorMsg, admin: false });
+          return res.render("admin/admin-sign-in", { errorMsg, admin: false });
   }
     if (admindb)
     {
