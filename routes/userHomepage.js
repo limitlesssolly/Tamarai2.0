@@ -115,19 +115,7 @@ router.use((req, res, next) => {
     }
 })
 
-router.post('/profile/:id', async (req, res) => {
-    const regs = await regi.findById(req.params.id);
-    regs.username = req.body.username;
-    regs.email = req.body.email;
-    // regs.password = req.body.password;
-    await regs.save();
 
-    // Retrieve the updated seller data from the database
-    const updateduser = await regi.findById(req.params.id);
-
-    // Render the "profile" view with the updated seller data
-    res.render('user/user-profile', { regs: updateduser });
-});
 
 router.use((req, res, next) => {
     if (req.session.user) next();
