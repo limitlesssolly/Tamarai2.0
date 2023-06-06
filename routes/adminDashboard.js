@@ -100,7 +100,7 @@ router.get('/usings/delete/:id', async function(req, res, next) {
     const id = req.params.id;
     const data = await Users.findByIdAndDelete(id)
     console.log(`user ${data.username} has been deleted..`)
-    return res.redirect('/seller/dashboard/usings');
+    return res.redirect('/admin/dashboard/usings');
 })
 
 export default router;
