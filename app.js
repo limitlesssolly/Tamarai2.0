@@ -9,7 +9,7 @@ import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import dotenv from 'dotenv';
 import passport from "passport";
-
+import expressMessages from "express-messages";
 import strats from './strategies/local.js';
 dotenv.config();
 
@@ -23,20 +23,20 @@ import userRouter from "./routes/user.js";
 import userHomepageRouter from './routes/userHomepage.js'
 import productRouter from "./routes/product.js";
 import productestRouter from "./routes/products.js";
- 
+
 
 var siteStatusData = {
-	labels: ['Up', 'Down', 'Degraded'],
-	datasets: [{
-		label: 'Site Status',
-		data: [75, 5, 20],
-		backgroundColor: [
-			'rgba(52, 152, 219, 0.8)',
-			'rgba(231, 76, 60, 0.8)'
-        ]	 
-        }
-    ]}
-//Read the current directory name
+        labels: ['Up', 'Down', 'Degraded'],
+        datasets: [{
+            label: 'Site Status',
+            data: [75, 5, 20],
+            backgroundColor: [
+                'rgba(52, 152, 219, 0.8)',
+                'rgba(231, 76, 60, 0.8)'
+            ]
+        }]
+    }
+    //Read the current directory name
 export const __filename = fileURLToPath(
     import.meta.url);
 export const __dirname = path.dirname(__filename);
@@ -68,6 +68,11 @@ console.log("ENV: ", app.get('env'));
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(require('connect-flash')());
+app.use(function(req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
+});
 
 //setup routes
 app.use('/', mainRouter);
