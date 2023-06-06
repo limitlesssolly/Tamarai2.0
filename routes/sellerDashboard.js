@@ -14,7 +14,7 @@ import {
 import regi from "../models/tryseller.js";
 
 /* GET /seller/dashboard page. */
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
     res.render('seller/seller-dashboard');
 })
 
@@ -25,7 +25,7 @@ router.get('/', function (req, res, next) {
 // });
 
 /* GET /seller/dashboard/add page. */
-router.get('/add', async function (req, res, next) {
+router.get('/add', async function(req, res, next) {
     const Cats = await cats.find();
     res.render('seller/seller-add', {
         Cats
@@ -35,13 +35,13 @@ router.get('/add', async function (req, res, next) {
 /* post an item */
 router.post('/add', addItem);
 
-router.get('/products', async function (req, res, next) {
+router.get('/products', async function(req, res, next) {
     const Products = await Prod.find();
-    res.render('seller/seller-products', { Products});
+    res.render('seller/seller-products', { Products });
 })
 
 /* GET /seller/dashboard/view page. */
-router.get('/view', async function (req, res, next) {
+router.get('/view', async function(req, res, next) {
     const Products = await Prod.find();
     res.render('seller/seller-view', {
         Products
@@ -49,25 +49,25 @@ router.get('/view', async function (req, res, next) {
 })
 
 /* Delete One item using id */
-router.get('/view/delete/:id', async function (req, res, next) {
+router.get('/view/delete/:id', async function(req, res, next) {
     const id = req.params.id;
     const data = await Prod.findByIdAndDelete(id)
     console.log(`Item ${data.name} has been deleted..`)
     return res.redirect('/seller/dashboard/view');
 })
-router.get('/view/view/:id', async function (req, res, next) {
-    const Products = await Prod.findById(req.params.id);
-    res.render('seller/seller-single-product', {
-        Products
-    });
-})
-/* GET /seller/dashboard/info page. */
-router.get('/info', function (req, res, next) {
+router.get('/view/view/:id', async function(req, res, next) {
+        const Products = await Prod.findById(req.params.id);
+        res.render('seller/seller-single-product', {
+            Products
+        });
+    })
+    /* GET /seller/dashboard/info page. */
+router.get('/info', function(req, res, next) {
     res.render('seller/seller-info');
 })
 
 /* GET /seller/dashboard/profile page. */
-router.get('/profile', async (req, res) => {
+router.get('/profile', async(req, res) => {
     const sellers = await regi.find();
     res.render('seller/seller-profile', {
         sellers
@@ -75,24 +75,24 @@ router.get('/profile', async (req, res) => {
 });
 
 /* GET /seller/dashboard/profile page. */
-router.get('/profile/:id', async (req, res) => {
+router.get('/profile/:id', async(req, res) => {
     const regs = await regi.findById(req.params.id);
     res.render('seller/seller-profile', {
         regs
     });
 });
 
-app.get('/image/:id', function(req, res) {
-    const id = req.params.id;
-    products.findOne({ _id: ObjectId(id) }, function(err, result) {
-      if (err) throw err;
-      res.set('Content-Type', result.image.contentType);
-      res.send(result.image.data);
-    });
-  });
+// app.get('/image/:id', function(req, res) {
+//     const id = req.params.id;
+//     products.findOne({ _id: ObjectId(id) }, function(err, result) {
+//       if (err) throw err;
+//       res.set('Content-Type', result.image.contentType);
+//       res.send(result.image.data);
+//     });
+//   });
 
-  
-router.post('/profile/:id', async (req, res) => {
+
+router.post('/profile/:id', async(req, res) => {
     const regs = await regi.findById(req.params.id);
     regs.username = req.body.username;
     regs.email = req.body.email;
