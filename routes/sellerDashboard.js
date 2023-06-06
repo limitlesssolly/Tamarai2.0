@@ -37,7 +37,7 @@ router.post('/add', addItem);
 
 router.get('/products', async function (req, res, next) {
     const Products = await Prod.find();
-    res.render('seller/seller-products', { Products});
+    res.render('seller/seller-products', {Products});
 })
 
 /* GET /seller/dashboard/view page. */
@@ -81,6 +81,15 @@ router.get('/profile/:id', async (req, res) => {
         regs
     });
 });
+
+// router.get('/image/:id', function(req, res) {
+//     const id = req.params.id;
+//     products.findOne({ _id: ObjectId(id) }, function(err, result) {
+//       if (err) throw err;
+//       res.set('Content-Type', result.image.contentType);
+//       res.send(result.image.data);
+//     });
+//   });
 
 
 router.post('/profile/:id', async (req, res) => {

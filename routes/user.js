@@ -32,6 +32,9 @@ router.get('/cat/:name', async (req, res) => {
 router.post('/', signins);
 router.post('/register',signup);
 
+// for search DO NOT DELETE THIS PLEASE
+// DO NOT 
+// I CAN SEE YOU
 router.post('/getProducts', async (req, res) => {
     let payload = req.body.payload.trim();
     console.log(payload);
