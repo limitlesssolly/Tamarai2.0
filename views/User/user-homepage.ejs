@@ -18,97 +18,96 @@
 <body>
     <%- include ('../partials/usernav.ejs')%>
 
-        <div id="header">
-            <ul class="links">
-                <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
-                <% cats.forEach(function(cat) { %>
-                    <li class="link-item">
-                        <a href="/cat/:name" class="link">
-                            <%= cat.name %>
-                        </a>
-                    </li>
-                    <% }); %>
-            </ul>
+    <div id="header">
+        <ul class="links">
+            <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
+            <% cats.forEach(function(cat) { %>
+            <li class="link-item">
+                <a href="/cat/:name" class="link">
+                    <%= cat.name %>
+                </a>
+            </li>
+            <% }); %>
+        </ul>
+    </div>
+
+    <header class="hero-section section">
+        <div class="content">
+            <img src="/images/theblackicon.png" class="logo" alt="Tamarai's Logo">
+            <p class="sub-heading">Best collection of all time.</p>
         </div>
+    </header>
 
-        <header class="hero-section section">
-            <div class="content">
-                <img src="/images/theblackicon.png" class="logo" alt="Tamarai's Logo">
-                <p class="sub-heading">Best collection of all time.</p>
-            </div>
-        </header>
+    <section class="product">
 
-        <section class="product">
+        <div class="product-container">
 
-            <div class="product-container">
+            <section class="products">
 
-                <section class="products">
+                <h2 class="product-category">Best Selling</h2>
 
-                    <h2 class="product-category">Best Selling</h2>
+                <button class="pre-btn"><img src="/images/right-arrow.png" alt="left-arrow"></button>
+                <button class="nxt-btn"><img src="/images/right-arrow.png" alt="right-arrow"></button>
 
-                    <button class="pre-btn"><img src="/images/right-arrow.png" alt="left-arrow"></button>
-                    <button class="nxt-btn"><img src="/images/right-arrow.png" alt="right-arrow"></button>
+                <div class="product-container">
+                    <% productData.forEach(function(product) { %>
 
-                    <div class="product-container">
-                        <% productData.forEach(function(product) { %>
+                    <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
 
-                            <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <% if (product.discount> 0) { %>
+                            <span class="discount-tag">
+                                <%= product.discount %>% off
+                            </span>
+                            <% } %>
+                            <a href="">
+                                <img src="/images/products/<%= product.image %>" width="100">
+                                <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a>
+                        </div>
 
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <% if (product.discount> 0) { %>
-                                        <span class="discount-tag">
-                                    <%= product.discount %>% off
-                                    </span>
-                                        <% } %>
-                                            <a href="">
-                                                <img src="/images/products/<%= product.image %>" width="100">
-                                            <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a>
-                                </div>
-
-                                <div class="product-info">
-                                    <a href="/product/<%= product._id %>">
-                                        <h2>
-                                            <%= product.name %>
-                                        </h2>
-                                    </a>
-                                    <h5 class="product-brand">
-                                        <%= product.seller%>
-                                    </h5>
-                                    <p class="product-short-des">
-                                        <%= product.description %>
-                                    </p>
-                                    <% if (product.discount> 0) { %>
-                                        <span class="price">
-                                            <%= product.price %>L.E.
-                                        </span>
-                                        <span class="actual-price">
-                                            <%= product.price %>L.E.
-                                        </span>
-                                        <% } else { %>
-                                            <span class="price">
-                                                <%= product.price %>L.E.
-                                            </span>
-                                            <% } %>
-                                </div>
-                            </div>
-                            <% }); %>
+                        <div class="product-info">
+                            <a href="/product/<%= product._id %>">
+                                <h2>
+                                    <%= product.name %>
+                                </h2>
+                            </a>
+                            <h5 class="product-brand">
+                                <%= product.seller%>
+                            </h5>
+                            <p class="product-short-des">
+                                <%= product.description %>
+                            </p>
+                            <% if (product.discount> 0) { %>
+                            <span class="price">
+                                <%= product.price %>L.E.
+                            </span>
+                            <span class="actual-price">
+                                <%= product.price %>L.E.
+                            </span>
+                            <% } else { %>
+                            <span class="price">
+                                <%= product.price %>L.E.
+                            </span>
+                            <% } %>
+                        </div>
                     </div>
-                </section>
-        </section>
+                    <% }); %>
+                </div>
+            </section>
+    </section>
 
-        <h1>Shop by Category</h1>
+    <h1>Shop by Category</h1>
 
-        <div class="chatbox">
-            <div id="chatbox"></div>
-        </div>
-
-        <%- include('../partials/footer.ejs') %>
-            <%- include('../partials/translate.ejs') %>
-
-</body>
-
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+    <div class="chatbox">
+        <div id="chatbox"></div>
+    </div>
+   
+     <%- include('../partials/footer.ejs') %>
+        <%- include('../partials/translate.ejs') %> </body>
+         <script src="/public/Js/home.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js">
+    </script>
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 
 </html>
