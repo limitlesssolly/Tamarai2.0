@@ -5,6 +5,7 @@ import Users from '../models/userRegister.js';
 import shop from '../models/shopping-bag.js';
 import numusers from '../models/noOfuser.js'
 import { signups, signupstoo, signupstre, addCategory } from "../controllers/admin-controllers.js";
+
 import { noOfusers , deleteUser } from "../controllers/admin-controllers.js";
 import dotenv from "dotenv";
 const router = Router();
@@ -58,7 +59,29 @@ const yarab = await Prod.find();
  }
 let real_revenue =revenue*0.01;
  console.log(revenue);
- 
+
+//  const product = await Prod.findById(req.params.id);
+//   let count ={} ;
+//   let counter =0;
+//  for(let i =0;i<product.length;i++)
+//  {
+//    if( res.render('user/productaya', { product }))
+//    {
+//         count.push(product);
+        
+//         for(let i=0;i<count.length;i++)
+//           {
+//              for(let j=0;j<count.length;j++)
+//                       if (count[i]==count[j+1])
+//                       {
+//                            counter ++;
+//                       }
+//           }
+//    }
+
+//  }
+//   console.log(counter);
+  
 res.render('admin/admin-stats',{ay7aga,real_revenue});
  
 
