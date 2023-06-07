@@ -45,15 +45,7 @@ router.get("/products", async function (req, res, next) {
 /* GET /seller/dashboard/view page. */
 router.get("/view", async function (req, res, next) {
   const Products = await Prod.find();
-  res.render("seller/seller-view", {Products});
-});
-
-/* Delete One item using id */
-router.get("/view/delete/:id", async function (req, res, next) {
-  const id = req.params.id;
-  const data = await Prod.findByIdAndDelete(id);
-  console.log(`Item ${data.name} has been deleted..`);
-  return res.redirect("/seller/dashboard/view");
+  res.render("seller/seller-products", {Products});
 });
 
 router.get("/view/view/:id", async function (req, res, next) {
@@ -63,23 +55,34 @@ router.get("/view/view/:id", async function (req, res, next) {
   });
 });
 
+/* Delete One item using id */
+router.get("/view/delete/:id", async function (req, res, next) {
+  const id = req.params.id;
+  const data = await Prod.findByIdAndDelete(id);
+  console.log(`Item ${data.name} has been deleted..`);
+  return res.redirect("/seller/dashboard/products");
+});
+
+
 router.post('/view/edit/:id', async (req, res) => {
-  const regs = await Prod.findById(req.params.id);
-  regs.name = req.body.name;
-  regs.brand = req.body.brand;
-  regs.price = req.body.price;
-  regs.description = req.body.description;
-  regs.count = regs.body.count;
-  regs.category = regs.body.category;
-  regs.color=regs.body.color;
-  // regs.password = req.body.password;
-  await regs.save();
+  console.log("Entered post");
+  const Products = await Prod.findById(req.params.id);
+  Products.name = req.body.name;
+  Products.brand = req.body.brand;
+  Products.price = req.body.price;
+   Products.description = req.body.description;
+   Products.count = req.body.count;
+   Products.category = req.body.category;
+  // regs.color=req.body.color;
+  await Products.save();
 
   // Retrieve the updated seller data from the database
   const updatedpro = await Prod.findById(req.params.id);
-
+  const Cats = await cats.find();
+console.log("WIll render");
   // Render the "profile" view with the updated seller data
-  res.render('seller/editPro', { regs: updatedpro });
+  res.render('seller/seller-single-product', { Products: updatedpro, Cats });
+  console.log("DONE");
 });
 
 /* GET /seller/dashboard/info page. */

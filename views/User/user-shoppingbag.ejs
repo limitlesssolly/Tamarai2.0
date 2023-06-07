@@ -1,164 +1,85 @@
 <title>
     Cart</title>
+
+
+<link rel="stylesheet" type="text/css" href="/css/sellerproducts.css">
+<link rel="stylesheet" type="text/css" href="/css/grid-template.css">
+<link rel="stylesheet" href="/css/add.css">
+<link rel="stylesheet" href="/css/sellersc.css">
+<link rel="stylesheet" href="/css/shoppingbag.css">
+<link rel="stylesheet" type="text/css" href="/css/user/wishlist.css">
+
+
+
 </head>
 
 <body>
-    <%- include("../partials/usernav") %>
-        <div class="alert-target">
+    <div class="grid-container">
 
+        <div class="header">
+            <%- include('../partials/usernav.ejs') %>
+                <div class="alert-target">
+
+                </div>
         </div>
-        <main class="container">
-            <% if (bag.length > 0) { %>
-                <table>
-                    <tr>
-                        <th>Product name</th>
-                        <th>Brand</th>
-                        <th>Category</th>
-                        <th>Action</th>
-                    </tr>
+        <div class="body">
+            <div class="prlist">
+                <div class="headoflists">
+                    <div class="buttons">
+                        <h3 class="prlist-heading">My Bag</h3>
+                        <button class="prlist-action" onclick="remove_all()">Remove all</button>
+                    </div>
+                </div>
+                <div <% if (bag.length> 0) { %>
+
                     <%bag.forEach(function(mybag) { %>
-                        <td>
-                            <%= mybag.name %>
-                        </td>
-                        <td>
-                            <%= mybag.brand %>
-                        </td>
-                        <td>
-                            <%= mybag.seller %>
-                        </td>
-                        <td>
-                            <%= mybag.price %>
-                        </td>
-                        <td>
-                            <%= mybag.image %>
-                        </td>
-                        <td>
-                            <%= mybag.count %>
-                        </td>
-                        <td>
-                            <%= mybag.description %>
-                        </td>
-                        <td>
-                            <%= mybag.category %>
-                        </td>
-                        <td>
-                            <%= mybag.color %>
-                        </td>
+                        <div>
+                            <div class="image-box">
+                                <img src="/images/products/<%= mybag.image %>" class="product-thumb" alt="product">
+                            </div>
+                            <div class="about">
+                                <h1 class="title">
+                                    <%= mybag.name %>
+                                </h1>
+                                <h3 class="subtitle">
+                                    <%= mybag.seller%>
+                                </h3>
+                                <img src="photos/street.jpg" alt="street" style="height: 30px;" />
+                            </div>
+                            <div class="counter"></div>
+                            <div class="prices"></div>
+                            <div class="counter">
+                                <button class="btn" onclick="counting()">+</button>
+                                <!-- <div class="btn">+</div> -->
+                                <div class="count">1</div>
+                                <button class="btn" onclick="decreasing()">-</button>
+                                <!-- <div class="btn">-</div> -->
+                            </div>
+                            <div class="prices">
+                                <div class="amount">
+                                    <%= mybag.price%>
+                                </div>
+                                <div class="save"><u>Save for later</u></div>
+                                <button class="remove" onclick="remove_element()"><u>Remove</u></button>
+                            </div>
+                            <% }); %>
+
+                        </div>
+                        <%  }else { %>
+                            <p>Your my bag is currently empty.</p>
+                            <% } %>
 
 
-                        <% }) %>
-                </table>
-                <%  }else { %>
-                    <p>Your my bag is currently empty.</p>
-                    <% } %>
+                </div>
 
+            </div>
+        </div>
 
-        </main>
-        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-        <script>
-            const postOrder = async(url, data) => {
-                console.log("Entered in to fetch")
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                return response.json();
-            }
-            const razorpay = (order) => {
-                var options = {
-                    "key": order.rzp_key,
-                    "amount": order.amount,
-                    "currency": "INR",
-                    "name": "APNA CART",
-                    "description": "Test Transaction",
-                    "order_id": order.id,
-                    "image": "https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG38.png",
-                    "handler": function(response) {
-                        // alert(response.razorpay_payment_id);
-                        // alert(response.razorpay_order_id);
-                        // alert(response.razorpay_signature)
-                        console.log(response);
-                        console.log(response)
-                        response.order = order;
-                        fetch('/user/order/verify', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(response)
-                        }).then((res) => {
-                            return res.json()
-                        }).then((resData) => {
-                            if (resData.status == `success`)
-                                window.location.href = `/user/orders`
-                        }).catch(() => console.log("OOps Could not send Data"))
-                    },
-                    "prefill": {
-                        "name": "<%=//loginUser ? loginUser.username : 'not set'%>",
-                        "email": "<%=//loginUser ? loginUser.email : 'not set'%>",
+    </div>
 
-                    },
-                    "notes": {
-                        "address": "Razorpay Corporate Office"
-                    },
-                    "theme": {
-                        "color": "#00BCD4"
-                    }
-                };
-                var rzp1 = new Razorpay(options);
-                rzp1.on('payment.failed', function(response) {
-
-                    fetch("/user/order/paymentfail", {
-                        method: "POST",
-                        headers: {
-                            'Content-Type': "application/json"
-                        },
-                        body: JSON.stringify(response)
-                    }).then((res) => {
-                        return res.json()
-                    }).then((res) => {
-                        window.location.href = res.redirect
-                    });
-                });
-                console.log("Hit the RZP")
-                rzp1.open();
-
-            }
-            document.getElementById("rzp-checkout").addEventListener("click", (e) => {
-                    e.preventDefault();
-                    const amount = document.getElementById("finalPrice").innerText * 100;
-                    console.log(amount);
-                    let data = {
-                        amount: amount,
-                        currency: "INR",
-                    }
-
-                    postOrder("/user/order", data).then((order) => {
-
-                        if (order.failure) {
-                            window.location.href = "/user/cart";
-                        } else {
-                            document.getElementById('paymentModalLabel').innerText = order.id;
-                            const myModal = new mdb.Modal(document.getElementById('paymentModal'), {
-                                backdrop: `static`
-                            });
-                            myModal.show();
-                            document.getElementById('rzp-payment').addEventListener("click", (e) => {
-                                razorpay(order);
-                            })
-                        }
-                    })
-                })
-                //     .catch((e)=>{
-                //             document.getElementById('alert-target').innerHTML=`<div class="alert alert-danger" id="fail-alert" role="alert">
-                //     There was a problem with payment! Please Try again!
-                //   </div>`
-                //   const myAlert = document.getElementById('fail-alert');
-                //   const bsAlert = new bootstrap.Alert(myAlert);
-                //   setTimeout(()=>{bsAlert.close()},3000);
-                //     })
-        </script>
-        <%- include("../partials/footer") %>
+    <div class="chatbox ">
+        <div>
+            <%- include('../partials/chat.ejs') %>
+        </div>
+    </div>
+</body>
