@@ -14,11 +14,33 @@
 <body>
         <%- include('../partials/adminNav.ejs') %>
         <div class="contents">
+            <section class="status">
+                <h2>Site Status</h2>
+                <canvas id="siteStatusChart"></canvas>
+            </section>
+            <section class="revenue">
+                <h2>Revenue</h2>
+                <p><%= real_revenue %></p>
+            </section>
+            <section class="usersdats">
+                <h2>Users</h2>
+                <p><%= ay7aga %></p>
+            </section>
+            <section class="sellersdats">
+                <h2>Sellers</h2>
+                <p><%= ay7agatoo %></p>
+            </section>
             <div class="addcategory">
                 <%- include('../partials/categories.ejs') %>
             </div>
         </div>
         <%- include('../partials/footer.ejs') %>
 </body>
-
+<script>
+    // Replace the placeholders with actual data
+    document.getElementById("status").textContent = "Online";
+    document.getElementById("users").textContent = "1000";
+    document.getElementById("revenue").textContent = "$5000";
+    document.getElementById("traffic-sources").textContent = "Organic, Referral, Direct";
+</script>
 </html>

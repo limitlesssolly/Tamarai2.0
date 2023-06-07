@@ -4,6 +4,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-family: 'Ubuntu', sans-serif;
     margin: 0;
+    
 }
 
 h3
@@ -16,12 +17,16 @@ h3
 }
 
 table {
+    
     position: absolute;
     left: 75%;
-    top: 20%;
+    top: 25%;
     border-collapse: collapse;
     width: 20%;
-    
+    box-shadow: 0px 5px 10px #89bbbb;
+    box-shadow: 0px 5px 10px #1C4C56;
+    width: 20%;
+    height: 60%;
 }
 
 th,
@@ -29,7 +34,6 @@ td {
     
     text-align: center;
     padding: 8px;
-    border-bottom: 1px solid #d6bd91;
 }
 
 tr:nth-child(even) {
@@ -37,6 +41,7 @@ tr:nth-child(even) {
 }
 
 th {
+    
     background-color: #1c4c56;
     color: white;
 }
