@@ -122,7 +122,7 @@ const addItem = async (req, res, next) => {
     const newItem = new products({
       name: req.body.name,
       brand: req.body.brand,
-      seller: req.body.seller,
+      seller: req.session.username,
       price: req.body.price,
       image: req.body.name +  path.extname(imgFile.name),
       count: req.body.count,

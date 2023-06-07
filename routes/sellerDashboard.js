@@ -1,6 +1,7 @@
 import { Router } from "express";
 const router = Router();
 import Prod from "../models/productData.js";
+import rege from '../models/tryseller.js';
 import cats from "../models/categories.js";
 import { addItem } from "../controllers/seller-controller.js";
 import { getSellerProducts } from "../controllers/products-controllers.js";
@@ -24,8 +25,9 @@ router.get("/analysis", async function (req, res, next) {
 /* GET /seller/dashboard/add page. */
 router.get("/add", async function (req, res, next) {
   const Cats = await cats.find();
+  const regs = await regi.findById(req.session.Id);
   res.render("seller/seller-add", {
-    Cats,
+    Cats, regs
   });
 });
 
