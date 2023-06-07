@@ -80,16 +80,17 @@ router.get('/category/delete/:id', async function (req, res, next) {
 
 
 router.get('/stats', function (req, res, next) {
-    const url = 'mongodb://localhost:27017/explorer/test';
+    const url = 'mongodb://localhost:127.0.0.1/explorer/test/users/find';
     const dbname = 'User';
-    
+    conole.log("hi");
     MongoClient.connect(url).then((client) => {
+    conole.log("hello");
       const connect = client.db(dbname);
       const collection = connect.collection('users');
       
       collection.countDocuments().then((count_documents) => {
-        const numusers = new numusers({ usersno: count_documents });
-        numusers.save().then(() => {
+        const numuserss = new numusers({ usersno: count_documents });
+        numuserss.save().then(() => {
             console.log("hi");
           console.log(`Saved ${count_documents} users`);
           

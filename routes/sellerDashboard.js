@@ -73,7 +73,6 @@ router.get("/profile", async (req, res) => {
 
 /* GET /seller/dashboard/profile page. */
 router.get("/profile/:id", async (req, res) => {
-  // res.send("HELLO");
   const regs = await regi.findById(req.session.Id);
   res.render("seller/seller-profile", { regs });
 });

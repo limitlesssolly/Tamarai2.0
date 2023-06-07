@@ -26,8 +26,8 @@ router.get('/', function (req, res, next) {
 router.get('/cat/:name', async (req, res) => {
     var query = { "name": req.params.name };
     console.log(query);
-    const prod = await Products.findOne();
-    res.render('user/cat', {catname: query}, {prod});
+    const product = await Products.findOne();
+    res.render('user/cat', {product}, {catname: query});
 });
 
 router.post('/', signins);
