@@ -60,7 +60,7 @@
                                     <% if (product.image == "") { %>
                                         <img src="images/no-image.png" class="product-thumb" alt="No image available">
                                         <% } else { %>
-                                            <a href="/seller/dashboard/view/view/<%= product._id %>"><img
+                                            <a href="/product/<%= product._id %>"><img
                                             src="/images/products/<%= product.image %>" class="product-thumb" alt="product">
                                             <!-- <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a> -->
                                             <a class="card-btn" href="./homepage/bag/add/<%= product._id %>">Add to Bag</a>

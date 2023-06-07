@@ -25,14 +25,15 @@ router.get("/analysis", async function (req, res, next) {
 router.get("/add", async function (req, res, next) {
   const Cats = await cats.find();
   const regs = await regi.findById(req.session.Id);
-  res.render("seller/seller-add", {Cats, regs});
+  const sell = regs.username;
+  res.render("seller/seller-add", {Cats, sell});
 });
 
 /* post an item */
 router.post("/add", addItem);
 
 router.get("/products", async function (req, res, next) {
-  console.log('products');
+  // console.log('products');
   const regs = await regi.findById(req.session.Id);
   const sell = regs.username;
   // console.log(sell);
