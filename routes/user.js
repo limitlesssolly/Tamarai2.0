@@ -1,5 +1,6 @@
 import express from 'express';
 import Products from "../models/productData.js";
+import categories from '../models/categories.js';
 import {signins,signup,} from "../controllers/user-controllers.js";
 
 const router = express.Router();
@@ -22,12 +23,11 @@ router.get('/', function (req, res, next) {
     res.render('user/user-register', { errorMsg: {}, admin: admin })
 });
 
-// Get /user/cat/:name 
-router.get('/cat/:name', async (req, res) => {
-    var query = { "name": req.params.name };
-    console.log(query);
-    const product = await Products.findOne();
-    res.render('user/cat', {product}, {catname: query});
+// Get /user/cat/:id 
+router.get('/cat/:id', async (req, res) => {
+    const cats = await categories.findById(req.params.id);
+    const prods = await Products.find();
+    res.render('user/cat', {cats, prods});
 });
 
 router.post('/', signins);

@@ -18,65 +18,55 @@
 <body>
     <%- include ('../partials/usernav.ejs')%>
 
-    <div id="header">
-        <ul class="links">
-            <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
-            <% cats.forEach(function(cat) { %>
-            <li class="link-item">
-                <a href="/user/cat/:name" class="link">
-                    <%= cat.name %>
-                </a>
-            </li>
-            <% }); %>
-        </ul>
-    </div>
-
-    <header class="hero-section section">
-        <div class="content">
-            <img src="/images/theblackicon.png" class="logo" alt="Tamarai's Logo">
-            <p class="sub-heading">Best collection of all time.</p>
+        <div id="header">
+            <ul class="links">
+                <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
+                <% cats.forEach(function(cat) { %>
+                    <li class="link-item">
+                        <a href="/user/cat/<%= cat._id%>" class="link">
+                            <%= cat.name %>
+                        </a>
+                    </li>
+                    <% }); %>
+            </ul>
         </div>
-    </header>
 
-    <section class="product">
+        <header class="hero-section section">
+            <div class="content">
+                <img src="/images/theblackicon.png" class="logo" alt="Tamarai's Logo">
+                <p class="sub-heading">Best collection of all time.</p>
+            </div>
+        </header>
 
-        <div class="product-container">
+        <section class="product">
 
-            <section class="products">
+            <div class="product-container">
 
-                <h2 class="product-category">Best Selling</h2>
+                <section class="products">
 
-                <button class="pre-btn"><img src="/images/right-arrow.png" alt="left-arrow"></button>
-                <button class="nxt-btn"><img src="/images/right-arrow.png" alt="right-arrow"></button>
+                    <h2 class="product-category">Best Selling</h2>
 
-                <div class="product-container">
-                    <% productData.forEach(function(product) { %>
+                    <button class="pre-btn"><img src="/images/right-arrow.png" alt="left-arrow"></button>
+                    <button class="nxt-btn"><img src="/images/right-arrow.png" alt="right-arrow"></button>
 
-                    <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
+                    <div class="product-container">
+                        <% productData.forEach(function(product) { %>
 
-                    <div class="product-card">
-                        <div class="product-image">
-                            <% if (product.discount> 0) { %>
-                            <span class="discount-tag">
-                                <%= product.discount %>% off
-                            </span>
-                            <% } %>
-                            <a href="">
-                              <a href="/product/<%= product._id %>"> <img class="pro" src="/images/products/<%= product.image %>"></a> 
-                                <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a>
-                        </div>
+                            <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i
+                                    class="fa-regular fa-star"></i></a>
 
                             <div class="product-card">
                                 <div class="product-image">
                                     <% if (product.discount> 0) { %>
                                         <span class="discount-tag">
-                                    <%= product.discount %>% off
-                                    </span>
+                                            <%= product.discount %>% off
+                                        </span>
                                         <% } %>
-                                                <img src="/images/products/<%= product.image %>" width="100">
-                                            <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a>
+                                            <a href="">
+                                                <a href="/product/<%= product._id %>"> <img class="pro"
+                                                        src="/images/products/<%= product.image %>"></a>
+                                                <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a>
                                 </div>
-
                                 <div class="product-info">
                                     <a href="/product/<%= product._id %>">
                                         <h2>
@@ -86,9 +76,6 @@
                                     <h5 class="product-brand">
                                         <%= product.seller%>
                                     </h5>
-                                    <p class="product-short-des">
-                                        <%= product.description %>
-                                    </p>
                                     <% if (product.discount> 0) { %>
                                         <span class="price">
                                             <%= product.price %>L.E.
@@ -105,21 +92,30 @@
                             </div>
                             <% }); %>
                     </div>
-                </div>
-            </section>
-    </section>
+            </div>
+        </section>
+        </section>
 
-    <h1>Shop by Category</h1>
+        <h1>Shop by Category</h1>
 
-    <div class="chatbox">
-        <div id="chatbox"></div>
-    </div>
-   
-     <%- include('../partials/footer.ejs') %>
-        <%- include('../partials/translate.ejs') %> </body>
-         <script src="/Js/home.js"></script>
-        <script src="https://code.jquery.com/jquery-1.10.2.js">
-    </script>
-    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+        <div class="cats">
+            <% cats.forEach(function(cat) { %>
+                <li class="link-item">
+                    <a href="/user/cat/:name" class="link">
+                        <%= cat.name %>
+                    </a>
+                </li>
+                <% }); %>
+        </div>
+        <div class="chatbox">
+            <div id="chatbox"></div>
+        </div>
+
+            <%- include('../partials/translate.ejs') %>
+</body>
+<script src="/Js/home.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js">
+</script>
+<script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 
 </html>
