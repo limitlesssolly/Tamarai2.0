@@ -56,7 +56,7 @@ const yarab = await Prod.find();
  {
   revenue+= yarab[i].price;
  }
-let real_revenue =revenue*0.7;
+let real_revenue =revenue*0.01;
  console.log(revenue);
 res.render('admin/admin-stats',{ay7aga,real_revenue});
  
