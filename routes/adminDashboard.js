@@ -45,19 +45,20 @@ router.get('/category/delete/:id', async function (req, res, next) {
 router.get ('/stats',async function(req,res,next){
  
 
-const uss = await Users.find({})
+const uss = await Users.find()
 console.log(uss.length);
 let ay7aga=uss.length
  
 const yarab = await Prod.find();
-//const yamosahl=awit
+
  let revenue=0;
  for(let i=0;i<yarab.length;i++)
  {
   revenue+= yarab[i].price;
  }
+let real_revenue =revenue*0.7;
  console.log(revenue);
-res.render('admin/admin-stats',{ay7aga},{revenue});
+res.render('admin/admin-stats',{ay7aga,real_revenue});
  
 
 })
