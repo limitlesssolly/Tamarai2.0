@@ -11,7 +11,7 @@ body {
 h1,
 p {
     text-align: center;
-    color: #89bbbb;
+    color: #1C4C56;
     font-family: Arial;
 }
 
@@ -48,13 +48,13 @@ li a {
 
 li a:hover {
     background-color: #ffffff;
-    color: #89bbbb;
+    color: #d6bd91;
 }
 
 #navi {
     display: grid;
     grid-template-columns: 7fr 1fr;
-    background-color: #89bbbb;
+    background-color: #d6bd91;
     align-items: center;
 }
 
@@ -216,22 +216,13 @@ section#productslist {
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s ease;
-    -webkit-border-radius: ;
-    -moz-border-radius: ;
-    -ms-border-radius: ;
-    -o-border-radius: ;
 }
 
 .btn-edit:hover {
-    background-color: #89bbbb;
+    background-color: #d6bd91;
 }
 
-
-/* .fa-user-edit {
-    color: whfite;
-  } */
-
 .fa-user-edit:hover {
-    color: #89bbbb;
+    color: #d6bd91;
     /* replace "red" with the desired color */
 }
