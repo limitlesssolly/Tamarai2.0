@@ -39,6 +39,57 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- <title>Document</title> -->
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        justify-content: center;
+        overflow: hidden;
+    }
+    #main {
+        width: 100vw;
+        max-width: 540px;
+        height: 100vh;
+        box-shadow: inset 0 0 10px 4px #1116;
+    }
+    h2 {
+        text-align: center;
+        font-family: sans-serif;
+        background: #1c1c46;
+        color: #fff;
+        padding: 8px;
+        text-shadow: 1px 1px 4px #111;
+        margin-bottom: 8px;
+    }
+    #msg_area {
+        height: 82%;
+        padding: 0 12px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+    #bot {
+        width: 50px;
+        height: 50px;
+        background: url(bot.jpg);
+        background-size: 100%;
+        border-radius: 50%;
+        margin: 10px;
+    }
+    #robot{
+        display: flex;
+        align-items: center;
+    }
+    h3 {
+        font-family: monospace;
+        font-size: 20px;
+    }
+</style>
 <body>
     <div class="main">
         <h2>ChatBox</h2>
@@ -50,6 +101,7 @@
         </div>
         <div id="input">
             <input type="text" id="text" placeholder="New Message">
+            <button id="send">Send <i class="fa fa-paper-plane"></i></button>
         </div>
     </div>
 </body>
