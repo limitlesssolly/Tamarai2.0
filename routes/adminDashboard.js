@@ -52,31 +52,70 @@ router.get('/category/delete/:id', async function (req, res, next) {
 //       console.log('category lots of users isa');
 //     res.redirect('/admin/dashboard/stats');
 
-router.get('/stats', function (req, res, next) {
-    const url = 'mongodb://https://cloud.mongodb.com/v2/6460f00b9631e23c755ff880#/metrics/replicaSet/6460f10e08f9fa5f30a836e6/explorer/test:27017/';
-          console.log("hi");
-    const dbname="User"
-          MongoClient.connect(url).then((client) => {
-        console.log("hi");
-        const connect = client.db(dbname);
-        console.log("hi");
-        const collection = connect.collection("users"); 
-        console.log("hi");
-        collection.countDocuments().then((count_documents) => {
-                    // console.log(count_documents);
-        const col =   Users.findById(req.params.id);
-        const btngan = new numusers({ usersno:col.count_documents });
-               console.log("btngan");
-                 btngan.save();
-             })
-            //  .catch((err) => {
-            //         console.log(err.Message);
-            //        }) 
+// router.get('/stats', function (req, res, next) {
+//     const url = 'mongodb://localhost:27017/explorer/test'
+//           console.log("hi");
+//     const dbname="User"
+//           MongoClient.connect(url).then((client) => {
+//         console.log("hi");
+//         const connect = client.db(User);
+//         console.log("hi");
+//         const collection = connect.collection("users"); 
+//         console.log("hi");
+//         collection.countDocuments().then((count_documents) => {
+//                     // console.log(count_documents);
+//         const col =   Users.findById(req.params.id);
+//         const btngan = new numusers({ usersno:col.count_documents });
+//                console.log("btngan");
+//                  btngan.save();
+//              })
+//             //  .catch((err) => {
+//             //         console.log(err.Message);
+//             //        }) 
        
-        console.log(' lots of users isa');
-        res.render('admin/admin-stats', { btngan });
-})
+//         console.log(' lots of users isa');
+//         res.render('admin/admin-stats', { btngan });
+// })
  
+
+
+router.get('/stats', function (req, res, next) {
+    const url = 'mongodb://localhost:27017/explorer/test';
+    const dbname = 'User';
+    
+    MongoClient.connect(url).then((client) => {
+      const connect = client.db(dbname);
+      const collection = connect.collection('users');
+      
+      collection.countDocuments().then((count_documents) => {
+        const numusers = new numusers({ usersno: count_documents });
+        numusers.save().then(() => {
+            console.log("hi");
+          console.log(`Saved ${count_documents} users`);
+          
+          // Render the page after the data has been saved
+          numusers.find().then((results) => {
+            const btngan = results[0];
+            res.render('admin/admin-stats', { btngan });
+          }).catch((err) => {
+            console.error(err);
+            res.sendStatus(500);
+          });
+        }).catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+      }).catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+    }).catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+  });
+
+
 /* GET /admin/dashboard/messages page. */
 router.get('/messages', function (req, res, next) {
     res.render('admin/admin-messages');
@@ -143,5 +182,5 @@ router.get('/usings/delete/:id', async function(req, res, next) {
     console.log(`user ${data.username} has been deleted..`)
     return res.redirect('/admin/dashboard/usings');
 })
-})
+ 
 export default router;
