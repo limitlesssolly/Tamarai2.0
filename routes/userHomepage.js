@@ -155,9 +155,9 @@
         res.render('user/user-profile', { regs });
     });
 
-    /* GET /seller/dashboard/profile page. */
+    /* GET /user/homepage/profile page. */
     router.get('/profile/:id', async(req, res) => {
-        const regs = await regi.findById(req.params.id);
+        const regs = await regi.findById(req.session.Id);
         res.render('user/user-profile', { regs });
     });
 

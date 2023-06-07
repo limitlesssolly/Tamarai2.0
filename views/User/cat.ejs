@@ -9,8 +9,8 @@
 
 <body>
     <%- include('../partials/usernav.ejs') %>
-    <% if (Products.length> 0) { %>
-        <% Products.forEach(function(product) { %>
+    <% if (product.length> 0) { %>
+        <% product.forEach(function(product) { %>
             <% if (product.category) { %>
                 <section class="product">
                     <div class="product-container">
