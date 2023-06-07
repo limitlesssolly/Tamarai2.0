@@ -5,7 +5,6 @@ import rege from '../models/tryseller.js';
 import cats from "../models/categories.js";
 import { addItem } from "../controllers/seller-controller.js";
 import { getSellerProducts } from "../controllers/products-controllers.js";
-
 import regi from "../models/tryseller.js";
 
 /* GET /seller/dashboard page. */
@@ -33,9 +32,12 @@ router.get("/add", async function (req, res, next) {
 router.post("/add", addItem);
 
 router.get("/products", async function (req, res, next) {
+  console.log('products');
   const regs = await regi.findById(req.session.Id);
+  const sell = regs.username;
+  console.log(sell);
   const Products = await Prod.find();
-  res.render("seller/seller-products", {Products, regs});
+  res.render("seller/seller-products", {Products, sell});
 });
 
 /* GET /seller/dashboard/view page. */
@@ -57,6 +59,20 @@ router.get("/view/view/:id", async function (req, res, next) {
     Products,
   });
 });
+router.post('/view/edit/:id', async (req, res) => {
+  const regs = await regi.findById(req.params.id);
+  regs.username = req.body.username;
+  regs.email = req.body.email;
+  // regs.password = req.body.password;
+  await regs.save();
+
+  // Retrieve the updated seller data from the database
+  const updatedpro = await regi.findById(req.params.id);
+
+  // Render the "profile" view with the updated seller data
+  res.render('seller/seller-single-product', { regs: updatedpro });
+});
+
 /* GET /seller/dashboard/info page. */
 router.get("/info", function (req, res, next) {
   res.render("seller/seller-info");
