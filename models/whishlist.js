@@ -36,6 +36,11 @@ const WishListSchema = new mongoose.Schema ( {
     color: {
         type: Array,
         required: true,
+    },
+    wisher:
+    {
+        type: String,
+        required: true,
     }
 },
 

@@ -111,32 +111,36 @@ router.get('/profile', function(req, res, next) {
     res.render('user/user-profile');
 });
 
-router.get('/add-to-wishlist/:id', async function(req, res, next) {
-        const product = await products.findById(req.params.id);
-        console.log(product);
-        const wishat = new Wishlist({
-            name: product.name,
-            brand: product.brand,
-            seller: product.seller,
-            price: product.price,
-            image: product.image,
-            count: product.count,
-            description: product.description,
-            category: product.categories,
-            color: product.color,
-        });
-        await wishat.save();
-        console.log('et7at');
-        res.redirect('/user/homepage');
-    }
+router.get('/add-to-wishlist/:id', async function (req, res, next) {
+    const product = await products.findById(req.params.id);
+    const regs = await regi.findById(req.session.Id);
+    const uses = regs.username;
+    console.log(product);
+    const wishat = new Wishlist({
+        name: product.name,
+        brand: product.brand,
+        seller: product.seller,
+        price: product.price,
+        image: product.image,
+        count: product.count,
+        description: product.description,
+        category: product.categories,
+        color: product.color,
+        wisher: uses,
+    });
+    await wishat.save();
+    console.log('et7at');
+    res.redirect('/user/homepage');
+}
 
 );
 
-router.get('/whishlist', async function(req, res, next) {
-    const wished = await Wishlist.find();
+router.get('/whishlist', async function (req, res, next) {
+    const regs = await regi.findById(req.session.Id);
+    const uses = regs.username;
+    const wished = await Wishlist.find({wisher : uses});
     console.log(wished);
-    res.render('user/user-whishlist', { wished });
-
+    res.render('user/user-whishlist', {wished});
 })
 
 // Add this debug statement
