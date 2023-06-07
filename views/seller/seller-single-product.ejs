@@ -43,12 +43,12 @@
               id="register-form">
               <div class="form-group">
                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-               <h4>product Name :</h4> 
+                <h4>product Name :</h4>
                 <input type="text" name="name" id="name" value="<%= Products.name %>" placeholder="nameProduct" />
               </div>
               <div class="form-group">
                 <label for="brand"><i class="zmdi zmdi-email"></i></label>
-                <h4>Brand :</h4> 
+                <h4>Brand :</h4>
                 <input type="text" name="brand" id="brand" value=" <%= Products.brand %>" placeholder="Brand Name" />
               </div>
               <div class="form-group">
@@ -58,7 +58,7 @@
               </div>
               <div class="form-group">
                 <label for="description"><i class="zmdi zmdi-email"></i></label>
-                <h4>Description :</h4> 
+                <h4>Description :</h4>
                 <input type="text" name="description" id="description" value=" <%= Products.description %>"
                   placeholder="description" />
               </div>
@@ -72,11 +72,6 @@
                 <h4>Category :</h4>
                 <input type="text" name="category" id="category" value=" <%= Products.category %>"
                   placeholder="categories" />
-                  <datalist id="categories">
-                    <% Cats.forEach(function(cats) { %>
-                      <option value="<%=cats.name%>">
-                    <% }); %>
-                  </datalist>
               </div>
 
               <div class="form-group form-button">

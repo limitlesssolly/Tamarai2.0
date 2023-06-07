@@ -2,14 +2,15 @@ import { Router } from 'express';
 import Prod from '../models/productData.js';
 import kitty from '../models/categories.js';
 import Users from '../models/userRegister.js';
-
+import shop from '../models/shopping-bag.js';
 import numusers from '../models/noOfuser.js'
 import { signups, signupstoo, signupstre, addCategory } from "../controllers/admin-controllers.js";
+
 import { noOfusers , deleteUser } from "../controllers/admin-controllers.js";
 import dotenv from "dotenv";
 const router = Router();
 import MongoClient from 'mongoose';
- import client from 'db';
+ //import client from 'db';
 import mongoose from 'mongoose';
 const MURI = process.env.ATLAS_URI;
 
@@ -41,121 +42,55 @@ router.get('/category/delete/:id', async function (req, res, next) {
 
 /* GET /admin/dashboard/stats page. */
 
-// try{
-//     //const collection = await user.find();
-//     const collection = connect.collection("user");
-//     collection.countDocuments().then((count_documents) => {
-//         console.log(count_documents);
-//       }).catch((err) => {
-//         console.log(err.Message);
-//       })
-//       const btngan = new kitty({usersno: count_documents});
-//       await btngan.save();
-//       console.log('category lots of users isa');
-//     res.redirect('/admin/dashboard/stats');
+  
+router.get ('/stats',async function(req,res,next){
+ 
 
-// router.get('/stats', function (req, res, next) {
-//     const url = 'mongodb://localhost:27017/explorer/test'
-//           console.log("hi");
-//     const dbname="User"
-//           MongoClient.connect(url).then((client) => {
-//         console.log("hi");
-//         const connect = client.db(User);
-//         console.log("hi");
-//         const collection = connect.collection("users"); 
-//         console.log("hi");
-//         collection.countDocuments().then((count_documents) => {
-//                     // console.log(count_documents);
-//         const col =   Users.findById(req.params.id);
-//         const btngan = new numusers({ usersno:col.count_documents });
-//                console.log("btngan");
-//                  btngan.save();
-//              })
-//             //  .catch((err) => {
-//             //         console.log(err.Message);
-//             //        }) 
+const uss = await Users.find()
+console.log(uss.length);
+let ay7aga=uss.length
+ 
+const yarab = await Prod.find();
 
-//         console.log(' lots of users isa');
-//         res.render('admin/admin-stats', { btngan });
-// })
+ let revenue=0;
+ for(let i=0;i<yarab.length;i++)
+ {
+  revenue+= yarab[i].price;
+ }
+let real_revenue =revenue*0.01;
+ console.log(revenue);
 
+//  const product = await Prod.findById(req.params.id);
+//   let count ={} ;
+//   let counter =0;
+//  for(let i =0;i<product.length;i++)
+//  {
+//    if( res.render('user/productaya', { product }))
+//    {
+//         count.push(product);
+        
+//         for(let i=0;i<count.length;i++)
+//           {
+//              for(let j=0;j<count.length;j++)
+//                       if (count[i]==count[j+1])
+//                       {
+//                            counter ++;
+//                       }
+//           }
+//    }
 
+//  }
+//   console.log(counter);
+  
+res.render('admin/admin-stats',{ay7aga,real_revenue});
+ 
 
-// router.get('/stats',async function (req, res, next) {
-//   console.log("hi");
-//     //const url = "mongodb+srv://shahd2100756:RkBLQ6Z3fdyv70qJ@cluster0.huaxthr.mongodb.net/?retryWrites=true&w=majority/explorer/test";
-//     console.log("hi");
-//     const dbname = 'tset';
-//     console.log("hi");
-//     MongoClient.connect(MURI).then ( client => { 
-//     console.log("hello");
-//       const connect =client.db(dbname);
-//       console.log("yarab");
-//       const collection =connect.collection('users');
-//       console.log("yarab efrgha 3lena ")
-//       collection.countDocuments().then((count_documents) => {
-//         const numuserss =  new numusers({ usersno: count_documents });
-//         numuserss.save().then(() => {
-//             console.log("hi");
-//           console.log(`Saved ${count_documents} users`);
-
-//           // Render the page after the data has been saved
-//            numusers.find().then((results) => {
-//             const btngan = results[0];
-//             res.render('admin/admin-stats', { btngan });
-//           }).catch((err) => {
-//             console.error(err);
-//             res.sendStatus(500);
-//           });
-//         }).catch((err) => {
-//           console.error(err);
-//           res.sendStatus(500);
-//         });
-//       }).catch((err) => {
-//         console.error(err);
-//         res.sendStatus(500);
-//       })
-//       .catch((err) => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-//   })   
-//   });
-// router.get('/stats',function(req,res,next){
-// //   Database:GFG
-// // Collection:aayush
-// // Requiring module
+})
+ 
+ 
 
 
-// // Connection URL
-// const url = 'mongodb://localhost:27017/';
-
-// // Database name
-// const databasename = 'test';
-// console.log("5er isa");
-// MongoClient.connect(MURI).then((client) => {
-//   const connect = client.db(databasename);
-//  console.log("zft");
-//   // Connect to collection
-//   const collection = connect.collection("user");
-//   console.log("yarab")
-//   // Count the total documents
-//   collection.countDocuments().then((count_documents) => {
-//     console.log(count_documents);
-//   }).catch((err) => {
-//     console.log(err.Message);
-//   })
-
-// }).catch((err) => {
-//   // Printing the error message
-//   console.log(err.Message);
-// }) 
-//  const Nusers = new {noOfusers:count_documents}
-//    //res.redirect('/admin/dashboard');
-//    res.redirect('/admin-adminDashboard',{Nusers})
-// })
-
-
+//router.get("/stat", CenterController.getCountofCenters);
 // router.get("/stat", CenterController.getCountofCenters);
 
 
@@ -208,10 +143,10 @@ router.get('/usings/seller', function (req, res, next) {
     res.render('admin/admin-add-seller', { errorMsg: {}, admin: admin });
 })
 
-router.post('/addUser', signups);
-router.post('/addSeller', signupstoo);
-router.post('/addAdmin', signupstre);
-router.post('/noOFusers', noOfusers)
+router.post('/addUser',signups); 
+router.post('/addSeller',signupstoo); 
+router.post('/addAdmin',signupstre); 
+//router.post('/noOFusers',noOfusers)
 // router.post('/deleteUSer',deleteUser);
 
 /* GET /admin/dashboard/settings page. */
