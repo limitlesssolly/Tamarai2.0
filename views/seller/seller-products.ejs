@@ -120,28 +120,41 @@
                 </div>
 
                 <% Products.forEach(function(product) { %>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <% if (product.image == "") { %>
-                        <img src="images/no-image.png" class="product-thumb" alt="No image available">
-                        <% } else { %>
-                        <a href="/seller/dashboard/view/view/<%= product._id %>"><img
-                                src="/images/products/<%= product.image %>" class="product-thumb" alt="product">
-                                 <a class="card-btn" href="/seller/dashboard/view/edit/<%= product._id %>">Edit</a>
-                            <% } %>
-                                <% }); %>
-                    </div>
-                </div>
-
+                    <% if (product.seller===sell) { %>
+                        <<div class="product-card" id="product-card">
+                            <div class="product-image">
+                                <% if (product.image=="" ) { %>
+                                    <img src="images/no-image.png" class="product-thumb" alt="No image available">
+                                    <% } else { %>
+                                        <a href="/seller/dashboard/view/view/<%= product._id %>"><img
+                                                src="/images/products/<%= product.image %>" class="product-thumb"
+                                                alt="product">
+                                            <% } %>
+                                        </a>
+                            </div>
+                            <div class="product-info">
+                                <a href="/seller/dashboard/view/view/<%= product._id %>">
+                                    <h2>
+                                        <%= product.name %>
+                                    </h2>
+                                </a>
+                                <span class="price">
+                                    <%=product.price%> L.E
+                                </span>
+                                <!-- <span class="actual-price">200L.E.</span> -->
+                            </div>
         </div>
-    <!-- bybwaz el page  -->
-    <!-- <%- include('../partials/footer.ejs') %> -->
+        <% }%>
+            <% }); %>
+    </div>
+    </div>
+
+    </div>
     <div class="chatbox ">
         <div>
             <%- include('../partials/chat.ejs') %>
         </div>
     </div>
 </body>
-        <%- include('../partials/footer.ejs') %>
 
 </html>
