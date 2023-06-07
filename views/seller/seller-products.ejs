@@ -92,7 +92,7 @@
 </style>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
 </script>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src=/JS/home.js"> </script> <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 
 <body>
@@ -119,7 +119,7 @@
                         <!-- <button type="button" role="button" class="buttonadd"
                             onclick="window.location.href = 'add_product.html';">Add New Item</button> 
                         -->
-                        <a href="/seller/dashboard/add"><button class = "buttonadd">Add New Item</button></a>
+                        <a href="/seller/dashboard/add"><button class="buttonadd">Add New Item</button></a>
                     </div>
 
                 </div>
@@ -129,18 +129,20 @@
                         <% if (product.image == "") { %>
                         <img src="images/no-image.png" class="product-thumb" alt="No image available">
                         <% } else { %>
-                        <img src="/images/products/<%= product.image %>" class="product-thumb"
-                            alt="product">
-                        <% } %>
-
+                        <a href="/seller/dashboard/view/view/<%= product._id %>"><img
+                                src="/images/products/<%= product.image %>" class="product-thumb" alt="product">
+                            <% } %>
+                        </a>
                     </div>
                     <div class="product-info">
                         <h2 class="product-brand">
                             <%= product.seller%>
                         </h2>
-                        <p class="product-short-des">
-                            <%=product.name%>
-                        </p>
+                        <a href="/seller/dashboard/view/view/<%= product._id %>">
+                            <h2>
+                                <%= product.name %>
+                            </h2>
+                        </a>
                         <span class="price"><%=product.price%> L.E</span>
                         <!-- <span class="actual-price">200L.E.</span> -->
                     </div>
@@ -150,13 +152,8 @@
             </div>
         </div>
     </div>
-
-    <div class="chatbox" id="chatbox">
-        
-    </div>
-
     <!-- bybwaz el page  -->
-<!-- <%- include('../partials/footer.ejs') %> -->
+    <!-- <%- include('../partials/footer.ejs') %> -->
 </body>
 
 </html>

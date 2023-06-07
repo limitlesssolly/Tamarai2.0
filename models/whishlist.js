@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const WishListSchema = new mongoose.Schema({
+const WishListSchema = new mongoose.Schema ( {
     name: {
         type: String,
         required: true,
@@ -36,7 +36,7 @@ const WishListSchema = new mongoose.Schema({
     color: {
         type: Array,
         required: true,
-    },
+    }
 },
 
 

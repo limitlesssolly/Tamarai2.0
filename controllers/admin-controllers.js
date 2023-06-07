@@ -243,26 +243,31 @@ const updateItem = async (req, res, next) => {
   }
 };
 
-// const noOfusers= async(req,res,next)=>
-// {
-//   try{
-//     const collection = connect.collection("user");
-//     collection.countDocuments().then((count_documents) => {
-//         console.log(count_documents);
-//       }).catch((err) => {
-//         console.log(err.Message);
-//       })
-//   }
-//   catch(e){
-//     res.send(e);
-//   }
-// }
+const noOfusers= async(req,res,next)=>
+{
+  try{
+    //const collection = await user.find();
+    const collection = connect.collection("user");
+    collection.countDocuments().then((count_documents) => {
+        console.log(count_documents);
+      }).catch((err) => {
+        console.log(err.Message);
+      })
+      const btngan = new kitty({usersno: count_documents});
+      await btngan.save();
+      console.log('category lots of users isa');
+    res.redirect('/admin/dashboard/stats');
+  }
+  catch(e){
+    res.send(e);
+  }
+}
 export {
   signins,
   signups,
   signupstoo,
   signupstre,
   addCategory,
-  //noOfusers
+  noOfusers
   // deleteUser
 };

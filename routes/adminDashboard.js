@@ -2,12 +2,19 @@ import { Router } from 'express';
 import Prod from '../models/productData.js';
 import kitty from '../models/categories.js';
 import Users from '../models/userRegister.js';
+
+import numusers from '../models/noOfuser.js'
 import {signups, signupstoo, signupstre, addCategory} from "../controllers/admin-controllers.js";
+import {noOfusers}from "../controllers/admin-controllers.js";
 // import { deleteUser } from '../controllers/admin-controllers.js';
+ 
 const router = Router();
-
+import MongoClient from 'mongoose';
+//import client from 'mongodb';
+//import mongoose from 'mongoose';
+import dotenv from "dotenv";
 let admin = false;
-
+const MURI = process.env.ATLAS_URI;
 router.use(function (req, res, next) {
     if (req.session.type == 'seller' ||req.session.type == 'user')
       return res.send('You are not an admin');
@@ -33,20 +40,86 @@ router.get('/category/delete/:id', async function (req, res, next) {
 })
 
 /* GET /admin/dashboard/stats page. */
-router.get('/stats', function (req, res, next) {
-    res.render('admin/admin-stats');
-    // try{
-    //     const collection = connect.collection("user");
-    //     collection.countDocuments().then((count_documents) => {
-    //         console.log(count_documents);
-    //       }).catch((err) => {
-    //         console.log(err.Message);
-    //       })
-    //   }
-    //   catch(e){
-    //     res.send(e);
-    //   }
-})
+
+// try{
+//     //const collection = await user.find();
+//     const collection = connect.collection("user");
+//     collection.countDocuments().then((count_documents) => {
+//         console.log(count_documents);
+//       }).catch((err) => {
+//         console.log(err.Message);
+//       })
+//       const btngan = new kitty({usersno: count_documents});
+//       await btngan.save();
+//       console.log('category lots of users isa');
+//     res.redirect('/admin/dashboard/stats');
+
+// router.get('/stats', function (req, res, next) {
+//     const url = 'mongodb://localhost:27017/explorer/test'
+//           console.log("hi");
+//     const dbname="User"
+//           MongoClient.connect(url).then((client) => {
+//         console.log("hi");
+//         const connect = client.db(User);
+//         console.log("hi");
+//         const collection = connect.collection("users"); 
+//         console.log("hi");
+//         collection.countDocuments().then((count_documents) => {
+//                     // console.log(count_documents);
+//         const col =   Users.findById(req.params.id);
+//         const btngan = new numusers({ usersno:col.count_documents });
+//                console.log("btngan");
+//                  btngan.save();
+//              })
+//             //  .catch((err) => {
+//             //         console.log(err.Message);
+//             //        }) 
+       
+//         console.log(' lots of users isa');
+//         res.render('admin/admin-stats', { btngan });
+// })
+ 
+
+
+router.get('/stats',async function (req, res, next) {
+  console.log("hi");
+    const url = 'mongodb://localhost:mongodb+srv://shahd2100756:RkBLQ6Z3fdyv70qJ@cluster0.huaxthr.mongodb.net/?retryWrites=true&w=majority.0.0.1/explorer/test/users/find';
+    console.log("hi");
+    const dbname = 'test';
+    console.log("hi");
+    MongoClient.connect(MURI).then((client) =>{ 
+    console.log("hello");
+      const connect = client.db(dbname);
+      const collection = connect.collection('users');
+      
+      collection.countDocuments().then((count_documents) => {
+        const numuserss =  new numusers({ usersno: count_documents });
+        numuserss.save().then(() => {
+            console.log("hi");
+          console.log(`Saved ${count_documents} users`);
+          
+          // Render the page after the data has been saved
+           numusers.find().then((results) => {
+            const btngan = results[0];
+            res.render('admin/admin-stats', { btngan });
+          }).catch((err) => {
+            console.error(err);
+            res.sendStatus(500);
+          });
+        }).catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+      }).catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      })
+      .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+  })   
+  });
 
 /* GET /admin/dashboard/messages page. */
 router.get('/messages', function (req, res, next) {
@@ -100,6 +173,7 @@ router.get('/usings/seller', function (req, res, next) {
 router.post('/addUser',signups); 
 router.post('/addSeller',signupstoo); 
 router.post('/addAdmin',signupstre); 
+router.post('/noOFusers',noOfusers)
 // router.post('/deleteUSer',deleteUser);
 
 /* GET /admin/dashboard/settings page. */
@@ -113,5 +187,5 @@ router.get('/usings/delete/:id', async function(req, res, next) {
     console.log(`user ${data.username} has been deleted..`)
     return res.redirect('/admin/dashboard/usings');
 })
-
+ 
 export default router;
