@@ -8,11 +8,13 @@ import {signups, signupstoo, signupstre, addCategory} from "../controllers/admin
 import {noOfusers}from "../controllers/admin-controllers.js";
 // import { deleteUser } from '../controllers/admin-controllers.js';
  
-
 const router = Router();
-import MongoClient from "mongodb";
+import MongoClient from 'mongoose';
+//import client from 'mongodb';
+//import mongoose from 'mongoose';
+import dotenv from "dotenv";
 let admin = false;
-
+const MURI = process.env.ATLAS_URI;
 router.use(function (req, res, next) {
     if (req.session.type == 'seller' ||req.session.type == 'user')
       return res.send('You are not an admin');
@@ -79,23 +81,25 @@ router.get('/category/delete/:id', async function (req, res, next) {
  
 
 
-router.get('/stats', function (req, res, next) {
-    const url = 'mongodb://localhost:127.0.0.1/explorer/test/users/find';
-    const dbname = 'User';
-    conole.log("hi");
-    MongoClient.connect(url).then((client) => {
-    conole.log("hello");
+router.get('/stats',async function (req, res, next) {
+  console.log("hi");
+    const url = 'mongodb://localhost:mongodb+srv://shahd2100756:RkBLQ6Z3fdyv70qJ@cluster0.huaxthr.mongodb.net/?retryWrites=true&w=majority.0.0.1/explorer/test/users/find';
+    console.log("hi");
+    const dbname = 'test';
+    console.log("hi");
+    MongoClient.connect(MURI).then((client) =>{ 
+    console.log("hello");
       const connect = client.db(dbname);
       const collection = connect.collection('users');
       
       collection.countDocuments().then((count_documents) => {
-        const numuserss = new numusers({ usersno: count_documents });
+        const numuserss =  new numusers({ usersno: count_documents });
         numuserss.save().then(() => {
             console.log("hi");
           console.log(`Saved ${count_documents} users`);
           
           // Render the page after the data has been saved
-          numusers.find().then((results) => {
+           numusers.find().then((results) => {
             const btngan = results[0];
             res.render('admin/admin-stats', { btngan });
           }).catch((err) => {
@@ -109,13 +113,13 @@ router.get('/stats', function (req, res, next) {
       }).catch((err) => {
         console.error(err);
         res.sendStatus(500);
-      });
-    }).catch((err) => {
+      })
+      .catch((err) => {
       console.error(err);
       res.sendStatus(500);
     });
+  })   
   });
-
 
 /* GET /admin/dashboard/messages page. */
 router.get('/messages', function (req, res, next) {
