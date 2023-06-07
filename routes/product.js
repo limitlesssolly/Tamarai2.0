@@ -16,4 +16,34 @@ router.get('/:id', async function (req, res, next) {
     res.render('user/productaya', { product });
 })
 
+
+router.get('/:id', async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id).populate('reviews.user');
+    res.render('user/productaya', { product });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+router.post('/:id/rate', async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    const newReview = {
+      name: req.body.name,
+      rating: req.body.rating,
+      comment: req.body.comment,
+      user: req.user._id,
+    };
+    product.reviews.push(newReview);
+    await product.save();
+    res.redirect(`/products/${req.params.id}`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 export default router;
