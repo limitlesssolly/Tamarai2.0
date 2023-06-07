@@ -12,7 +12,12 @@
                 <h1 class="my-2">Your Cart </h1>
                 <hr>
             </div>
-            <%if(data.length<1){%>
+            <%
+            
+            if(null){
+
+            
+            if(data.length<1){%>
                 <h2 class="text-center">Hey
                     <%=loginUser.username%> Your Cart is Empty ! Shop Now!</h2>
                 <%} else{%>
@@ -162,7 +167,7 @@
                         </div>
                     </div>
                     </div>
-                    <%}%>
+                    <%}}%>
         </main>
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
@@ -207,8 +212,8 @@
                         }).catch(() => console.log("OOps Could not send Data"))
                     },
                     "prefill": {
-                        "name": "<%=loginUser.username%>",
-                        "email": "<%=loginUser.email%>",
+                        "name": "<%=//loginUser ? loginUser.username : 'not set'%>",
+                        "email": "<%=//loginUser ? loginUser.email : 'not set'%>",
 
                     },
                     "notes": {
