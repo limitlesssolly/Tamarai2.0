@@ -145,7 +145,7 @@ router.get('/delete-from-wishlist/:id', async function(req, res, next) {
 
 // Get /user/homepage/chat 
 router.get('/chat', async function(req, res, next) {
-    res.render('/chat');
+    res.render('chat');
 })
 
 router.get('/whishlist', async function(req, res, next) {
