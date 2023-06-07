@@ -78,14 +78,7 @@ router.get("/profile/:id", async (req, res) => {
   res.render("seller/seller-profile", { regs });
 });
 
-// router.get('/image/:id', function(req, res) {
-//     const id = req.params.id;
-//     products.findOne({ _id: ObjectId(id) }, function(err, result) {
-//       if (err) throw err;
-//       res.set('Content-Type', result.image.contentType);
-//       res.send(result.image.data);
-//     });
-//   });
+
 
 router.post("/profile/:id", async (req, res) => {
   const regs = await regi.findById(req.params.id);

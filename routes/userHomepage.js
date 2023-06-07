@@ -155,14 +155,14 @@
         res.render('user/user-profile', { regs });
     });
 
-    /* GET /seller/dashboard/profile page. */
+    /* GET /user/homepage/profile page. */
     router.get('/profile/:id', async(req, res) => {
-        const regs = await regi.findById(req.params.id);
+        const regs = await regi.findById(req.session.Id);
         res.render('user/user-profile', { regs });
     });
 
     router.post('/profile/:id', async(req, res) => {
-        const regs = await regi.findById(req.params.id);
+        const regs = await regi.findById(req.session.id);
         regs.username = req.body.username;
         regs.email = req.body.email;
         // regs.password = req.body.password;
