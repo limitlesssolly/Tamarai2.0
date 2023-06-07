@@ -45,14 +45,7 @@ router.get("/products", async function (req, res, next) {
 /* GET /seller/dashboard/view page. */
 router.get("/view", async function (req, res, next) {
   const Products = await Prod.find();
-  res.render("seller/seller-products", {Products});
-});
-
-router.get("/view/view/:id", async function (req, res, next) {
-  const Products = await Prod.findById(req.params.id);
-  res.render("seller/seller-single-product", {
-    Products,
-  });
+  res.render("seller/seller-view", {Products});
 });
 
 /* Delete One item using id */
@@ -63,6 +56,12 @@ router.get("/view/delete/:id", async function (req, res, next) {
   return res.redirect("/seller/dashboard/products");
 });
 
+router.get("/view/view/:id", async function (req, res, next) {
+  const Products = await Prod.findById(req.params.id);
+  res.render("seller/seller-single-product", {
+    Products,
+  });
+});
 
 router.post('/view/edit/:id', async (req, res) => {
   console.log("Entered post");
