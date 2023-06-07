@@ -262,12 +262,21 @@ const noOfusers= async(req,res,next)=>
     res.send(e);
   }
 }
+const getCountofCenters = async (req, res) => {
+    try {
+      const result = await Center.countDocuments();
+      return res.status(200).json(result);
+    } catch {
+      return res.status(400).json({ success: false });
+    }
+  }
 export {
   signins,
   signups,
   signupstoo,
   signupstre,
   addCategory,
-  noOfusers
+  //noOfusers
+  getCountofCenters
   // deleteUser
 };
