@@ -12,7 +12,7 @@ import passport from "passport";
 import expressMessages from "express-messages";
 import strats from './strategies/local.js';
 import flash from 'connect-flash';
-
+ 
 dotenv.config();
 
 //importing the routes
