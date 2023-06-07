@@ -11,6 +11,7 @@ import regi from "../models/tryseller.js";
 router.get("/", function (req, res, next) {
   res.render("seller/seller-dashboard");
 });
+
 router.get("/analysis", async function (req, res, next) {
   console.log("hi");
   res.render("seller/seller-analysis");
@@ -52,31 +53,32 @@ router.get("/view/delete/:id", async function (req, res, next) {
   const id = req.params.id;
   const data = await Prod.findByIdAndDelete(id);
   console.log(`Item ${data.name} has been deleted..`);
-  return res.redirect("/seller/dashboard/view");
+  return res.redirect("/seller/dashboard/products");
 });
+
 router.get("/view/view/:id", async function (req, res, next) {
   const Products = await Prod.findById(req.params.id);
   res.render("seller/seller-single-product", {
     Products,
   });
 });
+
 router.post('/view/edit/:id', async (req, res) => {
-  const regs = await Prod.findById(req.params.id);
-  regs.name = req.body.name;
-  regs.brand = req.body.brand;
-  regs.price = req.body.price;
-  regs.description = req.body.description;
-  regs.count = regs.body.count;
-  regs.category = regs.body.category;
-  regs.color=regs.body.color;
-  // regs.password = req.body.password;
-  await regs.save();
+  const Products = await Prod.findById(req.params.id);
+  Products.name = req.body.name;
+  Products.brand = req.body.brand;
+  Products.price = req.body.price;
+   Products.description = req.body.description;
+   Products.count = req.body.count;
+   Products.category = req.body.category;
+  // regs.color=req.body.color;
+  await Products.save();
 
   // Retrieve the updated seller data from the database
   const updatedpro = await Prod.findById(req.params.id);
 
   // Render the "profile" view with the updated seller data
-  res.render('seller/editPro', { regs: updatedpro });
+  res.render('seller/seller-single-product', { Products: updatedpro });
 });
 
 /* GET /seller/dashboard/info page. */
@@ -95,8 +97,6 @@ router.get("/profile/:id", async (req, res) => {
   const regs = await regi.findById(req.session.Id);
   res.render("seller/seller-profile", { regs });
 });
-
-
 
 router.post("/profile/:id", async (req, res) => {
   const regs = await regi.findById(req.params.id);
