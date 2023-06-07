@@ -19,3 +19,7 @@
     overflow: hidden;
     grid-row-start: 2;
 }
+
+.footer {
+    grid-row-start: 3;
+}
