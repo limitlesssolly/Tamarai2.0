@@ -12,7 +12,7 @@ import passport from "passport";
 import expressMessages from "express-messages";
 import strats from './strategies/local.js';
 import flash from 'connect-flash';
- 
+
 dotenv.config();
 
 //importing the routes
@@ -25,7 +25,7 @@ import userRouter from "./routes/user.js";
 import userHomepageRouter from './routes/userHomepage.js'
 import productRouter from "./routes/product.js";
 import productestRouter from "./routes/products.js";
-import shoppingbag from "./routes/bag.js";
+// import shoppingbag from "./routes/bag.js";
 
 // const http= require("http").Server(app);
 
@@ -87,7 +87,7 @@ app.use('/user', userRouter);
 app.use('/user/homepage', userHomepageRouter);
 app.use('/product', productRouter);
 app.use('/productest', productestRouter);
-app.use('/bag', shoppingbag);
+// app.use('/bag', shoppingbag);
 
 
 app.get('/', function(req, res) {
