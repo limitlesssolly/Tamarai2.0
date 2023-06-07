@@ -33,7 +33,6 @@
                         <% } else { %>
                             0
                             <% } %>
-
                                 )</a>
             <a href="/user/homepage/whishlist"><img src="/images/wishes.png" alt="Wishlist"></a>
             <a href="/user/logout"><img src="/images/lo.png" alt="logout"></a>
@@ -41,7 +40,7 @@
 
     </div>
     <ul>
-        <li>
+        <li >
 
         </li>
     </ul>
@@ -78,7 +77,7 @@
                 if (index > 0) {
                     searchResults.innerHTML += '<hr>';
                 }
-                searchResults.innerHTML += `<p>${item.name}</p>`;
+                searchResults.innerHTML += `<a href="/product/"><p>${item.name}</p></a>`;
             });
         });
         return;

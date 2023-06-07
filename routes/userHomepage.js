@@ -66,38 +66,12 @@ router.get('/add-to-wishlist/:id', async function(req, res, next) {
  
 );
 
- 
-
 router.get('/whishlist', async function(req, res,next) {
     const wished = await Wishlist.find();
     console.log(wished);
         res.render('user/user-whishlist',{wished});
     
 })
-
-// router.post("/SaveWishlist", (req, res) => {
-//     const wish = new Wishlist(req.body)
-//     wish.save().then( () => {
-//         res.status(201).send("Wish Added to Wishlist!");
-//     }).catch( (e) => {
-//         res.status(400).send(e);
-//     })
-// })
-// router.patch("/UpdateWishlist/:id", async(req, res) => {
-//     try {
-//         const _id = req.params.id
-//         const UpdateRequest = await Wishlist.findByIdAndUpdate(_id, req.body)
-//         res.send(UpdateRequest);
-//     } catch(e) {
-//         res.status(404).send("Couldn't update your wish :(");
-//     }
-// })
-
-// router.post('user/user-whishlist',(req,res)=>{
-// const   {weddingdress,designerAmitabbatchan}=req.body;
-// const whishlist= {weddingdress,designerAmitabbatchan};
-// console.log(whishlist);
-// })
 
 // Add this debug statement
 router.use((err, req, res, next) => {
@@ -111,7 +85,7 @@ router.get('/profile', async(req, res) => {
     res.render('user/user-profile', {regs});
 });
 
-/* GET /seller/dashboard/profile page. */
+/* GET /user/dashboard/profile page. */
 router.get('/profile/:id', async(req, res) => {
     const regs = await regi.findById(req.params.id);
     res.render('user/user-profile', { regs });

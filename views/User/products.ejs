@@ -5,39 +5,58 @@
     <link rel="stylesheet" href="/css/userHomepage.css" />
     <!-- Adding a favicon  -->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     <%- include('../partials/usernav.ejs') %>
-    <% if (Products.length> 0) { %>
+    <div class="product-container">
         <% Products.forEach(function(product) { %>
-            <section class="product">
-                <div class="product-container">
-                    <section class="products">
-                        <div class="product-container">
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <span class="discount-tag">number% off</span>
-                                    <!-- Image here  -->
-                                    <button class="card-btn">Add to wishlist</button>
-                                </div>
-                                <div class="product-info">
-                                    <h2 class="product-name"><%= product.name %></h2>
-                                    <h2 class="product-brand"><%= product.brand %></h2>
-                                    <p class="product-short-des"><%= product.description %></p>
-                                    <span class="price">Price after discount L.E.</span>
-                                    <span class="actual-price"><%= product.price %></span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-            </section>
-        <% }); %>
-    <% } else { %>
-        <h1>No products to show</h1>
-    <% } %>
+
+            <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <% if (product.discount> 0) { %>
+                        <span class="discount-tag">
+                    <%= product.discount %>% off
+                    </span>
+                        <% } %>
+                                <img src="/images/products/<%= product.image %>" width="100">
+                            <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a>
+                </div>
+
+                <div class="product-info">
+                    <a href="/product/<%= product._id %>">
+                        <h2>
+                            <%= product.name %>
+                        </h2>
+                    </a>
+                    <h5 class="product-brand">
+                        <%= product.seller%>
+                    </h5>
+                    <p class="product-short-des">
+                        <%= product.description %>
+                    </p>
+                    <% if (product.discount> 0) { %>
+                        <span class="price">
+                            <%= product.price %>L.E.
+                        </span>
+                        <span class="actual-price">
+                            <%= product.price %>L.E.
+                        </span>
+                        <% } else { %>
+                            <span class="price">
+                                <%= product.price %>L.E.
+                            </span>
+                            <% } %>
+                </div>
+            </div>
+            <% }); %>
+    </div>
     <%- include('../partials/footer.ejs') %>
     <%- include('../partials/translate.ejs') %>
 </body>
+<script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 
 </html>
