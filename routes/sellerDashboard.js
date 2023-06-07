@@ -114,11 +114,11 @@ router.post("/profile/:id", async (req, res) => {
   });
 });
 
-router.use((req, res, next) => {
-  if (req.session.user) next();
-  else {
-    res.send("You must login");
-  }
-});
+// router.use((req, res, next) => {
+//   if (req.session.user) next();
+//   else {
+//     res.send("You must login");
+//   }
+// });
 
 export default router;
