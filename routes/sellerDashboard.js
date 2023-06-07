@@ -53,7 +53,7 @@ router.get("/view/delete/:id", async function (req, res, next) {
   const id = req.params.id;
   const data = await Prod.findByIdAndDelete(id);
   console.log(`Item ${data.name} has been deleted..`);
-  return res.redirect("/seller/dashboard/view");
+  return res.redirect("/seller/dashboard/products");
 });
 
 router.get("/view/view/:id", async function (req, res, next) {
