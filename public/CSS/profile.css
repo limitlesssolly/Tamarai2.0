@@ -304,7 +304,7 @@ figure {
 
 input {
     width: 100%;
-    font-weight: px;
+    font-size: 19px;
     display: block;
     border: none;
     border-bottom: 1px solid #000000;
@@ -357,4 +357,7 @@ label {
     width: 300px;
     padding-top: 50px;
     
+}
+h4{
+    color:#b4640c;
 }
