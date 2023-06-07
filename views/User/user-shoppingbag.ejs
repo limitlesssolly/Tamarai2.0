@@ -1,97 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="/css/shoppingbag.css">
-    <link rel="stylesheet" type="text/css" href="/css/grid-template.css">
-
-    <script src="/js/shoppingbag.js"></script>
-
-
-    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-
-    <title>Shopping Cart</title>
-
+<title>
+    Cart</title>
 </head>
 
 <body>
-    <div class="grid-container">
+    <%- include("../partials/usernav") %>
+        <div class="alert-target">
 
-        <div>
-            <%- include ('../partials/usernav.ejs')%>
         </div>
-        <div class="body">
-
-            <div class="Cart-Container">
-
-                <div class="Header">
-                    <h3 class="Heading , tooltip"><span class="tooltiptext">shopping cart</span>Shopping Cart</h3>
-                    <button class="Action" onclick="remove_all()">Remove all</button>
-                </div>
-
-                <div class="Cart-Items">
-                    <div class="product-container">
-
-                        <% product.forEach(function(product) { %>
-                            <div>
-                                <div class="image-box">
-                                    <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>">
-                                </div>
-                                <div class="about">
-                                    <h1 class="title">
-                                        <%= product.name %>
-                                    </h1>
-                                    <h3 class="subtitle">
-                                        <%= product.seller%>
-                                    </h3>
-                                    <img src="photos/street.jpg" alt="street" style="height: 30px;" />
-                                </div>
-                                <div class="counter"></div>
-                                <div class="prices"></div>
-                                <div class="counter">
-                                    <button class="btn" onclick="counting()">+</button>
-                                    <!-- <div class="btn">+</div> -->
-                                    <div class="count">1</div>
-                                    <button class="btn" onclick="decreasing()">-</button>
-                                    <!-- <div class="btn">-</div> -->
-                                </div>
-                                <div class="prices">
-                                    <div class="amount">
-                                        <%= product.price%>
-                                    </div>
-                                    <div class="save"><u>Save for later</u></div>
-                                    <button class="remove" onclick="remove_element()"><u>Remove</u></button>
-                                </div>
-                                <% }); %>
-
-                            </div>
-                    </div>
-                </div>
+        <main class="container">
+            <div class="cartinto mt-3">
+                <h1 class="my-2">Your Cart </h1>
                 <hr>
-                <div class="checkout">
-                    <div class="total">
-                        <div>
-                            <div class="Subtotal">Sub-Total</div>
-                            <div class="items"> 2
-
-                            </div>
-                            <div class="wriiten_items">items</div>
-                        </div>
-                        <div class="total-amount"></div>
-                    </div>
-                    <button class="button">Checkout</button>
-                    <!-- <button onclick="myFunction()">Toggle dark mode</button> -->
-                </div>
             </div>
-        </div>
+            OKI HI
+        </main>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            const postOrder = async(url, data) => {
+                console.log("Entered in to fetch")
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                return response.json();
+            }
+            const razorpay = (order) => {
+                var options = {
+                    "key": order.rzp_key,
+                    "amount": order.amount,
+                    "currency": "INR",
+                    "name": "APNA CART",
+                    "description": "Test Transaction",
+                    "order_id": order.id,
+                    "image": "https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG38.png",
+                    "handler": function(response) {
+                        // alert(response.razorpay_payment_id);
+                        // alert(response.razorpay_order_id);
+                        // alert(response.razorpay_signature)
+                        console.log(response);
+                        console.log(response)
+                        response.order = order;
+                        fetch('/user/order/verify', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(response)
+                        }).then((res) => {
+                            return res.json()
+                        }).then((resData) => {
+                            if (resData.status == `success`)
+                                window.location.href = `/user/orders`
+                        }).catch(() => console.log("OOps Could not send Data"))
+                    },
+                    "prefill": {
+                        "name": "<%=//loginUser ? loginUser.username : 'not set'%>",
+                        "email": "<%=//loginUser ? loginUser.email : 'not set'%>",
 
-    </div>
-    <%- include('../partials/footer.ejs') %>
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#00BCD4"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.on('payment.failed', function(response) {
 
-</body>
+                    fetch("/user/order/paymentfail", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': "application/json"
+                        },
+                        body: JSON.stringify(response)
+                    }).then((res) => {
+                        return res.json()
+                    }).then((res) => {
+                        window.location.href = res.redirect
+                    });
+                });
+                console.log("Hit the RZP")
+                rzp1.open();
 
-</html>
+            }
+            document.getElementById("rzp-checkout").addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const amount = document.getElementById("finalPrice").innerText * 100;
+                    console.log(amount);
+                    let data = {
+                        amount: amount,
+                        currency: "INR",
+                    }
+
+                    postOrder("/user/order", data).then((order) => {
+
+                        if (order.failure) {
+                            window.location.href = "/user/cart";
+                        } else {
+                            document.getElementById('paymentModalLabel').innerText = order.id;
+                            const myModal = new mdb.Modal(document.getElementById('paymentModal'), {
+                                backdrop: `static`
+                            });
+                            myModal.show();
+                            document.getElementById('rzp-payment').addEventListener("click", (e) => {
+                                razorpay(order);
+                            })
+                        }
+                    })
+                })
+                //     .catch((e)=>{
+                //             document.getElementById('alert-target').innerHTML=`<div class="alert alert-danger" id="fail-alert" role="alert">
+                //     There was a problem with payment! Please Try again!
+                //   </div>`
+                //   const myAlert = document.getElementById('fail-alert');
+                //   const bsAlert = new bootstrap.Alert(myAlert);
+                //   setTimeout(()=>{bsAlert.close()},3000);
+                //     })
+        </script>
+        <%- include("../partials/footer") %>

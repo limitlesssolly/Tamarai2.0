@@ -58,13 +58,14 @@
                             <div class="product-card">
                                 <div class="product-image">
                                     <% if (product.image == "") { %>
-                                    <img src="images/no-image.png" class="product-thumb" alt="No image available">
-                                    <% } else { %>
-                                    <a href="/seller/dashboard/view/view/<%= product._id %>"><img
+                                        <img src="images/no-image.png" class="product-thumb" alt="No image available">
+                                        <% } else { %>
+                                            <a href="/seller/dashboard/view/view/<%= product._id %>"><img
                                             src="/images/products/<%= product.image %>" class="product-thumb" alt="product">
-                                            <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a>
-                                        <% } %>
-                                    </a>
+                                            <!-- <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a> -->
+                                            <a class="card-btn" href="./homepage/bag/add/<%= product._id %>">Add to Bag</a>
+                                            <% } %>
+                                                </a>
                                 </div>
                                 <div class="product-info">
                                     <a href="/product/<%= product._id %>">
@@ -92,12 +93,12 @@
                             <% }); %>
                     </div>
             </div>
-        </section>
+            </section>
 
-        <div class="chatbox">
-            <div id="chatbox"></div>
-        </div>
-        <%- include('../partials/footer.ejs') %>
+            <div class="chatbox">
+                <div id="chatbox"></div>
+            </div>
+            <%- include('../partials/footer.ejs') %>
 </body>
 <script src="/Js/home.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.js">
