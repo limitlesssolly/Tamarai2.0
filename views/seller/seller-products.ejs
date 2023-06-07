@@ -97,13 +97,12 @@
 
 
 <body>
-
     <div class="grid-container">
 
         <div class="header">
             <%- include('../partials/sellernav.ejs') %>
-
         </div>
+
         <div class="body">
             <%- include('../partials/translate.ejs') %>
                 <div class="prlist">
@@ -116,38 +115,33 @@
                             onclick="window.location.href = 'add_product.html';">Add New Item</button> -->
                             <a href="/seller/dashboard/add"><button class="buttonadd">Add New Item</button></a>
                         </div>
-
                     </div>
 
                 </div>
 
                 <% Products.forEach(function(product) { %>
-                    <div class="product-card" id="product-card">
-                        <div class="product-image">
-                            <% if (product.image=="" ) { %>
-                                <img src="images/no-image.png" class="product-thumb" alt="No image available">
-                                <% } else { %>
-                                    <a href="/seller/dashboard/view/view/<%= product._id %>"><img
-                                            src="/images/products/<%= product.image %>" class="product-thumb"
-                                            alt="product">
-                                        <a class="card-btn" href="/bag/add/<%= product._id %>">Edit</a>
-                                        <% } %>
-                                            <% }); %>
-
-                        </div>
-
+                <div class="product-card" id="product-card">
+                    <div class="product-image">
+                        <% if (product.image == "") { %>
+                        <img src="images/no-image.png" class="product-thumb" alt="No image available">
+                        <% } else { %>
+                        <a href="/seller/dashboard/view/view/<%= product._id %>"><img
+                                src="/images/products/<%= product.image %>" class="product-thumb" alt="product">
+                                 <a class="card-btn" href="/seller/dashboard/view/edit/<%= product._id %>">Edit</a>
+                            <% } %>
+                                <% }); %>
                     </div>
+                </div>
 
         </div>
+    <!-- bybwaz el page  -->
+    <!-- <%- include('../partials/footer.ejs') %> -->
+    <div class="chatbox ">
+        <div>
+            <%- include('../partials/chat.ejs') %>
         </div>
-        <!-- bybwaz el page  -->
-        <!-- <%- include('../partials/footer.ejs') %> -->
-        <div class="chatbox ">
-            <div>
-                <%- include('../partials/chat.ejs') %>
-            </div>
-        </div>
-
+    </div>
 </body>
+        <%- include('../partials/footer.ejs') %>
 
 </html>

@@ -35,7 +35,7 @@ router.get("/products", async function (req, res, next) {
   console.log('products');
   const regs = await regi.findById(req.session.Id);
   const sell = regs.username;
-  console.log(sell);
+  // console.log(sell);
   const Products = await Prod.find();
   res.render("seller/seller-products", {Products, sell});
 });
@@ -60,17 +60,22 @@ router.get("/view/view/:id", async function (req, res, next) {
   });
 });
 router.post('/view/edit/:id', async (req, res) => {
-  const regs = await regi.findById(req.params.id);
-  regs.username = req.body.username;
-  regs.email = req.body.email;
+  const regs = await Prod.findById(req.params.id);
+  regs.name = req.body.name;
+  regs.brand = req.body.brand;
+  regs.price = req.body.price;
+  regs.description = req.body.description;
+  regs.count = regs.body.count;
+  regs.category = regs.body.category;
+  regs.color=regs.body.color;
   // regs.password = req.body.password;
   await regs.save();
 
   // Retrieve the updated seller data from the database
-  const updatedpro = await regi.findById(req.params.id);
+  const updatedpro = await Prod.findById(req.params.id);
 
   // Render the "profile" view with the updated seller data
-  res.render('seller/seller-single-product', { regs: updatedpro });
+  res.render('seller/editPro', { regs: updatedpro });
 });
 
 /* GET /seller/dashboard/info page. */

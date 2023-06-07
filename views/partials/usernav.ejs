@@ -27,7 +27,7 @@
             </div>
 
             <a href="/user/homepage/profile/:id"><img src="/images/uses.png" alt="user"></a>
-            <a href="/user/homepage/bag/checkout"><img src="/images/carter.png" alt="cart"> (
+            <a href="/user/homepage/bag/"><img src="/images/carter.png" alt="cart"> (
                 <% if (typeof cart !== 'undefined') { %>
                     <%= cart.length %>
                         <% } else { %>
@@ -40,7 +40,7 @@
 
     </div>
     <ul>
-        <li >
+        <li>
 
         </li>
     </ul>
@@ -62,25 +62,29 @@
         }
         if (match[0] === e.value) {
             fetch('getProducts', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({payload: e.value})
-        }).then(res => res.json()).then(data => {
-            let payload = data.payload;
-            // console.log(payload);
-            searchResults.innerHTML = '';
-            if (payload.length < 1) {
-                searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
-                return;
-            }
-            payload.forEach((item, index) => {
-                if (index > 0) {
-                    searchResults.innerHTML += '<hr>';
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    payload: e.value
+                })
+            }).then(res => res.json()).then(data => {
+                let payload = data.payload;
+                // console.log(payload);
+                searchResults.innerHTML = '';
+                if (payload.length < 1) {
+                    searchResults.innerHTML = '<p>Sorry. Nothing Found.</p>';
+                    return;
                 }
-                searchResults.innerHTML += `<a href="/product/"><p>${item.name}</p></a>`;
+                payload.forEach((item, index) => {
+                    if (index > 0) {
+                        searchResults.innerHTML += '<hr>';
+                    }
+                    searchResults.innerHTML += `<a href="/product/"><p>${item.name}</p></a>`;
+                });
             });
-        });
-        return;
+            return;
         }
         searchResults.innerHTML = '';
     }
