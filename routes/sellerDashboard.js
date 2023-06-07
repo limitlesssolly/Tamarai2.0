@@ -26,17 +26,16 @@ router.get("/analysis", async function (req, res, next) {
 router.get("/add", async function (req, res, next) {
   const Cats = await cats.find();
   const regs = await regi.findById(req.session.Id);
-  res.render("seller/seller-add", {
-    Cats, regs
-  });
+  res.render("seller/seller-add", {Cats, regs});
 });
 
 /* post an item */
 router.post("/add", addItem);
 
 router.get("/products", async function (req, res, next) {
+  const regs = await regi.findById(req.session.Id);
   const Products = await Prod.find();
-  res.render("seller/seller-products", {Products});
+  res.render("seller/seller-products", {Products, regs});
 });
 
 /* GET /seller/dashboard/view page. */
