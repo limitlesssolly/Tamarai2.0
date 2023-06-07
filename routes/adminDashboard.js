@@ -58,6 +58,7 @@ const yarab = await Prod.find();
  }
 let real_revenue =revenue*0.01;
  console.log(revenue);
+ 
 res.render('admin/admin-stats',{ay7aga,real_revenue});
  
 
