@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async function (req, res, next) {
     const product = await Product.findById(req.params.id);
     res.render('user/productaya', { product });
-})
+});
 
 
 router.get('/:id', async (req, res) => {

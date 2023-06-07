@@ -45,7 +45,14 @@ router.get("/products", async function (req, res, next) {
 /* GET /seller/dashboard/view page. */
 router.get("/view", async function (req, res, next) {
   const Products = await Prod.find();
-  res.render("seller/seller-view", {Products});
+  res.render("seller/seller-products", {Products});
+});
+
+router.get("/view/view/:id", async function (req, res, next) {
+  const Products = await Prod.findById(req.params.id);
+  res.render("seller/seller-single-product", {
+    Products,
+  });
 });
 
 /* Delete One item using id */
@@ -56,14 +63,9 @@ router.get("/view/delete/:id", async function (req, res, next) {
   return res.redirect("/seller/dashboard/products");
 });
 
-router.get("/view/view/:id", async function (req, res, next) {
-  const Products = await Prod.findById(req.params.id);
-  res.render("seller/seller-single-product", {
-    Products,
-  });
-});
 
 router.post('/view/edit/:id', async (req, res) => {
+  console.log("Entered post");
   const Products = await Prod.findById(req.params.id);
   Products.name = req.body.name;
   Products.brand = req.body.brand;
@@ -76,9 +78,11 @@ router.post('/view/edit/:id', async (req, res) => {
 
   // Retrieve the updated seller data from the database
   const updatedpro = await Prod.findById(req.params.id);
-
+  const Cats = await cats.find();
+console.log("WIll render");
   // Render the "profile" view with the updated seller data
-  res.render('seller/seller-single-product', { Products: updatedpro });
+  res.render('seller/seller-single-product', { Products: updatedpro, Cats });
+  console.log("DONE");
 });
 
 /* GET /seller/dashboard/info page. */
