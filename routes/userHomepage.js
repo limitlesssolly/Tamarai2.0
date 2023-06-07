@@ -88,7 +88,7 @@ router.get('/add/:id', async function(req, res, next) {
     const product = await products.findById(req.params.id);
     console.log(product);
     const bagat = new Bag({
-        name: " product.name,",
+        name: product.name,
         brand: product.brand,
         seller: product.seller,
         price: product.price,
@@ -111,49 +111,49 @@ router.get('/profile', function(req, res, next) {
     res.render('user/user-profile');
 });
 
-router.get('/add-to-wishlist/:id', async function (req, res, next) {
-    const product = await products.findById(req.params.id);
-    const regs = await regi.findById(req.session.Id);
-    const uses = regs.username;
-    console.log(product);
-    const wishat = new Wishlist({
-        name: product.name,
-        brand: product.brand,
-        seller: product.seller,
-        price: product.price,
-        image: product.image,
-        count: product.count,
-        description: product.description,
-        category: product.categories,
-        color: product.color,
-        wisher: uses,
-    });
-    await wishat.save();
-    console.log('et7at');
-    res.redirect('/user/homepage');
-}
+router.get('/add-to-wishlist/:id', async function(req, res, next) {
+        const product = await products.findById(req.params.id);
+        const regs = await regi.findById(req.session.Id);
+        const uses = regs.username;
+        console.log(product);
+        const wishat = new Wishlist({
+            name: product.name,
+            brand: product.brand,
+            seller: product.seller,
+            price: product.price,
+            image: product.image,
+            count: product.count,
+            description: product.description,
+            category: product.categories,
+            color: product.color,
+            wisher: uses,
+        });
+        await wishat.save();
+        console.log('et7at');
+        res.redirect('/user/homepage');
+    }
 
 );
 
-router.get('/delete-from-wishlist/:id', async function (req, res, next) {
-    const id = req.params.id;
-    const wish = await Wishlist.findByIdAndDelete(id);
-    console.log(`Wish ${wish.name} has been deleted..`);
-    const regs = await regi.findById(req.session.Id);
-    const uses = regs.username;
-    const wished = await Wishlist.find({wisher : uses});
-    console.log(wished);
-    res.render('user/user-whishlist', {wished});
-}
+router.get('/delete-from-wishlist/:id', async function(req, res, next) {
+        const id = req.params.id;
+        const wish = await Wishlist.findByIdAndDelete(id);
+        console.log(`Wish ${wish.name} has been deleted..`);
+        const regs = await regi.findById(req.session.Id);
+        const uses = regs.username;
+        const wished = await Wishlist.find({ wisher: uses });
+        console.log(wished);
+        res.render('user/user-whishlist', { wished });
+    }
 
 );
 
-router.get('/whishlist', async function (req, res, next) {
+router.get('/whishlist', async function(req, res, next) {
     const regs = await regi.findById(req.session.Id);
     const uses = regs.username;
-    const wished = await Wishlist.find({wisher : uses});
+    const wished = await Wishlist.find({ wisher: uses });
     console.log(wished);
-    res.render('user/user-whishlist', {wished});
+    res.render('user/user-whishlist', { wished });
 })
 
 // Add this debug statement
