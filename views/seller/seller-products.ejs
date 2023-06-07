@@ -97,15 +97,12 @@
 
 
 <body>
-
-
-    </div>
     <div class="grid-container">
 
         <div class="header">
             <%- include('../partials/sellernav.ejs') %>
-
         </div>
+
         <div class="body">
             <%- include('../partials/translate.ejs') %>
                 <div class="prlist">
@@ -118,21 +115,19 @@
                             onclick="window.location.href = 'add_product.html';">Add New Item</button> -->
                             <a href="/seller/dashboard/add"><button class="buttonadd">Add New Item</button></a>
                         </div>
-
                     </div>
 
                     <% Products.forEach(function(product) { %>
-                        <% if (product.seller === sell) { %>    <!--el moshkla hna-->
+                        <% if (product.seller === sell) { %>
                             <div class="product-card" id="product-card">
                                 <div class="product-image">
                                     <% if (product.image=="" ) { %>
                                         <img src="images/no-image.png" class="product-thumb" alt="No image available">
-                                        <% } else { %>
-                                            <a href="/seller/dashboard/view/view/<%= product._id %>">
-                                                <img src="/images/products/<%= product.image %>" class="product-thumb"
-                                                    alt="product">
-                                        <% } %>
-                                            </a>
+                                    <% } else { %>
+                                        <a href="/seller/dashboard/view/view/<%= product._id %>">
+                                            <img src="/images/products/<%= product.image %>" class="product-thumb" alt="product">
+                                        </a>
+                                    <% } %>
                                 </div>
                                 <div class="product-info">
                                     <a href="/seller/dashboard/view/view/<%= product._id %>">
@@ -148,9 +143,8 @@
                             </div>
                             <% } %>
                                 <% }); %>
-
+                            </div>
                 </div>
-
         </div>
 
     </div>
@@ -160,6 +154,8 @@
         <div>
             <%- include('../partials/chat.ejs') %>
         </div>
+    </div>
 </body>
+        <%- include('../partials/footer.ejs') %>
 
 </html>
