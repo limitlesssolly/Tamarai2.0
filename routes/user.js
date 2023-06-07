@@ -22,6 +22,7 @@ router.get('/', function (req, res, next) {
     res.render('user/user-register', { errorMsg: {}, admin: admin })
 });
 
+// Get /user/cat/:name 
 router.get('/cat/:name', async (req, res) => {
     var query = { "name": req.params.name };
     console.log(query);

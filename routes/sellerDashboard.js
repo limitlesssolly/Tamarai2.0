@@ -68,17 +68,13 @@ router.get("/info", function (req, res, next) {
 /* GET /seller/dashboard/profile page. */
 router.get("/profile", async (req, res) => {
   const sellers = await regi.find();
-  res.render("seller/seller-profile", {
-    sellers,
-  });
+  res.render("seller/seller-profile", { sellers });
 });
 
 /* GET /seller/dashboard/profile page. */
 router.get("/profile/:id", async (req, res) => {
   const regs = await regi.findById(req.params.id);
-  res.render("seller/seller-profile", {
-    regs,
-  });
+  res.render("seller/seller-profile", { regs });
 });
 
 // router.get('/image/:id', function(req, res) {
