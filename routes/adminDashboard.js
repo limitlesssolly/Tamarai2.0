@@ -7,13 +7,13 @@ import numusers from '../models/noOfuser.js'
 import {signups, signupstoo, signupstre, addCategory} from "../controllers/admin-controllers.js";
 import {noOfusers}from "../controllers/admin-controllers.js";
 // import { deleteUser } from '../controllers/admin-controllers.js';
- 
+import dotenv from "dotenv";
 const router = Router();
 import MongoClient from 'mongoose';
-//import client from 'mongodb';
+ import client from 'db';
 //import mongoose from 'mongoose';
-import dotenv from "dotenv";
-let admin = false;
+ let admin = false;
+ dotenv.config();
 const MURI = process.env.ATLAS_URI;
 router.use(function (req, res, next) {
     if (req.session.type == 'seller' ||req.session.type == 'user')
@@ -81,45 +81,83 @@ router.get('/category/delete/:id', async function (req, res, next) {
  
 
 
-router.get('/stats',async function (req, res, next) {
-  console.log("hi");
-    const url = 'mongodb://localhost:mongodb+srv://shahd2100756:RkBLQ6Z3fdyv70qJ@cluster0.huaxthr.mongodb.net/?retryWrites=true&w=majority.0.0.1/explorer/test/users/find';
-    console.log("hi");
-    const dbname = 'test';
-    console.log("hi");
-    MongoClient.connect(MURI).then((client) =>{ 
-    console.log("hello");
-      const connect = client.db(dbname);
-      const collection = connect.collection('users');
-      
-      collection.countDocuments().then((count_documents) => {
-        const numuserss =  new numusers({ usersno: count_documents });
-        numuserss.save().then(() => {
-            console.log("hi");
-          console.log(`Saved ${count_documents} users`);
+// router.get('/stats',async function (req, res, next) {
+//   console.log("hi");
+//     //const url = "mongodb+srv://shahd2100756:RkBLQ6Z3fdyv70qJ@cluster0.huaxthr.mongodb.net/?retryWrites=true&w=majority/explorer/test";
+//     console.log("hi");
+//     const dbname = 'tset';
+//     console.log("hi");
+//     MongoClient.connect(MURI).then ( client => { 
+//     console.log("hello");
+//       const connect =client.db(dbname);
+//       console.log("yarab");
+//       const collection =connect.collection('users');
+//       console.log("yarab efrgha 3lena ")
+//       collection.countDocuments().then((count_documents) => {
+//         const numuserss =  new numusers({ usersno: count_documents });
+//         numuserss.save().then(() => {
+//             console.log("hi");
+//           console.log(`Saved ${count_documents} users`);
           
-          // Render the page after the data has been saved
-           numusers.find().then((results) => {
-            const btngan = results[0];
-            res.render('admin/admin-stats', { btngan });
-          }).catch((err) => {
-            console.error(err);
-            res.sendStatus(500);
-          });
-        }).catch((err) => {
-          console.error(err);
-          res.sendStatus(500);
-        });
-      }).catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      })
-      .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-  })   
-  });
+//           // Render the page after the data has been saved
+//            numusers.find().then((results) => {
+//             const btngan = results[0];
+//             res.render('admin/admin-stats', { btngan });
+//           }).catch((err) => {
+//             console.error(err);
+//             res.sendStatus(500);
+//           });
+//         }).catch((err) => {
+//           console.error(err);
+//           res.sendStatus(500);
+//         });
+//       }).catch((err) => {
+//         console.error(err);
+//         res.sendStatus(500);
+//       })
+//       .catch((err) => {
+//       console.error(err);
+//       res.sendStatus(500);
+//     });
+//   })   
+//   });
+// router.get('/stats',function(req,res,next){
+// //   Database:GFG
+// // Collection:aayush
+// // Requiring module
+ 
+ 
+// // Connection URL
+// const url = 'mongodb://localhost:27017/';
+ 
+// // Database name
+// const databasename = 'test';
+// console.log("5er isa");
+// MongoClient.connect(MURI).then((client) => {
+//   const connect = client.db(databasename);
+//  console.log("zft");
+//   // Connect to collection
+//   const collection = connect.collection("user");
+//   console.log("yarab")
+//   // Count the total documents
+//   collection.countDocuments().then((count_documents) => {
+//     console.log(count_documents);
+//   }).catch((err) => {
+//     console.log(err.Message);
+//   })
+      
+// }).catch((err) => {
+//   // Printing the error message
+//   console.log(err.Message);
+// }) 
+//  const Nusers = new {noOfusers:count_documents}
+//    //res.redirect('/admin/dashboard');
+//    res.redirect('/admin-adminDashboard',{Nusers})
+// })
+
+
+router.get("/stat", CenterController.getCountofCenters);
+
 
 /* GET /admin/dashboard/messages page. */
 router.get('/messages', function (req, res, next) {
