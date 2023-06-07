@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Product</title>
+    <link rel="stylesheet" type="text/css" href="/css/seller.css">
+</head>
+<body>
+    <% include('../partials/sellernav.ejs') %>
+
+    <div class="container">
+        <h1>Edit Product</h1>
+        <form action="/seller/dashboard/view/edit/<%= regs._id %>" method="POST">
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" name="name" class="form-control" value="<%= regs.name %>">
+            </div>
+            <div class="form-group">
+                <label for="brand">Brand</label>
+                <input type="text" name="brand" class="form-control" value="<%= regs.brand %>">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" name="price" class="form-control" value="<%= regs.price %>">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control"><%= regs.description %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="count">Count</label>
+                <input type="number" name="count" class="form-control" value="<%= regs.count %>">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" name="category" class="form-control" value="<%= regs.category %>">
+            </div>
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input type="text" name="color" class="form-control" value="<%= regs.color %>">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+
+    <% include('../partials/footer.ejs') %>
+
+    <script src="/js/seller.js"></script>
+</body>
+</html>
