@@ -17,7 +17,9 @@ import regi from "../models/tryseller.js";
 router.get('/', function(req, res, next) {
     res.render('seller/seller-dashboard');
 })
-
+router.get('/analysis', function(req, res, next) {
+    res.render('seller/seller-analysis');
+})
 
 /* GET /seller/dashboard/add page. */
 // router.get('/add', function (req, res, next) {
@@ -73,6 +75,8 @@ router.get('/profile', async(req, res) => {
         sellers
     });
 });
+
+
 
 /* GET /seller/dashboard/profile page. */
 router.get('/profile/:id', async(req, res) => {

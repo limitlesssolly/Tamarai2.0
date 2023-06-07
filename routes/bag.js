@@ -14,6 +14,9 @@ router.use(function(req, res, next) {
 })
 
 router.get('/', getShoppingBag);
+router.get('/', function(req, res, next) {
+    res.render('user/user-shoppingbag');
+})
 
 router.get('/bag/checkout', function(req, res, next) {
     res.render('user/user-shoppingbag');
