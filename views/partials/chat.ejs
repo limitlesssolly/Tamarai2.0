@@ -40,6 +40,9 @@
     <!-- <title>Document</title> -->
 </head>
 <style>
+    ::-webkit-scrollbar {
+        width: 0;
+    }
     * {
         margin: 0;
         padding: 0;
@@ -96,6 +99,8 @@
         grid-template-columns: 70% 30%;
         margin: 8px 16px;
         border-radius: 32px;
+        background: linear-gradient(#ececee 50%, #1c1f46 50%);
+        box-shadow: inset 0 1px 0 #777;
     }
     #text {
         outline: none;
@@ -107,6 +112,16 @@
         border: solid 1px #777;
         border-radius: none;
     }
+    #send {
+        outline: none;
+        font-size: 20px;
+        color: #eee;
+        background: #1c1f46;
+        border: none;
+        border-radius: 32px;
+        transition-duration: 0.2s;
+    }
+    #send:active
 </style>
 <body>
     <div class="main">
