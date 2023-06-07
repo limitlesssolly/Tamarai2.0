@@ -8,11 +8,51 @@
 
         </div>
         <main class="container">
-            <div class="cartinto mt-3">
-                <h1 class="my-2">Your Cart </h1>
-                <hr>
-            </div>
-            OKI HI
+            <% if (bag.length > 0) { %>
+                <table>
+                    <tr>
+                        <th>Product name</th>
+                        <th>Brand</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                    <%bag.forEach(function(mybag) { %>
+                        <td>
+                            <%= mybag.name %>
+                        </td>
+                        <td>
+                            <%= mybag.brand %>
+                        </td>
+                        <td>
+                            <%= mybag.seller %>
+                        </td>
+                        <td>
+                            <%= mybag.price %>
+                        </td>
+                        <td>
+                            <%= mybag.image %>
+                        </td>
+                        <td>
+                            <%= mybag.count %>
+                        </td>
+                        <td>
+                            <%= mybag.description %>
+                        </td>
+                        <td>
+                            <%= mybag.category %>
+                        </td>
+                        <td>
+                            <%= mybag.color %>
+                        </td>
+
+
+                        <% }) %>
+                </table>
+                <%  }else { %>
+                    <p>Your my bag is currently empty.</p>
+                    <% } %>
+
+
         </main>
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>

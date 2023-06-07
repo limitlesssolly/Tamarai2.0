@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import categories from '../models/categories.js';
 import Wishlist from '../models/whishlist.js'
+import Bag from '../models/shopping-bag.js'
 import products from '../models/productData.js'
 import regi from "../models/userRegister.js";
 import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
@@ -64,13 +65,42 @@ router.get('/order/:id', async(req, res) => {
     }
 });
 
-router.get('/bag', function(req, res, next) {
-    const Prod = products.find({}).then((users) => {
-        console.log(Prod);
-        res.render('user/user-shoppingbag', { Prod });
-    }).catch((err) => {
-        next(err);
+// router.get('/bag', function(req, res, next) {
+
+//     const Prod = products.find({}).then((users) => {
+
+//         console.log(Prod);
+//         res.render('user/user-shoppingbag', { Prod });
+//     }).catch((err) => {
+//         next(err);
+//     });
+// });
+router.get('/bag', async function(req, res, next) {
+    try {
+        const bag = await Bag.find();
+        console.log(bag);
+        res.render('user/user-shoppingbag', { bag });
+    } catch (error) {}
+});
+//i guess i should add the product to the bag here
+router.get('/add/:id', async function(req, res, next) {
+    console.log('hi');
+    const product = await products.findById(req.params.id);
+    console.log(product);
+    const bagat = new Bag({
+        name: " product.name,",
+        brand: product.brand,
+        seller: product.seller,
+        price: product.price,
+        image: product.image,
+        count: product.count,
+        description: product.description,
+        category: product.categories,
+        color: product.color,
     });
+    await bagat.save();
+    console.log('et7at');
+    res.redirect('/user/homepage');
 });
 
 router.get('/bag/checkout', function(req, res, next) {
