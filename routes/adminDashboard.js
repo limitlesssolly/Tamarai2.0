@@ -2,10 +2,15 @@ import { Router } from 'express';
 import Prod from '../models/productData.js';
 import kitty from '../models/categories.js';
 import Users from '../models/userRegister.js';
-import {signups, signupstoo, signupstre, addCategory} from "../controllers/admin-controllers.js";
-// import { deleteUser } from '../controllers/admin-controllers.js';
-const router = Router();
 
+import numusers from '../models/noOfuser.js'
+import {signups, signupstoo, signupstre, addCategory} from "../controllers/admin-controllers.js";
+import {noOfusers}from "../controllers/admin-controllers.js";
+// import { deleteUser } from '../controllers/admin-controllers.js';
+ 
+
+const router = Router();
+import MongoClient from "mongodb";
 let admin = false;
 
 router.use(function (req, res, next) {
@@ -33,21 +38,45 @@ router.get('/category/delete/:id', async function (req, res, next) {
 })
 
 /* GET /admin/dashboard/stats page. */
-router.get('/stats', function (req, res, next) {
-    res.render('admin/admin-stats');
-    // try{
-    //     const collection = connect.collection("user");
-    //     collection.countDocuments().then((count_documents) => {
-    //         console.log(count_documents);
-    //       }).catch((err) => {
-    //         console.log(err.Message);
-    //       })
-    //   }
-    //   catch(e){
-    //     res.send(e);
-    //   }
-})
 
+// try{
+//     //const collection = await user.find();
+//     const collection = connect.collection("user");
+//     collection.countDocuments().then((count_documents) => {
+//         console.log(count_documents);
+//       }).catch((err) => {
+//         console.log(err.Message);
+//       })
+//       const btngan = new kitty({usersno: count_documents});
+//       await btngan.save();
+//       console.log('category lots of users isa');
+//     res.redirect('/admin/dashboard/stats');
+
+router.get('/stats', function (req, res, next) {
+    const url = 'mongodb://https://cloud.mongodb.com/v2/6460f00b9631e23c755ff880#/metrics/replicaSet/6460f10e08f9fa5f30a836e6/explorer/test:27017/';
+          console.log("hi");
+    const dbname="User"
+          MongoClient.connect(url).then((client) => {
+        console.log("hi");
+        const connect = client.db(dbname);
+        console.log("hi");
+        const collection = connect.collection("users"); 
+        console.log("hi");
+        collection.countDocuments().then((count_documents) => {
+                    // console.log(count_documents);
+        const col =   Users.findById(req.params.id);
+        const btngan = new numusers({ usersno:col.count_documents });
+               console.log("btngan");
+                 btngan.save();
+             })
+            //  .catch((err) => {
+            //         console.log(err.Message);
+            //        }) 
+       
+        console.log(' lots of users isa');
+        res.render('admin/admin-stats', { btngan });
+})
+ 
 /* GET /admin/dashboard/messages page. */
 router.get('/messages', function (req, res, next) {
     res.render('admin/admin-messages');
@@ -100,6 +129,7 @@ router.get('/usings/seller', function (req, res, next) {
 router.post('/addUser',signups); 
 router.post('/addSeller',signupstoo); 
 router.post('/addAdmin',signupstre); 
+router.post('/noOFusers',noOfusers)
 // router.post('/deleteUSer',deleteUser);
 
 /* GET /admin/dashboard/settings page. */
@@ -113,5 +143,5 @@ router.get('/usings/delete/:id', async function(req, res, next) {
     console.log(`user ${data.username} has been deleted..`)
     return res.redirect('/admin/dashboard/usings');
 })
-
+})
 export default router;
