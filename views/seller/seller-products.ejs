@@ -138,9 +138,11 @@
                         <h2 class="product-brand">
                             <%= product.seller%>
                         </h2>
-                        <p class="product-short-des">
-                            <%=product.name%>
-                        </p>
+                        <a href="/seller/dashboard/view/view/<%= product._id %>">
+                            <h2>
+                                <%= product.name %>
+                            </h2>
+                        </a>
                         <span class="price"><%=product.price%> L.E</span>
                         <!-- <span class="actual-price">200L.E.</span> -->
                     </div>
