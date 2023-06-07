@@ -7,6 +7,6 @@ const noOfUsersSchema = new mongoose.Schema ( {
     }
 }, { timestamps: true });
 
-const NoOfUsersModel = mongoose.model('noOfusers', noOfUsersSchema);
+const NoOfUsersModel = mongoose.model('NoOfUsersModel', noOfUsersSchema);
 
 export default NoOfUsersModel;
