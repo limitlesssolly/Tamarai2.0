@@ -5,7 +5,6 @@ import rege from '../models/tryseller.js';
 import cats from "../models/categories.js";
 import { addItem } from "../controllers/seller-controller.js";
 import { getSellerProducts } from "../controllers/products-controllers.js";
-
 import regi from "../models/tryseller.js";
 
 /* GET /seller/dashboard page. */
@@ -26,17 +25,19 @@ router.get("/analysis", async function (req, res, next) {
 router.get("/add", async function (req, res, next) {
   const Cats = await cats.find();
   const regs = await regi.findById(req.session.Id);
-  res.render("seller/seller-add", {
-    Cats, regs
-  });
+  res.render("seller/seller-add", {Cats, regs});
 });
 
 /* post an item */
 router.post("/add", addItem);
 
 router.get("/products", async function (req, res, next) {
+  console.log('products');
+  const regs = await regi.findById(req.session.Id);
+  const sell = regs.username;
+  console.log(sell);
   const Products = await Prod.find();
-  res.render("seller/seller-products", {Products});
+  res.render("seller/seller-products", {Products, sell});
 });
 
 /* GET /seller/dashboard/view page. */
