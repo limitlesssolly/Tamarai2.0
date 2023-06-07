@@ -45,7 +45,9 @@ const productSchema = new Schema({
     },
     rating: {
         type: Number,
-        required: false
+        required: false,
+        min:1,
+        max:5,
     },
     comment: {
         type: String,
