@@ -69,7 +69,7 @@
     router.get('/bag', function(req, res, next) {
         const Prod = products.find({}).then((users) => {
             console.log(Prod);
-            res.render('user/user-shoppingbag', { Prod });
+            res.render('user/bag', { Prod });
         }).catch((err) => {
             next(err);
         });

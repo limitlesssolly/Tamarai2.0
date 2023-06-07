@@ -66,11 +66,9 @@
 //         res.redirect('back');
 //     });
 // });
-
 import express from 'express';
 import mongoose from 'mongoose';
-import Product from '../models/product.js';
-import User from '../models/user.js';
+import User from '../models/userRegister.js';
 import isLoggedIn from '../middlewares/isLoggedIn.js';
 import previousUrl from '../middlewares/previousUrl.js';
 import currentUrl from '../middlewares/currentUrl.js';
@@ -97,7 +95,7 @@ router.post('/:prodId', previousUrl, isLoggedIn, async(req, res) => {
     try {
         const { prodId } = req.params;
         const userData = await User.findById(req.user._id);
-        const product = await Product.findById(prodId);
+        const product = await ProductsData.findById(prodId);
         let flag = 0;
         let cartLimit = true;
         for (const user of userData.cart) {
@@ -155,7 +153,7 @@ router.delete('/user/cart/:userId/:prodId', previousUrl, isLoggedIn, async(req, 
 router.get('/user/orders', currentUrl, isLoggedIn, async(req, res) => {
     try {
         const data = await User.findById(req.user._id).populate('orders');
-        await data.populate({ path: 'orders.orderList.item', model: Product }).execPopulate();
+        await data.populate({ path: 'orders.orderList.item', model: ProductsData }).execPopulate();
         const orders = data.orders;
         res.render('user/orders', { orders });
     } catch (error) {
@@ -163,5 +161,4 @@ router.get('/user/orders', currentUrl, isLoggedIn, async(req, res) => {
         res.status(404).render('error/error', { status: '404' });
     }
 });
-
 export default router;

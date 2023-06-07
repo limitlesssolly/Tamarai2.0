@@ -15,8 +15,7 @@
             <%if(data.length<1){%>
                 <h2 class="text-center">Hey
                     <%=loginUser.username%> Your Cart is Empty ! Shop Now!</h2>
-                <%}
-    else{%>
+                <%} else{%>
                     <div class="cartinfo row">
                         <div class="col-md-7">
                             <ul class="list-group">
@@ -152,15 +151,16 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                    Close
-                    </button>
-                                                <button type="button" class="btn btn-primary" id="rzp-payment">Pay Now</button>
+                    Close</button>
                                             </div>
+                                            </button>
+                                            <button type="button" class="btn btn-primary" id="rzp-payment">Pay Now</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                     <%}%>
         </main>

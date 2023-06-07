@@ -36,7 +36,7 @@
                 <div class="Cart-Items">
                     <div class="product-container">
 
-                        <% product.forEach(function(product) { %>
+                        <% productData.forEach(function(product) { %>
                             <div>
                                 <div class="image-box">
                                     <img src="<%= product.image %>" class="product-thumb" alt="<%= product.name %>">
@@ -90,7 +90,6 @@
         </div>
 
     </div>
-    <%- include('../partials/footer.ejs') %>
 
 </body>
 
