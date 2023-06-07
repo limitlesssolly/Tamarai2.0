@@ -6,6 +6,7 @@ import Bag from '../models/shopping-bag.js'
 import products from '../models/productData.js'
 import regi from "../models/userRegister.js";
 import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
+import { userInfo } from 'os';
 
 router.get('/', async function(req, res, next) {
     try {
@@ -142,13 +143,18 @@ router.get('/delete-from-wishlist/:id', async function(req, res, next) {
 
 );
 
+// Get /user/homepage/chat 
+router.get('/chat', async function(req, res, next) {
+    res.render('/chat');
+})
+
 router.get('/whishlist', async function(req, res, next) {
     const regs = await regi.findById(req.session.Id);
     const uses = regs.username;
     const wished = await Wishlist.find({ wisher: uses });
     console.log(wished);
     res.render('user/user-whishlist', { wished });
-})
+});
 
 // Add this debug statement
 router.use((err, req, res, next) => {
