@@ -2,17 +2,10 @@ import { Router } from 'express';
 import Prod from '../models/productData.js';
 import kitty from '../models/categories.js';
 import Users from '../models/userRegister.js';
-import shop from '../models/shopping-bag.js';
-import numusers from '../models/noOfuser.js'
+import sells from '../models/tryseller.js';
 import { signups, signupstoo, signupstre, addCategory } from "../controllers/admin-controllers.js";
-
-import { noOfusers , deleteUser } from "../controllers/admin-controllers.js";
 import dotenv from "dotenv";
 const router = Router();
-import MongoClient from 'mongoose';
- //import client from 'db';
-import mongoose from 'mongoose';
-const MURI = process.env.ATLAS_URI;
 
 let admin = false;
 dotenv.config();
@@ -27,7 +20,19 @@ router.use(function (req, res, next) {
 /* GET /admin/dashboard page. */
 router.get('/', async function (req, res, next) {
     const cats = await kitty.find();
-    res.render('admin/admin-dashboard', { cats });
+    const uss = await Users.find()
+    const sel = await sells.find()
+    let ay7aga = uss.length;
+    let ay7agatoo = sel.length;
+
+    const yarab = await Prod.find();
+    let revenue = 0;
+    for (let i = 0; i < yarab.length; i++) {
+        revenue += yarab[i].price;
+    }
+    let real_revenue = revenue * 0.01;
+    
+    res.render('admin/admin-dashboard', {ay7aga,ay7agatoo, real_revenue, cats });
 })
 
 router.post('/addcategory', addCategory);
@@ -39,60 +44,6 @@ router.get('/category/delete/:id', async function (req, res, next) {
     console.log(`Category ${data.name} has been deleted..`)
     return res.redirect('/admin/dashboard');
 })
-
-/* GET /admin/dashboard/stats page. */
-
-  
-router.get ('/stats',async function(req,res,next){
- 
-
-const uss = await Users.find()
-console.log(uss.length);
-let ay7aga=uss.length
- 
-const yarab = await Prod.find();
-
- let revenue=0;
- for(let i=0;i<yarab.length;i++)
- {
-  revenue+= yarab[i].price;
- }
-let real_revenue =revenue*0.01;
- console.log(revenue);
-
-//  const product = await Prod.findById(req.params.id);
-//   let count ={} ;
-//   let counter =0;
-//  for(let i =0;i<product.length;i++)
-//  {
-//    if( res.render('user/productaya', { product }))
-//    {
-//         count.push(product);
-        
-//         for(let i=0;i<count.length;i++)
-//           {
-//              for(let j=0;j<count.length;j++)
-//                       if (count[i]==count[j+1])
-//                       {
-//                            counter ++;
-//                       }
-//           }
-//    }
-
-//  }
-//   console.log(counter);
-  
-res.render('admin/admin-stats',{ay7aga,real_revenue});
- 
-
-})
- 
- 
-
-
-//router.get("/stat", CenterController.getCountofCenters);
-// router.get("/stat", CenterController.getCountofCenters);
-
 
 /* GET /admin/dashboard/messages page. */
 router.get('/messages', function (req, res, next) {
@@ -143,11 +94,9 @@ router.get('/usings/seller', function (req, res, next) {
     res.render('admin/admin-add-seller', { errorMsg: {}, admin: admin });
 })
 
-router.post('/addUser',signups); 
-router.post('/addSeller',signupstoo); 
-router.post('/addAdmin',signupstre); 
-//router.post('/noOFusers',noOfusers)
-// router.post('/deleteUSer',deleteUser);
+router.post('/addUser', signups);
+router.post('/addSeller', signupstoo);
+router.post('/addAdmin', signupstre);
 
 /* GET /admin/dashboard/settings page. */
 router.get('/settings/', function (req, res, next) {
