@@ -58,6 +58,20 @@ router.get("/view/view/:id", async function (req, res, next) {
     Products,
   });
 });
+router.post('/view/edit/:id', async (req, res) => {
+  const regs = await regi.findById(req.params.id);
+  regs.username = req.body.username;
+  regs.email = req.body.email;
+  // regs.password = req.body.password;
+  await regs.save();
+
+  // Retrieve the updated seller data from the database
+  const updatedpro = await regi.findById(req.params.id);
+
+  // Render the "profile" view with the updated seller data
+  res.render('seller/seller-single-product', { regs: updatedpro });
+});
+
 /* GET /seller/dashboard/info page. */
 router.get("/info", function (req, res, next) {
   res.render("seller/seller-info");
