@@ -242,7 +242,9 @@ const updateItem = async (req, res, next) => {
     res.status(400).json({ message: error.message })
   }
 };
+const deleteUser= async (req, res, next) => {
 
+}
 const noOfusers= async(req,res,next)=>
 {
   try{
@@ -276,7 +278,7 @@ export {
   signupstoo,
   signupstre,
   addCategory,
-  //noOfusers
-  getCountofCenters
-  // deleteUser
+  noOfusers,
+  getCountofCenters,
+  deleteUser,
 };
