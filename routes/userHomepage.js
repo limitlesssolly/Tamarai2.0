@@ -105,6 +105,19 @@ router.get('/add-to-wishlist/:id', async function (req, res, next) {
 
 );
 
+router.get('/delete-from-wishlist/:id', async function (req, res, next) {
+    const id = req.params.id;
+    const wish = await Wishlist.findByIdAndDelete(id);
+    console.log(`Wish ${wish.name} has been deleted..`);
+    const regs = await regi.findById(req.session.Id);
+    const uses = regs.username;
+    const wished = await Wishlist.find({wisher : uses});
+    console.log(wished);
+    res.render('user/user-whishlist', {wished});
+}
+
+);
+
 router.get('/whishlist', async function (req, res, next) {
     const regs = await regi.findById(req.session.Id);
     const uses = regs.username;

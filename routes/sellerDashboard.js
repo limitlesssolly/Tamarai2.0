@@ -11,6 +11,7 @@ import regi from "../models/tryseller.js";
 router.get("/", function (req, res, next) {
   res.render("seller/seller-dashboard");
 });
+
 router.get("/analysis", async function (req, res, next) {
   console.log("hi");
   res.render("seller/seller-analysis");
@@ -54,12 +55,14 @@ router.get("/view/delete/:id", async function (req, res, next) {
   console.log(`Item ${data.name} has been deleted..`);
   return res.redirect("/seller/dashboard/view");
 });
+
 router.get("/view/view/:id", async function (req, res, next) {
   const Products = await Prod.findById(req.params.id);
   res.render("seller/seller-single-product", {
     Products,
   });
 });
+
 router.post('/view/edit/:id', async (req, res) => {
   const regs = await Prod.findById(req.params.id);
   regs.name = req.body.name;
@@ -95,8 +98,6 @@ router.get("/profile/:id", async (req, res) => {
   const regs = await regi.findById(req.session.Id);
   res.render("seller/seller-profile", { regs });
 });
-
-
 
 router.post("/profile/:id", async (req, res) => {
   const regs = await regi.findById(req.params.id);

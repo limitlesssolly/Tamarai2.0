@@ -115,11 +115,11 @@ body {
     background-color: #1C4C56;
 }
 
-h1{
+.title h1{
     position: relative;
     top: 20%;
-    right: 230%;
-    float: left;
+    left: 20%;
+    float: right;
     /* text-align: center; */
     color: #0d1516;
     font-size: 30px;
