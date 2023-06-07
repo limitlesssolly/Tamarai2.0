@@ -189,6 +189,14 @@ body {
     /* centers items vertically */
 }
 
+.list-Container p{
+    text-align: center;
+    font-size: 200%;
+    position: absolute;
+    left: 35%;
+    top: 50%;
+}
+
 @media (max-width: 900px) {
     .prlist {
         grid-template-columns: repeat(1, 1fr);

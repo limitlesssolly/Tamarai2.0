@@ -16,6 +16,7 @@
 </head>
 
 <body>
+
     <%- include ('../partials/usernav.ejs')%>
 
         <div id="header">
@@ -40,7 +41,6 @@
         <section class="product">
 
             <div class="product-container">
-
                 <section class="products">
 
                     <h2 class="product-category">Best Selling</h2>
@@ -50,23 +50,32 @@
 
                     <div class="product-container">
                         <% productData.forEach(function(product) { %>
-
-                            <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i
-                                    class="fa-regular fa-star"></i></a>
-
                             <div class="product-card">
+                                <div class="negma" onclick="nav()">
+                                    <div id="bayna" style="display: none;">
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div id="baynatoo" style="display: block;">
+                                        <a href="/user/homepage/add-to-wishlist/<%= product._id%>"
+                                            style="text-decoration: none;"><i class="fa-regular fa-star"
+                                                id="star"></i></a>
+                                    </div>
+                                </div>
                                 <div class="product-image">
-                                    <% if (product.image == "") { %>
+                                    <% if (product.image=="" ) { %>
                                         <img src="images/no-image.png" class="product-thumb" alt="No image available">
                                         <% } else { %>
                                             <a href="/product/<%= product._id %>"><img
-                                            src="/images/products/<%= product.image %>" class="product-thumb" alt="product">
-                                            <!-- <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a> -->
-                                            <a class="card-btn" href="./homepage/add/<%= product._id %>">Add to Bag</a>
-                                            <% } %>
-                                                </a>
+                                                    src="/images/products/<%= product.image %>" class="product-thumb"
+                                                    alt="product">
+                                                <a class="card-btn" href="./homepage/add/<%= product._id %>">Add to
+                                                    Bag</a>
+                                                <% } %>
+                                            </a>
+
                                 </div>
                                 <div class="product-info">
+
                                     <a href="/product/<%= product._id %>">
                                         <h2>
                                             <%= product.name %>
@@ -75,6 +84,7 @@
                                     <h5 class="product-brand">
                                         <%= product.seller%>
                                     </h5>
+
                                     <% if (product.discount> 0) { %>
                                         <span class="price">
                                             <%= product.price %>L.E.
@@ -88,20 +98,36 @@
                                             </span>
                                             <% } %>
                                 </div>
+
                             </div>
                             <% }); %>
                     </div>
+                </section>
             </div>
-            </section>
+        </section>
 
-            <div class="chatbox">
-                <div id="chatbox"></div>
-            </div>
-            <%- include('../partials/footer.ejs') %>
+        <div class="chatbox">
+            <div id="chatbox"></div>
+        </div>
 </body>
+
 <script src="/Js/home.js"></script>
-<script src="https://code.jquery.com/jquery-1.10.2.js">
-</script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+<script>
+    function nav() {
+        if (document.getElementById("bayna").style.display == "block" && document.getElementById("baynatoo").style.display == "none") {
+
+            document.getElementById("bayna").style.display = "none";
+            document.getElementById("baynatoo").style.display = "block";
+
+        }
+        else if (document.getElementById("baynatoo").style.display == "block" && document.getElementById("bayna").style.display == "none") {
+
+            document.getElementById("bayna").style.display = "block";
+            document.getElementById("baynatoo").style.display = "none";
+        }
+    }
+</script>
 
 </html>

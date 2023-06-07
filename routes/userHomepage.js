@@ -10,8 +10,11 @@ import { getHomepage, getShoppingBag } from '../controllers/products-controllers
 router.get('/', async function(req, res, next) {
     try {
         const cats = await categories.find();
+        const regs = await regi.findById(req.session.Id);
+        const uses = regs.username;
+        const wished = await Wishlist.find({wisher : uses});
         const productData = await products.find();
-        res.render('user/user-homepage', { productData, cats });
+        res.render('user/user-homepage', { productData, cats , wished});
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');
@@ -65,16 +68,6 @@ router.get('/order/:id', async(req, res) => {
     }
 });
 
-// router.get('/bag', function(req, res, next) {
-
-//     const Prod = products.find({}).then((users) => {
-
-//         console.log(Prod);
-//         res.render('user/user-shoppingbag', { Prod });
-//     }).catch((err) => {
-//         next(err);
-//     });
-// });
 router.get('/bag', async function(req, res, next) {
     try {
         const bag = await Bag.find();
@@ -82,6 +75,7 @@ router.get('/bag', async function(req, res, next) {
         res.render('user/user-shoppingbag', { bag });
     } catch (error) {}
 });
+
 //i guess i should add the product to the bag here
 router.get('/add/:id', async function(req, res, next) {
     console.log('hi');
@@ -130,6 +124,8 @@ router.get('/add-to-wishlist/:id', async function (req, res, next) {
     });
     await wishat.save();
     console.log('et7at');
+    // document.getElementById("bayna").style.display = "block";
+    // document.getElementById("baynatoo").style.display = "none";
     res.redirect('/user/homepage');
 }
 
