@@ -83,6 +83,8 @@ router.get('/profile', function (req, res, next) {
 
 router.get('/add-to-wishlist/:id', async function (req, res, next) {
     const product = await products.findById(req.params.id);
+    const regs = await regi.findById(req.session.Id);
+    const uses = regs.username;
     console.log(product);
     const wishat = new Wishlist({
         name: product.name,
@@ -94,6 +96,7 @@ router.get('/add-to-wishlist/:id', async function (req, res, next) {
         description: product.description,
         category: product.categories,
         color: product.color,
+        wisher: uses,
     });
     await wishat.save();
     console.log('et7at');
@@ -103,10 +106,11 @@ router.get('/add-to-wishlist/:id', async function (req, res, next) {
 );
 
 router.get('/whishlist', async function (req, res, next) {
-    const wished = await Wishlist.find();
+    const regs = await regi.findById(req.session.Id);
+    const uses = regs.username;
+    const wished = await Wishlist.find({wisher : uses});
     console.log(wished);
-    res.render('user/user-whishlist', { wished });
-
+    res.render('user/user-whishlist', {wished});
 })
 
 // Add this debug statement
