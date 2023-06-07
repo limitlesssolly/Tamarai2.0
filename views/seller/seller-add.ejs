@@ -11,33 +11,34 @@
     <!-- Adding a favicon  -->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/seller/add.css">
 </head>
 
 <body>
     <%- include('../partials/sellernav.ejs') %>
         <div class="adds">
+            <h1>Add a Product</h1>
             <form enctype="multipart/form-data" method="post" action="/seller/dashboard/add" >
-                <div class="name">Product Name : <input name="name" type="text"></div>
-                <div class="brand">Brand : <input name="brand" type="text"></div>
+                <div class="name">Product Name : <input name="name" type="text" placeholder="name me"></div>
+                <div class="brand">Brand : <input name="brand" type="text" placeholder="brand me"></div>
                 <div class="seller">Seller : <%= regs.username %></div>
-                <div class="price">Price : <input name="price" type="text"></div>
-                <div class="image">Image : <input name="img" type="file" id="img"></div>
-                <div class="count">Count In Stock: <input name="count" type="text"></div>
-                <div class="description">Description : <input name="description" type="text"></div>
+                <div class="price">Price : <input name="price" type="text" placeholder="price me "></div>
+                <div class="image">Image : <input name="img" type="file" id="img" placeholder="imagins"></div>
+                <div class="count">Count In Stock: <input name="count" type="text" placeholder="count me "></div>
+                <div class="description">Description : <input name="description" type="text" placeholder="descibe me"></div>
                 <div class="category">Category :
-                    <input list="categories" name="categories">
+                    <input list="categories" name="categories"placeholder="categorize me" >
                     <datalist id="categories">
                         <% Cats.forEach(function(cats) { %>
                             <option value="<%=cats.name%>">
                         <% }); %>
                     </datalist>
-
                 </div>
-                <div class="color">Color : <input name="color" type="color"></div>
+                <div class="color">Color : <input name="color" type="color" placeholder="color me"></div>
                 <button type="submit" id="updatebutts"> Plus One </button>
             </form>
-            <%- include('../partials/translate.ejs') %>
-            <%- include('../partials/footer.ejs') %>
+            </div>
+            <!-- <%- include('../partials/footer.ejs') %> -->
 </body>
 <script>
     function readURL(input) {
