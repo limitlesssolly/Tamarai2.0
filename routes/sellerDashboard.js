@@ -17,7 +17,8 @@ import regi from "../models/tryseller.js";
 router.get('/', function(req, res, next) {
     res.render('seller/seller-dashboard');
 })
-router.get('/analysis', function(req, res, next) {
+router.get('/analysis', async function(req, res, next) {
+    console.log("hi");
     res.render('seller/seller-analysis');
 })
 
