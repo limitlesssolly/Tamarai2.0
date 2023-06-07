@@ -16,7 +16,9 @@
         <div class="contents">
             <section class="status">
                 <h2>Site Status</h2>
-                <canvas id="siteStatusChart"></canvas>
+                <canvas id="usedats"></canvas>
+                <canvas id="catdats"></canvas>
+                <canvas id="lotus"></canvas>
             </section>
             <section class="revenue">
                 <h2>Revenue</h2>
@@ -36,11 +38,74 @@
         </div>
         <%- include('../partials/footer.ejs') %>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
-    // Replace the placeholders with actual data
-    document.getElementById("status").textContent = "Online";
-    document.getElementById("users").textContent = "1000";
-    document.getElementById("revenue").textContent = "$5000";
-    document.getElementById("traffic-sources").textContent = "Organic, Referral, Direct";
+    var xValues = ["Clothes", "Furniture", "Accessories", "Handmade", "Cars"];
+    var yValues = [50, 40, 30, 20, 10];
+    var barColors = ["#1C4C56", "#89bbbb","#518f99","#2a7589","#83a7b6"];
+    
+    new Chart("catdats", {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Sells based on categories"
+        }
+      }
+    });
+    
+</script>
+<script>
+    var xValuestoo = ["Sellers", "Users", "Admins", "Viewers"];
+    var yValuestoo = [25, 20, 15, 10];
+    var barColors = ["#1C4C56", "#89bbbb","#518f99","#2a7589"];
+
+    new Chart("usedats", {
+  type: "doughnut",
+  data: {
+    labels: xValuestoo,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValuestoo
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Users accessing our application"
+    }
+  }
+});
+</script>
+<script>
+    var xValuestre = ["Solsol", "Nermo", "Semo", "Manona", "Nado"];
+    var yValuestre = [10, 10, 10, 10, 10];
+    var barColors = ["#1C4C56", "#89bbbb","#518f99","#2a7589","#83a7b6"];
+    
+    new Chart("lotus", {
+      type: "pie",
+      data: {
+        labels: xValuestre,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValuestre
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Team stats"
+        }
+      }
+    });
 </script>
 </html>
