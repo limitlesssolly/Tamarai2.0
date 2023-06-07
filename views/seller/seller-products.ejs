@@ -117,11 +117,11 @@
                         </div>
                     </div>
 
-                </div>
+                
 
                 <% Products.forEach(function(product) { %>
                     <% if (product.seller===sell) { %>
-                        <<div class="product-card" id="product-card">
+                        <div class="product-card" id="product-card">
                             <div class="product-image">
                                 <% if (product.image=="" ) { %>
                                     <img src="images/no-image.png" class="product-thumb" alt="No image available">
@@ -141,22 +141,17 @@
                                 <span class="price">
                                     <%=product.price%> L.E
                                 </span>
-                                <!-- <span class="actual-price">200L.E.</span> -->
                             </div>
         </div>
         <% }%>
             <% }); %>
     </div>
-    </div>
+</div>
 
-    </div>
     <div class="chatbox ">
         <div>
             <%- include('../partials/chat.ejs') %>
         </div>
     </div>
 </body>
-<!-- mostafz awy -->
-        <!-- <%- include('../partials/footer.ejs') %> -->
-
 </html>
