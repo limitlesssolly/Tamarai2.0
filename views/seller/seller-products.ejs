@@ -98,8 +98,6 @@
 
 <body>
 
-
-    </div>
     <div class="grid-container">
 
         <div class="header">
@@ -122,30 +120,34 @@
                     </div>
 
                 </div>
-                
+
                 <% Products.forEach(function(product) { %>
-                <div class="product-card" id="product-card">
-                    <div class="product-image">
-                        <% if (product.image == "") { %>
-                        <img src="images/no-image.png" class="product-thumb" alt="No image available">
-                        <% } else { %>
-                        <a href="/seller/dashboard/view/view/<%= product._id %>"><img
-                                src="/images/products/<%= product.image %>" class="product-thumb" alt="product">
-                                 <a class="card-btn" href="/bag/add/<%= product._id %>">Edit</a>
-                            <% } %>
-                                <% }); %>
+                    <div class="product-card" id="product-card">
+                        <div class="product-image">
+                            <% if (product.image=="" ) { %>
+                                <img src="images/no-image.png" class="product-thumb" alt="No image available">
+                                <% } else { %>
+                                    <a href="/seller/dashboard/view/view/<%= product._id %>"><img
+                                            src="/images/products/<%= product.image %>" class="product-thumb"
+                                            alt="product">
+                                        <a class="card-btn" href="/bag/add/<%= product._id %>">Edit</a>
+                                        <% } %>
+                                            <% }); %>
 
-                </div>
+                        </div>
+
+                    </div>
 
         </div>
-
-    </div>
-    <!-- bybwaz el page  -->
-    <!-- <%- include('../partials/footer.ejs') %> -->
-    <div class="chatbox ">
-        <div>
-            <%- include('../partials/chat.ejs') %>
         </div>
+        <!-- bybwaz el page  -->
+        <!-- <%- include('../partials/footer.ejs') %> -->
+        <div class="chatbox ">
+            <div>
+                <%- include('../partials/chat.ejs') %>
+            </div>
+        </div>
+
 </body>
 
 </html>
