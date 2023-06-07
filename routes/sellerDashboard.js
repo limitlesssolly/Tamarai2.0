@@ -64,6 +64,7 @@ router.get("/view/view/:id", async function (req, res, next) {
 });
 
 router.post('/view/edit/:id', async (req, res) => {
+  console.log("Entered post");
   const Products = await Prod.findById(req.params.id);
   Products.name = req.body.name;
   Products.brand = req.body.brand;
@@ -76,9 +77,11 @@ router.post('/view/edit/:id', async (req, res) => {
 
   // Retrieve the updated seller data from the database
   const updatedpro = await Prod.findById(req.params.id);
-
+  const Cats = await cats.find();
+console.log("WIll render");
   // Render the "profile" view with the updated seller data
-  res.render('seller/seller-single-product', { Products: updatedpro });
+  res.render('seller/seller-single-product', { Products: updatedpro, Cats });
+  console.log("DONE");
 });
 
 /* GET /seller/dashboard/info page. */
