@@ -6,7 +6,7 @@ import products from '../models/productData.js'
 import regi from "../models/userRegister.js";
 import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
 
-router.get('/', async function (req, res, next) {
+router.get('/', async function(req, res, next) {
     try {
         const cats = await categories.find();
         const productData = await products.find();
@@ -17,11 +17,11 @@ router.get('/', async function (req, res, next) {
     }
 });
 
-router.get('/checkout', function (req, res, next) {
+router.get('/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 });
 
-router.post('/checkout', async (req, res) => {
+router.post('/checkout', async(req, res) => {
     try {
         // Extract order information from the request body
         const { name, email, address } = req.body;
@@ -51,7 +51,7 @@ router.post('/checkout', async (req, res) => {
 });
 
 // Route to view order details
-router.get('/order/:id', async (req, res) => {
+router.get('/order/:id', async(req, res) => {
     try {
         // Retrieve the order from the database using the provided ID
         const order = await Order.findById(req.params.id);
@@ -64,7 +64,7 @@ router.get('/order/:id', async (req, res) => {
     }
 });
 
-router.get('/bag', function (req, res, next) {
+router.get('/bag', function(req, res, next) {
     const Prod = products.find({}).then((users) => {
         console.log(Prod);
         res.render('user/user-shoppingbag', { Prod });
@@ -73,36 +73,36 @@ router.get('/bag', function (req, res, next) {
     });
 });
 
-router.get('/bag/checkout', function (req, res, next) {
+router.get('/bag/checkout', function(req, res, next) {
     res.render('user/user-shoppingbag');
 });
 
-router.get('/profile', function (req, res, next) {
+router.get('/profile', function(req, res, next) {
     res.render('user/user-profile');
 });
 
-router.get('/add-to-wishlist/:id', async function (req, res, next) {
-    const product = await products.findById(req.params.id);
-    console.log(product);
-    const wishat = new Wishlist({
-        name: product.name,
-        brand: product.brand,
-        seller: product.seller,
-        price: product.price,
-        image: product.image,
-        count: product.count,
-        description: product.description,
-        category: product.categories,
-        color: product.color,
-    });
-    await wishat.save();
-    console.log('et7at');
-    res.redirect('/user/homepage');
-}
+router.get('/add-to-wishlist/:id', async function(req, res, next) {
+        const product = await products.findById(req.params.id);
+        console.log(product);
+        const wishat = new Wishlist({
+            name: product.name,
+            brand: product.brand,
+            seller: product.seller,
+            price: product.price,
+            image: product.image,
+            count: product.count,
+            description: product.description,
+            category: product.categories,
+            color: product.color,
+        });
+        await wishat.save();
+        console.log('et7at');
+        res.redirect('/user/homepage');
+    }
 
 );
 
-router.get('/whishlist', async function (req, res, next) {
+router.get('/whishlist', async function(req, res, next) {
     const wished = await Wishlist.find();
     console.log(wished);
     res.render('user/user-whishlist', { wished });
@@ -115,18 +115,18 @@ router.use((err, req, res, next) => {
     res.status(500).send('Kol haga hatb2a kwisa inshallah');
 });
 
-router.get('/profile', async (req, res) => {
+router.get('/profile', async(req, res) => {
     const regs = await regi.find();
     res.render('user/user-profile', { regs });
 });
 
 /* GET /user/homepage/profile page. */
-router.get('/profile/:id', async (req, res) => {
+router.get('/profile/:id', async(req, res) => {
     const regs = await regi.findById(req.session.Id);
     res.render('user/user-profile', { regs });
 });
 
-router.post('/profile/:id', async (req, res) => {
+router.post('/profile/:id', async(req, res) => {
     const regs = await regi.findById(req.params.id);
     regs.username = req.body.username;
     regs.email = req.body.email;
