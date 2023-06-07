@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,6 +100,18 @@
         max-width: 60%;
         padding: 14px;
         word-wrap: break-word;
+        margin: 8px 14px;
+    }
+    .left {
+        color: #000;
+        background: #b3bfca;
+        border-radius: 0 16px 16px 16px;
+    }
+    .right {
+        color: #fff;
+        background: #1c1f46;
+        border-radius: 16px 16px 0 16px;
+        float: right;
     }
     .msgCon1, .msgCon2 {
         width: 100%;
@@ -166,6 +176,12 @@
             Con2.appendChild(msg_res);
 
             document.getElementById('text').value = "";
+            
+            function scroll() {
+                var scrollMsg = document.getElementById('msg_area');
+                scrollMsg.scrollTop = scrollMsg.scrollHeight;
+            }
+            scroll();
         }
     })
 </script>
