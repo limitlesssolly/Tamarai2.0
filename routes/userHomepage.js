@@ -162,7 +162,7 @@
     });
 
     router.post('/profile/:id', async(req, res) => {
-        const regs = await regi.findById(req.session.id);
+        const regs = await regi.findById(req.params.id);
         regs.username = req.body.username;
         regs.email = req.body.email;
         // regs.password = req.body.password;
