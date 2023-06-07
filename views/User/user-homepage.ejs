@@ -23,7 +23,7 @@
             <li class="link-item"><a href="/user/homepage" class="link">Home</a></li>
             <% cats.forEach(function(cat) { %>
             <li class="link-item">
-                <a href="/cat/:name" class="link">
+                <a href="/user/cat/:name" class="link">
                     <%= cat.name %>
                 </a>
             </li>
@@ -68,16 +68,16 @@
 
                         <div class="product-info">
                             <a href="/product/<%= product._id %>">
-                                <h2>
+                                <h2 style="font-size: 24px;">
                                     <%= product.name %>
                                 </h2>
                             </a>
                             <h5 class="product-brand">
                                 <%= product.seller%>
                             </h5>
-                            <p class="product-short-des">
+                            <!-- <p class="product-short-des">
                                 <%= product.description %>
-                            </p>
+                            </p> -->
                             <% if (product.discount> 0) { %>
                             <span class="price">
                                 <%= product.price %>L.E.
