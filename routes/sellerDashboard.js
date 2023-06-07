@@ -35,7 +35,7 @@ router.get("/products", async function (req, res, next) {
   console.log('products');
   const regs = await regi.findById(req.session.Id);
   const sell = regs.username;
-  console.log(sell);
+  // console.log(sell);
   const Products = await Prod.find();
   res.render("seller/seller-products", {Products, sell});
 });

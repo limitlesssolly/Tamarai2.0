@@ -97,15 +97,12 @@
 
 
 <body>
-
-
-    </div>
     <div class="grid-container">
 
         <div class="header">
             <%- include('../partials/sellernav.ejs') %>
-
         </div>
+
         <div class="body">
             <%- include('../partials/translate.ejs') %>
                 <div class="prlist">
@@ -118,7 +115,6 @@
                             onclick="window.location.href = 'add_product.html';">Add New Item</button> -->
                             <a href="/seller/dashboard/add"><button class="buttonadd">Add New Item</button></a>
                         </div>
-
                     </div>
 
                 </div>
@@ -134,9 +130,8 @@
                                  <a class="card-btn" href="/seller/dashboard/view/view/<%= product._id %>">Edit</a>
                             <% } %>
                                 <% }); %>
-
+                            </div>
                 </div>
-
         </div>
 
     </div>
@@ -146,6 +141,8 @@
         <div>
             <%- include('../partials/chat.ejs') %>
         </div>
+    </div>
 </body>
+        <%- include('../partials/footer.ejs') %>
 
 </html>
