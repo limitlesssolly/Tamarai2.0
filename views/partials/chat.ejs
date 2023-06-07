@@ -124,6 +124,19 @@
     #send:active {
         font-size: 16px;
     }
+    .left, .right {
+        font-size: 18px;
+        font-family: monospace;
+        display: inline-block;
+        width: auto;
+        max-width: 60%;
+        padding: 14px;
+        word-wrap: break-word;
+    }
+    .msgCon1, .msgCon2 {
+        width: 100%;
+        display: inline-block;
+    }
 </style>
 <body onload="start()">
     <div class="main">
@@ -145,7 +158,9 @@
     function start() {
         let res_msg = document.createElement('div');
         res_msg.innerHTML = "Hello myself Aco, How can I help you?";
-        res_msg.setAttribute("class", "left")
+        res_msg.setAttribute("class", "left");
+
+        document.getElementById('msg_area').appendChild(res_msg);
     }
     document.getElementById('send').addEventListener("click", async (e) => {
         e.preventDefault();
@@ -180,7 +195,7 @@
             Con1.appendChild(msg_req);
             Con2.appendChild(msg_res);
 
-            document.getElementById('text').value = ""
+            document.getElementById('text').value = "";
         }
     })
 </script>
