@@ -26,8 +26,8 @@ router.get('/', function (req, res, next) {
 // Get /user/cat/:id 
 router.get('/cat/:id', async (req, res) => {
     const cats = await categories.findById(req.params.id);
-    const prods = await Products.find();
-    res.render('user/cat', {cats, prods});
+    const productData = await Products.find();
+    res.render('user/cat', {cats, productData});
 });
 
 router.post('/', signins);
