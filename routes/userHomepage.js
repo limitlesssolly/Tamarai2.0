@@ -7,7 +7,7 @@ import products from '../models/productData.js'
 import regi from "../models/userRegister.js";
 import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
 import { userInfo } from 'os';
-import { getCart, checkout } from "../controllers/cart-controllers.js";
+import { getCart, checkout, remove } from "../controllers/cart-controllers.js";
 
 router.get('/', async function(req, res, next) {
     try {
@@ -27,7 +27,7 @@ router.get('/bag/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 });
 
-router.post('/checkout', async(req, res) => {
+router.post('/bag/checkout', async(req, res) => {
     try {
         // Extract order information from the request body
         const { name, email, address } = req.body;
@@ -55,6 +55,7 @@ router.post('/checkout', async(req, res) => {
         res.status(500).send('Error placing the order.');
     }
 });
+router.delete('/user/homepage/bag/remove/:id', remove);
 
 // Route to view order details
 router.get('/order/:id', async(req, res) => {

@@ -15,19 +15,29 @@ export const getCart = async(req, res) => {
 export const checkout = async(req, res) => {
     try {
         const user = await rege.findById(req.user._id).populate('bag.product');
-        const order = new Order({
-            user: req.user._id,
-            products: user.bag.map(item => ({
-                product: item.product._id,
-                quantity: item.quantity
-            }))
+
+        // Update the cart based on the submitted form data
+        Object.entries(req.body).forEach(([productId, quantity]) => {
+            const itemIndex = user.bag.findIndex(item => item.product._id.toString() === productId);
+            if (itemIndex !== -1) {
+                user.bag[itemIndex].quantity = parseInt(quantity);
+            }
         });
 
-        await order.save();
-        user.bag = [];
         await user.save();
 
-        res.redirect('/orders');
+        // ... rest of the checkout function ...
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+};
+export const remove = async(req, res) => {
+    try {
+        const user = await rege.findById(req.user._id);
+        user.bag = user.bag.filter(item => item.product.toString() !== req.params.id);
+        await user.save();
+        res.status(200).send('Item removed from the cart');
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
