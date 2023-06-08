@@ -1,7 +1,6 @@
 import { Router } from "express";
 const router = Router();
 import Prod from "../models/productData.js";
-import rege from '../models/tryseller.js';
 import cats from "../models/categories.js";
 import { addItem } from "../controllers/seller-controller.js";
 import { getSellerProducts } from "../controllers/products-controllers.js";
@@ -34,10 +33,8 @@ router.get("/add", async function (req, res, next) {
 router.post("/add", addItem);
 
 router.get("/products", async function (req, res, next) {
-  // console.log('products');
   const regs = await regi.findById(req.session.Id);
   const sell = regs.username;
-  // console.log(sell);
   const Products = await Prod.find();
   res.render("seller/seller-products", {Products, sell});
 });
