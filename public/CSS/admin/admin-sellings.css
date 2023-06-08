@@ -159,59 +159,62 @@ a
 
 .name h4
 {
+    border-bottom: 1px solid #d6bd91;
     font-size: 200%;
     position: absolute;
-    left: 20%;
-    top: 20%;
+    left: 10%;
+    top: 10%;
 }
 .brand
 {
     position: absolute;
-    left: 20%;
-    top: 35%;
+    left: 10%;
+    top: 30%;
 }
  .seller
 {
     position: absolute;
-    left: 20%;
-    top: 40%;
+    left: 30%;
+    top: 30%;
 }
 .price
 {
     position: absolute;
-    left: 20%;
-    top: 80%;
+    left: 10%;
+    top: 75%;
 }
 .image
 {
     position: absolute;
-    left: 70%;
-    top: 40%;
+    left: 60%;
+    top: 20%;
 }
 .count
 {
     position: absolute;
-    left: 20%;
+    left: 10%;
     top: 45%;
 }   
 .description
 {
+    width: 20em;
+    overflow: visible;
+    text-overflow: ellipsis;
     position: absolute;
-    left: 20%;
-    top: 70%;
+    left: 30%;
+    top: 60%;
 }
-.category
+#category
 {
     position: absolute;
-    left: 20%;
-    top: 35%;
-    width: 50%;
+    left: 10%;
+    top: 60%;
 }
 .color
 {
     position: absolute;
-    left: 20%;
-    top: 50%;
+    left: 30%;
+    top: 45%;
 } 
 
 .editia
@@ -327,6 +330,30 @@ a
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     border-radius: 20px;
+}
+
+.delta
+{
+    margin: 3px;
+    padding: 0 20px 0 20px;
+    font-size: 18px;
+    outline:none;
+    -o-border-radius: 20px;
+    cursor: pointer;
+    color: #0d1516;
+    background: #ffffff;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    position: absolute;
+    top: 90%;
+    left: 45%;
+}
+
+.delta:hover
+{
+    color: #d6bd91;
 }
 
 .viewsa .buttons

@@ -18,7 +18,8 @@
     <%- include('../partials/adminNav.ejs') %>
 
         <h2>Add Admin</h2>
-        <div class="words">or choose your user</div>
+        
+        <div id="words">or choose your user</div>
 
         <a href="/admin/dashboard/usings/user"><span class="use"><img src='/images/user.png' alt="using"/></span></a>
             <span class="adds" style="top: 28%;"><img src='/images/settings.png' alt="sets"/></span>
@@ -26,7 +27,7 @@
 
         <form action="/admin/dashboard/addAdmin" method="post">
 
-            <div class="users" style="left: 15%;">
+            <div class="users" style="left: 35%;">
                 <label for="username"> username </label>
                 <input id="username" type="text" placeholder="username" name="username">
                 <span class="Uerror" id="usernameErrorMsg">
@@ -36,7 +37,7 @@
                   </span>
             </div>
 
-            <div class="passes" style="left: 15%;">
+            <div class="passes" style="left: 35%;">
                 <label for="password"> password </label>
                 <input id="password" type="password" placeholder="password" name="password">
                 <span class="Perror" id="passwordErrorMsg">

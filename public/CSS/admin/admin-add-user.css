@@ -38,40 +38,6 @@ table {
     width: 90%;
 }
 
-th,
-td {
-    text-align: center;
-    padding: 8px;
-    border-bottom: 1px solid #d6bd91;
-}
-
-tr:nth-child(even) {
-    background-color: #fff;
-}
-
-th {
-    background-color: #1c4c56;
-    color: white;
-}
-
-.deleter
-{
-    padding: 0 10px 0 0;
-}
-.deleter:hover
-{
-    color: #d6bd91;
-}
-
-.viewer
-{
-    padding: 0 10px 0 0;
-}
-.viewer:hover
-{
-    color: #d6bd91;
-}
-
 button
 {
     display: contents;
@@ -141,12 +107,12 @@ button
     top: 28%;
 }
 
-.words {
+#words {
     font-size: 1.3vw;
     color: #0d1516;
     position: absolute;
     top: 25%;
-    left: 52%;
+    left: 41.5%;
 }
 
 a
@@ -155,70 +121,6 @@ a
     text-decoration: none;
     cursor: pointer;
     color: #0d1516;
-}
-
-.name h4
-{
-    font-size: 200%;
-    position: absolute;
-    left: 20%;
-    top: 20%;
-}
-.brand
-{
-    position: absolute;
-    left: 20%;
-    top: 35%;
-}
- .seller
-{
-    position: absolute;
-    left: 20%;
-    top: 40%;
-}
-.price
-{
-    position: absolute;
-    left: 20%;
-    top: 80%;
-}
-.image
-{
-    position: absolute;
-    left: 70%;
-    top: 40%;
-}
-.count
-{
-    position: absolute;
-    left: 20%;
-    top: 45%;
-}   
-.description
-{
-    position: absolute;
-    left: 20%;
-    top: 70%;
-}
-.category
-{
-    position: absolute;
-    left: 20%;
-    top: 35%;
-    width: 50%;
-}
-.color
-{
-    position: absolute;
-    left: 20%;
-    top: 50%;
-} 
-
-.editia
-{
-    position: absolute;
-    left: 80%;
-    top: 20%;
 }
 
 .email {
@@ -308,7 +210,6 @@ a
 
 .buts
 {
-    
     position: absolute;
     top : 70%;
     left: 43%;
