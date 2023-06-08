@@ -7,26 +7,27 @@ import products from '../models/productData.js'
 import regi from "../models/userRegister.js";
 import { getHomepage, getShoppingBag } from '../controllers/products-controllers.js';
 import { userInfo } from 'os';
+import { getCart, checkout, remove } from "../controllers/cart-controllers.js";
 
 router.get('/', async function(req, res, next) {
     try {
         const cats = await categories.find();
         const regs = await regi.findById(req.session.Id);
         const uses = regs.username;
-        const wished = await Wishlist.find({wisher : uses});
+        const wished = await Wishlist.find({ wisher: uses });
         const productData = await products.find();
-        res.render('user/user-homepage', { productData, cats , wished});
+        res.render('user/user-homepage', { productData, cats, wished });
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');
     }
 });
 
-router.get('/checkout', function(req, res, next) {
+router.get('/bag/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 });
 
-router.post('/checkout', async(req, res) => {
+router.post('/bag/checkout', async(req, res) => {
     try {
         // Extract order information from the request body
         const { name, email, address } = req.body;
@@ -54,6 +55,7 @@ router.post('/checkout', async(req, res) => {
         res.status(500).send('Error placing the order.');
     }
 });
+router.delete('/user/homepage/bag/remove/:id', remove);
 
 // Route to view order details
 router.get('/order/:id', async(req, res) => {
@@ -97,9 +99,10 @@ router.get('/add/:id', async function(req, res, next) {
     console.log('et7at');
     res.redirect('/user/homepage');
 });
+router.post('/bag/checkout', checkout);
 
 router.get('/bag/checkout', function(req, res, next) {
-    res.render('user/user-shoppingbag');
+    res.render('user/user-checkout');
 });
 
 router.get('/profile', function(req, res, next) {
@@ -186,5 +189,6 @@ router.post('/profile/:id', async(req, res) => {
     // Render the "profile" view with the updated seller data
     res.render('user/user-profile', { regs: updateduser });
 });
+
 
 export default router;

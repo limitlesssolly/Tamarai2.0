@@ -32,8 +32,8 @@
                 </div>
                 <div <% if (bag.length> 0) { %>
 
-                    <%bag.forEach(function(mybag) { %>
-                        <div>
+                    <% bag.forEach(function(mybag) { %>
+                        <form action="/user/homepage/bag/checkout" method="POST">
                             <div class="image-box">
                                 <img src="/images/products/<%= mybag.image %>" class="product-thumb" alt="product">
                             </div>
@@ -44,30 +44,35 @@
                                 <h3 class="subtitle">
                                     <%= mybag.seller%>
                                 </h3>
-                                <img src="photos/street.jpg" alt="street" style="height: 30px;" />
                             </div>
-                            <div class="counter"></div>
-                            <div class="prices"></div>
-                            <div class="counter">
-                                <button class="btn" onclick="counting()">+</button>
-                                <!-- <div class="btn">+</div> -->
-                                <div class="count">1</div>
-                                <button class="btn" onclick="decreasing()">-</button>
-                                <!-- <div class="btn">-</div> -->
-                            </div>
-                            <div class="prices">
-                                <div class="amount">
-                                    <%= mybag.price%>
+                            <div class="item-container">
+                                <div class="counter">
+                                    <button type="button" class="btn" id="plus-<%= mybag._id %>">+</button>
+                                    <div class="count" id="count-<%= mybag._id %>">1</div>
+                                    <button type="button" class="btn" id="minus-<%= mybag._id %>">-</button>
                                 </div>
-                                <div class="save"><u>Save for later</u></div>
-                                <button class="remove" onclick="remove_element()"><u>Remove</u></button>
-                            </div>
-                            <% }); %>
+                                <div class="prices">
+                                    <div class="amount" id="price-<%= mybag._id %>" data-initial-price="<%= mybag.price %>">
+                                        <%= mybag.price %>
+                                    </div>
 
-                        </div>
-                        <%  }else { %>
-                            <p>Your my bag is currently empty.</p>
-                            <% } %>
+                                    <div class="save"><u>Save for later</u></div>
+                                    <button class="remove" id="remove-<%= mybag._id %>"><u>Remove</u></button>
+                                </div>
+                            </div>
+                            <input type="hidden" name="<%= mybag._id %>" value="<%= mybag.quantity %>" id="input-<%= mybag._id %>">
+                        </form>
+                        <% }); %>
+                            <div class="total">Total: <span id="total"></span></div>
+
+                            <a href="/user/homepage/bag/checkout" class="checkout">Checkout</a>
+                            <button type="submit">Proceed to Checkout</button>
+
+
+
+                            <%  }else { %>
+                                <p>Your my bag is currently empty.</p>
+                                <% } %>
 
 
                 </div>
@@ -77,5 +82,66 @@
 
     </div>
 
-   
+
 </body>
+<script>
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', event => {
+            const id = event.target.id.split('-')[1];
+            const action = event.target.id.split('-')[0];
+            const countElement = document.getElementById(`count-${id}`);
+            const priceElement = document.getElementById(`price-${id}`);
+            let count = parseInt(countElement.textContent);
+            const price = parseFloat(priceElement.textContent);
+            const initialPrice = parseFloat(priceElement.getAttribute('data-initial-price'));
+
+            if (action === 'plus') {
+                count++;
+            } else if (action === 'minus' && count > 1) {
+                count--;
+            }
+
+            countElement.textContent = count;
+            document.getElementById(`input-${id}`).value = count;
+            priceElement.textContent = (count * initialPrice).toFixed(2); // Use initialPrice instead of price
+            updateTotal();
+
+        });
+    });
+    document.querySelectorAll('.remove').forEach(btn => {
+        btn.addEventListener('click', async event => {
+            event.preventDefault();
+            const id = event.target.parentNode.id.split('-')[1]; // Change this line
+
+            try {
+                const response = await fetch(`/user/homepage/bag/remove/${id}`, {
+                    method: 'DELETE',
+                });
+
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    console.error('Error removing the item from the cart');
+                }
+            } catch (error) {
+                console.error('Error removing the item from the cart', error);
+            }
+        });
+    });
+
+    function updateTotal() {
+        const countElements = document.querySelectorAll('.count');
+        const priceElements = document.querySelectorAll('.amount');
+        let total = 0;
+
+        for (let i = 0; i < countElements.length; i++) {
+            const count = parseInt(countElements[i].textContent);
+            const price = parseFloat(priceElements[i].textContent);
+            total += count * price;
+        }
+
+        // Update the total amount element with the new value
+        document.getElementById('total').textContent = total.toFixed(2);
+    }
+    updateTotal()
+</script>
