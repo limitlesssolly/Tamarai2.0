@@ -23,7 +23,7 @@ router.get('/', async function(req, res, next) {
     }
 });
 
-router.get('/checkout', function(req, res, next) {
+router.get('/bag/checkout', function(req, res, next) {
     res.render('user/user-checkout');
 });
 
