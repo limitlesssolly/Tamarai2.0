@@ -25,7 +25,6 @@ import userRouter from "./routes/user.js";
 import userHomepageRouter from './routes/userHomepage.js'
 import productRouter from "./routes/product.js";
 import productestRouter from "./routes/products.js";
-import cartRoutes from './routes/cartRoutes';
 
 // import shoppingbag from "./routes/bag.js";
 
@@ -89,7 +88,6 @@ app.use('/user', userRouter);
 app.use('/user/homepage', userHomepageRouter);
 app.use('/product', productRouter);
 app.use('/productest', productestRouter);
-app.use('/', cartRoutes);
 
 // app.use('/bag', shoppingbag);
 
