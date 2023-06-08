@@ -8,12 +8,8 @@ import { getSellerProducts } from "../controllers/products-controllers.js";
 import regi from "../models/tryseller.js";
 
 /* GET /seller/dashboard page. */
-router.get("/", async function (req, res, next) {
-  const regs = await regi.findById(req.session.Id);
-  const sell = regs.username;
-  // console.log(sell);
-  const Products = await Prod.find();
-  res.render("seller/seller-products", {Products, sell});
+router.get("/", function (req, res, next) {
+  res.render("seller/seller-dashboard");
 });
 
 router.get("/analysis", async function (req, res, next) {
