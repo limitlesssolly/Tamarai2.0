@@ -41,7 +41,7 @@ const signins = async (req, res, next) => {
         console.log(req.session.Id);
         console.log(req.session.type);
         console.log(req.session.username);
-      return res.redirect('/seller/dashboard');
+      return res.redirect('/seller/dashboard/products');
     }
   }
 };
