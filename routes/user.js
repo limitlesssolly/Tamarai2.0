@@ -20,14 +20,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next) {
-    res.render('user/user-register', { errorMsg: {}, admin: admin })
+    res.render('User/user-register', { errorMsg: {}, admin: admin })
 });
 
 // Get /user/cat/:id 
 router.get('/cat/:id', async(req, res) => {
     const cats = await categories.findById(req.params.id);
     const productData = await Products.find();
-    res.render('user/cat', { cats, productData });
+    res.render('User/cat', { cats, productData });
 });
 
 router.post('/', signins);

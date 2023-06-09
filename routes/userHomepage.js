@@ -16,7 +16,7 @@ router.get('/', async function(req, res, next) {
         const uses = regs.username;
         const wished = await Wishlist.find({ wisher: uses });
         const productData = await products.find();
-        res.render('user/user-homepage', { productData, cats, wished });
+        res.render('User/user-homepage', { productData, cats, wished });
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');
@@ -24,7 +24,7 @@ router.get('/', async function(req, res, next) {
 });
 
 router.get('/bag/checkout', function(req, res, next) {
-    res.render('user/user-checkout');
+    res.render('User/user-checkout');
 });
 
 router.post('/bag/checkout', async(req, res) => {
@@ -55,7 +55,7 @@ router.post('/bag/checkout', async(req, res) => {
         res.status(500).send('Error placing the order.');
     }
 });
-router.delete('/user/homepage/bag/remove/:id', remove);
+router.delete('/User/homepage/bag/remove/:id', remove);
 
 // Route to view order details
 router.get('/order/:id', async(req, res) => {
@@ -75,7 +75,7 @@ router.get('/bag', async function(req, res, next) {
     try {
         const bag = await Bag.find();
         console.log(bag);
-        res.render('user/user-shoppingbag', { bag });
+        res.render('User/user-shoppingbag', { bag });
     } catch (error) {}
 });
 
@@ -97,16 +97,16 @@ router.get('/add/:id', async function(req, res, next) {
     });
     await bagat.save();
     console.log('et7at');
-    res.redirect('/user/homepage');
+    res.redirect('/User/homepage');
 });
 router.post('/bag/checkout', checkout);
 
 router.get('/bag/checkout', function(req, res, next) {
-    res.render('user/user-checkout');
+    res.render('User/user-checkout');
 });
 
 router.get('/profile', function(req, res, next) {
-    res.render('user/user-profile');
+    res.render('User/user-profile');
 });
 
 router.get('/add-to-wishlist/:id', async function(req, res, next) {
@@ -128,7 +128,7 @@ router.get('/add-to-wishlist/:id', async function(req, res, next) {
         });
         await wishat.save();
         console.log('et7at');
-        res.redirect('/user/homepage');
+        res.redirect('/User/homepage');
     }
 
 );
@@ -141,7 +141,7 @@ router.get('/delete-from-wishlist/:id', async function(req, res, next) {
         const uses = regs.username;
         const wished = await Wishlist.find({ wisher: uses });
         console.log(wished);
-        res.render('user/user-whishlist', { wished });
+        res.render('User/user-whishlist', { wished });
     }
 
 );
@@ -156,7 +156,7 @@ router.get('/whishlist', async function(req, res, next) {
     const uses = regs.username;
     const wished = await Wishlist.find({ wisher: uses });
     console.log(wished);
-    res.render('user/user-whishlist', { wished });
+    res.render('User/user-whishlist', { wished });
 });
 
 // Add this debug statement
@@ -167,13 +167,13 @@ router.use((err, req, res, next) => {
 
 router.get('/profile', async(req, res) => {
     const regs = await regi.find();
-    res.render('user/user-profile', { regs });
+    res.render('User/user-profile', { regs });
 });
 
 /* GET /user/homepage/profile page. */
 router.get('/profile/:id', async(req, res) => {
     const regs = await regi.findById(req.session.Id);
-    res.render('user/user-profile', { regs });
+    res.render('User/user-profile', { regs });
 });
 
 router.post('/profile/:id', async(req, res) => {
@@ -187,7 +187,7 @@ router.post('/profile/:id', async(req, res) => {
     const updateduser = await regi.findById(req.params.id);
 
     // Render the "profile" view with the updated seller data
-    res.render('user/user-profile', { regs: updateduser });
+    res.render('User/user-profile', { regs: updateduser });
 });
 
 
