@@ -13,7 +13,7 @@ With Tamarai, you can explore a diverse range of art-inspired products, carefull
 - [Technologies Used](#technologies-used)
 
 
-## Installation {#installation}
+## Installation{#installation}
 
 
 To get started with Tamarai, follow these steps:
@@ -48,7 +48,7 @@ To get started with Tamarai, follow these steps:
 
 6. You're ready to explore Tamarai and experience the vibrant world of art and creativity!
 
-## Usage {#usage}
+## Usage{#usage}
 
 Tamarai offers a user-friendly interface with separate sections for shoppers, shop owners, and administrators. Follow the instructions below to make the most of Tamarai:
 
@@ -83,7 +83,7 @@ Tamarai offers a user-friendly interface with separate sections for shoppers, sh
 7. Continuously improve Tamarai by gathering feedback from users and implementing new features and enhancements.
 
 
-## Technologies Used {#technologies-used}
+## Technologies Used{#technologies-used}
 
 - Node.js
 - Express.js
