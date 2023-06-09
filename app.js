@@ -80,12 +80,12 @@ app.use((req, res, next) => {
 });
 //setup routes
 app.use('/', mainRouter);
-app.use('/admin', adminRouter);
-app.use('/admin/dashboard', adminDashboardRouter);
+app.use('/Admin', adminRouter);
+app.use('/Admin/dashboard', adminDashboardRouter);
 app.use('/seller', sellerRouter);
 app.use('/seller/dashboard', sellerDashboardRouter);
-app.use('/user', userRouter);
-app.use('/user/homepage', userHomepageRouter);
+app.use('/User', userRouter);
+app.use('/User/homepage', userHomepageRouter);
 app.use('/product', productRouter);
 app.use('/productest', productestRouter);
 
