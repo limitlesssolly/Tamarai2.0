@@ -16,7 +16,7 @@ import flash from 'connect-flash';
 dotenv.config();
 
 //importing the routes
-import mainRouter from "/Routes/index.js";
+import mainRouter from "routes/index.js";
 import adminRouter from "/routes/admin.js";
 import adminDashboardRouter from "/routes/adminDashboard.js";
 import sellerRouter from "/routes/seller.js";
