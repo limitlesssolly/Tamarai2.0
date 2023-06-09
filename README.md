@@ -1,7 +1,5 @@
 # Tamarai
 
-## Description
-
 Tamarai is a unique marketplace platform that brings together individuals who share a passion for art and a desire for one-of-a-kind, handmade items. It stands out from traditional marketplaces by focusing on fostering a community of artists, artisans, and art enthusiasts.
 
 With Tamarai, you can explore a diverse range of art-inspired products, carefully curated by talented creators from around the world. Whether you're seeking unique home decor, fashion accessories, or distinctive gifts, Tamarai offers an exceptional selection that celebrates creativity and craftsmanship.
@@ -12,9 +10,7 @@ With Tamarai, you can explore a diverse range of art-inspired products, carefull
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 
-
-## Installation{#installation}
-
+## Installation
 
 To get started with Tamarai, follow these steps:
 
@@ -44,11 +40,11 @@ To get started with Tamarai, follow these steps:
 
 5. Open your web browser and visit [http://localhost:3000](http://localhost:3000) to access Tamarai.
 
-   > Note: Make sure you have MongoDB installed and running on your local machine.
+   > **Note:** Make sure you have MongoDB installed and running on your local machine.
 
 6. You're ready to explore Tamarai and experience the vibrant world of art and creativity!
 
-## Usage{#usage}
+## Usage
 
 Tamarai offers a user-friendly interface with separate sections for shoppers, shop owners, and administrators. Follow the instructions below to make the most of Tamarai:
 
@@ -82,8 +78,7 @@ Tamarai offers a user-friendly interface with separate sections for shoppers, sh
 6. Collaborate with shop owners and artists to curate featured collections and promotions.
 7. Continuously improve Tamarai by gathering feedback from users and implementing new features and enhancements.
 
-
-## Technologies Used{#technologies-used}
+## Technologies Used
 
 - Node.js
 - Express.js
@@ -91,4 +86,3 @@ Tamarai offers a user-friendly interface with separate sections for shoppers, sh
 - EJS (Embedded JavaScript)
 - CSS
 - JavaScript
-
