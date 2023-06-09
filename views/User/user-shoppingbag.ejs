@@ -33,7 +33,7 @@
                 <div <% if (bag.length> 0) { %>
 
                     <% bag.forEach(function(mybag) { %>
-                        <form action="/user/homepage/bag/checkout" method="POST">
+                        <form action="/User/homepage/bag/checkout" method="POST">
                             <div class="image-box">
                                 <img src="/images/products/<%= mybag.image %>" class="product-thumb" alt="product">
                             </div>
@@ -114,7 +114,7 @@
             const id = event.target.parentNode.id.split('-')[1]; // Change this line
 
             try {
-                const response = await fetch(`/user/homepage/bag/remove/${id}`, {
+                const response = await fetch(`/User/homepage/bag/remove/${id}`, {
                     method: 'DELETE',
                 });
 

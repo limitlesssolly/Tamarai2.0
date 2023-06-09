@@ -43,7 +43,7 @@
                         console.log(response);
                         console.log(response)
                         response.order = order;
-                        fetch('/user/order/verify', {
+                        fetch('/User/order/verify', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -71,7 +71,7 @@
                 var rzp1 = new Razorpay(options);
                 rzp1.on('payment.failed', function(response) {
 
-                    fetch("/user/order/paymentfail", {
+                    fetch("/User/order/paymentfail", {
                         method: "POST",
                         headers: {
                             'Content-Type': "application/json"
@@ -96,7 +96,7 @@
                         currency: "INR",
                     }
 
-                    postOrder("/user/order", data).then((order) => {
+                    postOrder("/User/order", data).then((order) => {
 
                         if (order.failure) {
                             window.location.href = "/User/cart";
