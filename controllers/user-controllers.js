@@ -27,7 +27,7 @@ const signins = async(req, res, next) => {
         if (req.query.ajax)
             return res.json({ errors: errorMsg, admin: false });
         else
-            return res.render("user/user-sign-in", { errorMsg, admin: false });
+            return res.render("User/user-sign-in", { errorMsg, admin: false });
     }
     if (userdb) {
         if (bools) {
@@ -37,7 +37,7 @@ const signins = async(req, res, next) => {
             console.log(req.session.Id);
             console.log(req.session.type);
             console.log(req.session.username);
-            return res.redirect('/user/homepage');
+            return res.redirect('/User/homepage');
         }
     }
 };
@@ -73,7 +73,7 @@ const signup = async(req, res, next) => {
         if (req.query.ajax)
             return res.json({ errors: errorMsg, admin: false });
         else
-            return res.render("user/user-register", { errorMsg, admin: false });
+            return res.render("User/user-register", { errorMsg, admin: false });
     }
     try {
         const hashPass = await bcrypt.hash(password, 10);
@@ -97,7 +97,7 @@ const signup = async(req, res, next) => {
             return res.json({ errors: errorMsg, admin: false });
         } else {
             console.log("Registration done NOT using ajax");
-            return res.redirect("/user/homepage");
+            return res.redirect("/User/homepage");
         }
     } catch (err) {
         console.log(err);
@@ -110,7 +110,7 @@ export const getHomepage = async(req, res) => {
         const productData = await ProductsData.find();
         const cat = await Categories.find();
         console.log('productData:', productData);
-        res.render('user/user-homepage', { Title: "Homepage", productData, cat: cat });
+        res.render('User/user-homepage', { Title: "Homepage", productData, cat: cat });
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');

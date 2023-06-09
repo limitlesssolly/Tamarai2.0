@@ -23,7 +23,7 @@ export const getHomepage = async(req, res) => {
         const cats = await categories.find();
         const productData = await ProductsData.find();
         console.log('productData:', productData);
-        res.render('user/user-homepage', { productData }, { cats });
+        res.render('User/user-homepage', { productData }, { cats });
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');
@@ -33,7 +33,7 @@ export const getProducts = async(req, res) => {
     try {
         const productData = await ProductsData.find();
         console.log('productData:', productData);
-        res.render('admin/admin-sellings', { productData });
+        res.render('Admin/admin-sellings', { productData });
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');
@@ -44,7 +44,7 @@ export const getShoppingBag = async(req, res) => {
     try {
         const productData = await ProductsData.find();
         console.log('ProductsData:', productData);
-        res.render('user/user-shoppingbag', { productData });
+        res.render('User/user-shoppingbag', { productData });
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal server error');
