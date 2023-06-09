@@ -2,62 +2,62 @@
 <html>
 
 <head>
-  <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
-  <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-  <link rel="stylesheet" type="text/css" href="/css/user/wishlist.css">
-  <title>My whishlist</title>
+    <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+    <link rel="stylesheet" type="text/css" href="/css/user/wishlist.css">
+    <title>My whishlist</title>
 </head>
 
 <body>
 
-  <div class="list-Container">
-    <%- include ('../partials/usernav.ejs')%>
+    <div class="list-Container">
+        <%- include ('../partials/usernav.ejs')%>
 
-      <% if (wished.length> 0) { %>
+            <% if (wished.length> 0) { %>
 
-        <% wished.forEach(function(wish) { %>
-          <div class="the_first_list_items">
-            <div class="product-card">
-              <div class="product-image">
-                <% if (wish.image=="" ) { %>
-                  <img src="images/no-image.png" class="product-thumb" alt="No image available">
-                  <% } else { %>
-                    <a href="/user/homepage/delete-from-wishlist/<%= wish._id%>"><i class="fa fa-times"></i></a>
-                    <a href="/product/<%= wish._id %>"><img src="/images/products/<%= wish.image %>"
+                <% wished.forEach(function(wish) { %>
+                    <div class="the_first_list_items">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <% if (wish.image=="" ) { %>
+                                    <img src="images/no-image.png" class="product-thumb" alt="No image available">
+                                    <% } else { %>
+                                        <a href="/User/homepage/delete-from-wishlist/<%= wish._id%>"><i class="fa fa-times"></i></a>
+                                        <a href="/product/<%= wish._id %>"><img src="/images/products/<%= wish.image %>"
                         class="product-thumb" alt="product">
                       <a class="card-btn" href="./homepage/bag/add/<%= wish._id %>">Add to Bag</a>
-                      <% } %>
-                    </a>
-              </div>
-              <div class="product-info">
-                <a href="/product/<%= wish._id %>">
-                  <h2>
-                    <%= wish.name %>
-                  </h2>
-                </a>
-                <h5 class="product-brand">
-                  <%= wish.seller%>
-                </h5>
-                <% if (wish.discount> 0) { %>
-                  <span class="price">
+                                        <% } %>
+                                            </a>
+                            </div>
+                            <div class="product-info">
+                                <a href="/product/<%= wish._id %>">
+                                    <h2>
+                                        <%= wish.name %>
+                                    </h2>
+                                </a>
+                                <h5 class="product-brand">
+                                    <%= wish.seller%>
+                                </h5>
+                                <% if (wish.discount> 0) { %>
+                                    <span class="price">
                     <%= wish.price %>L.E.
                   </span>
-                  <span class="actual-price">
+                                    <span class="actual-price">
                     <%= wish.price %>L.E.
                   </span>
-                  <% } else { %>
-                    <span class="price">
+                                    <% } else { %>
+                                        <span class="price">
                       <%= wish.price %>L.E.
                     </span>
-                    <% } %>
-              </div>
-            </div>
-            <% }) %>
-          </div>
-          <% }else { %>
-            <p>Your wishlist is currently empty.</p>
-            <% } %>
-  </div>
+                                        <% } %>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                    <% }else { %>
+                        <p>Your wishlist is currently empty.</p>
+                        <% } %>
+    </div>
 </body>
 <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 

@@ -53,7 +53,7 @@
                             return res.json()
                         }).then((resData) => {
                             if (resData.status == `success`)
-                                window.location.href = `/user/orders`
+                                window.location.href = `/User/orders`
                         }).catch(() => console.log("OOps Could not send Data"))
                     },
                     "prefill": {
@@ -99,7 +99,7 @@
                     postOrder("/user/order", data).then((order) => {
 
                         if (order.failure) {
-                            window.location.href = "/user/cart";
+                            window.location.href = "/User/cart";
                         } else {
                             document.getElementById('paymentModalLabel').innerText = order.id;
                             const myModal = new mdb.Modal(document.getElementById('paymentModal'), {

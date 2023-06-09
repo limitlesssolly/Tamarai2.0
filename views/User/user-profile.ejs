@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= regs.username %>'s Profile</title>
+    <title>
+        <%= regs.username %>'s Profile</title>
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/profile.css">
@@ -20,56 +21,54 @@
             <%- include('../partials/chat.ejs') %>
         </div>
     </div>
-        <!-- <div class="grid-container">
+    <!-- <div class="grid-container">
             <div id="header"> -->
-        <%- include('../partials/usernav.ejs') %>
+    <%- include('../partials/usernav.ejs') %>
         <!-- </div> -->
 
-    <main>
+        <main>
 
-        <div class="main">
+            <div class="main">
 
-            <!-- Sign up form -->
+                <!-- Sign up form -->
 
-            <div class="container">
-                <div class="signup-content">
+                <div class="container">
+                    <div class="signup-content">
 
-                    <div class="signup-form">
-                        <h2 class="form-title"> Edit profile </h2>
+                        <div class="signup-form">
+                            <h2 class="form-title"> Edit profile </h2>
 
-                        <form method="POST" action="/user/homepage/profile/<%= regs.id %>" class="register-form"
-                            id="register-form">
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="name" value="<%= regs.username %>"
-                                    placeholder="Your Name" />
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" value="<%= regs.email %>"
-                                    placeholder="Your Email" />
-                            </div>
-                            <div class="form-group form-button">
-                                <button type="submit" class="form-submit">Update</button>
-                               <button  class="form-submit" > <a href="/user/homepage" class="form-submit" style="text-decoration:none;">Back</a></button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
+                            <form method="POST" action="/user/homepage/profile/<%= regs.id %>" class="register-form" id="register-form">
+                                <div class="form-group">
+                                    <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input type="text" name="username" id="name" value="<%= regs.username %>" placeholder="Your Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                    <input type="email" name="email" id="email" value="<%= regs.email %>" placeholder="Your Email" />
+                                </div>
+                                <div class="form-group form-button">
+                                    <button type="submit" class="form-submit">Update</button>
+                                    <button class="form-submit"> <a href="/User/homepage" class="form-submit" style="text-decoration:none;">Back</a></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="signup-image">
 
+                        </div>
                     </div>
                 </div>
+                <figure><img src="/images/signup-image.jpg" class="img1" alt="sing up image"></figure>
             </div>
-            <figure><img src="/images/signup-image.jpg" class="img1" alt="sing up image"></figure>
-        </div>
 
-        <!-- JS -->
+            <!-- JS -->
 
 
-    </main><%- include('../partials/translate.ejs') %>
-    <div class="foots">
-        <%- include('../partials/footer.ejs') %>
-    </div>
+        </main>
+        <%- include('../partials/translate.ejs') %>
+            <div class="foots">
+                <%- include('../partials/footer.ejs') %>
+            </div>
 
-    <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/jquery/jquery.min.js"></script>
 </body>

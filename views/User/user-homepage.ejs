@@ -23,7 +23,7 @@
             <ul class="links">
                 <% cats.forEach(function(cat) { %>
                     <li class="link-item">
-                        <a href="/user/cat/<%= cat._id%>" class="link">
+                        <a href="/User/cat/<%= cat._id%>" class="link">
                             <%= cat.name %>
                         </a>
                     </li>
@@ -56,8 +56,7 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                     <div id="baynatoo" style="display: block;">
-                                        <a href="/user/homepage/add-to-wishlist/<%= product._id%>"
-                                            style="text-decoration: none;"><i class="fa-regular fa-star"
+                                        <a href="/User/homepage/add-to-wishlist/<%= product._id%>" style="text-decoration: none;"><i class="fa-regular fa-star"
                                                 id="star"></i></a>
                                     </div>
                                 </div>
@@ -70,8 +69,8 @@
                                                     alt="product">
                                                 <a class="card-btn" href="./homepage/add/<%= product._id %>">Add to
                                                     Bag</a>
-                                                <% } %>
-                                            </a>
+                                            <% } %>
+                                                </a>
 
                                 </div>
                                 <div class="product-info">
@@ -122,8 +121,7 @@
             document.getElementById("bayna").style.display = "none";
             document.getElementById("baynatoo").style.display = "block";
 
-        }
-        else if (document.getElementById("baynatoo").style.display == "block" && document.getElementById("bayna").style.display == "none") {
+        } else if (document.getElementById("baynatoo").style.display == "block" && document.getElementById("bayna").style.display == "none") {
 
             document.getElementById("bayna").style.display = "block";
             document.getElementById("baynatoo").style.display = "none";
