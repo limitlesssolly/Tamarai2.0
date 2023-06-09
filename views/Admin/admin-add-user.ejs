@@ -2,77 +2,77 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Add User</title>
-  <!-- adding an favicon -->
-  <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
-  <link rel="stylesheet" href="/css/admin/admin-add-user.css">
+    <title>Add User</title>
+    <!-- adding an favicon -->
+    <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+    <link rel="stylesheet" href="/css/admin/admin-add-user.css">
 
 </head>
 
 <body>
-  <%- include('../partials/adminNav.ejs') %>
+    <%- include('../partials/adminNav.ejs') %>
 
-    <h2>Add User</h2>
+        <h2>Add User</h2>
 
-    <div id="words">or choose your user</div>
+        <div id="words">or choose your user</div>
 
-    <span class="use" style="top: 28%;"><img src='/images/user.png' alt="using"/></span>
-    <a href="/admin/dashboard/usings/admin"><span class="adds"><img src='/images/settings.png' alt="sets" /></span></a>
-    <a href="/admin/dashboard/usings/seller"><span class="vend"><img src='/images/shopping-bag.png' alt="sells" /></span></a>
+        <span class="use" style="top: 28%;"><img src='/images/user.png' alt="using"/></span>
+        <a href="/Admin/dashboard/usings/admin"><span class="adds"><img src='/images/settings.png' alt="sets" /></span></a>
+        <a href="/Admin/dashboard/usings/seller"><span class="vend"><img src='/images/shopping-bag.png' alt="sells" /></span></a>
 
-    <form action="/admin/dashboard/addUser" method="post">
+        <form action="/Admin/dashboard/addUser" method="post">
 
-      <div class="users" style="left: 15%;">
-        <label for="username"> username </label>
-        <input id="username" type="text" placeholder="username" name="username">
-        <span class="Uerror" id="usernameErrorMsg">
+            <div class="users" style="left: 15%;">
+                <label for="username"> username </label>
+                <input id="username" type="text" placeholder="username" name="username">
+                <span class="Uerror" id="usernameErrorMsg">
           <%if( errorMsg && errorMsg.username) { %>
             <%=errorMsg.username%>
               <%}%>
         </span>
-      </div>
-      
-      <div class="passes" style="left: 15%;">
-        <label for="password"> password </label>
-        <input id="password" type="password" placeholder="password" name="password">
-        <span class="Perror" id="passwordErrorMsg">
+            </div>
+
+            <div class="passes" style="left: 15%;">
+                <label for="password"> password </label>
+                <input id="password" type="password" placeholder="password" name="password">
+                <span class="Perror" id="passwordErrorMsg">
           <%if( errorMsg && errorMsg.password) { %>
             <%=errorMsg.password%>
               <%}%>
         </span>
-      </div>
+            </div>
 
-      <div class="email" style="left: 55%;">
-        <label for="email"> email </label>
-        <input id="email" type="email" placeholder="example@mail.com" name="email">
-        <span class="Eerror" id="emailErrorMsg">
+            <div class="email" style="left: 55%;">
+                <label for="email"> email </label>
+                <input id="email" type="email" placeholder="example@mail.com" name="email">
+                <span class="Eerror" id="emailErrorMsg">
           <%if( errorMsg && errorMsg.email) { %>
             <%=errorMsg.email%>
               <%}%>
         </span>
-      </div>
+            </div>
 
-      <div class="cpass" style="left: 55%;">
-        <label for="cpass"> confirm pass </label>
-        <input id="confirmpass" type="password" placeholder="confirm password" name="confirmPassword">
-        <span class="Perrortoo" id="confirmPassErrorMsg">
+            <div class="cpass" style="left: 55%;">
+                <label for="cpass"> confirm pass </label>
+                <input id="confirmpass" type="password" placeholder="confirm password" name="confirmPassword">
+                <span class="Perrortoo" id="confirmPassErrorMsg">
           <%if( errorMsg && errorMsg.confirmPassword) { %>
             <%=errorMsg.confirmPassword%>
               <%}%>
         </span>
-      </div>
+            </div>
 
-      <div class="buts">
-        <button class="buttons" type="submit" style="top: 75%;">Sign up</button>
-        <a href="/admin/dashboard/usings" class="buttons">Back</a>
-      </div>
-    </form>
+            <div class="buts">
+                <button class="buttons" type="submit" style="top: 75%;">Sign up</button>
+                <a href="/Admin/dashboard/usings" class="buttons">Back</a>
+            </div>
+        </form>
 
-    <%- include('../partials/footer.ejs') %>
+        <%- include('../partials/footer.ejs') %>
 
 </body>
 

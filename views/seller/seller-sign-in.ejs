@@ -14,46 +14,46 @@
 
 <body>
     <div class="seller">
-    <div class="Vlogin">
+        <div class="Vlogin">
             <!-- <img src="/images/thebluelogo.png" alt="logo" class="logo"> -->
-        <div class="Vlogger">
-            <h2>Sign in to your account</h2>
-            <div class="words">or choose your user</div>
-            <a href="/user"><span class="use"><i href="#"><img src='/images/user.png' alt="using"/></i></span></a>
-            <a href="/admin"><span class="adds"><i href="#" ><img src='/images/settings.png' alt="sets"/></i></span></a>
-            <span class="vend" style="top: 28%;"><i href="#"><img src='/images/shopping-bag.png' alt="sells"/></i></span>
+            <div class="Vlogger">
+                <h2>Sign in to your account</h2>
+                <div class="words">or choose your user</div>
+                <a href="/user"><span class="use"><i href="#"><img src='/images/user.png' alt="using"/></i></span></a>
+                <a href="/Admin"><span class="adds"><i href="#" ><img src='/images/settings.png' alt="sets"/></i></span></a>
+                <span class="vend" style="top: 28%;"><i href="#"><img src='/images/shopping-bag.png' alt="sells"/></i></span>
 
-            <div class="line"></div>
-        </div>
-        <form action="/seller" method="post" class="form">
-            <div class="users">
-                <label for="username"> username </label>
-                <input id="username" type="text" placeholder="username" name="username">
-                <span class="Uerror" id="usernameErrorMsg">
+                <div class="line"></div>
+            </div>
+            <form action="/seller" method="post" class="form">
+                <div class="users">
+                    <label for="username"> username </label>
+                    <input id="username" type="text" placeholder="username" name="username">
+                    <span class="Uerror" id="usernameErrorMsg">
                     <%if( errorMsg && errorMsg.username) { %>
                       <%=errorMsg.username%>
                         <%}%>
                   </span>
-            </div>
-            <div class="passes">
-                <label for="password"> password </label>
-                <input id="password" type="password" placeholder="password" name="password">
-                <span class="Perror" id="passwordErrorMsg">
+                </div>
+                <div class="passes">
+                    <label for="password"> password </label>
+                    <input id="password" type="password" placeholder="password" name="password">
+                    <span class="Perror" id="passwordErrorMsg">
                     <%if( errorMsg && errorMsg.password) { %>
                       <%=errorMsg.password%>
                         <%}%>
                   </span>
-            </div>
-            <span id="fyp"><a href="/forget">forgot your password?</a> </span>
-            <button class="VSbutton" type="submit" id="submit">Sign in</button>
-        </form>
+                </div>
+                <span id="fyp"><a href="/forget">forgot your password?</a> </span>
+                <button class="VSbutton" type="submit" id="submit">Sign in</button>
+            </form>
+        </div>
+        <div class="VRegbk">
+            <h3 class="welcomes">Welcome Aboard!</h3>
+            <div class="wordings"> You new here? Experience all <br> the fun, Join us now!</div>
+            <a href="/seller/register"><button class = "VRbutton">Sign Up</button></a>
+        </div>
     </div>
-    <div class="VRegbk">
-        <h3 class="welcomes">Welcome Aboard!</h3>
-        <div class="wordings"> You new here? Experience all <br> the fun, Join us now!</div>
-        <a href="/seller/register"><button class = "VRbutton">Sign Up</button></a>
-    </div>
-</div>
     <%- include('../partials/translate.ejs') %>
 </body>
 
