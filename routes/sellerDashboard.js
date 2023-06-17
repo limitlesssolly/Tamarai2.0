@@ -8,7 +8,7 @@ import regi from "../models/tryseller.js";
 
 /* GET /seller/dashboard page. */
 router.get("/", function (req, res, next) {
-  res.render("seller/seller-dashboard");
+  res.render("seller/seller-products");
 });
 
 router.get("/analysis", async function (req, res, next) {

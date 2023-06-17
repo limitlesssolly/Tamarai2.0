@@ -76,7 +76,7 @@ const signup = async (req, res, next) => {
         if (req.query.ajax)
             return res.json({ errors: errorMsg, admin: false });
         else
-            return res.render("user/user-register", { errorMsg, admin: false });
+            return res.render("User/user-register", { errorMsg, admin: false });
     }
     try {
         const hashPass = await bcrypt.hash(password, 10);

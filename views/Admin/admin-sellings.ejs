@@ -39,9 +39,9 @@
                             <td>
                                 <span>
                                     <span><a class="deleter"
-                                        href="/admin/dashboard/sellings/delete/<%=product._id%>">Delete</a></span>
-                                    <span><a class="viewer" 
-                                        href="/admin/dashboard/sellings/view/<%=product._id%>">View</a></span>
+                                        href="/Admin/dashboard/sellings/delete/<%=product._id%>">Delete</a></span>
+                                <span><a class="viewer" 
+                                        href="/Admin/dashboard/sellings/view/<%=product._id%>">View</a></span>
                                 </span>
                             </td>
 
@@ -59,11 +59,11 @@
     function nav() {
         if (document.getElementById("adds").style.display == "contents") {
             navClose();
-        }
-        else if (document.getElementById("adds").style.display == "none") {
+        } else if (document.getElementById("adds").style.display == "none") {
             navOpen();
         }
     }
+
     function navOpen() {
         document.getElementById("adds").style.display = "contents";
     }

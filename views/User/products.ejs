@@ -10,52 +10,52 @@
 
 <body>
     <%- include('../partials/usernav.ejs') %>
-    <div class="product-container">
-        <% Products.forEach(function(product) { %>
+        <div class="product-container">
+            <% Products.forEach(function(product) { %>
 
-            <a href="/user/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
+                <a href="/User/homepage/add-to-wishlist/<%= product._id%>"><i class="fa-regular fa-star"></i></a>
 
-            <div class="product-card">
-                <div class="product-image">
-                    <% if (product.discount> 0) { %>
-                        <span class="discount-tag">
+                <div class="product-card">
+                    <div class="product-image">
+                        <% if (product.discount> 0) { %>
+                            <span class="discount-tag">
                     <%= product.discount %>% off
                     </span>
-                        <% } %>
+                            <% } %>
                                 <img src="/images/products/<%= product.image %>" width="100">
-                            <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a>
-                </div>
+                                <a class="card-btn" href="/bag/add/<%= product._id %>">Add to Bag</a>
+                    </div>
 
-                <div class="product-info">
-                    <a href="/product/<%= product._id %>">
-                        <h2>
-                            <%= product.name %>
-                        </h2>
-                    </a>
-                    <h5 class="product-brand">
-                        <%= product.seller%>
-                    </h5>
-                    <p class="product-short-des">
-                        <%= product.description %>
-                    </p>
-                    <% if (product.discount> 0) { %>
-                        <span class="price">
-                            <%= product.price %>L.E.
-                        </span>
-                        <span class="actual-price">
-                            <%= product.price %>L.E.
-                        </span>
-                        <% } else { %>
+                    <div class="product-info">
+                        <a href="/product/<%= product._id %>">
+                            <h2>
+                                <%= product.name %>
+                            </h2>
+                        </a>
+                        <h5 class="product-brand">
+                            <%= product.seller%>
+                        </h5>
+                        <p class="product-short-des">
+                            <%= product.description %>
+                        </p>
+                        <% if (product.discount> 0) { %>
                             <span class="price">
+                            <%= product.price %>L.E.
+                        </span>
+                            <span class="actual-price">
+                            <%= product.price %>L.E.
+                        </span>
+                            <% } else { %>
+                                <span class="price">
                                 <%= product.price %>L.E.
                             </span>
-                            <% } %>
+                                <% } %>
+                    </div>
                 </div>
-            </div>
-            <% }); %>
-    </div>
-    <%- include('../partials/footer.ejs') %>
-    <%- include('../partials/translate.ejs') %>
+                <% }); %>
+        </div>
+        <%- include('../partials/footer.ejs') %>
+            <%- include('../partials/translate.ejs') %>
 </body>
 <script src="https://kit.fontawesome.com/6baebf3609.js" crossorigin="anonymous"></script>
 

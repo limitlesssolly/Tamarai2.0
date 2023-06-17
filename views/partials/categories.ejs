@@ -15,36 +15,36 @@
             <th>Action</th>
         </tr>
         <% cats.forEach(function(cat) { %>
-        <tr>
-            <td>
-                <%= cat.name %>
-            </td>
-            <td>
-                <span>
+            <tr>
+                <td>
+                    <%= cat.name %>
+                </td>
+                <td>
                     <span>
-                        <a class="deleter" href="/admin/dashboard/category/delete/<%=cat._id%>">Delete</a>
+                    <span>
+                        <a class="deleter" href="/Admin/dashboard/category/delete/<%=cat._id%>">Delete</a>
                     </span>
-                </span>
-            </td>
-        </tr>
-        <% }); %>
-        <tr id="adds" style="display: none;">
-            <form method="post" action="/admin/dashboard/addcategory">
-                <td><input name="cats" type="text"></td>
-                <td><button type="submit" class="adds"> Plus one </button></td>
-            </form>
-        </tr>
+                    </span>
+                </td>
+            </tr>
+            <% }); %>
+                <tr id="adds" style="display: none;">
+                    <form method="post" action="/Admin/dashboard/addcategory">
+                        <td><input name="cats" type="text"></td>
+                        <td><button type="submit" class="adds"> Plus one </button></td>
+                    </form>
+                </tr>
     </table>
 </body>
 <script>
     function nav() {
         if (document.getElementById("adds").style.display == "block") {
             navClose();
-        }
-        else if (document.getElementById("adds").style.display == "none") {
+        } else if (document.getElementById("adds").style.display == "none") {
             navOpen();
         }
     }
+
     function navOpen() {
         document.getElementById("adds").style.display = "block";
     }

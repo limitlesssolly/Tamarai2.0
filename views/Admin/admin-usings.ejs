@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,42 +9,48 @@
     <!-- adding an favicon -->
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
     <link rel="stylesheet" href="/css/admin/admin-usings.css">
-  </head>
+</head>
 
-  <body>
+<body>
     <%- include('../partials/adminNav.ejs') %>
-    <div class="viewsa">
-    
-    <% if (users.length > 0) { %>
-      <h2>All Users <a href="/admin/dashboard/usings/user">+</a> </h2>
-      <table>
-        <tr id="header">
-          <th>ID</th>
-          <th>E-mail</th>
-          <th>Name</th>
-          <th>Action</th>
-        </tr>
+        <div class="viewsa">
 
-        <% users.forEach(user => { %>
-          <tr>
-            <td><%= user._id %></td>
-            <td><%= user.email %></td>
-            <td><%= user.username %></td>
-            <td><a href="/admin/dashboard/usings/delete/<%=user._id%>" class="delta">Delete</a></td>
-          </tr>
-        <% }) %>
-      </table>
+            <% if (users.length > 0) { %>
+                <h2>All Users <a href="/Admin/dashboard/usings/user">+</a> </h2>
+                <table>
+                    <tr id="header">
+                        <th>ID</th>
+                        <th>E-mail</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
 
-      <% } else { %>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td>
+                                <%= user._id %>
+                            </td>
+                            <td>
+                                <%= user.email %>
+                            </td>
+                            <td>
+                                <%= user.username %>
+                            </td>
+                            <td><a href="/Admin/dashboard/usings/delete/<%=user._id%>" class="delta">Delete</a></td>
+                        </tr>
+                        <% }) %>
+                </table>
 
-        <h2>No users to display</h2>
+                <% } else { %>
 
-      <% } %>
+                    <h2>No users to display</h2>
 
-    </div>
+                    <% } %>
 
-    <%- include('../partials/footer.ejs') %>
+        </div>
 
-  </body>
+        <%- include('../partials/footer.ejs') %>
+
+</body>
 
 </html>
