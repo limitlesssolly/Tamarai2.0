@@ -7,9 +7,15 @@ const Admin = new mongoose.Schema({
     username: { type: String, unique: true, required: true, },
 
     password: { type: String, required: true, },
-    
+
     type: { type: String, required: false, },
 
+
+    role: {
+        type: String,
+        default: 'admin',
+        immutable: true
+    }
 }, { timestamps: true })
 
 const admin = new mongoose.model("adminData", Admin)

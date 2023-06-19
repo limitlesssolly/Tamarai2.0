@@ -44,3 +44,39 @@ function sendMessage(event) {
     // Reset input value
     msgInput.value = "";
 }
+
+function initTalkJS(userRole, userId, userName, userEmail) {
+    const currentUser = new Talk.User({
+        id: userId,
+        name: userName,
+        email: userEmail,
+        role: userRole
+    });
+
+    const session = new Talk.Session({
+        appId: "tDA2AuU1", // Replace with your TalkJS App ID
+        me: currentUser
+    });
+
+    return session;
+}
+
+function initChat(user) {
+    const session = initTalkJS(user.role, user.id, user.name, user.email);
+
+    // You can replace the following example IDs with actual user IDs
+    const sellerId = 'sellerId';
+    const adminId = 'adminId';
+
+    let conversation;
+
+    if (user.role === 'buyer') {
+        conversation = createBuyerSellerChat(session, user.id, sellerId);
+    } else if (user.role === 'seller') {
+        conversation = createAdminChat(session, user.id, adminId);
+    } else if (user.role === 'admin') {
+        // You can add logic here to create conversations for admins
+    }
+
+    createInbox(session);
+}

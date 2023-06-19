@@ -4,10 +4,12 @@
 <head>
     <link rel='stylesheet' href='/css/chat.css' />
     <link rel="shortcut icon" type="image/jpg" href="/images/thebluelogo.png" />
+    <script src="https://js.talkjs.com/v1"></script>
+
 </head>
 
 <body>
-    <button class="open-button" onclick="openForm()">Chat</button>
+    <button class="open-button" onclick="openForm(); initChat(user)">Chat</button>
 
     <div class="chat-popup" id="myForm">
         <form class="form-container" onsubmit="sendMessage(event)">
